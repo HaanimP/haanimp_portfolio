@@ -442,13 +442,13 @@ html {
     border: 1px solid #7a6e64;
     width: 45%;
     min-width: 300px;
-    transition: all 0.3s ease; /* Smooth transition */
+    transition: all 0.3s ease;
 }
 
 .box:hover {
-        transform: translateY(-10px) scale(1.05); /* Slight lift and scale */
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Enhanced shadow */
-    }
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
 
 .box h3 {
     font-size: 1.5rem;
@@ -492,6 +492,25 @@ html {
 
     .box {
         width: 90%;
+    }
+}
+
+@media (max-width: 480px) {
+    #experience-education h2 {
+        font-size: 1.8rem;
+    }
+
+    .box {
+        padding: 15px;
+    }
+
+    .box h3 {
+        font-size: 1.4rem;
+    }
+
+    .box p, 
+    .box ul li {
+        font-size: 0.9rem;
     }
 }
 
