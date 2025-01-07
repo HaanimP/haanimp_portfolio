@@ -1,0 +1,1191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <title>Portfolio</title>
+    <style>
+        /* General Styles */
+        body {
+            margin: 0;
+            font-family: 'Georgia', serif;
+            color: #5e503f;
+            background-color: #fff3e6;
+        }
+
+        /* Smooth scrolling for links */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Section transition effect */
+.section {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease-in-out;
+}
+
+.section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+        /* Navbar Styles */
+.navbar {
+    background-color: #7a6e64;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between; /* Space between hamburger and nav */
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Navigation Links (Desktop Layout) */
+.nav-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex; /* Horizontal layout for laptops */
+    gap: 20px;
+}
+
+.nav-links li {
+    position: relative;
+}
+
+.nav-links li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 5px 10px;
+    transition: all 0.3s ease;
+}
+
+.nav-links li a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background-color: #f4e4d7;
+    transition: width 0.3s ease;
+}
+
+.nav-links li a:hover::after {
+    width: 100%;
+}
+
+.nav-links li a:hover {
+    color: #f4e4d7;
+}
+
+/* Hamburger Icon (Mobile Only) */
+.hamburger {
+    display: none; /* Hidden on desktop */
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.hamburger span {
+    background-color: white;
+    height: 3px;
+    width: 25px;
+    border-radius: 2px;
+}
+
+/* Responsive Navbar */
+@media (max-width: 1024px) {
+    /* Tablet and Mobile View */
+    .nav-links {
+        display: none; /* Hide links by default */
+        flex-direction: column; /* Vertical layout */
+        background-color: #7a6e64;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        right: 0;
+        padding: 20px;
+        gap: 10px;
+    }
+
+    .nav-links.active {
+        display: flex; /* Show when hamburger toggled */
+    }
+
+    .hamburger {
+        display: flex; /* Show hamburger */
+    }
+}
+
+        header {
+            background: url('https://i.ibb.co/mJb9CgT/home.jpg') no-repeat center/cover;
+            color: white;
+            text-align: center;
+            height: 575px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+            z-index: 1;
+        }
+
+        header h1, header p {
+            position: relative;
+            z-index: 2;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        header h1 {
+            font-size: 3.5rem;
+            margin: 0;
+            font-family: 'Cursive', serif;
+        }
+
+        header p {
+            font-size: 1.5rem;
+            margin: 10px 0;
+        }
+
+        /* Add this to the .download-button style */
+.download-button {
+    background-color: #7a6e64;
+    color: white;
+    padding: 12px 25px;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 15px;
+    transition: background-color 0.3s ease;
+    position: relative; /* Add this line */
+    z-index: 2; /* Add this line */
+}
+
+
+    .download-button:hover {
+        background-color: white;
+        color: #7a6e64;
+    }
+
+    /* Social Media Icons Styles */
+.social-icons {
+    margin-top: 20px;
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    position: relative;
+    z-index: 2; /* Ensures icons appear above header overlay */
+}
+
+.social-icons a {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    background-color: #7a6e64;
+    color: white;
+    font-size: 1.5rem;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.social-icons a:hover {
+    transform: scale(1.2);
+    background-color: #f4e4d7;
+    color: #7a6e64;
+}
+        .section {
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #7a6e64;
+            font-family: 'Cursive', serif;
+        }
+
+        .section p {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
+        /* Awareness and Activism Styles */
+.awareness-activism {
+    padding: 50px 20px;
+    background-color: #fff3e6;
+}
+
+.awareness-activism .content {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.awareness-activism h2 {
+    font-size: 2.5rem;
+    color: #7a6e64;
+    margin-bottom: 20px;
+    font-family: 'Cursive', serif;
+}
+
+.awareness-activism p {
+    font-size: 1.2rem;
+    color: #5e503f;
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+/* Cards Container */
+.cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.card {
+    background-color: #fff3e6;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 300px;
+    border: 1px solid #7a6e64;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.card i {
+    font-size: 3rem;
+    color: #7a6e64;
+    margin-bottom: 15px;
+}
+
+.card h3 {
+    font-size: 1.5rem;
+    color: #7a6e64;
+    margin-bottom: 10px;
+}
+
+.card p {
+    font-size: 1rem;
+    color: #5a5a5a;
+    line-height: 1.6;
+}
+
+/* Image Collage */
+.gallery-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+}
+
+.gallery-item {
+    width: calc(33.33% - 10px);
+    max-width: 200px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    border-radius: 8px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.gallery-item:hover {
+    transform: scale(1.05);
+}
+
+/* About Me Section Styling */
+.about-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    align-items: center;
+    padding: 50px 20px;
+    background-color: #fff3e6;
+    border: 1px solid #7a6e64;
+    border-radius: 10px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.about-image {
+    flex: 1 1 45%;
+    text-align: center;
+}
+
+.about-image img {
+    max-width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.about-details {
+    flex: 1 1 50%;
+}
+
+.about-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+    font-family: 'Serif', serif;
+}
+
+.about-description {
+    font-size: 1.2rem;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.about-achievements {
+    margin-top: 20px;
+}
+
+.about-achievements h3 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.about-achievements ul {
+    padding-left: 0; /* Remove default padding */
+    list-style: none; /* Remove default bullet points */
+}
+
+.about-achievements ul li {
+    position: relative; /* To position the custom icon */
+    padding-left: 35px; /* Add space for the icon */
+    margin-bottom: 10px; /* Add spacing between items */
+    font-size: 1.1rem; /* Slightly larger font */
+    color: #555; /* Neutral color for text */
+    line-height: 1.6; /* Comfortable line spacing */
+    font-family: 'Serif', serif;
+}
+
+.about-achievements ul li::before {
+    content: '\2713'; /* Unicode character for a checkmark (✓) */
+    position: absolute; /* Position it within the li */
+    left: 0; /* Align it with the padding */
+    top: 0;
+    color: #6D9886; /* Custom color for the icon */
+    font-size: 1.5rem; /* Slightly larger than the text */
+    line-height: 1.1; /* Align the icon with text */
+}
+
+
+/* General Section Styling */
+#experience-education {
+    font-family: Arial, sans-serif;
+    padding: 40px 20px;
+    background-color: #fff3e6;
+    color: #333;
+}
+
+#experience-education h2 {
+    text-align: center;
+    font-size: 2rem;
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+
+/* Box Container */
+.box-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 20px;
+}
+
+/* Individual Box Styling */
+.box {
+    background-color: #fff3e6;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border: 1px solid #7a6e64;
+    width: 45%;
+    min-width: 300px;
+    transition: all 0.3s ease; /* Smooth transition */
+}
+
+.box:hover {
+        transform: translateY(-10px) scale(1.05); /* Slight lift and scale */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Enhanced shadow */
+    }
+
+.box h3 {
+    font-size: 1.5rem;
+    color: #7a6e64;
+    margin-bottom: 10px;
+    text-align: center;
+    border-bottom: 2px solid #7a6e64;
+    padding-bottom: 5px;
+}
+
+.box p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #555;
+    margin-bottom: 15px;
+    text-align: justify;
+}
+
+.box ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.box ul li {
+    font-size: 1rem;
+    margin: 10px 0;
+    color: #333;
+}
+
+.box ul li strong {
+    color: #7a6e64;
+    font-weight: bold;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .box-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .box {
+        width: 90%;
+    }
+}
+
+/* Skills Section */
+.skills-section {
+    padding: 50px 20px;
+    background-color: #fff3e6;
+    text-align: center;
+}
+
+.skills-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #7a6e64;
+    font-family: 'Cursive', serif;
+}
+
+.skills-section p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    color: #5e503f;
+}
+
+.skills-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns by default */
+    gap: 20px;
+    justify-items: center;
+    align-items: center;
+}
+
+.skill-card {
+    background-color: #fff3e6;
+    border: 1px solid #7a6e64;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 100%;
+    max-width: 300px;
+}
+
+.skill-card:hover {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.skill-card i {
+    font-size: 2.5rem;
+    color: #7a6e64;
+    margin-bottom: 15px;
+}
+
+.skill-card h3 {
+    font-size: 1.5rem;
+    color: #7a6e64;
+    margin-bottom: 10px;
+}
+
+.skill-card p {
+    font-size: 1rem;
+    color: #5e503f;
+}
+
+/* Responsive Styles */
+
+/* For tablets (max-width: 1024px) */
+@media (max-width: 1024px) {
+    .skills-container {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns */
+        gap: 15px;
+    }
+
+    .skills-section h2 {
+        font-size: 2rem;
+    }
+
+    .skills-section p {
+        font-size: 1rem;
+    }
+}
+
+/* For phones (max-width: 768px) */
+@media (max-width: 768px) {
+    .skills-container {
+        grid-template-columns: 1fr; /* 1 column */
+        gap: 10px;
+    }
+
+    .skills-section h2 {
+        font-size: 1.8rem;
+    }
+
+    .skills-section p {
+        font-size: 0.9rem;
+    }
+
+    .skill-card {
+        padding: 15px;
+    }
+
+    .skill-card i {
+        font-size: 2rem;
+    }
+
+    .skill-card h3 {
+        font-size: 1.2rem;
+    }
+
+    .skill-card p {
+        font-size: 0.9rem;
+    }
+}
+
+    .projects-section {
+    padding: 50px 20px;
+    background-color: #fff3e6;
+    text-align: center;
+}
+
+.projects-section h2 {
+    font-size: 2.8rem;
+    margin-bottom: 30px;
+    color: #333;
+    font-family: 'Cursive', serif;
+}
+
+.projects-section p {
+    font-size: 1.3rem;
+    margin-bottom: 40px;
+    color: #555;
+}
+
+.projects-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 cards per row */
+    gap: 30px; /* More spacing between cards */
+    justify-items: center;
+    padding: 0 20px;
+}
+
+.project-card {
+    background-color: #fff3e6;
+    border: 1px solid #7a6e64;
+    border-radius: 15px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+    width: 280px; /* Increased card width */
+}
+
+.project-card:hover {
+    transform: translateY(-10px) scale(1.05); /* Slightly larger hover effect */
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+.project-card img {
+    width: 100%; /* Full width of the card */
+    height: 180px; /* Larger image */
+    object-fit: cover;
+    border-bottom: 1px solid #7a6e64;
+}
+
+.project-card h3 {
+    font-size: 1.4rem;
+    color: #333;
+    margin: 15px 0;
+    font-weight: bold;
+}
+
+.project-card p {
+    font-size: 1rem;
+    color: #666;
+    margin: 10px 20px;
+}
+
+.project-card .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #7a6e64;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+    margin-bottom: 15px;
+}
+
+.project-card .btn:hover {
+    background-color: #5e503f;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .projects-container {
+        grid-template-columns: repeat(3, 1fr); /* 3 cards per row on medium screens */
+    }
+}
+
+@media (max-width: 768px) {
+    .projects-container {
+        grid-template-columns: repeat(2, 1fr); /* 2 cards per row on tablets */
+    }
+}
+
+@media (max-width: 480px) {
+    .projects-container {
+        grid-template-columns: 1fr; /* Single column on smaller screens */
+    }
+}
+
+.presentations-section {
+    padding: 60px 20px;
+    background-color: #fff3e6;
+    text-align: center;
+}
+
+.presentations-section h2 {
+    font-size: 2.8rem;
+    margin-bottom: 20px;
+    color: #333;
+    font-family: 'Cursive', serif;
+}
+
+.presentations-section p {
+    font-size: 1.3rem;
+    margin-bottom: 40px;
+    color: #555;
+}
+
+.presentations-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 cards per row */
+    gap: 30px; /* Spacing between cards */
+    justify-items: center;
+    padding: 0 20px;
+}
+
+.presentation-card {
+    background-color: #fff3e6;
+    border: 1px solid #7a6e64;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    text-align: center;
+    width: 100%;
+    max-width: 300px;
+    padding: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.presentation-card:hover {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.presentation-card h3 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.presentation-card p {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.presentation-card .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #7a6e64;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.presentation-card .btn:hover {
+    background-color: #5e503f;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .presentations-container {
+        grid-template-columns: repeat(2, 1fr); /* 2 cards per row on medium screens */
+    }
+}
+
+@media (max-width: 768px) {
+    .presentations-container {
+        grid-template-columns: 1fr; /* Single column on smaller screens */
+    }
+}
+
+.contact-section {
+    padding: 60px 20px;
+    background-color: #fff3e6;
+    text-align: center;
+}
+
+.contact-section h2 {
+    font-size: 2.8rem;
+    margin-bottom: 20px;
+    color: #333;
+    font-family: 'Cursive', serif;
+}
+
+.contact-section p {
+    font-size: 1.3rem;
+    margin-bottom: 40px;
+    color: #555;
+}
+
+.contact-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 cards per row */
+    gap: 30px;
+    justify-items: center;
+    padding: 0 20px;
+}
+
+.contact-card {
+    background-color: #fff3e6;
+    border: 1px solid #7a6e64;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 100%;
+    max-width: 300px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-card:hover {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.contact-card i {
+    font-size: 2.5rem;
+    color: #7a6e64;
+    margin-bottom: 15px;
+}
+
+.contact-card h3 {
+    font-size: 1.4rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.contact-card p {
+    font-size: 1rem;
+    color: #666;
+}
+
+.contact-card a {
+    text-decoration: none;
+    color: #7a6e64;
+    transition: color 0.3s ease;
+}
+
+.contact-card a:hover {
+    color: #5e503f;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .contact-container {
+        grid-template-columns: repeat(2, 1fr); /* 2 cards per row on medium screens */
+    }
+}
+
+@media (max-width: 768px) {
+    .contact-container {
+        grid-template-columns: 1fr; /* Single column on smaller screens */
+    }
+}
+
+        .footer {
+            background-color: #7a6e64;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+        }
+
+        .footer p {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <!-- Hamburger Icon (Mobile and Tablet Only) -->
+        <div class="hamburger" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <!-- Navigation Links -->
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#awareness-activism">Awareness and Activism</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#experience-education">Experience and Education</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#presentations">Presentations</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <header id="home">
+        <h1>Haanim Pietersen</h1>
+        <p>Web Developer | Web Designer | Software Engineer | Social Media Manager</p>
+        <!-- Button to download CV -->
+        <a href="Images/Haanim Other CV 2024.pdf" download="Haanim_Pietersen_CV" class="download-button">Download CV</a>
+        <!-- Social Media Icons -->
+        <div class="social-icons">
+            <a href="https://www.instagram.com/haanim_pietersen?igsh=MWpsZ3ljZ2lrZmZyOA==" target="_blank" class="icon">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://www.tiktok.com/@haanim_pietersen?_r=1&_d=eghhg97di5169m&sec_uid=MS4wLjABAAAAeecrM8k5PaUZqUNOvy3V52lWKCKwNVB8hb4diCXHLAQUSVhQGIrLTshBcdRd-ZAg&share_author_id=6850689358485865478&sharer_language=en&source=h5_m&u_code=dddmfkc86jfc2k&timestamp=1736256484&user_id=6850689358485865478&sec_user_id=MS4wLjABAAAAeecrM8k5PaUZqUNOvy3V52lWKCKwNVB8hb4diCXHLAQUSVhQGIrLTshBcdRd-ZAg&utm_source=copy&utm_campaign=client_share&utm_medium=android&share_iid=7453658637216597766&share_link_id=22859784-d049-4dfc-b2b4-fa4f802bf86e&share_app_id=1233&ugbiz_name=ACCOUNT&ug_btm=b8727%2Cb0229&social_share_type=5&enable_checksum=1" target="_blank" class="icon">
+                <i class="fab fa-tiktok"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/haanim-pietersen-172bb9264?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" class="icon">
+                <i class="fab fa-linkedin"></i>
+            </a>
+        </div>
+    </header>    
+
+    <section class="awareness-activism" id="awareness-activism">
+        <div class="content">
+            <h2>Awareness and Activism</h2>
+            <p>
+                As a creative and an advocate for social justice, I stand in solidarity with the people of Palestine. 
+                The ongoing conflict has resulted in immense suffering, displacement, and loss of lives. 
+                Through my platform, I aim to amplify their voices, spread awareness, and encourage support for their rights and freedom.
+            </p>
+            <p>
+                Together, we can contribute to a world where justice prevails and where no one has to fight for their basic rights to live 
+                in peace and dignity. I invite you to explore resources, donate, and share their stories to make a difference.
+            </p>
+        </div>
+    
+        <!-- Card Section -->
+        <div class="cards-container">
+            <div class="card">
+                <i class="fas fa-dove"></i>
+                <h3>Peace Advocacy</h3>
+                <p>Promoting peace through spreading awareness and supporting the voices of those affected by injustice.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-hands-helping"></i>
+                <h3>Get Involved</h3>
+                <p>Explore resources, participate in campaigns, and lend your support to humanitarian causes.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-share-alt"></i>
+                <h3>Spread Awareness</h3>
+                <p>Use your platforms to share stories, raise awareness, and inspire others to take action.</p>
+            </div>
+        </div>
+    
+        <!-- Image Collage -->
+        <div class="gallery-container">
+            <div class="gallery-item">
+                <img src="Images/download.jpg" alt="Awareness Image 1">
+            </div>
+            <div class="gallery-item">
+                <img src="Images/Free Palestine 🇵🇸.jpg" alt="Awareness Image 2">
+            </div>
+            <div class="gallery-item">
+                <img src="Images/flag.jpg" alt="Awareness Image 3">
+            </div>
+            <div class="gallery-item">
+                <img src="Images/Ancient Jerusalem, before the existence of the dome of the rock,.jpg" alt="Awareness Image 4">
+            </div>
+            <div class="gallery-item">
+                <img src="Images/Palestine.jpg" alt="Awareness Image 5">
+            </div>
+            <div class="gallery-item">
+                <img src="Images/download (1).jpg" alt="Awareness Image 6">
+            </div>
+        </div>
+    </section>    
+
+    <section class="section about" id="about">
+        <div class="about-wrapper">
+            <div class="about-image">
+                <img src="Images/1000034789.jpg" alt="Haanim Pietersen" />
+            </div>
+            <div class="about-details">
+                <h2 class="about-title">About Me</h2>
+                <p class="about-description">
+                    I am a passionate Web Developer and Designer with expertise in HTML, CSS, JavaScript, and a variety of other web technologies. I hold a Certificate of Excellence in Full-Stack Web Development from Life Choices Coding Academy.
+                </p>
+                <p class="about-description">
+                    Currently, I am co-founding and working for <strong>The Three Stars</strong>, a business supporting other small businesses with web design, branding, and cybersecurity services.
+                </p>
+                <div class="about-achievements">
+                    <h3>Achievements</h3>
+                    <ul>
+                        <li>Certificate of Excellence in Full-Stack Web Development</li>
+                        <li>Certificate in Software Engineering</li>
+                        <li>Co-founder of The Three Stars</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>        
+
+    <section id="experience-education">
+        <h2>Experience & Education</h2>
+        
+        <!-- Container for Experience and Education Boxes -->
+        <div class="box-container">
+    
+            <!-- Experience Box -->
+            <div class="box">
+                <h3>Experience</h3>
+                <p>I have worked with teams on diverse projects, delivering exceptional results in web design, software development, and project management.</p>
+                <ul>
+                    <li><strong>The Three Stars:</strong> Web Designer (November 2024 - Present)</li>
+                    <li><strong>LC Studio:</strong> Lecturer Assistant (October 2024 - November 2024)</li>
+                    <li><strong>LC Studio:</strong> Web Developer Intern (April 2024 - November 2024)</li>
+                </ul>
+            </div>
+    
+            <!-- Education Box -->
+            <div class="box">
+                <h3>Education</h3>
+                <p>I have earned certifications and degrees that strengthen my skills in web development and design.</p>
+                <ul>
+                    <li><strong>Life Choices Coding Academy:</strong> Full-Stack Web Development Certificate (2024)</li>
+                    <li><strong>South Peninsula High School:</strong> High School Diploma (2022)</li>
+                </ul>
+            </div>
+    
+        </div>
+    </section>    
+
+<section class="skills-section" id="skills">
+    <h2>My Skills</h2>
+    <p>A collection of my expertise in design, development, and data analysis.</p>
+    <div class="skills-container">
+        <div class="skill-card">
+            <i class="fas fa-code"></i>
+            <h3>Web Development</h3>
+            <p>HTML, CSS, Bootstrap, JavaScript, Vue.js, Node.js</p>
+        </div>
+        <div class="skill-card">
+            <i class="fas fa-database"></i>
+            <h3>Database Management</h3>
+            <p>MySQL, Tableau, Power BI</p>
+        </div>
+        <div class="skill-card">
+            <i class="fas fa-pencil-alt"></i>
+            <h3>Design Tools</h3>
+            <p>Canva, Figma, WordPress, Elementor</p>
+        </div>
+        <div class="skill-card">
+            <i class="fas fa-terminal"></i>
+            <h3>Programming</h3>
+            <p>Python, C++, Linux</p>
+        </div>
+        <div class="skill-card">
+            <i class="fas fa-users-cog"></i>
+            <h3>Team Tools</h3>
+            <p>Git, GitHub, SCRUM</p>
+        </div>
+        <div class="skill-card">
+            <i class="fas fa-tools"></i>
+            <h3>Software</h3>
+            <p>VS Code, WIX</p>
+        </div>
+    </div>
+</section>
+
+<section class="projects-section" id="projects">
+    <h2>Projects</h2>
+    <p>Showcasing impactful projects that highlight creativity and functionality.</p>
+    <div class="projects-container">
+        <div class="project-card">
+            <img src="Images/Sugar Bakez.png" alt="Project 1">
+            <h3>Sugar<br> Bakez</h3>
+            <a href="https://sugarbakez.netlify.app/" class="btn" target="_blank">View Project</a>
+        </div>
+        <div class="project-card">
+            <img src="Images/path align.png" alt="Project 2">
+            <h3>Path<br> Align</h3>
+            <a href="https://personatest.lcstudio-incubate.co.za/" class="btn" target="_blank">View Project</a>
+        </div>
+        <div class="project-card">
+            <img src="Images/weather app.png" alt="Project 3">
+            <h3>Weather<br> App</h3>
+            <a href="https://weather-app-navy-nu-74.vercel.app/" class="btn" target="_blank">View Project</a>
+        </div>
+        <div class="project-card">
+            <img src="Images/wordpress ecommerce.png" alt="Project 4">
+            <h3>WordPress<br> E-commerce</h3>
+            <a href="https://shankaccessories.wordpress.com/" class="btn" target="_blank">View Project</a>
+        </div>
+    </div>
+</section>
+
+<section class="presentations-section" id="presentations">
+    <h2>Presentations</h2>
+    <p>Sharing knowledge and insights through interactive and engaging presentations.</p>
+    <div class="presentations-container">
+        <div class="presentation-card">
+            <h3>Power Track</h3>
+            <p>This presentation shows how much energy and money people save by using solar panels instead of traditional energy sources.</p>
+            <a href="https://www.canva.com/design/DAGPyv-jw5w/HNJOMrnrAbD2k4QplqjDJg/edit?utm_content=DAGPyv-jw5w&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" class="btn">View Presentation</a>
+        </div>
+        <div class="presentation-card">
+            <h3>Intern Profiles</h3>
+            <p>This presentation showcases a project created to display intern profiles, including their information, skills, projects, and achievements.</p>
+            <a href="https://www.canva.com/design/DAGP9qSbvXk/_40ZJVE1eM5xoja4v80Nog/edit?utm_content=DAGP9qSbvXk&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" class="btn">View Presentation</a>
+        </div>
+        <div class="presentation-card">
+            <h3>Drupal Presentation</h3>
+            <p>This presentation provides an overview of the fundamental concepts, tools, and features of Drupal, focusing on its core functionalities and basic usage.</p>
+            <a href="https://www.canva.com/design/DAGMVXxqV10/-r9Io2q2ZY7xwwJo-HlluQ/edit?utm_content=DAGMVXxqV10&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" class="btn">View Presentation</a>
+        </div>
+    </div>
+</section>
+
+<section class="contact-section" id="contact">
+    <h2>Contact Me</h2>
+    <p>Feel free to get in touch for any inquiries, collaborations, or just to say hi!</p>
+    <div class="contact-container">
+        <div class="contact-card">
+            <i class="fas fa-phone-alt"></i>
+            <h3>Phone</h3>
+            <p><a href="tel:0714332419">071 433 2419</a></p>
+        </div>
+        <div class="contact-card">
+            <i class="fas fa-envelope"></i>
+            <h3>Email</h3>
+            <p><a href="mailto:haanimpietersen@gmail.com">haanimpietersen@gmail.com</a></p>
+        </div>
+        <div class="contact-card">
+            <i class="fas fa-map-marker-alt"></i>
+            <h3>Location</h3>
+            <p>Cape Town</p>
+        </div>
+    </div>
+</section>
+
+<footer class="footer">
+    <p>&copy; 2025 Haanim Pietersen. All Rights Reserved.</p>
+</footer>
+
+<script>
+   function toggleMenu() {
+    const navLinks = document.querySelector('.nav-links');
+    navLinks.classList.toggle('active'); // Toggle the active class for nav links
+}
+
+// Close the navbar when a link is clicked
+const navLinks = document.querySelectorAll('.nav-links li a');
+navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        const nav = document.querySelector('.nav-links');
+        nav.classList.remove('active'); // Remove the active class to close the menu
+    });
+});
+    // Add class "visible" to sections when they come into view
+    document.addEventListener("DOMContentLoaded", function () {
+        const sections = document.querySelectorAll(".section, .awareness-activism");
+
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("visible");
+                    }
+                });
+            },
+            { threshold: 0.2 } // Trigger when 20% of the section is visible
+        );
+
+        sections.forEach((section) => observer.observe(section));
+    });
+
+</script>
+
+</body>
+</html>
