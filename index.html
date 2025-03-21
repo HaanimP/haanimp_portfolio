@@ -124,48 +124,55 @@ html {
     }
 }
 
-        header {
-            background: url('https://i.ibb.co/mJb9CgT/home.jpg') no-repeat center/cover;
-            color: white;
-            text-align: center;
-            height: 575px;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
+header {
+    background: url('https://i.ibb.co/mJb9CgT/home.jpg') no-repeat center/cover;
+    color: white;
+    text-align: center;
+    height: 575px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 
-        header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(5px);
-            z-index: 1;
-        }
+header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    z-index: 1;
+}
 
-        header h1, header p {
-            position: relative;
-            z-index: 2;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-        }
+header h1, header h2, header h3 {
+    position: relative;
+    z-index: 2;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
 
-        header h1 {
-            font-size: 3.5rem;
-            margin: 0;
-            font-family: 'Cursive', serif;
-        }
+header h1 {
+    font-size: 3.5rem;
+    margin: 0;
+    font-family: 'Cursive', serif;
+}
 
-        header p {
-            font-size: 1.5rem;
-            margin: 10px 0;
-        }
+header h2 {
+    font-size: 2.25rem;
+    margin: 10px 0;
+    font-weight: 500;
+}
 
-        /* Add this to the .download-button style */
+header h3 {
+    font-size: 1.5rem;
+    margin: 5px 0;
+    font-weight: 400;
+}
+
+/* Add this to the .download-button style */
 .download-button {
     background-color: #7a6e64;
     color: white;
@@ -181,13 +188,12 @@ html {
     z-index: 2; /* Add this line */
 }
 
+.download-button:hover {
+    background-color: white;
+    color: #7a6e64;
+}
 
-    .download-button:hover {
-        background-color: white;
-        color: #7a6e64;
-    }
-
-    /* Social Media Icons Styles */
+/* Social Media Icons Styles */
 .social-icons {
     margin-top: 20px;
     display: flex;
@@ -938,7 +944,8 @@ html {
 
     <header id="home">
         <h1>Haanim Pietersen</h1>
-        <p>Web Developer | Web Designer | Software Engineer | Social Media Manager</p>
+        <h2>Versatile Digital Solution Expert</h2>
+        <h3>Software Developer | Social Media Manager | Web Designer | Team Lead</h3>
         <!-- Button to download CV -->
         <a href="Images/Haanim Other CV 2024.pdf" download="Haanim_Pietersen_CV" class="download-button">Download CV</a>
         <!-- Social Media Icons -->
@@ -952,8 +959,11 @@ html {
             <a href="https://www.linkedin.com/in/haanim-pietersen-172bb9264?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" class="icon">
                 <i class="fab fa-linkedin"></i>
             </a>
+            <a href="https://github.com/HaanimP" target="_blank" class="icon">
+                <i class="fab fa-github"></i>
+            </a>
         </div>
-    </header>    
+    </header>
 
     <section class="awareness-activism" id="awareness-activism">
         <div class="content">
