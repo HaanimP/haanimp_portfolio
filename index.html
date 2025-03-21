@@ -636,6 +636,250 @@ header h3 {
     }
 }
 
+/* General Layout and Design */
+.three-stars-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 20px;
+}
+
+/* Logo Container */
+.logo-container {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.three-stars-logo {
+    width: 150px;
+    height: auto;
+}
+
+/* Intro Section */
+.intro {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.intro h2 {
+    font-size: 2.8rem;
+    color: #5e503f;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.intro p {
+    font-size: 1.2rem;
+    color: #7a6e64;
+    line-height: 1.7;
+    margin-top: 0;
+}
+
+/* Mission & Vision */
+.mission-vision {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+.mission, .vision {
+    background-color: #fff3e6;
+    border: 1px solid #7a6e64;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 10px;
+    padding: 30px;
+    flex: 1;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.mission:hover {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); 
+}
+
+.vision:hover {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.mission h3, .vision h3 {
+    font-size: 1.8rem;
+    color: #5e503f;
+    margin-bottom: 15px;
+}
+
+.mission p, .vision p {
+    font-size: 1.1rem;
+    color: #7a6e64;
+    line-height: 1.7;
+}
+
+/* Roles Section */
+.roles {
+    margin-bottom: 50px;
+}
+
+.roles h3 {
+    font-size: 2rem;
+    color: #5e503f;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.roles p {
+    font-size: 1.1rem;
+    color: #7a6e64;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.role-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.role {
+    background-color: #fff3e6;
+    border: 1px solid #7a6e64;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.role:hover {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.role h4 {
+    font-size: 1.6rem;
+    color: #5e503f;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.role p {
+    font-size: 1.1rem;
+    color: #7a6e64;
+    line-height: 1.6;
+}
+
+.role ul {
+    list-style-type: none;
+    padding-left: 0;
+    font-size: 1.1rem;
+    color: #7a6e64; /* Lighter earthy tone */
+}
+
+.role ul li {
+    margin-bottom: 8px;
+    position: relative;
+    padding-left: 25px;
+}
+
+.star {
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: #5e503f; /* Deep earthy tone */
+    font-size: 1.4rem;
+}
+
+/* Contact Section */
+.contact {
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.contact h3 {
+    font-size: 1.8rem;
+    color: #5e503f;
+    margin-bottom: 15px;
+}
+
+.contact p {
+    font-size: 1.1rem;
+    color: #7a6e64;
+    margin-bottom: 10px;
+}
+
+.contact a {
+    color: #5e503f;
+    text-decoration: none;
+}
+
+.contact a:hover {
+    text-decoration: underline;
+}
+
+/* Social Media Icons */
+.socials {
+    text-align: center;
+}
+
+.socials h3 {
+    font-size: 1.8rem;
+    color: #5e503f;
+    margin-bottom: 20px;
+}
+
+.social-icons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    position: relative;
+}
+
+.social-icon i {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    background-color: #7a6e64;
+    color: white;
+    font-size: 1.5rem;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.social-icon:hover i {
+    transform: scale(1.2);
+    background-color: #f4e4d7;
+    color: #7a6e64;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .mission-vision {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .role-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .role p {
+        font-size: 1rem;
+    }
+
+    .social-icon i {
+        font-size: 2rem;
+    }
+}
+
     .projects-section {
     padding: 50px 20px;
     background-color: #fff3e6;
@@ -936,6 +1180,7 @@ header h3 {
             <li><a href="#about">About</a></li>
             <li><a href="#experience-education">Experience and Education</a></li>
             <li><a href="#skills">Skills</a></li>
+            <li><a href="#three-stars">The Three Stars</a></li>
             <li><a href="#projects">Projects</a></li>
             <li><a href="#presentations">Presentations</a></li>
             <li><a href="#contact">Contact</a></li>
@@ -1110,12 +1355,89 @@ header h3 {
         <div class="skill-card">
             <i class="fas fa-users-cog"></i>
             <h3>Team Tools</h3>
-            <p>Git, GitHub, SCRUM</p>
+            <p>Git, GitHub, SCRUM, Teams, OneNote</p>
         </div>
         <div class="skill-card">
             <i class="fas fa-tools"></i>
             <h3>Software</h3>
-            <p>VS Code, WIX</p>
+            <p>VS Code, WIX, Microsoft Word, Excel, Powerpoint, OneDrive</p>
+        </div>
+    </div>
+</section>
+
+<section class="three-stars-section" id="three-stars">
+    <div class="logo-container">
+        <!-- Add your logo here -->
+        <img src="/Images/thethreestars.png" alt="The Three Stars Logo" class="three-stars-logo">
+    </div>
+    
+    <div class="intro">
+        <h2>The Three Stars</h2>
+        <p>Our mission is to help small businesses grow and thrive by enhancing their online presence. We also aim to empower those who want to learn about digital services but lack access to resources.</p>
+    </div>
+    
+    <div class="mission-vision">
+        <div class="mission">
+            <h3>Our Mission</h3>
+            <p>We are committed to helping small businesses flourish by creating a strong online presence. Our goal is to offer affordable digital solutions that have a lasting impact.</p>
+        </div>
+        
+        <div class="vision">
+            <h3>Our Vision</h3>
+            <p>Our vision is to be the leading digital solutions agency that gives back to our community by supporting both small businesses and individuals who seek to learn and grow but lack resources.</p>
+        </div>
+    </div>
+
+    <div class="roles">
+        <h3>My Role at The Three Stars</h3>
+        <p>I am the Web Designer, Social Media Manager, Team Lead, and Co-founder of The Three Stars. Below are my key responsibilities:</p>
+        
+        <div class="role-container">
+            <div class="role">
+                <h4>Web Designer</h4>
+                <ul>
+                    <li><span class="star">★</span> Prototyping and wireframing</li>
+                    <li><span class="star">★</span> Front-End Development with HTML, CSS, and JavaScript</li>
+                    <li><span class="star">★</span> Testing and Debugging based on feedback</li>
+                </ul>
+            </div>
+
+            <div class="role">
+                <h4>Business Team Lead</h4>
+                <ul>
+                <li><span class="star">★</span> Leading daily stand-ups to track progress</li>
+                <li><span class="star">★</span> Ensuring task completion and punctuality</li>
+                <li><span class="star">★</span> Providing guidance and fostering team communication</li>
+            </ul>
+            </div>
+
+            <div class="role">
+                <h4>Social Media Manager</h4>
+                <ul>
+                    <li><span class="star">★</span> Managing content updates and social media presence</li>
+                <li><span class="star">★</span> Maintaining client relations and providing updates</li>
+                <li><span class="star">★</span> Networking and creating engaging content</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="contact">
+        <h3>Contact Us</h3>
+        <p>If you’d like to get in touch, feel free to reach out:</p>
+        <p><strong>WhatsApp:</strong> <a href="tel:+27844651333">0844651333</a></p>
+        <p><strong>Email:</strong> <a href="mailto:thethr33stars3@gmail.com">thethr33stars3@gmail.com</a></p>
+    </div>
+
+    <div class="socials">
+        <h3>Follow Us</h3>
+        <div class="social-icons">
+            <a href="https://www.instagram.com" target="_blank" class="social-icon">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://www.tiktok.com" target="_blank" class="social-icon">
+                <i class="fab fa-tiktok"></i>
+            </a>
         </div>
     </div>
 </section>
