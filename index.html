@@ -1,1570 +1,1245 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
-    <title>Portfolio</title>
-    <style>
-        /* General Styles */
-        body {
-            margin: 0;
-            font-family: 'Georgia', serif;
-            color: #5e503f;
-            background-color: #fff3e6;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Haanim Pietersen | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <style>
+    :root {
+      --bg: #fdfaf6;
+      --accent: #d7ccc8;
+      --primary: #6d4c41;
+      --hover: #5d4037;
+    }
 
-        /* Smooth scrolling for links */
-html {
-    scroll-behavior: smooth;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--bg);
+      color: #333;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    /* Nav Bar */
+    nav {
+      position: sticky;
+      top: 0;
+      background-color: var(--accent);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      z-index: 1000;
+    }
+
+    nav ul {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    nav a:hover {
+      color: var(--primary);
+    }
+
+    nav {
+  position: sticky;
+  top: 0;
+  background-color: var(--accent);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  z-index: 1000;
 }
 
-/* Section transition effect */
-.section {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: all 0.6s ease-in-out;
+nav ul {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+  transition: max-height 0.3s ease-in-out;
 }
 
-.section.visible {
+nav ul.show {
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 1rem 0;
+}
+
+nav a {
+  position: relative;
+  font-weight: 500;
+}
+
+nav a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  left: 0;
+  bottom: -3px;
+  background-color: var(--primary);
+  transition: width 0.3s ease;
+}
+
+nav a:hover::after {
+  width: 100%;
+}
+
+.burger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+}
+
+.burger div {
+  width: 25px;
+  height: 3px;
+  background-color: #333;
+  transition: all 0.3s ease;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .burger {
+    display: flex;
+  }
+
+  nav ul {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    background-color: var(--accent);
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    max-height: 0;
+    overflow: hidden;
+  }
+
+  nav ul.show {
+    max-height: 500px;
+    padding: 1rem 0;
+  }
+
+  nav ul li {
+    margin: 0.5rem 0;
+  }
+}
+
+    section {
+      padding: 4rem 2rem;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    h2 {
+      margin-bottom: 1rem;
+      color: var(--primary);
+    }
+   
+    /* Hero Section */
+    .hero-section {
+  position: relative;
+  height: 100vh; /* Changed from min-height */
+  width: auto;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  background-color: var(--light);
+  text-align: center;
+}
+
+.floating-icons {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: auto;
+  height: 100%;
+  z-index: 1;
+}
+
+.hero-content {
+  z-index: 2;
+  max-width: 800px;
+}
+
+.hero-content h1 {
+  font-size: 3rem;
+  color: var(--primary);
+}
+
+.hero-content p {
+  font-size: 1.25rem;
+  color: var(--dark);
+  margin-top: 1rem;
+  line-height: 1.6;
+}
+
+.hero-btn {
+  display: inline-block;
+  margin-top: 2rem;
+  padding: 0.75rem 1.5rem;
+  background-color: var(--primary);
+  color: white;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+.hero-btn:hover {
+  background-color: #305f4c;
+}
+
+/* Animations */
+.fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeUp 1s forwards;
+}
+
+.delay-1 { animation-delay: 0.4s; }
+.delay-2 { animation-delay: 0.8s; }
+
+@keyframes fadeUp {
+  to {
     opacity: 1;
     transform: translateY(0);
+  }
 }
 
-        /* Navbar Styles */
-.navbar {
-    background-color: #7a6e64;
-    padding: 15px 20px;
-    display: flex;
-    justify-content: space-between; /* Space between hamburger and nav */
-    align-items: center;
-    position: sticky;
-    top: 0;
-    z-index: 10;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+.floating-icons::before,
+.floating-icons::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200vw;
+  height: 200vh;
+  background-image:
+    url('https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg'),
+    url('https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg'),
+    url('https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg'),
+    url('https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg'),
+    url('https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg'),
+    url('https://cdn.jsdelivr.net/gh/devicons/devicon/icons/canva/canva-original.svg');
+  background-repeat: repeat;
+  background-size: 60px;
+  opacity: 0.03;
+  animation: floatBG 80s linear infinite;
+  z-index: 1;
 }
 
-/* Navigation Links (Desktop Layout) */
-.nav-links {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex; /* Horizontal layout for laptops */
-    gap: 20px;
+@keyframes floatBG {
+  from { transform: translate(0, 0); }
+  to { transform: translate(-50%, -50%); }
 }
 
-.nav-links li {
-    position: relative;
+.hero-buttons {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: center;
+  z-index: 2;
 }
 
-.nav-links li a {
-    color: white;
-    text-decoration: none;
-    font-size: 1rem;
-    font-weight: 600;
-    padding: 5px 10px;
-    transition: all 0.3s ease;
-}
-
-.nav-links li a::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 0;
-    height: 2px;
-    background-color: #f4e4d7;
-    transition: width 0.3s ease;
-}
-
-.nav-links li a:hover::after {
-    width: 100%;
-}
-
-.nav-links li a:hover {
-    color: #f4e4d7;
-}
-
-/* Hamburger Icon (Mobile Only) */
-.hamburger {
-    display: none; /* Hidden on desktop */
-    flex-direction: column;
-    gap: 5px;
-    cursor: pointer;
-}
-
-.hamburger span {
-    background-color: white;
-    height: 3px;
-    width: 25px;
-    border-radius: 2px;
-}
-
-/* Responsive Navbar */
-@media (max-width: 1024px) {
-    /* Tablet and Mobile View */
-    .nav-links {
-        display: none; /* Hide links by default */
-        flex-direction: column; /* Vertical layout */
-        background-color: #7a6e64;
-        position: absolute;
-        top: 60px;
-        left: 0;
-        right: 0;
-        padding: 20px;
-        gap: 10px;
-    }
-
-    .nav-links.active {
-        display: flex; /* Show when hamburger toggled */
-    }
-
-    .hamburger {
-        display: flex; /* Show hamburger */
-    }
-}
-
-header {
-    background: url('https://i.ibb.co/mJb9CgT/home.jpg') no-repeat center/cover;
-    color: white;
-    text-align: center;
-    height: 575px;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-header::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(5px);
-    z-index: 1;
-}
-
-header h1, header h2, header h3 {
-    position: relative;
-    z-index: 2;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-}
-
-header h1 {
-    font-size: 3.5rem;
-    margin: 0;
-    font-family: 'Cursive', serif;
-}
-
-header h2 {
-    font-size: 2.25rem;
-    margin: 10px 0;
-    font-weight: 500;
-}
-
-header h3 {
-    font-size: 1.5rem;
-    margin: 5px 0;
-    font-weight: 400;
-}
-
-/* Add this to the .download-button style */
-.download-button {
-    background-color: #7a6e64;
-    color: white;
-    padding: 12px 25px;
-    font-size: 1.2rem;
-    border: none;
-    border-radius: 5px;
-    text-decoration: none;
-    display: inline-block;
-    margin-top: 15px;
-    transition: background-color 0.3s ease;
-    position: relative; /* Add this line */
-    z-index: 2; /* Add this line */
-}
-
-.download-button:hover {
-    background-color: white;
-    color: #7a6e64;
-}
-
-/* Social Media Icons Styles */
 .social-icons {
-    margin-top: 20px;
-    display: flex;
-    gap: 15px;
-    justify-content: center;
-    position: relative;
-    z-index: 2; /* Ensures icons appear above header overlay */
+  margin-top: 1.2rem;
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
 }
 
-.social-icons a {
-    display: inline-block;
-    width: 40px;
-    height: 40px;
-    background-color: #7a6e64;
-    color: white;
-    font-size: 1.5rem;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
+.social-icons img {
+  width: 28px;
+  height: 28px;
+  filter: grayscale(100%) brightness(0.5) sepia(1) hue-rotate(180deg) saturate(2);
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.social-icons img:hover {
+  transform: scale(1.2);
+  filter: brightness(1);
+}
+
+/* Responsive text sizing */
+@media (max-width: 768px) {
+  .hero-content h1 {
+    font-size: 2.2rem;
+  }
+
+  .hero-content p {
+    font-size: 1.1rem;
+  }
+
+  .hero-btn {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.95rem;
+  }
+}
+ /* Palestine Section */
+.palestine-section {
+  padding: 4rem 2rem;
+  background-color: #f1e9e1; /* Earthy beige background */
+  text-align: center;
+}
+
+.palestine-content {
+  max-width: 800px;
+  margin: 0 auto 2rem;
+}
+
+.palestine-content h2 {
+  font-size: 2.5rem;
+  color: #a6192e; /* Deep red from the Palestinian flag */
+  margin-bottom: 1rem;
+}
+
+.palestine-content p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #444; /* Neutral dark grey text */
+}
+
+.palestine-btn {
+  display: inline-block;
+  margin-top: 1.5rem;
+  background-color: #a6192e; /* Button uses red from Palestine flag */
+  color: white;
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background 0.3s ease;
+}
+
+.palestine-btn:hover {
+  background-color: #7d101f; /* Slightly darker red on hover */
+}
+
+.palestine-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.palestine-gallery img {
+  width: 100%;
+  height: 200px; /* Fixed height for uniformity */
+  object-fit: cover; /* Ensures consistent cropping */
+  border: 3px solid #4e8054; /* muted olive green */
+  border-radius: 10px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease;
+}
+
+.palestine-gallery img:hover {
+  transform: scale(1.03);
+}
+
+/* About Section Styles */
+.about-section {
+  background-color: #fff; /* earthy neutral tone */
+  padding: 4rem 1rem;
+}
+
+.about-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+@media (min-width: 768px) {
+  .about-container {
+    flex-direction: row;
     align-items: center;
-    text-decoration: none;
-    transition: transform 0.3s ease, background-color 0.3s ease;
+    padding: 0 2.5rem;
+  }
 }
 
-.social-icons a:hover {
-    transform: scale(1.2);
-    background-color: #f4e4d7;
-    color: #7a6e64;
-}
-        .section {
-            padding: 50px 20px;
-            text-align: center;
-        }
-
-        .section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            color: #7a6e64;
-            font-family: 'Cursive', serif;
-        }
-
-        .section p {
-            font-size: 1.2rem;
-            margin-bottom: 20px;
-        }
-
-        /* Awareness and Activism Styles */
-.awareness-activism {
-    padding: 50px 20px;
-    background-color: #fff3e6;
-}
-
-.awareness-activism .content {
-    text-align: center;
-    margin-bottom: 40px;
-}
-
-.awareness-activism h2 {
-    font-size: 2.5rem;
-    color: #5e503f;
-    margin-bottom: 20px;
-    font-family: 'Georgia', serif;
-}
-
-.awareness-activism p {
-    font-size: 1.2rem;
-    color: #5e503f;
-    line-height: 1.8;
-    margin-bottom: 20px;
-}
-
-/* Cards Container */
-.cards-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-    margin-bottom: 40px;
-}
-
-.card {
-    background-color: #fff3e6;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    width: 300px;
-    border: 1px solid #7a6e64;
-    text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
-
-.card i {
-    font-size: 3rem;
-    color: #7a6e64;
-    margin-bottom: 15px;
-}
-
-.card h3 {
-    font-family: 'Georgia', serif;
-    font-size: 1.5rem;
-    color: #7a6e64;
-    margin-bottom: 10px;
-}
-
-.card p {
-    font-size: 1rem;
-    color: #5a5a5a;
-    line-height: 1.6;
-}
-
-/* Image Collage */
-.gallery-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-    justify-content: center;
-}
-
-.gallery-item {
-    width: calc(33.33% - 10px);
-    max-width: 200px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    overflow: hidden;
-    border-radius: 8px;
-    transition: transform 0.3s ease-in-out;
-}
-
-.gallery-item img {
-    width: 100%;
-    height: auto;
-    display: block;
-}
-
-.gallery-item:hover {
-    transform: scale(1.05);
-}
-
-/* About Me Section Styling */
-.about-wrapper {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 30px;
-    align-items: center;
-    padding: 50px 20px;
-    background-color: #fff3e6;
-    border: 1px solid #7a6e64;
-    border-radius: 10px;
-    max-width: 1200px;
-    margin: 0 auto;
+.about-image-wrapper {
+  display: flex;
+  justify-content: center;
+  flex: 1;
 }
 
 .about-image {
-    flex: 1 1 45%;
-    text-align: center;
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 1rem;
+  border: 1px solid #d3cbb9;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-.about-image img {
-    max-width: 100%;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+.about-text {
+  flex: 2;
 }
 
-.about-details {
-    flex: 1 1 50%;
+.about-heading {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #3a3a3a;
+  margin-bottom: 1rem;
 }
 
-.about-title {
-    font-size: 2.5rem;
-    font-weight: bold;
-    color: #5e503f;
-    margin-bottom: 20px;
-    font-family: 'Georgia', serif !important;
+.about-paragraph {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #4b4b4b;
 }
 
-.about-description {
-    font-size: 1.2rem;
-    color: #555;
-    line-height: 1.6;
-    margin-bottom: 20px;
+/* Two-column layout for timelines */
+.timeline-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-top: 2rem;
 }
 
-.about-achievements {
-    margin-top: 20px;
+.timeline-column {
+  flex: 1;
+  min-width: 280px;
 }
 
-.about-achievements h3 {
-    font-family: 'Georgia', serif;
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #5e503f;
-    margin-bottom: 10px;
+.timeline-column h3 {
+  color: #4b3f2f;
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
 }
 
-.about-achievements ul {
-    padding-left: 0; /* Remove default padding */
-    list-style: none; /* Remove default bullet points */
+.timeline {
+  border-left: 3px solid #8b6f47;
+  padding-left: 1.5rem;
 }
 
-.about-achievements ul li {
-    position: relative; /* To position the custom icon */
-    padding-left: 35px; /* Add space for the icon */
-    margin-bottom: 10px; /* Add spacing between items */
-    font-size: 1.1rem; /* Slightly larger font */
-    color: #555; /* Neutral color for text */
-    line-height: 1.6; /* Comfortable line spacing */
-    font-family: 'Serif', serif;
+.timeline-item {
+  margin-bottom: 2rem;
+  padding-left: 1rem;
+  position: relative;
 }
 
-.about-achievements ul li::before {
-    content: '\2713'; /* Unicode character for a checkmark (✓) */
-    position: absolute; /* Position it within the li */
-    left: 0; /* Align it with the padding */
-    top: 0;
-    color: #6D9886; /* Custom color for the icon */
-    font-size: 1.5rem; /* Slightly larger than the text */
-    line-height: 1.1; /* Align the icon with text */
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: -1.1rem;
+  top: 5px;
+  width: 12px;
+  height: 12px;
+  background-color: #a49b8f;
+  border-radius: 50%;
+  border: 2px solid #8b6f47;
 }
 
-
-/* General Section Styling */
-#experience-education {
-    padding: 40px 20px;
-    background-color: #fff3e6;
-    color: #333;
-}
-
-#experience-education h2 {
-    font-family: 'Georgia', serif;
-    text-align: center;
-    font-size: 2rem;
-    color: #5e503f;
-    margin-bottom: 20px;
-}
-
-/* Box Container */
-.box-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    gap: 20px;
-}
-
-/* Individual Box Styling */
-.box {
-    background-color: #fff3e6;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    border: 1px solid #7a6e64;
-    width: 45%;
-    min-width: 300px;
-    transition: all 0.3s ease;
-}
-
-.box:hover {
-    transform: translateY(-10px) scale(1.05);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-}
-
-.box h3 {
-    font-size: 1.5rem;
-    color: #5e503f;
-    font-family: 'Georgia', serif;
-    margin-bottom: 10px;
-    text-align: center;
-    border-bottom: 2px solid #7a6e64;
-    padding-bottom: 5px;
-}
-
-.box p {
-    font-size: 1rem;
-    line-height: 1.6;
-    color: #555;
-    margin-bottom: 15px;
-    text-align: justify;
-}
-
-.box ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-.box ul li {
-    font-size: 1rem;
-    margin: 10px 0;
-    color: #333;
-}
-
-.box ul li strong {
-    color: #7a6e64;
-    font-weight: bold;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .box-container {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .box {
-        width: 90%;
-    }
-}
-
-@media (max-width: 480px) {
-    #experience-education h2 {
-        font-size: 1.8rem;
-    }
-
-    .box {
-        padding: 15px;
-    }
-
-    .box h3 {
-        font-size: 1.4rem;
-    }
-
-    .box p, 
-    .box ul li {
-        font-size: 0.9rem;
-    }
-}
-
-/* Skills Section */
-.skills-section {
-    padding: 50px 20px;
-    background-color: #fff3e6;
-    text-align: center;
-}
-
-.skills-section h2 {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-    color: #5e503f;
-    font-family: 'Georgia', serif;
-}
-
-.skills-section p {
-    font-size: 1.2rem;
-    margin-bottom: 30px;
-    color: #5e503f;
-}
-
-.skills-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 columns by default */
-    gap: 20px;
-    justify-items: center;
-    align-items: center;
-}
-
-.skill-card {
-    background-color: #fff3e6;
-    border: 1px solid #7a6e64;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    width: 100%;
-    max-width: 300px;
-}
-
-.skill-card:hover {
-    transform: translateY(-10px) scale(1.05);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-}
-
-.skill-card i {
-    font-size: 2.5rem;
-    color: #7a6e64;
-    margin-bottom: 15px;
-}
-
-.skill-card h3 {
-    font-family: 'Georgia', serif;
-    font-size: 1.5rem;
-    color: #5e503f;
-    margin-bottom: 10px;
-}
-
-.skill-card p {
-    font-size: 1rem;
-    color: #5e503f;
-}
-
-/* Responsive Styles */
-
-/* For tablets (max-width: 1024px) */
-@media (max-width: 1024px) {
-    .skills-container {
-        grid-template-columns: repeat(2, 1fr); /* 2 columns */
-        gap: 15px;
-    }
-
-    .skills-section h2 {
-        font-size: 2rem;
-    }
-
-    .skills-section p {
-        font-size: 1rem;
-    }
-}
-
-/* For phones (max-width: 768px) */
-@media (max-width: 768px) {
-    .skills-container {
-        grid-template-columns: 1fr; /* 1 column */
-        gap: 10px;
-    }
-
-    .skills-section h2 {
-        font-size: 1.8rem;
-    }
-
-    .skills-section p {
-        font-size: 0.9rem;
-    }
-
-    .skill-card {
-        padding: 15px;
-    }
-
-    .skill-card i {
-        font-size: 2rem;
-    }
-
-    .skill-card h3 {
-        font-size: 1.2rem;
-    }
-
-    .skill-card p {
-        font-size: 0.9rem;
-    }
-}
-
-/* General Layout and Design */
-.three-stars-section {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 60px 20px;
-}
-
-/* Logo Container */
-.logo-container {
-    text-align: center;
-    margin-bottom: 40px;
-}
-
-.three-stars-logo {
-    width: 150px;
-    height: auto;
-}
-
-/* Intro Section */
-.intro {
-    text-align: center;
-    margin-bottom: 50px;
-}
-
-.intro h2 {
-    font-size: 2.8rem;
-    color: #5e503f;
-    font-weight: bold;
-    margin-bottom: 10px;
-}
-
-.intro p {
-    font-size: 1.2rem;
-    color: #7a6e64;
-    line-height: 1.7;
-    margin-top: 0;
-}
-
-/* Mission & Vision */
-.mission-vision {
-    display: flex;
-    justify-content: space-between;
-    gap: 30px;
-    margin-bottom: 50px;
-}
-
-.mission, .vision {
-    background-color: #fff3e6;
-    border: 1px solid #7a6e64;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border-radius: 10px;
-    padding: 30px;
-    flex: 1;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-.mission:hover {
-    transform: translateY(-10px) scale(1.05);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); 
-}
-
-.vision:hover {
-    transform: translateY(-10px) scale(1.05);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-}
-
-.mission h3, .vision h3 {
-    font-size: 1.8rem;
-    color: #5e503f;
-    margin-bottom: 15px;
-}
-
-.mission p, .vision p {
-    font-size: 1.1rem;
-    color: #7a6e64;
-    line-height: 1.7;
-}
-
-/* Roles Section */
-.roles {
-    margin-bottom: 50px;
-}
-
-.roles h3 {
-    font-size: 2rem;
-    color: #5e503f;
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-.roles p {
-    font-size: 1.1rem;
-    color: #7a6e64;
-    margin-bottom: 30px;
-    text-align: center;
-}
-
-.role-container {
-    display: flex;
-    justify-content: space-between;
-    gap: 30px;
-    margin-bottom: 40px;
-}
-
-.role {
-    background-color: #fff3e6;
-    border: 1px solid #7a6e64;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.role:hover {
-    transform: translateY(-10px) scale(1.05);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-}
-
-.role h4 {
-    font-size: 1.6rem;
-    color: #5e503f;
-    margin-bottom: 15px;
-    font-weight: bold;
-}
-
-.role p {
-    font-size: 1.1rem;
-    color: #7a6e64;
-    line-height: 1.6;
-}
-
-.role ul {
-    list-style-type: none;
-    padding-left: 0;
-    font-size: 1.1rem;
-    color: #7a6e64; /* Lighter earthy tone */
-}
-
-.role ul li {
-    margin-bottom: 8px;
-    position: relative;
-    padding-left: 25px;
-}
-
-.star {
-    position: absolute;
-    left: 0;
-    top: 0;
-    color: #5e503f; /* Deep earthy tone */
-    font-size: 1.4rem;
-}
-
-/* Contact Section */
-.contact {
-    margin-bottom: 50px;
-    text-align: center;
-}
-
-.contact h3 {
-    font-size: 1.8rem;
-    color: #5e503f;
-    margin-bottom: 15px;
-}
-
-.contact p {
-    font-size: 1.1rem;
-    color: #7a6e64;
-    margin-bottom: 10px;
-}
-
-.contact a {
-    color: #5e503f;
-    text-decoration: none;
-}
-
-.contact a:hover {
-    text-decoration: underline;
-}
-
-/* Social Media Icons */
-.socials {
-    text-align: center;
-}
-
-.socials h3 {
-    font-size: 1.8rem;
-    color: #5e503f;
-    margin-bottom: 20px;
-}
-
-.social-icons {
-    display: flex;
-    gap: 15px;
-    justify-content: center;
-    position: relative;
+.timeline-item strong {
+  color: #4b3f2f;
+  font-size: 1.1rem;
 }
 
-.social-icon i {
-    display: inline-block;
-    width: 40px;
-    height: 40px;
-    background-color: #7a6e64;
-    color: white;
-    font-size: 1.5rem;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-decoration: none;
-    transition: transform 0.3s ease, background-color 0.3s ease;
+.timeline-item small {
+  display: block;
+  color: #777;
+  font-style: italic;
+  margin-bottom: 0.5rem;
 }
 
-.social-icon:hover i {
-    transform: scale(1.2);
-    background-color: #f4e4d7;
-    color: #7a6e64;
+.timeline-item ul {
+  padding-left: 1.2rem;
+  list-style-type: disc;
+  color: #5a5348;
+  margin: 0;
 }
 
 /* Mobile responsiveness */
 @media (max-width: 768px) {
-    .mission-vision {
-        flex-direction: column;
-        gap: 20px;
-    }
-
-    .role-container {
-        flex-direction: column;
-        gap: 20px;
-    }
-
-    .role p {
-        font-size: 1rem;
-    }
-
-    .social-icon i {
-        font-size: 2rem;
-    }
+  .timeline-container {
+    flex-direction: column;
+  }
 }
 
-    .projects-section {
-    padding: 50px 20px;
-    background-color: #fff3e6;
-    text-align: center;
+.skills-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 2rem;
 }
 
-.projects-section h2 {
-    font-size: 2.8rem;
-    margin-bottom: 30px;
-    color: #5e503f;
-    font-family: 'Georgia', serif;
+.skill-group h3 {
+  margin-bottom: 0.8rem;
+  color: #4b3f2f;
+  font-size: 1.1rem;
 }
 
-.projects-section p {
-    font-size: 1.3rem;
-    margin-bottom: 40px;
-    color: #555;
+.skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
 }
 
-.projects-container {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4 cards per row */
-    gap: 30px; /* More spacing between cards */
-    justify-items: center;
-    padding: 0 20px;
+.skill {
+  background: #e8e1d6;
+  color: #4b3f2f;
+  padding: 0.4rem 0.9rem;
+  border-radius: 1.2rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  border: 1px solid #d0c5b1;
 }
 
-.project-card {
-    background-color: #fff3e6;
-    border: 1px solid #7a6e64;
-    border-radius: 15px;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    text-align: center;
-    width: 280px; /* Increased card width */
-}
-
-.project-card:hover {
-    transform: translateY(-10px) scale(1.05); /* Slightly larger hover effect */
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
-}
-
-.project-card img {
-    width: 100%; /* Full width of the card */
-    height: 180px; /* Larger image */
-    object-fit: cover;
-    border-bottom: 1px solid #7a6e64;
-}
-
-.project-card h3 {
-    font-size: 1.4rem;
-    color: #333;
-    margin: 15px 0;
-    font-weight: bold;
-}
-
-.project-card p {
-    font-size: 1rem;
-    color: #666;
-    margin: 10px 20px;
-}
-
-.project-card .btn {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #7a6e64;
-    color: #ffffff;
-    text-decoration: none;
-    border-radius: 5px;
-    font-size: 1rem;
-    transition: background-color 0.3s ease;
-    margin-bottom: 15px;
-}
-
-.project-card .btn:hover {
-    background-color: #5e503f;
+.skill:hover {
+  background: #8b6f47;
+  color: #fff;
+  border-color: #8b6f47;
 }
 
 /* Responsive Design */
-@media (max-width: 1200px) {
-    .projects-container {
-        grid-template-columns: repeat(3, 1fr); /* 3 cards per row on medium screens */
-    }
-}
-
 @media (max-width: 768px) {
-    .projects-container {
-        grid-template-columns: repeat(2, 1fr); /* 2 cards per row on tablets */
-    }
+  .skills-grid {
+    gap: 1.5rem;
+  }
 }
 
-@media (max-width: 480px) {
-    .projects-container {
-        grid-template-columns: 1fr; /* Single column on smaller screens */
-    }
+/* Projects */
+.projects {
+  display: flex;
+  flex-wrap: wrap; /* Allow cards to wrap */
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-top: 2rem;
 }
 
-.presentations-section {
-    padding: 60px 20px;
-    background-color: #fff3e6;
-    text-align: center;
+.card {
+  background: #fff;
+  border-radius: 0.75rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  width: 22%; /* Ensure 4 cards fit in one row */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.presentations-section h2 {
-    font-size: 2.8rem;
-    margin-bottom: 20px;
-    color: #5e503f;
-    font-family: 'Georgia', serif;
+.card img {
+  width: 100%;
+  height: auto;
+  border-radius: 0.75rem;
+  object-fit: cover;
 }
 
-.presentations-section p {
-    font-size: 1.3rem;
-    margin-bottom: 40px;
-    color: #555;
+.card-content {
+  padding: 1rem;
 }
 
-.presentations-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 cards per row */
-    gap: 30px; /* Spacing between cards */
-    justify-items: center;
-    padding: 0 20px;
+.card h3 {
+  margin-top: 1rem;
+  color: #4b3f2f;
+  font-size: 1.2rem;
 }
 
-.presentation-card {
-    background-color: #fff3e6;
-    border: 1px solid #7a6e64;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    text-align: center;
-    width: 100%;
-    max-width: 300px;
-    padding: 20px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+.card p {
+  margin: 1rem 0;
+  color: #6a5d4f;
+  font-size: 1rem;
 }
 
-.presentation-card:hover {
-    transform: translateY(-10px) scale(1.05);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+.view-live {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: #8b6f47;
+  color: #fff;
+  border-radius: 1rem;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
 }
 
-.presentation-card h3 {
-    font-family: 'Georgia', serif;
-    font-size: 1.5rem;
-    color: #5e503f;
-    margin-bottom: 15px;
-}
-
-.presentation-card p {
-    font-size: 1rem;
-    color: #666;
-    margin-bottom: 20px;
-    line-height: 1.5;
-}
-
-.presentation-card .btn {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #7a6e64;
-    color: #ffffff;
-    text-decoration: none;
-    border-radius: 5px;
-    font-size: 1rem;
-    transition: background-color 0.3s ease;
-}
-
-.presentation-card .btn:hover {
-    background-color: #5e503f;
+.view-live:hover {
+  background-color: #6d4b2f;
 }
 
 /* Responsive Design */
 @media (max-width: 1024px) {
-    .presentations-container {
-        grid-template-columns: repeat(2, 1fr); /* 2 cards per row on medium screens */
-    }
+  .card {
+    width: 48%; /* On medium screens, two cards per row */
+  }
 }
 
 @media (max-width: 768px) {
-    .presentations-container {
-        grid-template-columns: 1fr; /* Single column on smaller screens */
-    }
+  .card {
+    width: auto; /* On small screens, one card per row */
+  }
 }
 
-.contact-section {
-    padding: 60px 20px;
-    background-color: #fff3e6;
-    text-align: center;
+.presentations {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 2rem;
 }
 
-.contact-section h2 {
-    font-size: 2.8rem;
-    margin-bottom: 20px;
-    color: #5e503f;
-    font-family: 'Georgia', serif;
+.presentations .card {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  width: 300px;
 }
 
-.contact-section p {
-    font-size: 1.3rem;
-    margin-bottom: 40px;
-    color: #555;
+.presentations .card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
-.contact-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 cards per row */
-    gap: 30px;
-    justify-items: center;
-    padding: 0 20px;
+.presentations h3 {
+  margin-bottom: 0.5rem;
+  color: var(--primary);
 }
 
-.contact-card {
-    background-color: #fff3e6;
-    border: 1px solid #7a6e64;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    width: 100%;
-    max-width: 300px;
-    text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+.presentations p {
+  flex-grow: 1;
+  font-size: 0.95rem;
+  color: #444;
+  margin-bottom: 1rem;
 }
 
-.contact-card:hover {
-    transform: translateY(-10px) scale(1.05);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+.presentations .btn {
+  display: inline-block;
+  background: var(--accent);
+  color: #000;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  text-align: center;
+  transition: background 0.3s ease;
 }
 
-.contact-card i {
-    font-size: 2.5rem;
-    color: #7a6e64;
-    margin-bottom: 15px;
+.presentations .btn:hover {
+  background: var(--primary);
+  color: white;
 }
 
-.contact-card h3 {
-    font-family: 'Georgia', serif;
-    font-size: 1.4rem;
-    color: #5e503f;
-    margin-bottom: 10px;
-}
-
-.contact-card p {
-    font-size: 1rem;
-    color: #666;
-}
-
-.contact-card a {
-    text-decoration: none;
-    color: #7a6e64;
-    transition: color 0.3s ease;
-}
-
-.contact-card a:hover {
-    color: #5e503f;
-}
-
-/* Responsive Design */
+/* Responsive: 2 per row on tablets */
 @media (max-width: 1024px) {
-    .contact-container {
-        grid-template-columns: repeat(2, 1fr); /* 2 cards per row on medium screens */
-    }
+  .presentations {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
-@media (max-width: 768px) {
-    .contact-container {
-        grid-template-columns: 1fr; /* Single column on smaller screens */
-    }
+/* Responsive: 1 per row on small devices */
+@media (max-width: 600px) {
+  .presentations {
+    grid-template-columns: 1fr;
+    width: auto;
+  }
 }
 
-        .footer {
-            background-color: #7a6e64;
-            color: white;
-            text-align: center;
-            padding: 20px;
-            position: relative;
-        }
+.helping-text {
+  background: var(--muted-bg, #fdfdfd);
+  padding: 2rem;
+  border-left: 4px solid var(--accent);
+  border-radius: 1rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+  font-size: 1.05rem;
+  color: #444;
+  line-height: 1.8;
+  max-width: 900px;
+  margin: 0 auto;
+}
 
-        .footer p {
-            margin: 0;
-        }
-    </style>
+.helping-text strong {
+  color: var(--primary);
+}
+
+.linkedin-btn {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.75rem 1.5rem;
+  background-color: var(--accent);
+  color: var(--background);
+  border-radius: 2rem;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.linkedin-btn:hover {
+  background-color: var(--primary);
+  color: white;
+  transform: translateY(-2px);
+}
+
+.testimonials {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.testimonial-card {
+  background: #fff;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.testimonial-card p {
+  font-style: italic;
+  margin-bottom: 1rem;
+}
+
+.testimonial-card span {
+  font-weight: bold;
+  color: var(--accent);
+}
+
+    /* Projects, Presentations, Help, Testimonials */
+    /* .projects, .presentations, .helping, .testimonials {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: #fff;
+      padding: 1rem;
+      border-radius: 0.75rem;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    } */
+
+    /* Contact */
+    .contact-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-top: 1.5rem;
+}
+
+.contact-info {
+  flex: 1 1 300px;
+  font-size: 1rem;
+  color: #333;
+}
+
+.contact-info p {
+  margin-bottom: 0.75rem;
+}
+
+form {
+  flex: 1 1 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+input, textarea {
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  font-family: inherit;
+}
+
+button {
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background-color: var(--hover);
+}
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background-color: var(--accent);
+    }
+
+    .socials i {
+      margin: 0 0.5rem;
+      font-size: 1.5rem;
+      transition: transform 0.3s ease;
+    }
+
+    .socials i:hover {
+      transform: scale(1.2);
+    }
+
+    /* Animations */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.6s ease;
+    }
+
+    .fade-in.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
 </head>
 <body>
 
-    <nav class="navbar">
-        <!-- Hamburger Icon (Mobile and Tablet Only) -->
-        <div class="hamburger" onclick="toggleMenu()">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
+  <nav>
+    <strong>Haanim</strong>
+    <div class="burger" onclick="toggleMenu()">
+      <div></div><div></div><div></div>
+    </div>
+    <ul id="nav-links">
+      <li><a href="#hero">Home</a></li>
+      <li><a href="#palestine">Palestine</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#presentations">Talks</a></li>
+      <li><a href="#helping">Helping</a></li>
+      <li><a href="#testimonials">Testimonials</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>  
 
-        <!-- Navigation Links -->
-        <ul class="nav-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#awareness-activism">Awareness and Activism</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#experience-education">Experience and Education</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#three-stars">The Three Stars</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#presentations">Presentations</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
-
-    <header id="home">
-        <h1>Haanim Pietersen</h1>
-        <h2>Digital Solutions Specialist</h2>
-        <h3>Software Developer | Social Media Manager | Web Designer | Team Lead</h3>
-        <!-- Button to download CV -->
-        <a href="Images/Haanim Other CV 2024.pdf" download="Haanim_Pietersen_CV" class="download-button">Download CV</a>
-        <!-- Social Media Icons -->
+  <section id="hero" class="hero-section">
+    <div class="floating-icons"></div>
+    <div class="hero-content">
+      <h1 class="fade-up">Hi, I'm Haanim</h1>
+      <p class="fade-up delay-1">
+        A creative software development student with a passion for building digital solutions,
+        managing social media, and designing for impact.
+      </p>
+      <div class="hero-buttons fade-up delay-2">
+        <a href="/files/Haanim 2025 CV.pdf" class="hero-btn" download>Download CV</a>
         <div class="social-icons">
-            <a href="https://www.instagram.com/haanim_pietersen?igsh=MWpsZ3ljZ2lrZmZyOA==" target="_blank" class="icon">
-                <i class="fab fa-instagram"></i>
-            </a>
-            <a href="https://www.tiktok.com/@haanim_pietersen?_r=1&_d=eghhg97di5169m&sec_uid=MS4wLjABAAAAeecrM8k5PaUZqUNOvy3V52lWKCKwNVB8hb4diCXHLAQUSVhQGIrLTshBcdRd-ZAg&share_author_id=6850689358485865478&sharer_language=en&source=h5_m&u_code=dddmfkc86jfc2k&timestamp=1736256484&user_id=6850689358485865478&sec_user_id=MS4wLjABAAAAeecrM8k5PaUZqUNOvy3V52lWKCKwNVB8hb4diCXHLAQUSVhQGIrLTshBcdRd-ZAg&utm_source=copy&utm_campaign=client_share&utm_medium=android&share_iid=7453658637216597766&share_link_id=22859784-d049-4dfc-b2b4-fa4f802bf86e&share_app_id=1233&ugbiz_name=ACCOUNT&ug_btm=b8727%2Cb0229&social_share_type=5&enable_checksum=1" target="_blank" class="icon">
-                <i class="fab fa-tiktok"></i>
-            </a>
-            <a href="https://www.linkedin.com/in/haanim-pietersen-172bb9264?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" class="icon">
-                <i class="fab fa-linkedin"></i>
-            </a>
-            <a href="https://github.com/HaanimP" target="_blank" class="icon">
-                <i class="fab fa-github"></i>
-            </a>
+          <a href="https://github.com/HaanimP" target="_blank">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub">
+          </a>
+          <a href="https://www.linkedin.com/in/haanim-pietersen-172bb9264/" target="_blank">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-plain.svg" alt="LinkedIn">
+          </a>
         </div>
-    </header>
+      </div>
+    </div>      
+  </section>  
 
-    <section class="awareness-activism" id="awareness-activism">
-        <div class="content">
-            <h2>Awareness and Activism</h2>
-            <p>
-                As a creative and an advocate for social justice, I stand in solidarity with the people of Palestine. 
-                The ongoing conflict has resulted in immense suffering, displacement, and loss of lives. 
-                Through my platform, I aim to amplify their voices, spread awareness, and encourage support for their rights and freedom.
-            </p>
-            <p>
-                Together, we can contribute to a world where justice prevails and where no one has to fight for their basic rights to live 
-                in peace and dignity. I invite you to explore resources, donate, and share their stories to make a difference.
-            </p>
-        </div>
-    
-        <!-- Card Section -->
-        <div class="cards-container">
-            <div class="card">
-                <i class="fas fa-dove"></i>
-                <h3>Peace Advocacy</h3>
-                <p>Promoting peace through spreading awareness and supporting the voices of those affected by injustice.</p>
-            </div>
-            <div class="card">
-                <i class="fas fa-hands-helping"></i>
-                <h3>Get Involved</h3>
-                <p>Explore resources, participate in campaigns, and lend your support to humanitarian causes.</p>
-            </div>
-            <div class="card">
-                <i class="fas fa-share-alt"></i>
-                <h3>Spread Awareness</h3>
-                <p>Use your platforms to share stories, raise awareness, and inspire others to take action.</p>
-            </div>
-        </div>
-    
-        <!-- Image Collage -->
-        <div class="gallery-container">
-            <div class="gallery-item">
-                <img src="Images/download.jpg" alt="Awareness Image 1">
-            </div>
-            <div class="gallery-item">
-                <img src="Images/Free Palestine 🇵🇸.jpg" alt="Awareness Image 2">
-            </div>
-            <div class="gallery-item">
-                <img src="Images/flag.jpg" alt="Awareness Image 3">
-            </div>
-            <div class="gallery-item">
-                <img src="Images/Ancient Jerusalem, before the existence of the dome of the rock,.jpg" alt="Awareness Image 4">
-            </div>
-            <div class="gallery-item">
-                <img src="Images/Palestine.jpg" alt="Awareness Image 5">
-            </div>
-            <div class="gallery-item">
-                <img src="Images/download (1).jpg" alt="Awareness Image 6">
-            </div>
-        </div>
-    </section>    
-
-    <section class="section about" id="about">
-        <div class="about-wrapper">
-            <div class="about-image">
-                <img src="Images/1000034789.jpg" alt="Haanim Pietersen" />
-            </div>
-            <div class="about-details">
-                <h2 class="about-title">About Me</h2>
-                <p class="about-description">
-                    I am a passionate Web Developer and Designer with expertise in HTML, CSS, JavaScript, and a variety of other web technologies. I hold a Certificate of Excellence in Full-Stack Web Development from Life Choices Coding Academy.
-                </p>
-                <p class="about-description">
-                    Currently, I am co-founding and working for <strong>The Three Stars</strong>, a business supporting other small businesses with web design, branding, and cybersecurity services.
-                </p>
-                <p class="about-description">
-                    In addition, I am pursuing a course in Software and Digital Social Development at the University of the Western Cape, which further enhances my understanding of the intersection between technology and social progress.
-                </p>
-                <div class="about-achievements">
-                    <h3>Achievements</h3>
-                    <ul>
-                        <li>Certificate of Excellence in Full-Stack Web Development</li>
-                        <li>Certificate in Software Engineering</li>
-                        <li>Co-founder of The Three Stars</li>
-                        <li>Currently studying Software and Digital Social Development at the University of the Western Cape</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>      
-
-    <section id="experience-education">
-        <h2>Experience & Education</h2>
-    
-        <!-- Container for Experience and Education Boxes -->
-        <div class="box-container">
-    
-            <!-- Experience Box -->
-            <div class="box">
-                <h3>Experience</h3>
-                <p>I have worked with teams on diverse projects, delivering exceptional results in web design, software development, and project management.</p>
-                <ul>
-                    <li><strong>The Three Stars:</strong> Social Media Manager (February 2025 - Present)</li>
-                    <li><strong>The Three Stars:</strong> Team Lead (December 2024 - Present)</li>
-                    <li><strong>The Three Stars:</strong> Web Designer (November 2024 - Present)</li>
-                    <li><strong>LC Studio:</strong> Lecturer Assistant (October 2024 - November 2024)</li>
-                    <li><strong>LC Studio:</strong> Web Developer Intern (April 2024 - November 2024)</li>
-                </ul>
-            </div>
-    
-            <!-- Education Box -->
-            <div class="box">
-                <h3>Education</h3>
-                <p>I have earned certifications that strengthen my skills in web development and design.</p>
-                <ul>
-                    <li><strong>University of the Western Cape:</strong> Software Development (Present)</li>
-                    <li><strong>Life Choices Coding Academy:</strong> Full-Stack Web Development Certificate (2024)</li>
-                    <li><strong>South Peninsula High School:</strong> High School Diploma (2022)</li>
-                </ul>
-            </div>
-    
-        </div>
-    </section>    
-
-<section class="skills-section" id="skills">
-    <h2>My Skills</h2>
-    <p>A collection of my expertise in design, development, and data analysis.</p>
-    <div class="skills-container">
-        <div class="skill-card">
-            <i class="fas fa-code"></i>
-            <h3>Web Development</h3>
-            <p>HTML, CSS, Bootstrap, JavaScript, Vue.js, Node.js</p>
-        </div>
-        <div class="skill-card">
-            <i class="fas fa-database"></i>
-            <h3>Database Management</h3>
-            <p>MySQL, Tableau, Power BI</p>
-        </div>
-        <div class="skill-card">
-            <i class="fas fa-pencil-alt"></i>
-            <h3>Design Tools</h3>
-            <p>Canva, Figma, WordPress, Elementor</p>
-        </div>
-        <div class="skill-card">
-            <i class="fas fa-terminal"></i>
-            <h3>Programming</h3>
-            <p>Python, C++, Linux</p>
-        </div>
-        <div class="skill-card">
-            <i class="fas fa-users-cog"></i>
-            <h3>Team Tools</h3>
-            <p>Git, GitHub, SCRUM, Teams, OneNote</p>
-        </div>
-        <div class="skill-card">
-            <i class="fas fa-tools"></i>
-            <h3>Software</h3>
-            <p>VS Code, WIX, Microsoft Word, Excel, Powerpoint, OneDrive</p>
-        </div>
+  <section id="palestine" class="palestine-section">
+    <div class="palestine-content">
+      <h2>Stand with Palestine</h2>
+      <p>
+        In Gaza and the West Bank, millions of Palestinians are enduring ongoing occupation, violence, and humanitarian crises.
+        Homes are being demolished, children are growing up in fear, and access to basic human rights is under constant threat.
+        It’s our responsibility to raise awareness, stay informed, and take action where we can.
+      </p>
+      <a href="https://www.instagram.com/eye.on.palestine/" target="_blank" class="palestine-btn">
+        Follow Daily Updates
+      </a>
     </div>
-</section>
-
-<section class="three-stars-section" id="three-stars">
-    <div class="logo-container">
-        <!-- Add your logo here -->
-        <img src="/Images/thethreestars.png" alt="The Three Stars Logo" class="three-stars-logo">
+  
+    <div class="palestine-gallery">
+      <img src="/files/free palestine.jfif" alt="Palestine 1">
+      <img src="/files/Hopeful 🙏🏼 🇵🇸.jfif" alt="Palestine 2">
+      <img src="/files/palestine.jfif" alt="Palestine 3">
     </div>
-    
-    <div class="intro">
-        <h2>The Three Stars</h2>
-        <p>Our mission is to help small businesses grow and thrive by enhancing their online presence. We also aim to empower those who want to learn about digital services but lack access to resources.</p>
-    </div>
-    
-    <div class="mission-vision">
-        <div class="mission">
-            <h3>Our Mission</h3>
-            <p>We are committed to helping small businesses flourish by creating a strong online presence. Our goal is to offer affordable digital solutions that have a lasting impact.</p>
-        </div>
-        
-        <div class="vision">
-            <h3>Our Vision</h3>
-            <p>Our vision is to be the leading digital solutions agency that gives back to our community by supporting both small businesses and individuals who seek to learn and grow but lack resources.</p>
-        </div>
-    </div>
+  </section>  
 
-    <div class="roles">
-        <h3>My Role at The Three Stars</h3>
-        <p>I am the Web Designer, Social Media Manager, Team Lead, and Co-founder of The Three Stars. Below are my key responsibilities:</p>
-        
-        <div class="role-container">
-            <div class="role">
-                <h4>Web Designer</h4>
-                <ul>
-                    <li><span class="star">★</span> Prototyping and wireframing</li>
-                    <li><span class="star">★</span> Front-End Development with HTML, CSS, and JavaScript</li>
-                    <li><span class="star">★</span> Testing and Debugging based on feedback</li>
-                </ul>
-            </div>
+  <section id="about" class="about-section">
+    <div class="about-container">
+      <!-- Image section -->
+      <div class="about-image-wrapper">
+        <img src="/files/IMG_7632.jpg" alt="Haanim Pietersen" class="about-image" />
+      </div>
+  
+      <!-- Text section -->
+      <div class="about-text">
+        <h2 class="about-heading">About Me</h2>
+        <p class="about-paragraph">
+          I am a dedicated software development student at the University of the Western Cape with a background in web design, social media management, and software engineering. While I previously led a digital solutions agency, I am now focusing solely on my studies and using my expertise to help others in practical ways.
+          <br /><br />
+          I assist individuals by creating professional documents, CVs, presentations, portfolios, and designs. I also offer constructive feedback, share tips from my work and interview experiences, and recommend valuable courses that have contributed to my growth.
+          <br /><br />
+          I am fluent in English and Afrikaans, with a basic understanding of German and Mandarin. My certifications include full-stack web development, Scrum, software engineering, social media management, and inbound marketing.
+        </p>
+      </div>
+    </div>
+  </section>  
 
-            <div class="role">
-                <h4>Business Team Lead</h4>
-                <ul>
-                <li><span class="star">★</span> Leading daily stand-ups to track progress</li>
-                <li><span class="star">★</span> Ensuring task completion and punctuality</li>
-                <li><span class="star">★</span> Providing guidance and fostering team communication</li>
+  <section id="experience-education" class="fade-in">
+    <h2>Experience & Education</h2>
+    <div class="timeline-container">
+      
+      <!-- Experience Timeline -->
+      <div class="timeline-column">
+        <h3>Experience</h3>
+        <div class="timeline">
+          <!-- Each Experience Item -->
+          <div class="timeline-item">
+            <strong>The Three Stars – Social Media Manager</strong>
+            <small>Feb 2025 – May 2025</small>
+            <ul>
+              <li>Manage updates and social media.</li>
+              <li>Consult and update clients.</li>
+              <li>Address progress and concerns with team.</li>
+              <li>Network and create content.</li>
             </ul>
-            </div>
-
-            <div class="role">
-                <h4>Social Media Manager</h4>
-                <ul>
-                    <li><span class="star">★</span> Managing content updates and social media presence</li>
-                <li><span class="star">★</span> Maintaining client relations and providing updates</li>
-                <li><span class="star">★</span> Networking and creating engaging content</li>
-                </ul>
-            </div>
+          </div>
+          <div class="timeline-item">
+            <strong>The Three Stars – Team Lead</strong>
+            <small>Dec 2024 – May 2025</small>
+            <ul>
+              <li>Led daily standups.</li>
+              <li>Ensured punctuality and task completion.</li>
+              <li>Fostered open communication.</li>
+            </ul>
+          </div>
+          <div class="timeline-item">
+            <strong>The Three Stars – Web Designer</strong>
+            <small>Nov 2024 – May 2025</small>
+            <ul>
+              <li>Created wireframes and prototypes.</li>
+              <li>Designed responsive, user-friendly interfaces.</li>
+              <li>Developed front-end using HTML, CSS, JS.</li>
+              <li>Tested and debugged designs.</li>
+              <li>Collaborated with teams.</li>
+            </ul>
+          </div>
+          <div class="timeline-item">
+            <strong>LC Studio – Assistant Lecturer</strong>
+            <small>Oct 2024 – Nov 2024</small>
+            <ul>
+              <li>Led standups and supported students.</li>
+              <li>Ensured punctuality and guidance.</li>
+            </ul>
+          </div>
+          <div class="timeline-item">
+            <strong>LC Studio – Software Engineer Intern</strong>
+            <small>Apr 2024 – Nov 2024</small>
+            <ul>
+              <li>Advanced Linux, Python, and C++ skills.</li>
+              <li>Scrum collaboration and prototyping.</li>
+              <li>Problem-solving and team engagement.</li>
+            </ul>
+          </div>
         </div>
-    </div>
-
-    <div class="contact">
-        <h3>Contact Us</h3>
-        <p>If you’d like to get in touch, feel free to reach out:</p>
-        <p><strong>WhatsApp:</strong> <a href="tel:+27844651333">0844651333</a></p>
-        <p><strong>Email:</strong> <a href="mailto:thethr33stars3@gmail.com">thethr33stars3@gmail.com</a></p>
-    </div>
-
-    <div class="socials">
-        <h3>Follow Us</h3>
-        <div class="social-icons">
-            <a href="https://www.instagram.com" target="_blank" class="social-icon">
-                <i class="fab fa-instagram"></i>
-            </a>
-            <a href="https://www.tiktok.com" target="_blank" class="social-icon">
-                <i class="fab fa-tiktok"></i>
-            </a>
+      </div>
+  
+      <!-- Education Timeline -->
+      <div class="timeline-column">
+        <h3>Education</h3>
+        <div class="timeline">
+          <!-- Each Education Item -->
+          <div class="timeline-item">
+            <strong>University of the Western Cape</strong>
+            <small>Mar 2025 – Present</small>
+            <ul>
+              <li>Software Development Student at Future Innovation Lab (Samsung).</li>
+            </ul>
+          </div>
+          <div class="timeline-item">
+            <strong>Life Choices Academy</strong>
+            <small>Sep 2023 – Mar 2024</small>
+            <ul>
+              <li>Certificate of Excellence in Full Stack Web Development.</li>
+              <li>Frontend: HTML, CSS, Bootstrap, JS.</li>
+              <li>Backend: Node.js, MySQL.</li>
+              <li>Figma, GitHub, Agile, Scrum.</li>
+            </ul>
+          </div>
+          <div class="timeline-item">
+            <strong>South Peninsula High School</strong>
+            <small>Jan 2018 – Dec 2022</small>
+            <ul>
+              <li>Bachelor’s Pass – Strengths in Afrikaans, Life Skills, History.</li>
+              <li>Leadership, teamwork, academic excellence.</li>
+            </ul>
+          </div>
         </div>
+      </div>
+  
     </div>
-</section>
+  </section>  
 
-<section class="projects-section" id="projects">
+  <section id="skills" class="fade-in">
+    <h2>Skills</h2>
+  
+    <div class="skills-grid">
+      <div class="skill-group">
+        <h3>Web Development</h3>
+        <div class="skills">
+          <span class="skill">HTML</span>
+          <span class="skill">CSS</span>
+          <span class="skill">Bootstrap</span>
+          <span class="skill">JavaScript</span>
+          <span class="skill">Vue JS</span>
+          <span class="skill">Node JS</span>
+          <span class="skill">Wix</span>
+          <span class="skill">WordPress</span>
+          <span class="skill">Elementor</span>
+        </div>
+      </div>
+  
+      <div class="skill-group">
+        <h3>Programming</h3>
+        <div class="skills">
+          <span class="skill">Python</span>
+          <span class="skill">C++</span>
+          <span class="skill">C#</span>
+        </div>
+      </div>
+  
+      <div class="skill-group">
+        <h3>Tools & Platforms</h3>
+        <div class="skills">
+          <span class="skill">Linux</span>
+          <span class="skill">MySQL</span>
+          <span class="skill">Figma</span>
+          <span class="skill">VS Code</span>
+          <span class="skill">Git</span>
+          <span class="skill">GitHub</span>
+          <span class="skill">Drive</span>
+          <span class="skill">PowerPoint</span>
+          <span class="skill">Word</span>
+          <span class="skill">Excel</span>
+          <span class="skill">Canva</span>
+        </div>
+      </div>
+  
+      <div class="skill-group">
+        <h3>Data & Visualisation</h3>
+        <div class="skills">
+          <span class="skill">Tableau</span>
+          <span class="skill">Power BI</span>
+        </div>
+      </div>
+  
+      <div class="skill-group">
+        <h3>Other Skills</h3>
+        <div class="skills">
+          <span class="skill">Scrum</span>
+          <span class="skill">Social Media Management</span>
+          <span class="skill">Inbound Marketing</span>
+        </div>
+      </div>
+    </div>
+  </section>  
+
+  <section id="projects" class="fade-in">
     <h2>Projects</h2>
-    <p>Showcasing impactful projects that highlight creativity and functionality.</p>
-    <div class="projects-container">
-        <div class="project-card">
-            <img src="Images/sugar bakez.png" alt="Project 1">
-            <h3>Sugar<br> Bakez</h3>
-            <a href="https://sugarbakez.netlify.app/" class="btn" target="_blank">View Project</a>
+    <div class="projects">
+      <div class="card">
+        <img src="/files/sb.PNG" alt="Project 1 Image">
+        <div class="card-content">
+          <h3>Sugar Bakez</h3>
+          <p>A small business website showcasing baked goods, the owner, and available services.</p>
+          <a href="https://sugarbakez.netlify.app/" class="view-live" target="_blank">View Live</a>
         </div>
-        <div class="project-card">
-            <img src="Images/path align.png" alt="Project 2">
-            <h3>Path<br> Align</h3>
-            <a href="https://personatest.lcstudio-incubate.co.za/" class="btn" target="_blank">View Project</a>
+      </div>
+  
+      <div class="card">
+        <img src="/files/pa.PNG" alt="Project 2 Image">
+        <div class="card-content">
+          <h3>Path Align</h3>
+          <p>A site that helps students find their best learning path based on personality test results.</p>
+          <a href="https://personatest.lcstudio-incubate.co.za/" class="view-live" target="_blank">View Live</a>
         </div>
-        <div class="project-card">
-            <img src="Images/weather app.png" alt="Project 3">
-            <h3>Weather<br> App</h3>
-            <a href="https://weather-app-navy-nu-74.vercel.app/" class="btn" target="_blank">View Project</a>
+      </div>
+  
+      <div class="card">
+        <img src="/files/weather app.png" alt="Project 3 Image">
+        <div class="card-content">
+          <h3>Weather App</h3>
+          <p>A weather app providing local forecasts using C++ and Python.</p>
+          <a href="https://weather-app-navy-nu-74.vercel.app/" class="view-live" target="_blank">View Live</a>
         </div>
-        <div class="project-card">
-            <img src="Images/wordpress ecommerce.png" alt="Project 4">
-            <h3>WordPress<br> E-commerce</h3>
-            <a href="https://shankaccessories.wordpress.com/" class="btn" target="_blank">View Project</a>
+      </div>
+  
+      <div class="card">
+        <img src="/files/shank.PNG" alt="Project 4 Image">
+        <div class="card-content">
+          <h3>SHANK</h3>
+          <p>A dummy WordPress site created to explore its features and functionality.</p>
+          <a href="https://shankaccessories.wordpress.com/" class="view-live" target="_blank">View Live</a>
         </div>
+      </div>
     </div>
-</section>
+  </section>  
 
-<section class="presentations-section" id="presentations">
+  <section id="presentations" class="fade-in">
     <h2>Presentations</h2>
-    <p>Sharing knowledge and insights through interactive and engaging presentations.</p>
-    <div class="presentations-container">
-        <div class="presentation-card">
-            <h3>Hamilton Naki</h3>
-            <p>This presentation talks about our groups role model and also the characteristics of a good role model.</p>
-            <a href="https://www.canva.com/design/DAGhUu6uC4Q/h6CnfVWGW5uX0YSy6_KaFw/view?utm_content=DAGhUu6uC4Q&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=he82d6e8c08" target="_blank" class="btn">View Presentation</a>
-        </div>
-        <div class="presentation-card">
-            <h3>The Future of Work</h3>
-            <p>This presentation showcases our opinion on how the future of work would look like and the skills needed to thrive in it.</p>
-            <a href="https://www.canva.com/design/DAGhCOQ_nO0/2QmZqIVg4avjXP07BERAAg/view?utm_content=DAGhCOQ_nO0&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=ha61d871940" target="_blank" class="btn">View Presentation</a>
-        </div>
-        <div class="presentation-card">
-            <h3>EdVance Presentation</h3>
-            <p>This presentation was a group task on how we would use Azure AI to solve an issue in the education environment.</p>
-            <a href="https://www.canva.com/design/DAGgAngASrE/5y5qGX709No7l07z7lEhbw/view?utm_content=DAGgAngASrE&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h3584ac18f5" target="_blank" class="btn">View Presentation</a>
-        </div>
-        <div class="presentation-card">
-            <h3>Power Track</h3>
-            <p>This presentation shows how much energy and money people save by using solar panels instead of traditional energy sources.</p>
-            <a href="https://www.canva.com/design/DAGPyv-jw5w/2mlLOLek20Yq6UkLWdDijg/view?utm_content=DAGPyv-jw5w&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h6b053a63fb" target="_blank" class="btn">View Presentation</a>
-        </div>
-        <div class="presentation-card">
-            <h3>Intern Profiles</h3>
-            <p>This presentation showcases a project created to display intern profiles, including their information, skills, projects, and achievements.</p>
-            <a href="https://www.canva.com/design/DAGP9qSbvXk/scjmbZdE2ytNvz4CtfFdDg/view?utm_content=DAGP9qSbvXk&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h3d5c888908" target="_blank" class="btn">View Presentation</a>
-        </div>
-        <div class="presentation-card">
-            <h3>Drupal Presentation</h3>
-            <p>This presentation provides an overview of the fundamental concepts, tools, and features of Drupal, focusing on its core functionalities and basic usage.</p>
-            <a href="https://www.canva.com/design/DAGMVXxqV10/cTtxqBV297KnAFiyzTEihQ/view?utm_content=DAGMVXxqV10&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hc0e6a9c712" target="_blank" class="btn">View Presentation</a>
-        </div>
+    <div class="presentations">
+      <div class="card">
+        <h3>Hamilton Naki</h3>
+        <p>This presentation talks about our groups role model and also the characteristics of a good role model.</p>
+        <a href="https://www.canva.com/design/DAGhUu6uC4Q/h6CnfVWGW5uX0YSy6_KaFw/view?utm_content=DAGhUu6uC4Q&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=he82d6e8c08" class="btn" target="_blank">View Presentation</a>
+      </div>
+      <div class="card">
+        <h3>The Future of Work</h3>
+        <p>This presentation showcases our opinion on how the future of work would look like and the skills needed to thrive in it.</p>
+        <a href="https://www.canva.com/design/DAGhCOQ_nO0/2QmZqIVg4avjXP07BERAAg/view?utm_content=DAGhCOQ_nO0&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=ha61d871940" class="btn" target="_blank">View Presentation</a>
+      </div>
+      <div class="card">
+        <h3>EdVance Presentation</h3>
+        <p>This presentation was a group task on how we would use Azure AI to solve an issue in the education environment.</p>
+        <a href="https://www.canva.com/design/DAGgAngASrE/5y5qGX709No7l07z7lEhbw/view?utm_content=DAGgAngASrE&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h3584ac18f5" class="btn" target="_blank">View Presentation</a>
+      </div>
+      <div class="card">
+        <h3>Power Track</h3>
+        <p>This presentation shows how much energy and money people save by using solar panels instead of traditional energy sources.</p>
+        <a href="https://www.canva.com/design/DAGPyv-jw5w/2mlLOLek20Yq6UkLWdDijg/view?utm_content=DAGPyv-jw5w&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h6b053a63fb" class="btn" target="_blank">View Presentation</a>
+      </div>
+      <div class="card">
+        <h3>Intern Profiles</h3>
+        <p>This presentation showcases a project created to display intern profiles, including their information, skills, projects, and achievements.</p>
+        <a href="https://www.canva.com/design/DAGP9qSbvXk/scjmbZdE2ytNvz4CtfFdDg/view?utm_content=DAGP9qSbvXk&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h3d5c888908" class="btn" target="_blank">View Presentation</a>
+      </div>
+      <div class="card">
+        <h3>Drupal Presentation</h3>
+        <p>This presentation provides an overview of the fundamental concepts, tools, and features of Drupal, focusing on its core functionalities and basic usage.</p>
+        <a href="https://www.canva.com/design/DAGMVXxqV10/cTtxqBV297KnAFiyzTEihQ/view?utm_content=DAGMVXxqV10&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hc0e6a9c712" class="btn" target="_blank">View Presentation</a>
+      </div>
     </div>
-</section>
+  </section>  
 
-<section class="contact-section" id="contact">
-    <h2>Contact Me</h2>
-    <p>Feel free to get in touch for any inquiries, collaborations, or just to say hi!</p>
+  <section id="helping" class="fade-in">
+    <h2>Helping Others</h2>
+    <div class="helping-text">
+      <p>
+        Lately, more and more people have been reaching out — asking for help with their CVs, LinkedIn profiles,
+        documents, designs, and even presentations.
+      </p>
+      <p>
+        At first, I was honestly confused — I’m just a girl still studying and figuring things out myself.
+        But then it hit me: maybe I’ve picked up things not everyone gets taught — and it’s worth sharing.
+      </p>
+      <p>
+        So here’s me, giving back in the way I can. Whether it’s feedback on a portfolio, a nudge in the right direction,
+        or a course recommendation that helped me — I’m here.
+      </p>
+      <p><strong>If you ever need a second pair of eyes, let’s connect 💬</strong></p>
+      <a href="https://www.linkedin.com/in/haanim-pietersen/" target="_blank" class="linkedin-btn">Connect on LinkedIn</a>
+    </div>
+  </section>  
+
+  <section id="testimonials" class="fade-in">
+    <h2>Testimonials</h2>
+    <div class="testimonials">
+      <div class="testimonial-card">
+        <p>"I reached out via LinkedIn to Haanim, to ask her can she please review my CV. In no time she responded to my dm. Her feedback was incredibly helpful—clear, constructive, and exactly what I needed to polish my cv. I really appreciate the time and effort she took to assist me, especially without even knowing me personally. Thanks again for your generosity and support! She is always open to assisting others as well."</p>
+        <span>– Asandile Langeni</span>
+      </div>
+      <div class="testimonial-card">
+        <p>"So helpful with my CV!"</p>
+        <span>– Student B</span>
+      </div>
+      <div class="testimonial-card">
+        <p>"Working with Haanim at The Three Stars Digital Solutions was honestly a wonderful experience. She’s one of those people who just gets it, she's super reliable, easy to talk to, and always brings her best to the table. Whether we were deep in project work or just figuring things out on the fly, she was calm, focused, and always open to new ideas. <br>
+
+          She has a natural sense of leadership and a way of making the team feel grounded and supported, even during hectic deadlines. You always knew you could count on her and I would most definitely recommend her."</p>
+        <span>– Ni-shaat Gafieldien</span>
+      </div>
+    </div>
+  </section>  
+
+  <section id="contact" class="fade-in">
+    <h2>Contact</h2>
     <div class="contact-container">
-        <div class="contact-card">
-            <i class="fas fa-phone-alt"></i>
-            <h3>Phone</h3>
-            <p><a href="tel:0714332419">071 433 2419</a></p>
-        </div>
-        <div class="contact-card">
-            <i class="fas fa-envelope"></i>
-            <h3>Email</h3>
-            <p><a href="mailto:haanimpietersen@gmail.com">haanimpietersen@gmail.com</a></p>
-        </div>
-        <div class="contact-card">
-            <i class="fas fa-map-marker-alt"></i>
-            <h3>Location</h3>
-            <p>Cape Town</p>
-        </div>
+      <div class="contact-info">
+        <p><strong>Phone:</strong> 071 433 2419 / 084 465 1333</p>
+        <p><strong>Email:</strong> <a href="mailto:haanimpietersen@gmail.com">haanimpietersen@gmail.com</a></p>
+      </div>
+  
+      <form action="https://formsubmit.co/haanimpietersen@gmail.com" method="POST">
+        <input type="text" name="name" placeholder="Name" required />
+        <input type="email" name="email" placeholder="Email" required />
+        <textarea name="message" placeholder="Message" rows="5" required></textarea>
+  
+        <!-- Prevent spam -->
+        <input type="hidden" name="_captcha" value="false" />
+        <input type="hidden" name="_next" value="https://haanimp-portfolio.vercel.app/thank-you.html" />
+  
+        <button type="submit">Send</button>
+      </form>
     </div>
-</section>
+  </section>  
 
-<footer class="footer">
-    <p>&copy; 2025 Haanim Pietersen. All Rights Reserved.</p>
-</footer>
+  <footer>
+    <!-- <p>Connect with me:</p>
+    <div class="socials">
+      <a href="#"><i class="fab fa-github"></i></a>
+      <a href="#"><i class="fab fa-linkedin"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-tiktok"></i></a>
+    </div>
+    <p><a href="#" target="_blank">📄 View My CV</a></p> -->
+    <p>&copy; 2025 Haanim Pietersen</p>
+  </footer>
 
-<script>
-   function toggleMenu() {
-    const navLinks = document.querySelector('.nav-links');
-    navLinks.classList.toggle('active'); // Toggle the active class for nav links
-}
-
-// Close the navbar when a link is clicked
-const navLinks = document.querySelectorAll('.nav-links li a');
-navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-        const nav = document.querySelector('.nav-links');
-        nav.classList.remove('active'); // Remove the active class to close the menu
+  <script>
+    function toggleMenu() {
+      document.getElementById('nav-links').classList.toggle('show');
+    }
+  
+    // Scroll animation for fade-in
+    const faders = document.querySelectorAll('.fade-in');
+  
+    const appearOptions = {
+      threshold: 0.1,
+      rootMargin: "0px 0px -50px 0px"
+    };
+  
+    const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('show');
+        appearOnScroll.unobserve(entry.target);
+      });
+    }, appearOptions);
+  
+    faders.forEach(fader => {
+      appearOnScroll.observe(fader);
     });
-});
-    // Add class "visible" to sections when they come into view
-    document.addEventListener("DOMContentLoaded", function () {
-        const sections = document.querySelectorAll(".section, .awareness-activism");
-
-        const observer = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add("visible");
-                    }
-                });
-            },
-            { threshold: 0.2 } // Trigger when 20% of the section is visible
-        );
-
-        sections.forEach((section) => observer.observe(section));
-    });
-
-</script>
-
+  </script>  
 </body>
 </html>
