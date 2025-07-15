@@ -5,6 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Haanim Pietersen | Portfolio</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+  <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+/>
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
   <style>
     :root {
@@ -746,6 +750,47 @@ nav a:hover::after {
       box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     } */
 
+    /* Find Me */
+    .find-me {
+  text-align: center;
+  padding: 2rem 1rem;
+  background-color: #f9f9f9;
+}
+
+.find-me h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+}
+
+.social-icons a {
+  font-size: 2.5rem;
+  color: #777;
+  transition: color 0.3s ease;
+}
+
+.social-icons a.linkedin:hover {
+  color: #0a66c2; /* LinkedIn blue */
+}
+
+.social-icons a.github:hover {
+  color: #333; /* GitHub black */
+}
+
+.social-icons a.instagram:hover {
+  color: #e1306c; /* Instagram pink */
+}
+
+.social-icons a.tiktok:hover {
+  color: #010101; /* TikTok black */
+}
+
     /* Contact */
     .contact-container {
   display: flex;
@@ -1180,6 +1225,24 @@ button:hover {
       </div>
     </div>
   </section>  
+
+  <section class="find-me">
+  <h2>Find Me</h2>
+  <div class="social-icons">
+    <a href="https://www.linkedin.com/in/haanim-pietersen-172bb9264/" class="linkedin" target="_blank" aria-label="LinkedIn">
+      <i class="fab fa-linkedin"></i>
+    </a>
+    <a href="https://github.com/HaanimP" class="github" target="_blank" aria-label="GitHub">
+      <i class="fab fa-github"></i>
+    </a>
+    <a href="https://www.instagram.com/yourusername" class="instagram" target="_blank" aria-label="Instagram">
+      <i class="fab fa-instagram"></i>
+    </a>
+    <a href="https://www.tiktok.com/@yourusername" class="tiktok" target="_blank" aria-label="TikTok">
+      <i class="fab fa-tiktok"></i>
+    </a>
+  </div>
+</section>
 
   <section id="contact" class="fade-in">
     <h2>Contact</h2>
