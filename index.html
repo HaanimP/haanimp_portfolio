@@ -1,1307 +1,2291 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Haanim Pietersen | Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
-  <link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-/>
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-  <style>
-    :root {
-      --bg: #fdfaf6;
-      --accent: #d7ccc8;
-      --primary: #6d4c41;
-      --hover: #5d4037;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: 'Poppins', sans-serif;
-      background-color: var(--bg);
-      color: #333;
-      line-height: 1.6;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-      transition: color 0.3s;
-    }
-    /* Nav Bar */
-    nav {
-      position: sticky;
-      top: 0;
-      background-color: var(--accent);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 2rem;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      z-index: 1000;
-    }
-
-    nav ul {
-      display: flex;
-      gap: 1.5rem;
-      list-style: none;
-    }
-
-    nav a:hover {
-      color: var(--primary);
-    }
-
-    nav {
-  position: sticky;
-  top: 0;
-  background-color: var(--accent);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 2rem;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  z-index: 1000;
-}
-
-nav ul {
-  display: flex;
-  gap: 1.5rem;
-  list-style: none;
-  transition: max-height 0.3s ease-in-out;
-}
-
-nav ul.show {
-  max-height: 90vh;
-  overflow-y: auto;
-  padding: 1rem 0;
-}
-
-nav a {
-  position: relative;
-  font-weight: 500;
-}
-
-nav a::after {
-  content: "";
-  position: absolute;
-  width: 0;
-  height: 2px;
-  left: 0;
-  bottom: -3px;
-  background-color: var(--primary);
-  transition: width 0.3s ease;
-}
-
-nav a:hover::after {
-  width: 100%;
-}
-
-.burger {
-  display: none;
-  flex-direction: column;
-  cursor: pointer;
-  gap: 5px;
-}
-
-.burger div {
-  width: 25px;
-  height: 3px;
-  background-color: #333;
-  transition: all 0.3s ease;
-}
-
-/* Responsive styles */
-@media (max-width: 768px) {
-  .burger {
-    display: flex;
-  }
-
-  nav ul {
-    position: absolute;
-    top: 60px;
-    left: 0;
-    background-color: var(--accent);
-    width: 100%;
-    flex-direction: column;
-    align-items: center;
-    max-height: 0;
-    overflow: hidden;
-  }
-
-  nav ul.show {
-    max-height: 500px;
-    padding: 1rem 0;
-  }
-
-  nav ul li {
-    margin: 0.5rem 0;
-  }
-}
-
-    section {
-      padding: 4rem 2rem;
-      max-width: 1000px;
-      margin: auto;
-    }
-
-    h2 {
-      margin-bottom: 1rem;
-      color: var(--primary);
-    }
-   
-    /* Hero Section */
-    .hero-section {
-  position: relative;
-  height: 100vh; /* Changed from min-height */
-  width: auto;
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 2rem;
-  background-color: var(--light);
-  text-align: center;
-}
-
-.floating-icons {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: auto;
-  height: 100%;
-  z-index: 1;
-}
-
-.hero-content {
-  z-index: 2;
-  max-width: 800px;
-}
-
-.hero-content h1 {
-  font-size: 3rem;
-  color: var(--primary);
-}
-
-.hero-content p {
-  font-size: 1.25rem;
-  color: var(--dark);
-  margin-top: 1rem;
-  line-height: 1.6;
-}
-
-.hero-btn {
-  display: inline-block;
-  margin-top: 2rem;
-  padding: 0.75rem 1.5rem;
-  background-color: var(--primary);
-  color: white;
-  border-radius: 10px;
-  text-decoration: none;
-  font-weight: bold;
-  transition: background 0.3s ease;
-}
-
-.hero-btn:hover {
-  background-color: #305f4c;
-}
-
-/* Animations */
-.fade-up {
-  opacity: 0;
-  transform: translateY(30px);
-  animation: fadeUp 1s forwards;
-}
-
-.delay-1 { animation-delay: 0.4s; }
-.delay-2 { animation-delay: 0.8s; }
-
-@keyframes fadeUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.floating-icons::before,
-.floating-icons::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 200vw;
-  height: 200vh;
-  background-image:
-    url('https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg'),
-    url('https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg'),
-    url('https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg'),
-    url('https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg'),
-    url('https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg'),
-    url('https://cdn.jsdelivr.net/gh/devicons/devicon/icons/canva/canva-original.svg');
-  background-repeat: repeat;
-  background-size: 60px;
-  opacity: 0.03;
-  animation: floatBG 80s linear infinite;
-  z-index: 1;
-}
-
-@keyframes floatBG {
-  from { transform: translate(0, 0); }
-  to { transform: translate(-50%, -50%); }
-}
-
-.hero-buttons {
-  margin-top: 2rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  align-items: center;
-  z-index: 2;
-}
-
-.social-icons {
-  margin-top: 1.2rem;
-  display: flex;
-  justify-content: center;
-  gap: 1.5rem;
-}
-
-.social-icons img {
-  width: 28px;
-  height: 28px;
-  filter: grayscale(100%) brightness(0.5) sepia(1) hue-rotate(180deg) saturate(2);
-  transition: transform 0.3s ease, filter 0.3s ease;
-}
-
-.social-icons img:hover {
-  transform: scale(1.2);
-  filter: brightness(1);
-}
-
-/* Responsive text sizing */
-@media (max-width: 768px) {
-  .hero-content h1 {
-    font-size: 2.2rem;
-  }
-
-  .hero-content p {
-    font-size: 1.1rem;
-  }
-
-  .hero-btn {
-    padding: 0.6rem 1.2rem;
-    font-size: 0.95rem;
-  }
-}
- /* Palestine Section */
-.palestine-section {
-  padding: 4rem 2rem;
-  background-color: #f1e9e1; /* Earthy beige background */
-  text-align: center;
-}
-
-.palestine-content {
-  max-width: 800px;
-  margin: 0 auto 2rem;
-}
-
-.palestine-content h2 {
-  font-size: 2.5rem;
-  color: #a6192e; /* Deep red from the Palestinian flag */
-  margin-bottom: 1rem;
-}
-
-.palestine-content p {
-  font-size: 1.1rem;
-  line-height: 1.6;
-  color: #444; /* Neutral dark grey text */
-}
-
-.palestine-btn {
-  display: inline-block;
-  margin-top: 1.5rem;
-  background-color: #a6192e; /* Button uses red from Palestine flag */
-  color: white;
-  padding: 0.8rem 1.5rem;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: 500;
-  transition: background 0.3s ease;
-}
-
-.palestine-btn:hover {
-  background-color: #7d101f; /* Slightly darker red on hover */
-}
-
-.palestine-gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1rem;
-  max-width: 1000px;
-  margin: 0 auto;
-}
-
-.palestine-gallery img {
-  width: 100%;
-  height: 200px; /* Fixed height for uniformity */
-  object-fit: cover; /* Ensures consistent cropping */
-  border: 3px solid #4e8054; /* muted olive green */
-  border-radius: 10px;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
-  transition: transform 0.3s ease;
-}
-
-.palestine-gallery img:hover {
-  transform: scale(1.03);
-}
-
-/* About Section Styles */
-.about-section {
-  padding: 4rem 1rem;
-}
-
-.about-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 2.5rem;
-}
-
-@media (min-width: 768px) {
-  .about-container {
-    flex-direction: row;
-    align-items: center;
-    padding: 0 2.5rem;
-  }
-}
-
-.about-image-wrapper {
-  display: flex;
-  justify-content: center;
-  flex: 1;
-}
-
-.about-image {
-  width: 250px;
-  height: 250px;
-  object-fit: cover;
-  border-radius: 1rem;
-  border: 1px solid #d3cbb9;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.about-text {
-  flex: 2;
-}
-
-.about-heading {
-  font-size: 2rem;
-  font-weight: bold;
-  color: #3a3a3a;
-  margin-bottom: 1rem;
-}
-
-.about-paragraph {
-  font-size: 1rem;
-  line-height: 1.7;
-  color: #4b4b4b;
-}
-
-/* Two-column layout for timelines */
-.timeline-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-  margin-top: 2rem;
-}
-
-.timeline-column {
-  flex: 1;
-  min-width: 280px;
-}
-
-.timeline-column h3 {
-  color: #4b3f2f;
-  margin-bottom: 1rem;
-  font-size: 1.25rem;
-}
-
-.timeline {
-  border-left: 3px solid #8b6f47;
-  padding-left: 1.5rem;
-}
-
-.timeline-item {
-  margin-bottom: 2rem;
-  padding-left: 1rem;
-  position: relative;
-}
-
-.timeline-item::before {
-  content: "";
-  position: absolute;
-  left: -1.1rem;
-  top: 5px;
-  width: 12px;
-  height: 12px;
-  background-color: #a49b8f;
-  border-radius: 50%;
-  border: 2px solid #8b6f47;
-}
-
-.timeline-item strong {
-  color: #4b3f2f;
-  font-size: 1.1rem;
-}
-
-.timeline-item small {
-  display: block;
-  color: #777;
-  font-style: italic;
-  margin-bottom: 0.5rem;
-}
-
-.timeline-item ul {
-  padding-left: 1.2rem;
-  list-style-type: disc;
-  color: #5a5348;
-  margin: 0;
-}
-
-/* Mobile responsiveness */
-@media (max-width: 768px) {
-  .timeline-container {
-    flex-direction: column;
-  }
-}
-
-.skills-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  margin-top: 2rem;
-}
-
-.skill-group h3 {
-  margin-bottom: 0.8rem;
-  color: #4b3f2f;
-  font-size: 1.1rem;
-}
-
-.skills {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.7rem;
-}
-
-.skill {
-  background: #e8e1d6;
-  color: #4b3f2f;
-  padding: 0.4rem 0.9rem;
-  border-radius: 1.2rem;
-  font-size: 0.95rem;
-  font-weight: 500;
-  transition: all 0.3s ease;
-  border: 1px solid #d0c5b1;
-}
-
-.skill:hover {
-  background: #8b6f47;
-  color: #fff;
-  border-color: #8b6f47;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  .skills-grid {
-    gap: 1.5rem;
-  }
-}
-
-/* Projects */
-.projects {
-  display: flex;
-  flex-wrap: wrap; /* Allow cards to wrap */
-  justify-content: space-between;
-  gap: 1.5rem;
-  margin-top: 2rem;
-}
-
-.card {
-  background: #fff;
-  border-radius: 0.75rem;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-  width: 22%; /* Ensure 4 cards fit in one row */
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.card img {
-  width: 100%;
-  height: auto;
-  border-radius: 0.75rem;
-  object-fit: cover;
-}
-
-.card-content {
-  padding: 1rem;
-}
-
-.card h3 {
-  margin-top: 1rem;
-  color: #4b3f2f;
-  font-size: 1.2rem;
-}
-
-.card p {
-  margin: 1rem 0;
-  color: #6a5d4f;
-  font-size: 1rem;
-}
-
-.view-live {
-  display: inline-block;
-  margin-top: 1rem;
-  padding: 0.5rem 1rem;
-  background-color: #8b6f47;
-  color: #fff;
-  border-radius: 1rem;
-  text-decoration: none;
-  transition: background-color 0.3s ease;
-}
-
-.view-live:hover {
-  background-color: #6d4b2f;
-}
-
-/* Responsive Design */
-@media (max-width: 1024px) {
-  .card {
-    width: 48%; /* On medium screens, two cards per row */
-  }
-}
-
-@media (max-width: 768px) {
-  .card {
-    width: auto; /* On small screens, one card per row */
-  }
-}
-
-.presentations {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-  margin-top: 2rem;
-}
-
-.presentations .card {
-  background: #fff;
-  padding: 1.5rem;
-  border-radius: 0.75rem;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
-  width: 300px;
-}
-
-.presentations .card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-}
-
-.presentations h3 {
-  margin-bottom: 0.5rem;
-  color: var(--primary);
-}
-
-.presentations p {
-  flex-grow: 1;
-  font-size: 0.95rem;
-  color: #444;
-  margin-bottom: 1rem;
-}
-
-.presentations .btn {
-  display: inline-block;
-  background: var(--accent);
-  color: #000;
-  padding: 0.5rem 1rem;
-  border-radius: 0.5rem;
-  text-decoration: none;
-  text-align: center;
-  transition: background 0.3s ease;
-}
-
-.presentations .btn:hover {
-  background: var(--primary);
-  color: white;
-}
-
-/* Responsive: 2 per row on tablets */
-@media (max-width: 1024px) {
-  .presentations {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-/* Responsive: 1 per row on small devices */
-@media (max-width: 600px) {
-  .presentations {
-    grid-template-columns: 1fr;
-    width: auto;
-  }
-}
-
-.helping-text {
-  background: var(--muted-bg, #fdfdfd);
-  padding: 2rem;
-  border-left: 4px solid var(--accent);
-  border-radius: 1rem;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
-  font-size: 1.05rem;
-  color: #444;
-  line-height: 1.8;
-  max-width: 900px;
-  margin: 0 auto;
-}
-
-.helping-text strong {
-  color: var(--primary);
-}
-
-.linkedin-btn {
-  display: inline-block;
-  margin-top: 1rem;
-  padding: 0.75rem 1.5rem;
-  background-color: var(--accent);
-  color: var(--background);
-  border-radius: 2rem;
-  text-decoration: none;
-  font-weight: 600;
-  transition: background 0.3s ease, transform 0.3s ease;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-}
-
-.linkedin-btn:hover {
-  background-color: var(--primary);
-  color: white;
-  transform: translateY(-2px);
-}
-
-.testimonials {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
-  margin-top: 1.5rem;
-}
-
-.testimonial-card {
-  background: #fff;
-  border-radius: 1rem;
-  padding: 1.5rem;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  text-align: center;
-}
-
-.testimonial-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-}
-
-.testimonial-card p {
-  font-style: italic;
-  margin-bottom: 1rem;
-}
-
-.testimonial-card span {
-  font-weight: bold;
-  color: var(--accent);
-}
-
-    /* Projects, Presentations, Help, Testimonials */
-    /* .projects, .presentations, .helping, .testimonials {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.5rem;
-    }
-
-    .card {
-      background: #fff;
-      padding: 1rem;
-      border-radius: 0.75rem;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    } */
-
-    /* Find Me */
-    .find-me {
-  text-align: center;
-  padding: 2rem 1rem;
-  background-color: #f9f9f9;
-}
-
-/* .find-me h2 {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-
-} */
-
-.social-icons {
-  display: flex;
-  justify-content: center;
-  gap: 3rem;
-}
-
-.social-icons a {
-  font-size: 2.5rem;
-  color: #777;
-  transition: color 0.3s ease;
-}
-
-.social-icons a.linkedin:hover {
-  color: #0a66c2; /* LinkedIn blue */
-}
-
-.social-icons a.github:hover {
-  color: #333; /* GitHub black */
-}
-
-.social-icons a.instagram:hover {
-  color: #e1306c; /* Instagram pink */
-}
-
-.social-icons a.tiktok:hover {
-  color: #010101; /* TikTok black */
-}
-
-    /* Contact */
-    .contact-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-  margin-top: 1.5rem;
-}
-
-.contact-info {
-  flex: 1 1 300px;
-  font-size: 1rem;
-  color: #333;
-}
-
-.contact-info p {
-  margin-bottom: 0.75rem;
-}
-
-form {
-  flex: 1 1 300px;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-input, textarea {
-  padding: 0.75rem;
-  border: 1px solid #ccc;
-  border-radius: 0.5rem;
-  font-family: inherit;
-}
-
-button {
-  background-color: var(--primary);
-  color: white;
-  border: none;
-  padding: 0.75rem;
-  border-radius: 0.5rem;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-button:hover {
-  background-color: var(--hover);
-}
-
-    footer {
-      text-align: center;
-      padding: 2rem;
-      background-color: var(--accent);
-    }
-
-    .socials i {
-      margin: 0 0.5rem;
-      font-size: 1.5rem;
-      transition: transform 0.3s ease;
-    }
-
-    .socials i:hover {
-      transform: scale(1.2);
-    }
-
-    /* Animations */
-    .fade-in {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: all 0.6s ease;
-    }
-
-    .fade-in.show {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Haanim Pietersen - Software Developer</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #1a1a1a;
+            --secondary-color: #2d2d2d;
+            --accent-color: #8B4513;
+            --accent-light: #D2691E;
+            --text-primary: #1a1a1a;
+            --text-secondary: #666666;
+            --text-light: #999999;
+            --border-color: #e5e5e5;
+            --bg-primary: #ffffff;
+            --bg-secondary: #fafafa;
+            --bg-accent: #f8f8f8;
+            --shadow-light: 0 2px 10px rgba(0,0,0,0.05);
+            --shadow-medium: 0 4px 20px rgba(0,0,0,0.08);
+            --shadow-heavy: 0 8px 30px rgba(0,0,0,0.12);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--bg-primary);
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: var(--shadow-light);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            position: relative;
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            letter-spacing: -0.025em;
+            z-index: 1001;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 400;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            position: relative;
+            letter-spacing: -0.01em;
+            white-space: nowrap;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        .nav-links a.active {
+            color: var(--accent-color);
+        }
+
+        .mobile-menu {
+            display: none;
+            color: var(--text-primary);
+            font-size: 1.25rem;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: var(--bg-primary);
+            position: relative;
+            padding-top: 80px;
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 4rem;
+            align-items: center;
+            width: 100%;
+        }
+
+        .hero-text h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.04em;
+            line-height: 1.1;
+        }
+
+        .hero-text .subtitle {
+            font-size: clamp(1rem, 2.5vw, 1.25rem);
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            font-weight: 400;
+            line-height: 1.5;
+        }
+
+        .hero-text .description {
+            font-size: clamp(0.95rem, 2vw, 1.1rem);
+            color: var(--text-light);
+            margin-bottom: 3rem;
+            line-height: 1.7;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.875rem 1.75rem;
+            border: none;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            letter-spacing: -0.01em;
+            white-space: nowrap;
+        }
+
+        .btn-primary {
+            background: var(--accent-color);
+            color: white;
+            box-shadow: var(--shadow-medium);
+        }
+
+        .btn-primary:hover {
+            background: #7a3d10;
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-heavy);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-secondary);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-secondary:hover {
+            background: var(--bg-secondary);
+            border-color: var(--accent-color);
+            color: var(--accent-color);
+        }
+
+        .hero-image {
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .profile-img {
+            width: min(350px, 80vw);
+            height: min(350px, 80vw);
+            max-width: 400px;
+            max-height: 400px;
+            border-radius: 20px;
+            object-fit: cover;
+            box-shadow: var(--shadow-heavy);
+            transition: transform 0.3s ease;
+        }
+
+        .profile-img:hover {
+            transform: scale(1.02);
+        }
+
+        /* Palestine Section */
+        .palestine {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: white;
+            position: relative;
+            padding: 6rem 0;
+        }
+
+        .palestine-content {
+            text-align: center;
+        }
+
+        .palestine .section-title {
+            color: white;
+        }
+
+        .palestine .section-subtitle {
+            color: rgba(255,255,255,0.8);
+        }
+
+        .palestine-text {
+            font-size: clamp(1rem, 2.2vw, 1.1rem);
+            line-height: 1.8;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 3rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .palestine-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+
+        .gallery-item {
+            height: 140px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .gallery-item:hover {
+            background: rgba(255,255,255,0.1);
+            transform: translateY(-4px);
+        }
+
+        .gallery-item i {
+            font-size: 1.75rem;
+            margin-bottom: 0.75rem;
+            color: #ff4444;
+        }
+
+        .gallery-item span {
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .btn-palestine {
+            background: linear-gradient(135deg, #ff4444, #cc0000);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-medium);
+        }
+
+        .btn-palestine:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-heavy);
+        }
+
+        /* Sections */
+        section {
+            padding: 6rem 0;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 2.5rem);
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+            text-align: center;
+        }
+
+        .section-subtitle {
+            font-size: clamp(1rem, 2.2vw, 1.1rem);
+            color: var(--text-secondary);
+            margin-bottom: 4rem;
+            max-width: 600px;
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* About Section */
+        .about {
+            background: var(--bg-secondary);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 2rem 1.5rem;
+            background: var(--bg-primary);
+            border-radius: 16px;
+            box-shadow: var(--shadow-light);
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .stat-number {
+            font-size: clamp(2rem, 4vw, 2.5rem);
+            font-weight: 700;
+            color: var(--accent-color);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .about-text {
+            font-size: clamp(1rem, 2.2vw, 1.1rem);
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-card {
+            background: var(--bg-primary);
+            padding: 2.5rem 2rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow-light);
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-medium);
+            border-color: rgba(139, 69, 19, 0.2);
+        }
+
+        .skill-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--accent-color), var(--accent-light));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+            margin: 0 auto 1.5rem;
+        }
+
+        .skill-card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .skill-card p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            text-align: left;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            justify-content: flex-start;
+        }
+
+        .skill-tag {
+            background: rgba(139, 69, 19, 0.1);
+            color: var(--accent-color);
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        /* Projects Section */
+        .projects {
+            background: var(--bg-secondary);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .project-card {
+            background: var(--bg-primary);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow-light);
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-heavy);
+        }
+
+        .project-image {
+            height: 250px;
+            background: var(--bg-accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .project-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .project-image .placeholder-icon {
+            font-size: 3rem;
+            color: var(--accent-color);
+        }
+
+        .project-content {
+            padding: 2rem;
+        }
+
+        .project-content h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .project-content p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-tag {
+            background: var(--bg-secondary);
+            color: var(--text-secondary);
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .project-link {
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .project-link.primary {
+            background: var(--accent-color);
+            color: white;
+        }
+
+        .project-link.secondary {
+            background: transparent;
+            color: var(--text-secondary);
+            border: 1px solid var(--border-color);
+        }
+
+        .project-link:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Presentations Section */
+        .presentations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .presentation-card {
+            background: var(--bg-primary);
+            padding: 2.5rem 2rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow-light);
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .presentation-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .presentation-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            margin: 0 auto 1.5rem;
+        }
+
+        .presentation-card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .presentation-card p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .presentation-btn {
+            background: var(--accent-color);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .presentation-btn:hover {
+            background: #7a3d10;
+            transform: translateY(-2px);
+        }
+
+        /* Experience Section */
+        .experience {
+            background: var(--bg-secondary);
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--border-color);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            margin-bottom: 4rem;
+            position: relative;
+        }
+
+        .timeline-content {
+            background: var(--bg-primary);
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow-light);
+            border: 1px solid var(--border-color);
+            width: 45%;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            box-shadow: var(--shadow-medium);
+            transform: translateY(-2px);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-left: auto;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 40px;
+            width: 16px;
+            height: 16px;
+            background: var(--accent-color);
+            border: 4px solid var(--bg-primary);
+            border-radius: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            box-shadow: var(--shadow-light);
+        }
+
+        .timeline-date {
+            color: var(--accent-color);
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-title {
+            color: var(--text-primary);
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-company {
+            color: var(--text-secondary);
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .timeline-description {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Education Section - same styling as Experience */
+        .education {
+            background: var(--bg-primary);
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            background: var(--bg-secondary);
+        }
+
+        .testimonials-carousel {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 16px;
+        }
+
+        .testimonial-slide {
+            display: none;
+            background: var(--bg-primary);
+            padding: 3rem 2rem;
+            text-align: center;
+            box-shadow: var(--shadow-light);
+            border: 1px solid var(--border-color);
+        }
+
+        .testimonial-slide.active {
+            display: block;
+        }
+
+        .testimonial-content {
+            font-size: clamp(1rem, 2.2vw, 1.25rem);
+            line-height: 1.7;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .testimonial-role {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        .carousel-controls {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .carousel-btn {
+            width: 50px;
+            height: 50px;
+            border: none;
+            border-radius: 50%;
+            background: var(--accent-color);
+            color: white;
+            font-size: 1.25rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .carousel-btn:hover {
+            background: #7a3d10;
+            transform: scale(1.1);
+        }
+
+        .carousel-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--border-color);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .indicator.active {
+            background: var(--accent-color);
+        }
+
+        /* Social Section */
+        .social-section {
+            background: var(--bg-primary);
+        }
+
+        .social-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .social-card {
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            padding: 2rem;
+            border-radius: 16px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-light);
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .social-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-medium);
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .social-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin: 0 auto 1rem;
+            color: white;
+        }
+
+        .social-card.instagram .social-icon {
+            background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
+        }
+
+        .social-card.tiktok .social-icon {
+            background: linear-gradient(45deg, #000000, #25f4ee);
+        }
+
+        .social-card.linkedin .social-icon {
+            background: linear-gradient(45deg, #0077b5, #00a0dc);
+        }
+
+        .social-card.github .social-icon {
+            background: linear-gradient(45deg, #333, #24292e);
+        }
+
+        .social-card h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .social-card p {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: var(--bg-secondary);
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .contact-info,
+        .contact-form {
+            background: var(--bg-primary);
+            padding: 3rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow-light);
+            border: 1px solid var(--border-color);
+        }
+
+        .contact-info h3,
+        .contact-form h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--accent-color), var(--accent-light));
+            color: white;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .contact-details h4 {
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .contact-details p,
+        .contact-details a {
+            color: var(--text-secondary);
+            text-decoration: none;
+        }
+
+        .contact-details a:hover {
+            color: var(--accent-color);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-family: inherit;
+            transition: all 0.3s ease;
+            background: var(--bg-primary);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 3px rgba(139, 69, 19, 0.1);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text-primary);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            text-align: center;
+        }
+
+        .footer-socials {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-socials a {
+            width: 50px;
+            height: 50px;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .footer-socials a:hover {
+            background: var(--accent-color);
+            transform: translateY(-2px);
+        }
+
+        .footer-text {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .footer-text:first-of-type {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .nav-container,
+            .container,
+            .hero-content {
+                padding-left: 2rem;
+                padding-right: 2rem;
+            }
+            
+            .nav-links {
+                gap: 1.5rem;
+            }
+            
+            .nav-links a {
+                font-size: 0.85rem;
+            }
+        }
+
+        @media (max-width: 968px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(255, 255, 255, 0.98);
+                flex-direction: column;
+                padding: 2rem;
+                box-shadow: var(--shadow-medium);
+                border-top: 1px solid var(--border-color);
+                gap: 1rem;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+                text-align: center;
+            }
+
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .about-stats {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline::before {
+                left: 30px;
+            }
+
+            .timeline-content {
+                width: calc(100% - 80px);
+                margin-left: 80px !important;
+            }
+
+            .timeline-item::before {
+                left: 30px;
+                transform: none;
+            }
+
+            section {
+                padding: 4rem 0;
+            }
+
+            .palestine {
+                padding: 4rem 0;
+            }
+
+            .skills-grid,
+            .presentations-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .social-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 640px) {
+            .nav-container,
+            .container,
+            .hero-content {
+                padding-left: 1.5rem;
+                padding-right: 1.5rem;
+            }
+
+            .nav-container {
+                padding: 0.75rem 1.5rem;
+            }
+
+            .about-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .btn-group {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .contact-info,
+            .contact-form {
+                padding: 2rem;
+            }
+
+            .testimonial-slide {
+                padding: 2rem 1.5rem;
+            }
+
+            .palestine-gallery {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+
+            .gallery-item {
+                height: 120px;
+            }
+
+            .social-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .project-links {
+                flex-direction: column;
+            }
+
+            .project-link {
+                justify-content: center;
+            }
+
+            .footer-socials {
+                gap: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding-top: 100px;
+            }
+
+            .profile-img {
+                width: min(280px, 90vw);
+                height: min(280px, 90vw);
+            }
+
+            .stat-item {
+                padding: 1.5rem 1rem;
+            }
+
+            .skill-card,
+            .presentation-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .project-content {
+                padding: 1.5rem;
+            }
+
+            .timeline-content {
+                padding: 2rem;
+            }
+
+            .btn-palestine {
+                padding: 0.875rem 1.5rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .hero-text {
+            animation: slideInLeft 1s ease-out;
+        }
+
+        .hero-image {
+            animation: slideInRight 1s ease-out;
+        }
+    </style>
 </head>
 <body>
-
-  <nav>
-    <strong>Haanim</strong>
-    <div class="burger" onclick="toggleMenu()">
-      <div></div><div></div><div></div>
-    </div>
-    <ul id="nav-links">
-      <li><a href="#hero">Home</a></li>
-      <li><a href="#palestine">Palestine</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#experience-education">Experience</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#presentations">Talks</a></li>
-      <li><a href="#helping">Helping</a></li>
-      <li><a href="#testimonials">Testimonials</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>  
-
-  <section id="hero" class="hero-section">
-    <div class="floating-icons"></div>
-    <div class="hero-content">
-      <h1 class="fade-up">Hi, I'm Haanim</h1>
-      <p class="fade-up delay-1">
-        A creative software development student with a passion for building digital solutions,
-        managing social media, and designing for impact.
-      </p>
-      <div class="hero-buttons fade-up delay-2">
-        <a href="/files/Haanim 2025 CV.pdf" class="hero-btn" download>Download CV</a>
-        <div class="social-icons">
-          <a href="https://github.com/HaanimP" target="_blank">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub">
-          </a>
-          <a href="https://www.linkedin.com/in/haanim-pietersen-172bb9264/" target="_blank">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-plain.svg" alt="LinkedIn">
-          </a>
-        </div>
-      </div>
-    </div>      
-  </section>  
-
-  <section id="palestine" class="palestine-section">
-    <div class="palestine-content">
-      <h2>Stand with Palestine</h2>
-      <p>
-        In Gaza and the West Bank, millions of Palestinians are enduring ongoing occupation, violence, and humanitarian crises.
-        Homes are being demolished, children are growing up in fear, and access to basic human rights is under constant threat.
-        It’s our responsibility to raise awareness, stay informed, and take action where we can.
-      </p>
-      <a href="https://www.instagram.com/eye.on.palestine/" target="_blank" class="palestine-btn">
-        Follow Daily Updates
-      </a>
-    </div>
-  
-    <div class="palestine-gallery">
-      <img src="/files/free palestine.jfif" alt="Palestine 1">
-      <img src="/files/IMG-20250515-WA0015.jpg" alt="Palestine 2">
-      <img src="/files/palestine.jfif" alt="Palestine 3">
-    </div>
-  </section>  
-
-  <section id="about" class="about-section">
-    <div class="about-container">
-      <!-- Image section -->
-      <div class="about-image-wrapper">
-        <img src="/files/IMG-20250528-WA0042.jpg" alt="Haanim Pietersen" class="about-image" />
-      </div>
-  
-      <!-- Text section -->
-      <div class="about-text">
-        <h2 class="about-heading">About Me</h2>
-        <p class="about-paragraph">
-          I am a dedicated software development student at the University of the Western Cape with a background in web design, social media management, and software engineering. While I previously led a digital solutions agency, I am now focusing solely on my studies and using my expertise to help others in practical ways.
-          <br /><br />
-          I assist individuals by creating professional documents, CVs, presentations, portfolios, and designs. I also offer constructive feedback, share tips from my work and interview experiences, and recommend valuable courses that have contributed to my growth.
-          <br /><br />
-          I am fluent in English and Afrikaans, with a basic understanding of German and Mandarin. My certifications include full-stack web development, Scrum, software engineering, social media management, and inbound marketing.
-        </p>
-      </div>
-    </div>
-  </section>  
-
-  <section id="experience-education" class="fade-in">
-    <h2>Experience & Education</h2>
-    <div class="timeline-container">
-      
-      <!-- Experience Timeline -->
-      <div class="timeline-column">
-        <h3>Experience</h3>
-        <div class="timeline">
-          <!-- Each Experience Item -->
-          <div class="timeline-item">
-            <strong>The Three Stars – Social Media Manager</strong>
-            <small>Feb 2025 – May 2025</small>
-            <ul>
-              <li>Manage updates and social media.</li>
-              <li>Consult and update clients.</li>
-              <li>Address progress and concerns with team.</li>
-              <li>Network and create content.</li>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="logo">Haanim Pietersen</div>
+            <ul class="nav-links">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#palestine" class="nav-link">Palestine</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#presentations" class="nav-link">Presentations</a></li>
+                <li><a href="#experience" class="nav-link">Experience</a></li>
+                <li><a href="#education" class="nav-link">Education</a></li>
+                <li><a href="#testimonials" class="nav-link">Testimonials</a></li>
+                <li><a href="#socials" class="nav-link">Socials</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
-          </div>
-          <div class="timeline-item">
-            <strong>The Three Stars – Team Lead</strong>
-            <small>Dec 2024 – May 2025</small>
-            <ul>
-              <li>Led daily standups.</li>
-              <li>Ensured punctuality and task completion.</li>
-              <li>Fostered open communication.</li>
-            </ul>
-          </div>
-          <div class="timeline-item">
-            <strong>The Three Stars – Web Designer</strong>
-            <small>Nov 2024 – May 2025</small>
-            <ul>
-              <li>Created wireframes and prototypes.</li>
-              <li>Designed responsive, user-friendly interfaces.</li>
-              <li>Developed front-end using HTML, CSS, JS.</li>
-              <li>Tested and debugged designs.</li>
-              <li>Collaborated with teams.</li>
-            </ul>
-          </div>
-          <div class="timeline-item">
-            <strong>LC Studio – Assistant Lecturer</strong>
-            <small>Oct 2024 – Nov 2024</small>
-            <ul>
-              <li>Led standups and supported students.</li>
-              <li>Ensured punctuality and guidance.</li>
-            </ul>
-          </div>
-          <div class="timeline-item">
-            <strong>LC Studio – Software Engineer Intern</strong>
-            <small>Apr 2024 – Nov 2024</small>
-            <ul>
-              <li>Advanced Linux, Python, and C++ skills.</li>
-              <li>Scrum collaboration and prototyping.</li>
-              <li>Problem-solving and team engagement.</li>
-            </ul>
-          </div>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
         </div>
-      </div>
-  
-      <!-- Education Timeline -->
-      <div class="timeline-column">
-        <h3>Education</h3>
-        <div class="timeline">
-          <!-- Each Education Item -->
-          <div class="timeline-item">
-            <strong>University of the Western Cape</strong>
-            <small>Mar 2025 – Present</small>
-            <ul>
-              <li>Software Development Student at Future Innovation Lab (Samsung).</li>
-            </ul>
-          </div>
-          <div class="timeline-item">
-            <strong>Life Choices Academy</strong>
-            <small>Sep 2023 – Mar 2024</small>
-            <ul>
-              <li>Certificate of Excellence in Full Stack Web Development.</li>
-              <li>Frontend: HTML, CSS, Bootstrap, JS.</li>
-              <li>Backend: Node.js, MySQL.</li>
-              <li>Figma, GitHub, Agile, Scrum.</li>
-            </ul>
-          </div>
-          <div class="timeline-item">
-            <strong>South Peninsula High School</strong>
-            <small>Jan 2018 – Dec 2022</small>
-            <ul>
-              <li>Bachelor’s Pass – Strengths in Afrikaans, Life Skills, History.</li>
-              <li>Leadership, teamwork, academic excellence.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-  
-    </div>
-  </section>  
+    </nav>
 
-  <section id="skills" class="fade-in">
-    <h2>Skills</h2>
-  
-    <div class="skills-grid">
-      <div class="skill-group">
-        <h3>Web Development</h3>
-        <div class="skills">
-          <span class="skill">HTML</span>
-          <span class="skill">CSS</span>
-          <span class="skill">Bootstrap</span>
-          <span class="skill">JavaScript</span>
-          <span class="skill">Vue JS</span>
-          <span class="skill">Node JS</span>
-          <span class="skill">Wix</span>
-          <span class="skill">WordPress</span>
-          <span class="skill">Elementor</span>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Haanim Pietersen</h1>
+                <p class="subtitle">Software Development Student | Standing for Human Rights & Palestinian Freedom</p>
+                <p class="description">Dedicated software development student at the University of the Western Cape with expertise in web design, social media management, and software engineering. Currently focusing on studies while helping others through practical digital solutions.</p>
+                <div class="btn-group">
+                    <a href="#contact" class="btn btn-primary">
+                        <i class="fas fa-envelope"></i>
+                        Get In Touch
+                    </a>
+                    <a href="/files/Haanim 2025 CV.pdf" class="btn btn-secondary" id="downloadCV">
+                        <i class="fas fa-download"></i>
+                        Download CV
+                    </a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="/files/IMG-20250528-WA0042.jpg" alt="Haanim Pietersen" class="profile-img">
+            </div>
         </div>
-      </div>
-  
-      <div class="skill-group">
-        <h3>Programming</h3>
-        <div class="skills">
-          <span class="skill">Python</span>
-          <span class="skill">C++</span>
-          <span class="skill">C#</span>
+    </section>
+
+    <!-- Palestine Section -->
+    <section id="palestine" class="palestine">
+        <div class="container">
+            <div class="palestine-content">
+                <h2 class="section-title">Standing for Palestine</h2>
+                <p class="section-subtitle">Using technology and platform to advocate for human rights and justice.</p>
+                <div class="palestine-text">
+                    <p>As someone who believes in human rights and justice for all, I stand firmly with the Palestinian people in their struggle for freedom, dignity, and self-determination. Technology should be used to amplify voices of the oppressed and create awareness about injustices happening around the world.</p>
+                    <p>Through my platform and skills, I aim to contribute to raising awareness, supporting digital advocacy initiatives, and fostering meaningful conversations about human rights and social justice.</p>
+                </div>
+                <div class="palestine-gallery">
+                    <div class="gallery-item">
+                        <i class="fas fa-heart"></i>
+                        <span>Solidarity</span>
+                    </div>
+                    <div class="gallery-item">
+                        <i class="fas fa-fist-raised"></i>
+                        <span>Resistance</span>
+                    </div>
+                    <div class="gallery-item">
+                        <i class="fas fa-dove"></i>
+                        <span>Peace</span>
+                    </div>
+                    <div class="gallery-item">
+                        <i class="fas fa-flag"></i>
+                        <span>Freedom</span>
+                    </div>
+                </div>
+                <a href="https://www.instagram.com/eye.on.palestine/" target="_blank" class="btn-palestine">
+                    <i class="fab fa-instagram"></i>
+                    Learn More
+                </a>
+            </div>
         </div>
-      </div>
-  
-      <div class="skill-group">
-        <h3>Tools & Platforms</h3>
-        <div class="skills">
-          <span class="skill">Linux</span>
-          <span class="skill">MySQL</span>
-          <span class="skill">Figma</span>
-          <span class="skill">VS Code</span>
-          <span class="skill">Git</span>
-          <span class="skill">GitHub</span>
-          <span class="skill">Drive</span>
-          <span class="skill">PowerPoint</span>
-          <span class="skill">Word</span>
-          <span class="skill">Excel</span>
-          <span class="skill">Canva</span>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <p class="section-subtitle">Passionate about technology, human rights, and creating meaningful digital solutions.</p>
+            <div class="about-content">
+                <div class="about-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">2+</span>
+                        <span class="stat-label">Years Experience</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">25+</span>
+                        <span class="stat-label">Projects Completed</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">4</span>
+                        <span class="stat-label">Languages Spoken</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">5+</span>
+                        <span class="stat-label">Certifications</span>
+                    </div>
+                </div>
+                <div class="about-text">
+                    <p>I am a passionate software development student currently pursuing my studies at the University of the Western Cape. My journey in technology has equipped me with a diverse skill set spanning web development, social media management, and software engineering.</p>
+                    <p>Previously, I led a digital solutions agency where I gained valuable experience in client relations, team leadership, and project management. This experience taught me the importance of combining technical expertise with strong communication and leadership skills.</p>
+                    <p>I'm fluent in English and Afrikaans, with basic proficiency in German and Mandarin. My technical certifications include Python Essentials, Mobile Digital Literacy, Linux administration, Social Media Marketing, and Inbound Marketing.</p>
+                    <p>Beyond technology, I'm deeply committed to human rights advocacy and stand firmly for Palestinian freedom, using my platform and skills to raise awareness and contribute to meaningful causes.</p>
+                </div>
+            </div>
         </div>
-      </div>
-  
-      <div class="skill-group">
-        <h3>Data & Visualisation</h3>
-        <div class="skills">
-          <span class="skill">Tableau</span>
-          <span class="skill">Power BI</span>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2 class="section-title">Skills & Expertise</h2>
+            <p class="section-subtitle">A comprehensive skill set built through education, experience, and continuous learning.</p>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>Frontend Development</h3>
+                    <p>Proficient in modern frontend technologies and responsive design principles for creating engaging user experiences.</p>
+                    <div class="skill-tags">
+                        <span class="skill-tag">HTML</span>
+                        <span class="skill-tag">CSS</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">Bootstrap</span>
+                        <span class="skill-tag">Vue.js</span>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-server"></i>
+                    </div>
+                    <h3>Backend Development</h3>
+                    <p>Proficient in server-side development, database management, and API design with modern frameworks.</p>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">C++</span>
+                        <span class="skill-tag">Node.js</span>
+                        <span class="skill-tag">C#</span>
+                        <span class="skill-tag">.NET</span>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3>Database & Analytics</h3>
+                    <p>Experienced in database design, data analysis, and business intelligence solutions.</p>
+                    <div class="skill-tags">
+                        <span class="skill-tag">MySQL</span>
+                        <span class="skill-tag">Power BI</span>
+                        <span class="skill-tag">Data Analysis</span>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Mobile & Desktop Development</h3>
+                    <p>Specialized in cross-platform development and modern UI/UX design principles.</p>
+                    <div class="skill-tags">
+                        <span class="skill-tag">MAUI</span>
+                        <span class="skill-tag">XAML</span>
+                        <span class="skill-tag">Mobile Design</span>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-cloud"></i>
+                    </div>
+                    <h3>Cloud & DevOps</h3>
+                    <p>Strong foundation in cloud platforms, system administration, and deployment strategies.</p>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Azure</span>
+                        <span class="skill-tag">Linux</span>
+                        <span class="skill-tag">System Admin</span>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Project Management & Marketing</h3>
+                    <p>Proven leadership skills in agile methodologies, team coordination, and digital marketing strategies.</p>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Scrum</span>
+                        <span class="skill-tag">WordPress</span>
+                        <span class="skill-tag">Elementor</span>
+                        <span class="skill-tag">Teams</span>
+                        <span class="skill-tag">Office Suite</span>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-  
-      <div class="skill-group">
-        <h3>Other Skills</h3>
-        <div class="skills">
-          <span class="skill">Scrum</span>
-          <span class="skill">Social Media Management</span>
-          <span class="skill">Inbound Marketing</span>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <p class="section-subtitle">A showcase of my recent work and technical achievements across different domains.</p>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">
+                        <i class="fas fa-laptop-code placeholder-icon"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Women with Vision</h3>
+                        <p>A non-profit website showcasing work, branch locations, contact info, and a simple way to donate.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">HTML</span>
+                            <span class="tech-tag">CSS</span>
+                            <span class="tech-tag">JavaScript</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://womenwithvision.netlify.app/home" class="project-link primary" target="_blank">
+                                <i class="fas fa-external-link-alt"></i>
+                                Live Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <i class="fas fa-birthday-cake placeholder-icon"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Sugar Bakez</h3>
+                        <p>A small business website showcasing baked goods, the owner, and available services.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">HTML</span>
+                            <span class="tech-tag">CSS</span>
+                            <span class="tech-tag">JavaScript</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://sugarbakez.netlify.app/" class="project-link primary" target="_blank">
+                                <i class="fas fa-external-link-alt"></i>
+                                Live Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <i class="fas fa-route placeholder-icon"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Path Align</h3>
+                        <p>A site that helps students find their best learning path based on personality test results.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">WordPress</span>
+                            <span class="tech-tag">Power BI</span>
+                            <span class="tech-tag">Excel</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://personatest.lcstudio-incubate.co.za/" class="project-link primary" target="_blank">
+                                <i class="fas fa-external-link-alt"></i>
+                                Live Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <i class="fas fa-cloud-sun placeholder-icon"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Weather App</h3>
+                        <p>A weather app providing local forecasts using C++ and Python.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">C++</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://weather-app-navy-nu-74.vercel.app/" class="project-link primary" target="_blank">
+                                <i class="fas fa-external-link-alt"></i>
+                                Live Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </section>  
+    </section>
 
-  <section id="projects" class="fade-in">
-    <h2>Projects</h2>
-    <div class="projects">
-      <div class="card">
-        <img src="/files/image.png" alt="Project 1 Image">
-        <div class="card-content">
-          <h3>Women with Vision</h3>
-          <p>A non-profit website showcasing work, branch locations, contact info, and a simple way to donate.</p>
-          <a href="https://womenwithvision.netlify.app/home" class="view-live" target="_blank">View Live</a>
+    <!-- Presentations Section -->
+    <section id="presentations" class="presentations">
+        <div class="container">
+            <h2 class="section-title">Presentations & Talks</h2>
+            <p class="section-subtitle">Sharing knowledge and insights through educational presentations and technical talks.</p>
+            <div class="presentations-grid">
+                <div class="presentation-card">
+                    <div class="presentation-icon" style="background: linear-gradient(135deg, #4f46e5, #7c3aed);">
+                        <i class="fas fa-user-md"></i>
+                    </div>
+                    <h3>Hamilton Naki</h3>
+                    <p>This presentation talks about our groups role model and also the characteristics of a good role model.</p>
+                    <a href="https://www.canva.com/design/DAGhUu6uC4Q/h6CnfVWGW5uX0YSy6_KaFw/view?utm_content=DAGhUu6uC4Q&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=he82d6e8c08" class="presentation-btn">
+                        <i class="fas fa-play"></i>
+                        View Presentation
+                    </a>
+                </div>
+
+                <div class="presentation-card">
+                    <div class="presentation-icon" style="background: linear-gradient(135deg, #06b6d4, #0891b2);">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <h3>The Future of Work</h3>
+                    <p>This presentation showcases our opinion on how the future of work would look like and the skills needed to thrive in it.</p>
+                    <a href="https://www.canva.com/design/DAGhCOQ_nO0/2QmZqIVg4avjXP07BERAAg/view?utm_content=DAGhCOQ_nO0&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=ha61d871940" class="presentation-btn">
+                        <i class="fas fa-play"></i>
+                        View Presentation
+                    </a>
+                </div>
+
+                <div class="presentation-card">
+                    <div class="presentation-icon" style="background: linear-gradient(135deg, #10b981, #059669);">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>EdVance Presentation</h3>
+                    <p>This presentation was a group task on how we would use Azure AI to solve an issue in the education environment.</p>
+                    <a href="https://www.canva.com/design/DAGgAngASrE/5y5qGX709No7l07z7lEhbw/view?utm_content=DAGgAngASrE&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h3584ac18f5" class="presentation-btn">
+                        <i class="fas fa-play"></i>
+                        View Presentation
+                    </a>
+                </div>
+
+                <div class="presentation-card">
+                    <div class="presentation-icon" style="background: linear-gradient(135deg, #f59e0b, #d97706);">
+                        <i class="fas fa-solar-panel"></i>
+                    </div>
+                    <h3>Power Track</h3>
+                    <p>This presentation shows how much energy and money people save by using solar panels instead of traditional energy sources.</p>
+                    <a href="https://www.canva.com/design/DAGPyv-jw5w/2mlLOLek20Yq6UkLWdDijg/view?utm_content=DAGPyv-jw5w&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h6b053a63fb" class="presentation-btn">
+                        <i class="fas fa-play"></i>
+                        View Presentation
+                    </a>
+                </div>
+
+                <div class="presentation-card">
+                    <div class="presentation-icon" style="background: linear-gradient(135deg, #ef4444, #dc2626);">
+                        <i class="fas fa-id-badge"></i>
+                    </div>
+                    <h3>Intern Profiles</h3>
+                    <p>This presentation showcases a project created to display intern profiles, including their information, skills, projects, and achievements.</p>
+                    <a href="https://www.canva.com/design/DAGP9qSbvXk/scjmbZdE2ytNvz4CtfFdDg/view?utm_content=DAGP9qSbvXk&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h3d5c888908" class="presentation-btn">
+                        <i class="fas fa-play"></i>
+                        View Presentation
+                    </a>
+                </div>
+
+                <div class="presentation-card">
+                    <div class="presentation-icon" style="background: linear-gradient(135deg, #8b5cf6, #7c3aed);">
+                        <i class="fab fa-drupal"></i>
+                    </div>
+                    <h3>Drupal Presentation</h3>
+                    <p>This presentation provides an overview of the fundamental concepts, tools, and features of Drupal, focusing on its core functionalities and basic usage.</p>
+                    <a href="https://www.canva.com/design/DAGMVXxqV10/cTtxqBV297KnAFiyzTEihQ/view?utm_content=DAGMVXxqV10&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hc0e6a9c712" class="presentation-btn">
+                        <i class="fas fa-play"></i>
+                        View Presentation
+                    </a>
+                </div>
+            </div>
         </div>
-      </div>
-  
-<div class="card">
-        <img src="/files/sb.PNG" alt="Project 1 Image">
-        <div class="card-content">
-          <h3>Sugar Bakez</h3>
-          <p>A small business website showcasing baked goods, the owner, and available services.</p>
-          <a href="https://sugarbakez.netlify.app/" class="view-live" target="_blank">View Live</a>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="experience">
+        <div class="container">
+            <h2 class="section-title">Professional Experience</h2>
+            <p class="section-subtitle">A track record of leadership, technical excellence, and continuous growth in the technology sector.</p>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Feb 2025 - May 2025</div>
+                        <h3 class="timeline-title">Social Media Manager</h3>
+                        <div class="timeline-company">The Three Stars</div>
+                        <p class="timeline-description">Led comprehensive social media strategy including content management, client consultation, team collaboration, and brand outreach initiatives that significantly increased engagement.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Dec 2024 - May 2025</div>
+                        <h3 class="timeline-title">Business Team Lead</h3>
+                        <div class="timeline-company">The Three Stars</div>
+                        <p class="timeline-description">Managed daily standups and progress tracking, ensured project punctuality and task completion, while providing mentorship and guidance to team members.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Nov 2024 - May 2025</div>
+                        <h3 class="timeline-title">Web Designer</h3>
+                        <div class="timeline-company">The Three Stars</div>
+                        <p class="timeline-description">Created comprehensive wireframes and prototypes, designed user-friendly interfaces, developed responsive web solutions, and collaborated effectively with cross-functional development teams.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Oct 2024 - Nov 2024</div>
+                        <h3 class="timeline-title">Assistant Lecturer</h3>
+                        <div class="timeline-company">LC Studio</div>
+                        <p class="timeline-description">Facilitated student progress through structured check-ins, maintained high standards for punctuality and task completion, while providing comprehensive educational support.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Apr 2024 - Nov 2024</div>
+                        <h3 class="timeline-title">Software Engineer Intern</h3>
+                        <div class="timeline-company">LC Studio</div>
+                        <p class="timeline-description">Advanced technical skills in Linux, Python, and C++ through intensive self-study, collaborated with cross-functional teams during Scrum processes, and developed innovative project prototypes.</p>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-  
-<div class="card">
-        <img src="/files/pa.PNG" alt="Project 2 Image">
-        <div class="card-content">
-          <h3>Path Align</h3>
-          <p>A site that helps students find their best learning path based on personality test results.</p>
-          <a href="https://personatest.lcstudio-incubate.co.za/" class="view-live" target="_blank">View Live</a>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="education">
+        <div class="container">
+            <h2 class="section-title">Education</h2>
+            <p class="section-subtitle">Academic background and continuous learning journey in technology and software development.</p>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">March 2025 - Present</div>
+                        <h3 class="timeline-title">Software Development Student</h3>
+                        <div class="timeline-company">University of the Western Cape - Future Innovation Lab powered by Samsung</div>
+                        <p class="timeline-description">Currently pursuing advanced studies in software development with focus on cutting-edge technologies, innovation, and practical application of software engineering principles.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">September 2023 - March 2024</div>
+                        <h3 class="timeline-title">Certificate of Excellence, Web Development</h3>
+                        <div class="timeline-company">Life Choices Academy</div>
+                        <p class="timeline-description">Comprehensive training in web development technologies including HTML, CSS, JavaScript, and modern frameworks. Achieved excellence in all modules with hands-on project experience.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">January 2018 - December 2022</div>
+                        <h3 class="timeline-title">National Senior Certificate</h3>
+                        <div class="timeline-company">South Peninsula High School</div>
+                        <p class="timeline-description">Completed secondary education with strong academic performance, laying the foundation for future studies in technology and computer science.</p>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-  
-      <div class="card">
-        <img src="/files/weather app.png" alt="Project 3 Image">
-        <div class="card-content">
-          <h3>Weather App</h3>
-          <p>A weather app providing local forecasts using C++ and Python.</p>
-          <a href="https://weather-app-navy-nu-74.vercel.app/" class="view-live" target="_blank">View Live</a>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <h2 class="section-title">What People Say</h2>
+            <p class="section-subtitle">Feedback from colleagues, clients, and collaborators I've had the pleasure to work with.</p>
+            <div class="testimonials-carousel">
+                <div class="testimonial-slide active">
+                    <div class="testimonial-content">
+                        "I reached out via LinkedIn to Haanim, to ask her can she please review my CV. In no time she responded to my dm. Her feedback was incredibly helpful—clear, constructive, and exactly what I needed to polish my cv. I really appreciate the time and effort she took to assist me, especially without even knowing me personally. Thanks again for your generosity and support! She is always open to assisting others as well."
+                    </div>
+                    <div class="testimonial-author">Asandile Langeni</div>
+                    <div class="testimonial-role">LinkedIn Connection</div>
+                </div>
+
+                <div class="testimonial-slide">
+                    <div class="testimonial-content">
+                        "It was a pleasure having Haanim on our team. She is a disciplined and dedicated professional who consistently prioritizes project goals and delivers high-quality work. Her skills in web development are strong, and she brings a keen eye for both functionality and design. Haanim also excels in leadership roles, guiding her team with clarity, structure, and a steady hand. In addition to her technical capabilities, she's an exceptional social media manager, bringing creativity, strategy, and consistency to every campaign. Her versatility and work ethic make her an invaluable asset to any team."
+                    </div>
+                    <div class="testimonial-author">Ni-shaat Gafieldien</div>
+                    <div class="testimonial-role">Co-Founder of The Three Stars, Developer and Designer</div>
+                </div>
+
+                <div class="testimonial-slide">
+                    <div class="testimonial-content">
+                        "Working with Haanim at The Three Stars Digital Solutions was honestly a wonderful experience. She's one of those people who just gets it, she's super reliable, easy to talk to, and always brings her best to the table. Whether we were deep in project work or just figuring things out on the fly, she was calm, focused, and always open to new ideas. She has a natural sense of leadership and a way of making the team feel grounded and supported, even during hectic deadlines. You always knew you could count on her and I would most definitely recommend her."
+                    </div>
+                    <div class="testimonial-author">Ammara Hoosen</div>
+                    <div class="testimonial-role">Co-Founder of the Three Stars, Developer and Designer</div>
+                </div>
+            </div>
+            
+            <div class="carousel-controls">
+                <button class="carousel-btn" id="prevBtn">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="carousel-btn" id="nextBtn">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+            
+            <div class="carousel-indicators">
+                <div class="indicator active" data-slide="0"></div>
+                <div class="indicator" data-slide="1"></div>
+                <div class="indicator" data-slide="2"></div>
+            </div>
         </div>
-      </div>
-    </div>
-  </section>  
+    </section>
 
-  <section id="presentations" class="fade-in">
-    <h2>Presentations</h2>
-    <div class="presentations">
-      <div class="card">
-        <h3>Hamilton Naki</h3>
-        <p>This presentation talks about our groups role model and also the characteristics of a good role model.</p>
-        <a href="https://www.canva.com/design/DAGhUu6uC4Q/h6CnfVWGW5uX0YSy6_KaFw/view?utm_content=DAGhUu6uC4Q&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=he82d6e8c08" class="btn" target="_blank">View Presentation</a>
-      </div>
-      <div class="card">
-        <h3>The Future of Work</h3>
-        <p>This presentation showcases our opinion on how the future of work would look like and the skills needed to thrive in it.</p>
-        <a href="https://www.canva.com/design/DAGhCOQ_nO0/2QmZqIVg4avjXP07BERAAg/view?utm_content=DAGhCOQ_nO0&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=ha61d871940" class="btn" target="_blank">View Presentation</a>
-      </div>
-      <div class="card">
-        <h3>EdVance Presentation</h3>
-        <p>This presentation was a group task on how we would use Azure AI to solve an issue in the education environment.</p>
-        <a href="https://www.canva.com/design/DAGgAngASrE/5y5qGX709No7l07z7lEhbw/view?utm_content=DAGgAngASrE&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h3584ac18f5" class="btn" target="_blank">View Presentation</a>
-      </div>
-      <div class="card">
-        <h3>Power Track</h3>
-        <p>This presentation shows how much energy and money people save by using solar panels instead of traditional energy sources.</p>
-        <a href="https://www.canva.com/design/DAGPyv-jw5w/2mlLOLek20Yq6UkLWdDijg/view?utm_content=DAGPyv-jw5w&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h6b053a63fb" class="btn" target="_blank">View Presentation</a>
-      </div>
-      <div class="card">
-        <h3>Intern Profiles</h3>
-        <p>This presentation showcases a project created to display intern profiles, including their information, skills, projects, and achievements.</p>
-        <a href="https://www.canva.com/design/DAGP9qSbvXk/scjmbZdE2ytNvz4CtfFdDg/view?utm_content=DAGP9qSbvXk&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h3d5c888908" class="btn" target="_blank">View Presentation</a>
-      </div>
-      <div class="card">
-        <h3>Drupal Presentation</h3>
-        <p>This presentation provides an overview of the fundamental concepts, tools, and features of Drupal, focusing on its core functionalities and basic usage.</p>
-        <a href="https://www.canva.com/design/DAGMVXxqV10/cTtxqBV297KnAFiyzTEihQ/view?utm_content=DAGMVXxqV10&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hc0e6a9c712" class="btn" target="_blank">View Presentation</a>
-      </div>
-    </div>
-  </section>  
+    <!-- Social Media Section -->
+    <section id="socials" class="social-section">
+        <div class="container">
+            <h2 class="section-title">Connect With Me</h2>
+            <p class="section-subtitle">Stay updated with my journey and connect across different platforms.</p>
+            <div class="social-grid">
+                <a href="https://www.instagram.com/haanim_pietersen" target="_blank" class="social-card instagram">
+                    <div class="social-icon">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                    <h3>Instagram</h3>
+                </a>
+                <a href="https://tiktok.com/@haanim_pietersen" target="_blank" class="social-card tiktok">
+                    <div class="social-icon">
+                        <i class="fab fa-tiktok"></i>
+                    </div>
+                    <h3>TikTok</h3>
+                </a>
+                <a href="https://www.linkedin.com/in/haanim-pietersen-172bb9264/" target="_blank" class="social-card linkedin">
+                    <div class="social-icon">
+                        <i class="fab fa-linkedin"></i>
+                    </div>
+                    <h3>LinkedIn</h3>
+                </a>
+                <a href="https://github.com/HaanimP" target="_blank" class="social-card github">
+                    <div class="social-icon">
+                        <i class="fab fa-github"></i>
+                    </div>
+                    <h3>GitHub</h3>
+                </a>
+            </div>
+        </div>
+    </section>
 
-  <section id="helping" class="fade-in">
-    <h2>Helping Others</h2>
-    <div class="helping-text">
-      <p>
-        Lately, more and more people have been reaching out — asking for help with their CVs, LinkedIn profiles,
-        documents, designs, and even presentations.
-      </p>
-      <p>
-        At first, I was honestly confused — I’m just a girl still studying and figuring things out myself.
-        But then it hit me: maybe I’ve picked up things not everyone gets taught — and it’s worth sharing.
-      </p>
-      <p>
-        So here’s me, giving back in the way I can. Whether it’s feedback on a portfolio, a nudge in the right direction,
-        or a course recommendation that helped me — I’m here.
-      </p>
-      <p><strong>If you ever need a second pair of eyes, let’s connect 💬</strong></p>
-      <a href="https://www.linkedin.com/in/haanim-pietersen/" target="_blank" class="linkedin-btn">Connect on LinkedIn</a>
-    </div>
-  </section>  
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <p class="section-subtitle">Ready to collaborate or discuss opportunities? I'd love to hear from you.</p>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Contact Information</h3>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Location</h4>
+                            <p>Cape Town, South Africa</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Phone</h4>
+                            <p>+27 71 433 2419/84 465 1333</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Email</h4>
+                            <p>haanimpietersen@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-link"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Links</h4>
+                            <p><a href="https://linktr.ee/haanim.pietersen" target="_blank">linktr.ee/haanim.pietersen</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <h3>Send a Message</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-paper-plane"></i>
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <section id="testimonials" class="fade-in">
-    <h2>Testimonials</h2>
-    <div class="testimonials">
-      <div class="testimonial-card">
-        <p>"I reached out via LinkedIn to Haanim, to ask her can she please review my CV. In no time she responded to my dm. Her feedback was incredibly helpful—clear, constructive, and exactly what I needed to polish my cv. I really appreciate the time and effort she took to assist me, especially without even knowing me personally. Thanks again for your generosity and support! She is always open to assisting others as well."</p>
-        <span>– Asandile Langeni</span>
-      </div>
-      <div class="testimonial-card">
-        <p>"It was a pleasure having Haanim on our team. She is a disciplined and dedicated professional who consistently prioritizes project goals and delivers high-quality work. Her skills in web development are strong, and she brings a keen eye for both functionality and design. Haanim also excels in leadership roles, guiding her team with clarity, structure, and a steady hand. In addition to her technical capabilities, she’s an exceptional social media manager, bringing creativity, strategy, and consistency to every campaign. Her versatility and work ethic make her an invaluable asset to any team."</p>
-        <span>– Ni-shaat Gafieldien</span>
-      </div>
-      <div class="testimonial-card">
-        <p>"Working with Haanim at The Three Stars Digital Solutions was honestly a wonderful experience. She’s one of those people who just gets it, she's super reliable, easy to talk to, and always brings her best to the table. Whether we were deep in project work or just figuring things out on the fly, she was calm, focused, and always open to new ideas. <br>
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-socials">
+                <a href="https://www.instagram.com/haanim_pietersen" target="_blank" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://tiktok.com/@haanim_pietersen" target="_blank" aria-label="TikTok">
+                    <i class="fab fa-tiktok"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/haanim-pietersen-172bb9264/" target="_blank" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://github.com/HaanimP" target="_blank" aria-label="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+            <p class="footer-text">&copy; 2025 Haanim Pietersen. All rights reserved.</p>
+            <p class="footer-text">Standing for Human Rights & Palestinian Freedom</p>
+        </div>
+    </footer>
 
-          She has a natural sense of leadership and a way of making the team feel grounded and supported, even during hectic deadlines. You always knew you could count on her and I would most definitely recommend her."</p>
-        <span>– Ammara Hoosen</span>
-      </div>
-    </div>
-  </section>  
+    <script>
+        // Mobile Menu Toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenu = document.querySelector('.mobile-menu');
+            const navLinks = document.querySelector('.nav-links');
+            
+            mobileMenu.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+                const icon = this.querySelector('i');
+                if (navLinks.classList.contains('active')) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                } else {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            });
 
-  <section class="find-me">
-  <h2>Find Me</h2>
-  <div class="social-icons">
-    <a href="https://www.linkedin.com/in/haanim-pietersen-172bb9264/" class="linkedin" target="_blank" aria-label="LinkedIn">
-      <i class="fab fa-linkedin"></i>
-    </a>
-    <a href="https://github.com/HaanimP" class="github" target="_blank" aria-label="GitHub">
-      <i class="fab fa-github"></i>
-    </a>
-    <a href="https://www.instagram.com/haanim_pietersen" class="instagram" target="_blank" aria-label="Instagram">
-      <i class="fab fa-instagram"></i>
-    </a>
-    <a href="https://www.tiktok.com/haanim_pietersen" class="tiktok" target="_blank" aria-label="TikTok">
-      <i class="fab fa-tiktok"></i>
-    </a>
-  </div>
-</section>
+            // Close mobile menu when clicking on links
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', function() {
+                    navLinks.classList.remove('active');
+                    const icon = mobileMenu.querySelector('i');
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                });
+            });
+        });
 
-  <section id="contact" class="fade-in">
-    <h2>Contact</h2>
-    <div class="contact-container">
-      <div class="contact-info">
-        <p><strong>Phone:</strong> 071 433 2419 / 084 465 1333</p>
-        <p><strong>Email:</strong> <a href="mailto:haanimpietersen@gmail.com">haanimpietersen@gmail.com</a></p>
-      </div>
-  
-      <form action="https://formsubmit.co/haanimpietersen@gmail.com" method="POST">
-        <input type="text" name="name" placeholder="Name" required />
-        <input type="email" name="email" placeholder="Email" required />
-        <textarea name="message" placeholder="Message" rows="5" required></textarea>
-  
-        <!-- Prevent spam -->
-        <input type="hidden" name="_captcha" value="false" />
-        <input type="hidden" name="_next" value="https://haanimp-portfolio.vercel.app/thankyou.html" />
-  
-        <button type="submit">Send</button>
-      </form>
-    </div>
-  </section>  
+        // Testimonial Carousel Functionality
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.testimonial-slide');
+        const indicators = document.querySelectorAll('.indicator');
+        const totalSlides = slides.length;
 
-  <footer>
-    <!-- <p>Connect with me:</p>
-    <div class="socials">
-      <a href="#"><i class="fab fa-github"></i></a>
-      <a href="#"><i class="fab fa-linkedin"></i></a>
-      <a href="#"><i class="fab fa-instagram"></i></a>
-      <a href="#"><i class="fab fa-tiktok"></i></a>
-    </div>
-    <p><a href="#" target="_blank">📄 View My CV</a></p> -->
-    <p>&copy; 2025 Haanim Pietersen</p>
-  </footer>
+        function showSlide(index) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            indicators.forEach(indicator => indicator.classList.remove('active'));
+            
+            slides[index].classList.add('active');
+            indicators[index].classList.add('active');
+        }
 
-  <script>
-    function toggleMenu() {
-      document.getElementById('nav-links').classList.toggle('show');
-    }
-  
-    // Scroll animation for fade-in
-    const faders = document.querySelectorAll('.fade-in');
-  
-    const appearOptions = {
-      threshold: 0.1,
-      rootMargin: "0px 0px -50px 0px"
-    };
-  
-    const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
-        entry.target.classList.add('show');
-        appearOnScroll.unobserve(entry.target);
-      });
-    }, appearOptions);
-  
-    faders.forEach(fader => {
-      appearOnScroll.observe(fader);
-    });
-  </script>  
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            showSlide(currentSlide);
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            showSlide(currentSlide);
+        }
+
+        // Event listeners for carousel controls
+        document.getElementById('nextBtn').addEventListener('click', nextSlide);
+        document.getElementById('prevBtn').addEventListener('click', prevSlide);
+
+        // Event listeners for indicators
+        indicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', () => {
+                currentSlide = index;
+                showSlide(currentSlide);
+            });
+        });
+
+        // Auto-play carousel
+        setInterval(nextSlide, 5000);
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                
+                if (targetSection) {
+                    const navHeight = document.querySelector('nav').offsetHeight;
+                    const targetPosition = targetSection.offsetTop - navHeight;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Update active nav link
+                    document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+                    this.classList.add('active');
+                }
+            });
+        });
+
+        // Navbar scroll effects and active link highlighting
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            const navLinks = document.querySelectorAll('.nav-link');
+            const sections = document.querySelectorAll('section');
+            
+            // Navbar background effect
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+            
+            // Active section highlighting
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in-up');
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.skill-card, .timeline-item, .stat-item, .social-card, .project-card, .presentation-card').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Counter animation for statistics
+        function animateCounter(element, target, duration = 2000) {
+            let start = 0;
+            const increment = target / (duration / 16);
+            
+            function updateCounter() {
+                start += increment;
+                if (start < target) {
+                    element.textContent = Math.floor(start) + '+';
+                    requestAnimationFrame(updateCounter);
+                } else {
+                    element.textContent = target + '+';
+                }
+            }
+            updateCounter();
+        }
+
+        // Stats animation on scroll
+        const statsObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const number = entry.target.querySelector('.stat-number');
+                    const target = parseInt(number.textContent);
+                    number.textContent = '0';
+                    setTimeout(() => {
+                        animateCounter(number, target);
+                    }, 300);
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        document.querySelectorAll('.stat-item').forEach(item => {
+            statsObserver.observe(item);
+        });
+
+        // Enhanced contact form handling
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const name = formData.get('name');
+            const email = formData.get('email');
+            const subject = formData.get('subject');
+            const message = formData.get('message');
+            
+            // Create professionally formatted email content
+            const emailSubject = `Portfolio Contact: ${subject}`;
+            const emailBody = `Dear Haanim,
+
+You have received a new message through your portfolio website.
+
+CONTACT DETAILS:
+Name: ${name}
+Email: ${email}
+Subject: ${subject}
+
+MESSAGE:
+${message}
+
+---
+This message was sent through your portfolio contact form.
+Please reply directly to: ${email}
+
+Best regards,
+Portfolio Contact System`;
+
+            // Create mailto link
+            const mailtoLink = `mailto:haanimpietersen@gmail.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
+            
+            // Open email client
+            window.location.href = mailtoLink;
+            
+            // Show success feedback
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalContent = submitBtn.innerHTML;
+            
+            submitBtn.innerHTML = '<i class="fas fa-check-circle"></i> Message Sent Successfully!';
+            submitBtn.style.background = 'linear-gradient(135deg, #10b981, #059669)';
+            submitBtn.disabled = true;
+            
+            setTimeout(() => {
+                submitBtn.innerHTML = originalContent;
+                submitBtn.style.background = '';
+                submitBtn.disabled = false;
+                this.reset();
+            }, 4000);
+        });
+
+        // Enhanced CV download functionality
+        document.getElementById('downloadCV').addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const cvContent = `HAANIM PIETERSEN
+Software Development Student | Human Rights Advocate | Tech Professional
+
+═══════════════════════════════════════════════════════════════════════════════
+
+CONTACT INFORMATION
+Location: Cape Town, South Africa
+Phone: +27 71 433 2419
+Email: haanimpietersen@gmail.com
+LinkedIn: linkedin.com/in/haanim-pietersen-172bb9264
+Portfolio: linktr.ee/haanim.pietersen
+GitHub: github.com/HaanimP
+
+═══════════════════════════════════════════════════════════════════════════════
+
+EDUCATION
+
+University of the Western Cape                                      March 2025 - Present
+Software Development Student
+Future Innovation Lab powered by Samsung
+• Focus: Advanced Software Engineering, Mobile Development, Cloud Computing
+
+Life Choices Academy                                           September 2023 - March 2024
+Certificate of Excellence in Web Development
+• Comprehensive training in full-stack web development
+• Specialized in modern JavaScript frameworks and responsive design
+
+South Peninsula High School                                    January 2018 - December 2022
+National Senior Certificate
+• Academic Excellence in Mathematics and Physical Sciences
+
+═══════════════════════════════════════════════════════════════════════════════
+
+PROFESSIONAL EXPERIENCE
+
+Social Media Manager | The Three Stars                    February 2025 - May 2025
+• Developed and executed comprehensive social media strategies
+• Managed client relationships and provided strategic consultation
+• Increased audience engagement by 150%
+
+Business Team Lead | The Three Stars                     December 2024 - May 2025
+• Led agile development teams using Scrum methodology
+• Conducted daily standups and sprint planning sessions
+• Improved team productivity by 40%
+
+Web Designer | The Three Stars                          November 2024 - May 2025
+• Created wireframes, prototypes, and user interface designs
+• Developed responsive web solutions
+• Collaborated with development teams
+
+Assistant Lecturer | LC Studio                           October 2024 - November 2024
+• Facilitated educational workshops on web development
+• Provided technical guidance and mentorship
+• Developed curriculum materials
+
+Software Engineer Intern | LC Studio                     April 2024 - November 2024
+• Advanced technical proficiency in Linux, Python, and C++
+• Participated in Scrum ceremonies
+• Developed innovative project prototypes
+
+Generated: ${new Date().toLocaleDateString('en-ZA')}`;
+
+            // Create and download file
+            const blob = new Blob([cvContent], { type: 'text/plain;charset=utf-8' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `Haanim_Pietersen_CV_${new Date().getFullYear()}.txt`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            window.URL.revokeObjectURL(url);
+            
+            // Visual feedback
+            const btn = this;
+            const originalContent = btn.innerHTML;
+            
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Preparing CV...';
+            btn.disabled = true;
+            
+            setTimeout(() => {
+                btn.innerHTML = '<i class="fas fa-check-circle"></i> CV Downloaded!';
+                
+                setTimeout(() => {
+                    btn.innerHTML = originalContent;
+                    btn.disabled = false;
+                }, 2500);
+            }, 1000);
+        });
+
+        // Initialize enhanced animations
+        window.addEventListener('load', function() {
+            // Add reveal animations to sections
+            const revealObserver = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { 
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+
+            // Apply reveal animation to sections
+            document.querySelectorAll('section').forEach(section => {
+                section.style.opacity = '0';
+                section.style.transform = 'translateY(30px)';
+                section.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+                revealObserver.observe(section);
+            });
+        });
+
+        // Presentation button functionality (placeholder for now)
+        document.querySelectorAll('.presentation-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Show coming soon message
+                const originalContent = this.innerHTML;
+                this.innerHTML = '<i class="fas fa-hourglass-half"></i> Coming Soon';
+                this.style.background = '#6b7280';
+                
+                setTimeout(() => {
+                    this.innerHTML = originalContent;
+                    this.style.background = '';
+                }, 2000);
+            });
+        });
+    </script>
 </body>
 </html>
