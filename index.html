@@ -221,91 +221,344 @@
             transform: scale(1.02);
         }
 
-        /* Palestine Section */
-        .palestine {
-            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
-            color: white;
-            position: relative;
-            padding: 6rem 0;
-        }
+/* Humanitarian Section - Equal Height Cards Fix */
+.humanitarian {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    color: white;
+    position: relative;
+    padding: 6rem 0;
+}
 
-        .palestine-content {
-            text-align: center;
-        }
+.humanitarian-content {
+    text-align: center;
+}
 
-        .palestine .section-title {
-            color: white;
-        }
+.humanitarian .section-title {
+    color: white;
+    font-size: clamp(2rem, 5vw, 2.5rem);
+    padding: 0 1rem;
+}
 
-        .palestine .section-subtitle {
-            color: rgba(255,255,255,0.8);
-        }
+.humanitarian .section-subtitle {
+    color: rgba(255,255,255,0.8);
+    font-size: clamp(1rem, 2.5vw, 1.1rem);
+    padding: 0 1rem;
+}
 
-        .palestine-text {
-            font-size: clamp(1rem, 2.2vw, 1.1rem);
-            line-height: 1.8;
-            color: rgba(255,255,255,0.9);
-            margin-bottom: 3rem;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
+.humanitarian-text {
+    font-size: clamp(1rem, 2.2vw, 1.1rem);
+    line-height: 1.8;
+    color: rgba(255,255,255,0.9);
+    margin-bottom: 3rem;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 1.5rem;
+}
 
-        .palestine-gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 1.5rem;
-            margin: 3rem 0;
-        }
+.causes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin: 3rem 0;
+    padding: 0 1rem;
+    align-items: stretch; /* KEY FIX: Makes all cards same height */
+}
 
-        .gallery-item {
-            height: 140px;
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 12px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-        }
+.cause-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 16px;
+    padding: 2.5rem 2rem;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    display: flex; /* KEY FIX: Flexbox layout */
+    flex-direction: column; /* KEY FIX: Stack items vertically */
+    height: 100%; /* KEY FIX: Fill grid cell height */
+}
 
-        .gallery-item:hover {
-            background: rgba(255,255,255,0.1);
-            transform: translateY(-4px);
-        }
+.cause-card:hover {
+    background: rgba(255,255,255,0.1);
+    transform: translateY(-4px);
+}
 
-        .gallery-item i {
-            font-size: 1.75rem;
-            margin-bottom: 0.75rem;
-            color: #ff4444;
-        }
+.cause-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    border-radius: 16px;
+    transition: transform 0.3s ease;
+    flex-shrink: 0; /* KEY FIX: Prevent icon from shrinking */
+}
 
-        .gallery-item span {
-            font-weight: 500;
-            font-size: 0.9rem;
-        }
+.cause-card:hover .cause-icon {
+    transform: scale(1.1);
+}
 
-        .btn-palestine {
-            background: linear-gradient(135deg, #ff4444, #cc0000);
-            color: white;
-            padding: 1rem 2rem;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.75rem;
-            transition: all 0.3s ease;
-            box-shadow: var(--shadow-medium);
-        }
+.cause-card.palestine .cause-icon {
+    background: linear-gradient(135deg, #ff4444, #cc0000);
+}
 
-        .btn-palestine:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-heavy);
-        }
+.cause-card.sudan .cause-icon {
+    background: linear-gradient(135deg, #009639, #ffcc00);
+}
+
+.cause-card.gbv .cause-icon {
+    background: linear-gradient(135deg, #9333ea, #c026d3);
+}
+
+.cause-card h3 {
+    font-size: clamp(1.25rem, 3vw, 1.5rem);
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: white;
+    flex-shrink: 0; /* KEY FIX: Prevent title from shrinking */
+}
+
+.cause-card p {
+    color: rgba(255,255,255,0.8);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+    font-size: clamp(0.95rem, 2vw, 1rem);
+    flex-grow: 1; /* KEY FIX: Let description take available space */
+    display: -webkit-box; /* For text clamping */
+    -webkit-line-clamp: 4; /* Limit to 4 lines */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.cause-stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    flex-shrink: 0; /* KEY FIX: Prevent stats from shrinking */
+    min-height: 80px; /* KEY FIX: Minimum height for stat boxes container */
+}
+
+.stat-box {
+    background: rgba(255,255,255,0.08);
+    padding: 1rem;
+    border-radius: 8px;
+    text-align: center;
+    transition: all 0.3s ease;
+    display: flex; /* KEY FIX: Flexbox for equal height */
+    flex-direction: column; /* KEY FIX: Stack icon and text */
+    align-items: center; /* KEY FIX: Center content */
+    justify-content: center; /* KEY FIX: Center vertically */
+    min-height: 70px; /* KEY FIX: Ensure consistent height */
+}
+
+.stat-box:hover {
+    background: rgba(255,255,255,0.12);
+}
+
+.stat-box i {
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.stat-box span {
+    font-weight: 500;
+    font-size: clamp(0.8rem, 1.8vw, 0.85rem);
+    display: block;
+}
+
+.cause-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    font-size: clamp(0.9rem, 2vw, 1rem);
+    width: 100%;
+    max-width: 200px;
+    margin: 0 auto;
+    flex-shrink: 0; /* KEY FIX: Prevent button from shrinking */
+}
+
+.cause-card.palestine .cause-link {
+    background: linear-gradient(135deg, #ff4444, #cc0000);
+}
+
+.cause-card.sudan .cause-link {
+    background: linear-gradient(135deg, #009639, #006b29);
+}
+
+.cause-card.gbv .cause-link {
+    background: linear-gradient(135deg, #9333ea, #7e22ce);
+}
+
+.cause-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+}
+
+/* Tablet Screens (768px - 1024px) */
+@media (max-width: 1024px) {
+    .humanitarian {
+        padding: 5rem 0;
+    }
+    
+    .causes-grid {
+        gap: 1.5rem;
+    }
+    
+    .cause-card {
+        padding: 2rem 1.5rem;
+    }
+    
+    .cause-card p {
+        -webkit-line-clamp: 5; /* Allow more lines on tablet */
+    }
+    
+    .cause-stats {
+        min-height: 75px;
+    }
+    
+    .stat-box {
+        min-height: 65px;
+    }
+}
+
+/* Mobile Screens (480px - 768px) */
+@media (max-width: 768px) {
+    .humanitarian {
+        padding: 4rem 0;
+    }
+    
+    .humanitarian-text {
+        margin-bottom: 2rem;
+    }
+    
+    .causes-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        margin: 2rem 0;
+    }
+    
+    .cause-card {
+        padding: 2rem 1.5rem;
+        height: auto; /* Allow natural height on mobile */
+    }
+    
+    .cause-card p {
+        -webkit-line-clamp: unset; /* Show full text on mobile */
+        display: block;
+    }
+    
+    .cause-icon {
+        width: 70px;
+        height: 70px;
+        font-size: 2rem;
+    }
+    
+    .cause-stats {
+        gap: 0.75rem;
+        min-height: 70px;
+    }
+    
+    .stat-box {
+        padding: 0.75rem;
+        min-height: 60px;
+    }
+    
+    .cause-link {
+        max-width: 100%;
+    }
+}
+
+/* Small Mobile Screens (320px - 480px) */
+@media (max-width: 480px) {
+    .humanitarian {
+        padding: 3rem 0;
+    }
+    
+    .humanitarian .section-title {
+        margin-bottom: 0.75rem;
+    }
+    
+    .humanitarian-text {
+        margin-bottom: 1.5rem;
+        padding: 0 1rem;
+    }
+    
+    .causes-grid {
+        padding: 0 0.5rem;
+        gap: 1.25rem;
+        margin: 1.5rem 0;
+    }
+    
+    .cause-card {
+        padding: 1.75rem 1.25rem;
+    }
+    
+    .cause-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 1.75rem;
+        margin-bottom: 1rem;
+    }
+    
+    .cause-card h3 {
+        margin-bottom: 0.75rem;
+    }
+    
+    .cause-card p {
+        margin-bottom: 1.25rem;
+    }
+    
+    .cause-stats {
+        gap: 0.5rem;
+        margin-bottom: 1.25rem;
+        min-height: 65px;
+    }
+    
+    .stat-box {
+        padding: 0.5rem;
+        min-height: 55px;
+    }
+    
+    .stat-box i {
+        margin-bottom: 0.25rem;
+    }
+    
+    .cause-link {
+        padding: 0.65rem 1.25rem;
+    }
+}
+
+/* Extra Small Screens (< 320px) */
+@media (max-width: 320px) {
+    .humanitarian {
+        padding: 2.5rem 0;
+    }
+    
+    .causes-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .cause-card {
+        padding: 1.5rem 1rem;
+    }
+    
+    .cause-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+    }
+}
 
         /* Sections */
         section {
@@ -1288,7 +1541,7 @@
             <div class="logo">Haanim Pietersen</div>
             <ul class="nav-links">
                 <li><a href="#home" class="nav-link">Home</a></li>
-                <li><a href="#palestine" class="nav-link">Palestine</a></li>
+                <li><a href="#humanitarian" class="nav-link">Humanitarian</a></li>
                 <li><a href="#about" class="nav-link">About</a></li>
                 <li><a href="#skills" class="nav-link">Skills</a></li>
                 <li><a href="#projects" class="nav-link">Projects</a></li>
@@ -1329,41 +1582,89 @@
         </div>
     </section>
 
-    <!-- Palestine Section -->
-    <section id="palestine" class="palestine">
-        <div class="container">
-            <div class="palestine-content">
-                <h2 class="section-title">Standing for Palestine</h2>
-                <p class="section-subtitle">Using technology and platform to advocate for human rights and justice.</p>
-                <div class="palestine-text">
-                    <p>As someone who believes in human rights and justice for all, I stand firmly with the Palestinian people in their struggle for freedom, dignity, and self-determination. Technology should be used to amplify voices of the oppressed and create awareness about injustices happening around the world.</p>
-                    <p>Through my platform and skills, I aim to contribute to raising awareness, supporting digital advocacy initiatives, and fostering meaningful conversations about human rights and social justice.</p>
-                </div>
-                <div class="palestine-gallery">
-                    <div class="gallery-item">
-                        <i class="fas fa-heart"></i>
-                        <span>Solidarity</span>
-                    </div>
-                    <div class="gallery-item">
-                        <i class="fas fa-fist-raised"></i>
-                        <span>Resistance</span>
-                    </div>
-                    <div class="gallery-item">
-                        <i class="fas fa-dove"></i>
-                        <span>Peace</span>
-                    </div>
-                    <div class="gallery-item">
+    <!-- Humanitarian Section with Balanced Text -->
+<section id="humanitarian" class="humanitarian">
+    <div class="container">
+        <div class="humanitarian-content">
+            <h2 class="section-title">Stand for Humanity</h2>
+            <p class="section-subtitle">Using my platform to advocate for human rights, justice, and dignity for all.</p>
+            <p class="humanitarian-text">
+                As a technology professional, I believe in using my voice and skills to stand for those who face injustice. I am committed to raising awareness about critical humanitarian crises and social issues that demand our attention and action.
+            </p>
+
+            <div class="causes-grid">
+                <!-- Palestine Card -->
+                <div class="cause-card palestine">
+                    <div class="cause-icon">
                         <i class="fas fa-flag"></i>
-                        <span>Freedom</span>
                     </div>
+                    <h3>Free Palestine</h3>
+                    <p>Standing with the Palestinian people in their fight for freedom and dignity. Every voice matters in the pursuit of justice and peace.</p>
+                    <div class="cause-stats">
+                        <div class="stat-box">
+                            <i class="fas fa-heart"></i>
+                            <span>Solidarity</span>
+                        </div>
+                        <div class="stat-box">
+                            <i class="fas fa-fist-raised"></i>
+                            <span>Resistance</span>
+                        </div>
+                    </div>
+                    <a href="https://www.instagram.com/eye.on.palestine/" target="_blank" class="cause-link">
+                        <i class="fab fa-instagram"></i>
+                        Learn More
+                    </a>
                 </div>
-                <a href="https://www.instagram.com/eye.on.palestine/" target="_blank" class="btn-palestine">
-                    <i class="fab fa-instagram"></i>
-                    Learn More
-                </a>
+
+                <!-- Sudan Card -->
+                <div class="cause-card sudan">
+                    <div class="cause-icon">
+                        <i class="fas fa-hand-holding-heart"></i>
+                    </div>
+                    <h3>Support Sudan</h3>
+                    <p>Raising awareness about the ongoing genocide and humanitarian crisis in Sudan. The world must not look away from the suffering of the Sudanese people.</p>
+                    <div class="cause-stats">
+                        <div class="stat-box">
+                            <i class="fas fa-dove"></i>
+                            <span>Peace</span>
+                        </div>
+                        <div class="stat-box">
+                            <i class="fas fa-hands-helping"></i>
+                            <span>Support</span>
+                        </div>
+                    </div>
+                    <a href="https://www.instagram.com/eye.on.sudan/" target="_blank" class="cause-link">
+                        <i class="fab fa-instagram"></i>
+                        Learn More
+                    </a>
+                </div>
+
+                <!-- GBV Card -->
+                <div class="cause-card gbv">
+                    <div class="cause-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>End Gender-Based Violence</h3>
+                    <p>Taking a stand against all forms of gender-based violence. Creating a safer world starts with speaking up, supporting survivors, and demanding change.</p>
+                    <div class="cause-stats">
+                        <div class="stat-box">
+                            <i class="fas fa-user-shield"></i>
+                            <span>Protection</span>
+                        </div>
+                        <div class="stat-box">
+                            <i class="fas fa-balance-scale"></i>
+                            <span>Justice</span>
+                        </div>
+                    </div>
+                    <a href="https://www.instagram.com/gbv.awareness/" target="_blank" class="cause-link">
+                        <i class="fab fa-instagram"></i>
+                        Take Action
+                    </a>
+                </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
     <!-- About Section -->
     <section id="about" class="about">
@@ -1718,7 +2019,7 @@
             <div class="timeline">
                 <div class="timeline-item">
                     <div class="timeline-content">
-                        <div class="timeline-date">March 2025 - Present</div>
+                        <div class="timeline-date">March 2025 - November 2025</div>
                         <h3 class="timeline-title">Software Development Student</h3>
                         <div class="timeline-company">University of the Western Cape - Future Innovation Lab powered by Samsung</div>
                         <p class="timeline-description">Currently pursuing advanced studies in software development with focus on cutting-edge technologies, innovation, and practical application of software engineering principles.</p>
