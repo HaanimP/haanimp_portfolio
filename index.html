@@ -311,6 +311,22 @@
     background: linear-gradient(135deg, #9333ea, #c026d3);
 }
 
+.cause-card.congo .cause-icon {
+    background: linear-gradient(135deg, #0066cc, #ff8800);
+}
+
+.cause-card.ice .cause-icon {
+    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+}
+
+.cause-card.water .cause-icon {
+    background: linear-gradient(135deg, #06b6d4, #0891b2);
+}
+
+.cause-card.epstein .cause-icon {
+    background: linear-gradient(135deg, #dc2626, #991b1b);
+}
+
 .cause-card h3 {
     font-size: clamp(1.25rem, 3vw, 1.5rem);
     font-weight: 600;
@@ -326,7 +342,7 @@
     font-size: clamp(0.95rem, 2vw, 1rem);
     flex-grow: 1; /* KEY FIX: Let description take available space */
     display: -webkit-box; /* For text clamping */
-    -webkit-line-clamp: 4; /* Limit to 4 lines */
+    -webkit-line-clamp: 6; /* Limit to 6 lines */
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
@@ -397,6 +413,22 @@
 
 .cause-card.gbv .cause-link {
     background: linear-gradient(135deg, #9333ea, #7e22ce);
+}
+
+.cause-card.congo .cause-link {
+    background: linear-gradient(135deg, #0066cc, #ff8800);
+}
+
+.cause-card.ice .cause-link {
+    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+}
+
+.cause-card.water .cause-link {
+    background: linear-gradient(135deg, #06b6d4, #0891b2);
+}
+
+.cause-card.epstein .cause-link {
+    background: linear-gradient(135deg, #dc2626, #991b1b);
 }
 
 .cause-link:hover {
@@ -1379,10 +1411,6 @@
                 padding: 4rem 0;
             }
 
-            .palestine {
-                padding: 4rem 0;
-            }
-
             .skills-grid,
             .presentations-grid {
                 grid-template-columns: 1fr;
@@ -1563,8 +1591,8 @@
         <div class="hero-content">
             <div class="hero-text">
                 <h1>Haanim Pietersen</h1>
-                <p class="subtitle">Software Development Student | Standing for Human Rights & Palestinian Freedom</p>
-                <p class="description">Dedicated software development student at the University of the Western Cape with expertise in web design, social media management, and software engineering. Currently focusing on studies while helping others through practical digital solutions.</p>
+                <p class="subtitle">Software Development Intern | Standing for Human Rights & Palestinian Freedom</p>
+                <p class="description">I'm a software development intern at the School of Pharmacy UWC with a passion for creating meaningful digital solutions. With expertise spanning web design, social media management, software engineering, and team leadership, I bring a versatile skill set to every project. Currently managing stakeholder communication and UX improvements for regulatory technology initiatives while leveraging my background in business leadership, design, and development. Committed to using technology as a force for positive change and human rights advocacy.</p>
                 <div class="btn-group">
                     <a href="#contact" class="btn btn-primary">
                         <i class="fas fa-envelope"></i>
@@ -1659,6 +1687,98 @@
                     <a href="https://www.instagram.com/gbv.awareness/" target="_blank" class="cause-link">
                         <i class="fab fa-instagram"></i>
                         Take Action
+                    </a>
+                </div>
+
+                <!-- Congo Card -->
+                <div class="cause-card congo">
+                    <div class="cause-icon">
+                        <i class="fas fa-flag"></i>
+                    </div>
+                    <h3>Support Congo</h3>
+                    <p>Standing with the people of the Democratic Republic of the Congo in their struggle for peace, stability, and justice. Raising awareness about ongoing conflicts and humanitarian needs.</p>
+                    <div class="cause-stats">
+                        <div class="stat-box">
+                            <i class="fas fa-hand-holding-heart"></i>
+                            <span>Compassion</span>
+                        </div>
+                        <div class="stat-box">
+                            <i class="fas fa-earth-africa"></i>
+                            <span>Solidarity</span>
+                        </div>
+                    </div>
+                    <a href="#" class="cause-link">
+                        <i class="fas fa-heart"></i>
+                        Learn More
+                    </a>
+                </div>
+
+                <!-- ICE Card -->
+                <div class="cause-card ice">
+                    <div class="cause-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Abolish ICE</h3>
+                    <p>Opposing immigration enforcement and detention systems that separate families and violate human rights. Advocating for immigration justice and protecting immigrant communities.</p>
+                    <div class="cause-stats">
+                        <div class="stat-box">
+                            <i class="fas fa-family"></i>
+                            <span>Family Unity</span>
+                        </div>
+                        <div class="stat-box">
+                            <i class="fas fa-gavel"></i>
+                            <span>Justice</span>
+                        </div>
+                    </div>
+                    <a href="#" class="cause-link">
+                        <i class="fas fa-heart"></i>
+                        Learn More
+                    </a>
+                </div>
+
+                <!-- Water Conservation Card -->
+                <div class="cause-card water">
+                    <div class="cause-icon">
+                        <i class="fas fa-droplet"></i>
+                    </div>
+                    <h3>Save Our Water</h3>
+                    <p>Advocating for water conservation and sustainable resource management in the face of AI technology's growing environmental impact. Clean water is a human right.</p>
+                    <div class="cause-stats">
+                        <div class="stat-box">
+                            <i class="fas fa-leaf"></i>
+                            <span>Sustainability</span>
+                        </div>
+                        <div class="stat-box">
+                            <i class="fas fa-earth"></i>
+                            <span>Environment</span>
+                        </div>
+                    </div>
+                    <a href="#" class="cause-link">
+                        <i class="fas fa-heart"></i>
+                        Learn More
+                    </a>
+                </div>
+
+                <!-- Epstein Files Card -->
+                <div class="cause-card epstein">
+                    <div class="cause-icon">
+                        <i class="fas fa-gavel"></i>
+                    </div>
+                    <h3>Release the Epstein Files</h3>
+                    <p>Demanding transparency and accountability through the full release of the Epstein documents. Truth and justice for all survivors. Exposing systemic abuse and the powerful figures who enabled it.</p>
+                    <div class="cause-stats">
+                        <div class="stat-box">
+                            <i class="fas fa-balance-scale"></i>
+                            <span>Justice</span>
+                        </div>
+                        <div class="stat-box">
+                            <i class="fas fa-eye"></i>
+                            <span>Transparency</span>
+                        </div>
+                    </div>
+                    <a href="#" class="cause-link">
+                        <i class="fas fa-heart"></i>
+                        Learn More
                     </a>
                 </div>
             </div>
@@ -1967,6 +2087,14 @@
             <h2 class="section-title">Professional Experience</h2>
             <p class="section-subtitle">A track record of leadership, technical excellence, and continuous growth in the technology sector.</p>
             <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Dec 2025 - Present</div>
+                        <h3 class="timeline-title">Software Development Intern</h3>
+                        <div class="timeline-company">School of Pharmacy UWC, The Gatees Foundation</div>
+                        <p class="timeline-description">Managed internal and stakeholder communication for a confidential regulatory technology project while contributing to improving clarity, usability and workflow logic in a high-stakes digital environment. Assisted in preparing structured updates and reviews for senior academic and industry stakeholders.</p>
+                    </div>
+                </div>
                 <div class="timeline-item">
                     <div class="timeline-content">
                         <div class="timeline-date">Feb 2025 - May 2025</div>
