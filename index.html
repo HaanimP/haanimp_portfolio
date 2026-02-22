@@ -763,6 +763,9 @@
             box-shadow: var(--shadow-light);
             border: 1px solid var(--border-color);
             transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
         }
 
         .project-card:hover {
@@ -798,6 +801,9 @@
 
         .project-content {
             padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
         }
 
         .project-content h3 {
@@ -811,6 +817,12 @@
             color: var(--text-secondary);
             line-height: 1.6;
             margin-bottom: 1.5rem;
+            flex-grow: 1;
+            height: 75px;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
         }
 
         .project-tech {
@@ -818,6 +830,7 @@
             flex-wrap: wrap;
             gap: 0.5rem;
             margin-bottom: 1.5rem;
+            margin-top: auto;
         }
 
         .tech-tag {
@@ -1113,6 +1126,108 @@
         }
 
         /* Social Section */
+        .social-section {
+            background: var(--bg-primary);
+        }
+
+        /* Services Section */
+        .services {
+            background: var(--bg-primary);
+        }
+
+        .services-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .services-intro {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .services-intro p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .service-category {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            padding: 2rem;
+            border-radius: 16px;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-light);
+        }
+
+        .service-category:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .service-category h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--accent-color);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .service-list {
+            list-style: none;
+        }
+
+        .service-list li {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .service-list li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-weight: bold;
+            font-size: 1.25rem;
+        }
+
+        .services-note {
+            background: linear-gradient(135deg, rgba(139, 69, 19, 0.1), rgba(210, 105, 30, 0.1));
+            border-left: 4px solid var(--accent-color);
+            padding: 2rem;
+            border-radius: 8px;
+            margin-top: 3rem;
+        }
+
+        .services-note h4 {
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .services-note p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 0.75rem;
+        }
+
+        .services-note p:last-child {
+            margin-bottom: 0;
+        }
+
         .social-section {
             background: var(--bg-primary);
         }
@@ -1466,7 +1581,64 @@
             }
 
             .social-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 640px) {
+            .nav-container,
+            .container,
+            .hero-content {
+                padding-left: 1.5rem;
+                padding-right: 1.5rem;
+            }
+
+            .nav-container {
+                padding: 0.75rem 1.5rem;
+            }
+
+            .about-stats {
                 grid-template-columns: 1fr;
+            }
+
+            .btn-group {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .contact-info,
+            .contact-form {
+                padding: 2rem;
+            }
+
+            .testimonial-slide {
+                padding: 2rem 1.5rem;
+            }
+
+            .palestine-gallery {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+
+            .gallery-item {
+                height: 120px;
+            }
+
+            .social-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .services-note {
+                padding: 1.5rem;
             }
 
             .project-links {
@@ -1576,6 +1748,7 @@
                 <li><a href="#presentations" class="nav-link">Presentations</a></li>
                 <li><a href="#experience" class="nav-link">Experience</a></li>
                 <li><a href="#education" class="nav-link">Education</a></li>
+                <li><a href="#services" class="nav-link">Services</a></li>
                 <li><a href="#testimonials" class="nav-link">Testimonials</a></li>
                 <li><a href="#socials" class="nav-link">Socials</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
@@ -1916,6 +2089,49 @@
             <div class="projects-grid">
                 <div class="project-card">
                     <div class="project-image">
+                        <i class="fas fa-heart-pulse placeholder-icon"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>DiaConnect</h3>
+                        <p>A diabetes tracking app with AI chat, caretaker alerts, and hidden sugars detection. 2025 Best Overall Technical Project winner.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">.NET MAUI</span>
+                            <span class="tech-tag">C#</span>
+                            <span class="tech-tag">XAML</span>
+                            <span class="tech-tag">ASP.NET</span>
+                            <span class="tech-tag">Azure</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/HaanimP/DiaConnectApi.git" class="project-link primary" target="_blank">
+                                <i class="fas fa-external-link-alt"></i>
+                                View Project
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <i class="fab fa-pinterest placeholder-icon"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Pinterest App</h3>
+                        <p>A Pinterest-inspired application for discovering, sharing, and organizing visual content and inspiration.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">XAML</span>
+                            <span class="tech-tag">C#</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/HaanimP/Pinterest-App-Assignment.git" class="project-link primary" target="_blank">
+                                <i class="fas fa-external-link-alt"></i>
+                                View Project
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
                         <i class="fas fa-laptop-code placeholder-icon"></i>
                     </div>
                     <div class="project-content">
@@ -2168,6 +2384,50 @@
                         <div class="timeline-company">South Peninsula High School</div>
                         <p class="timeline-description">Completed secondary education with strong academic performance, laying the foundation for future studies in technology and computer science.</p>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="section-title">Freelance Web & Digital Services</h2>
+            <p class="section-subtitle">I help individuals and small brands set up clean, affordable websites, digital profiles, and more.</p>
+            
+            <div class="services-content">
+                <div class="services-intro">
+                    <p>Whether you need a professional online presence or digital assistance, I provide tailored solutions at transparent, competitive prices.</p>
+                </div>
+
+                <div class="services-grid">
+                    <!-- Services Category 1 -->
+                    <div class="service-category">
+                        <h3><i class="fas fa-user-circle"></i> Professional Setup</h3>
+                        <ul class="service-list">
+                            <li>CV & LinkedIn Setup – R200</li>
+                            <li>Branding Package – R300</li>
+                            <li>Consultations – R300 per Hour</li>
+                        </ul>
+                    </div>
+
+                    <!-- Services Category 2 -->
+                    <div class="service-category">
+                        <h3><i class="fas fa-globe"></i> Website Solutions</h3>
+                        <ul class="service-list">
+                            <li>Starter Website – R500</li>
+                            <li>Business Website – R1500</li>
+                            <li>Website Maintenance – R300 per Month</li>
+                            <li>Website Setup Assistance – R400</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="services-note">
+                    <h4><i class="fas fa-info-circle"></i> Full Transparency Guarantee</h4>
+                    <p>I guide you through setting up your own domain & hosting, so you understand the costs directly.</p>
+                    <p>I leave domain & hosting payments in your hands for complete transparency.</p>
+                    <p>You pay the providers directly, and I assist with the setup.</p>
                 </div>
             </div>
         </div>
