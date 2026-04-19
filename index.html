@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Haanim Pietersen — Software Developer</title>
+<title>Haanim Pietersen - Software Developer</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 <style>
@@ -161,15 +161,20 @@ nav{position:fixed;top:0;width:100%;z-index:1000;background:rgba(245,240,232,.95
 .testi-btn:hover{background:var(--ink);color:var(--white);border-color:var(--ink)}
 
 /* SOCIALS */
-.socials-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-top:5rem}
-.social-card{padding:2.5rem 2rem;text-align:center;border:1px solid var(--rule);text-decoration:none;color:inherit;transition:all .3s;background:var(--white)}
-.social-card:hover{border-color:var(--gold);transform:translateY(-4px)}
-.social-icon{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.2rem;color:white;margin:0 auto 1.2rem}
-.social-card.instagram .social-icon{background:linear-gradient(45deg,#405de6,#833ab4,#e1306c,#fd1d1d)}
-.social-card.tiktok .social-icon{background:linear-gradient(45deg,#010101,#69c9d0)}
+.socials-section{background:linear-gradient(135deg,rgba(184,145,58,.04) 0%,rgba(184,145,58,.02) 100%)}
+.socials-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;margin-top:5rem}
+.social-card{padding:3rem 2rem;text-align:center;border:1px solid var(--rule);text-decoration:none;color:inherit;transition:all .4s cubic-bezier(0.4,0,0.2,1);background:var(--white);position:relative;overflow:hidden}
+.social-card::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(135deg,transparent,rgba(184,145,58,.04));opacity:0;transition:opacity .4s}
+.social-card:hover{border-color:var(--gold);transform:translateY(-6px);box-shadow:0 20px 60px rgba(184,145,58,.12)}
+.social-card:hover::before{opacity:1}
+.social-card:hover .social-icon{transform:scale(1.12) rotate(5deg)}
+.social-icon{width:64px;height:64px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.5rem;color:white;margin:0 auto 1.8rem;transition:transform .4s;position:relative;z-index:1;box-shadow:0 12px 32px rgba(0,0,0,.15)}
+.social-card.instagram .social-icon{background:linear-gradient(135deg,#405de6,#833ab4,#e1306c,#fd1d1d)}
+.social-card.tiktok .social-icon{background:linear-gradient(135deg,#010101,#25f4ee,#69c9d0)}
 .social-card.linkedin .social-icon{background:linear-gradient(135deg,#0077b5,#00a0dc)}
 .social-card.github .social-icon{background:linear-gradient(135deg,#333,#24292e)}
-.social-card h3{font-size:.83rem;font-weight:500;letter-spacing:.06em}
+.social-card h3{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:500;letter-spacing:.06em;margin-bottom:.8rem;position:relative;z-index:1}
+.social-card p{font-size:.78rem;color:var(--muted);line-height:1.6;position:relative;z-index:1}
 
 /* CONTACT */
 .contact-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:5rem;margin-top:5rem;align-items:start}
@@ -271,10 +276,10 @@ footer{background:var(--ink);color:rgba(255,255,255,.5);padding:4rem 0 2.5rem}
 <!-- HERO -->
 <section id="home" class="hero">
   <div class="hero-left">
-    <p class="hero-eyebrow">Portfolio — 2026</p>
+    <p class="hero-eyebrow">Portfolio 2026</p>
     <h1 class="hero-name">Haanim<br><em>Pietersen</em></h1>
     <p class="hero-title">Software Development Intern &amp; Human Rights Advocate</p>
-    <p class="hero-desc">Software Development Intern at the School of Pharmacy, UWC — with expertise spanning full-stack web development, mobile app development, cloud computing, social media management, and team leadership. Committed to building meaningful digital solutions and standing for justice.</p>
+    <p class="hero-desc">Software Development Intern at the School of Pharmacy, UWC with expertise spanning full-stack web development, mobile app development, cloud computing, social media management, and team leadership. Committed to building meaningful digital solutions and standing for justice.</p>
     <div class="hero-actions">
       <a href="#contact" class="btn-gold"><i class="fas fa-envelope"></i>Get In Touch</a>
       <a href="/files/Haanim 2025 CV.pdf" class="btn-outline" id="downloadCV"><i class="fas fa-download"></i>Download CV</a>
@@ -305,13 +310,13 @@ footer{background:var(--ink);color:rgba(255,255,255,.5);padding:4rem 0 2.5rem}
       </div>
       <div class="about-text reveal">
         <p>I am a Software Development Intern at the School of Pharmacy, University of the Western Cape, with 3+ years of professional experience in technology. My diverse skill set spans full-stack web development, mobile app development (.NET MAUI), cloud computing (Azure), social media management, and software engineering.</p>
-        <p>A high-achiever and award-winning developer — I earned Distinctions (Summa Cum Laude) in Introduction to Multi-Platform Software Development and Digital Social Innovation for Impact. I was recognised as Top Student for Digital Social Innovation for Impact at Samsung's Future Innovation Lab, and won the 2025 Best Overall Technical Project award for DiaConnect.</p>
+        <p>A high-achiever and award-winning developer. I earned Distinctions (Summa Cum Laude) in Introduction to Multi-Platform Software Development and Digital Social Innovation for Impact. I was recognised as Top Student for Digital Social Innovation for Impact at Samsung's Future Innovation Lab, and won the 2025 Best Overall Technical Project award for DiaConnect.</p>
         <p>My professional journey includes leading teams, managing complex digital projects, stakeholder communication, UX design, and building scalable solutions that solve real-world problems across 30+ delivered projects.</p>
-        <p>I'm fluent in English and Afrikaans, with basic proficiency in German and Mandarin. Beyond technology, I'm deeply committed to human rights advocacy — standing firmly for Palestinian freedom and justice, leveraging my platform to raise awareness for causes that matter.</p>
+        <p>I'm fluent in English and Afrikaans, with basic proficiency in German and Mandarin. Beyond technology, I'm deeply committed to human rights advocacy, standing firmly for Palestinian freedom and justice, leveraging my platform to raise awareness for causes that matter.</p>
         <div class="award-row">
           <span class="award-badge"><i class="fas fa-trophy"></i> 2025 Best Overall Technical Project</span>
           <span class="award-badge"><i class="fas fa-star"></i> Summa Cum Laude</span>
-          <span class="award-badge"><i class="fas fa-medal"></i> Top Student — Samsung FIL</span>
+          <span class="award-badge"><i class="fas fa-medal"></i> Top Student - Samsung FIL</span>
         </div>
       </div>
     </div>
@@ -342,30 +347,30 @@ footer{background:var(--ink);color:rgba(255,255,255,.5);padding:4rem 0 2.5rem}
     <div class="projects-grid">
       <div class="project-card reveal">
         <div class="proj-img"><i class="fas fa-car-side"></i></div>
-        <div class="proj-body"><p class="proj-num">Project — 01</p><h3>Drive Sure</h3><p>A car marketplace support platform for helping users find, assess, and purchase vehicles with confidence.</p><div class="proj-tech"><span class="tag">Web Platform</span><span class="tag">Marketplace</span></div><a href="https://drive-sure-lyart.vercel.app/" class="proj-link" target="_blank">Live Demo <i class="fas fa-arrow-right"></i></a></div>
+        <div class="proj-body"><p class="proj-num">Project 01</p><h3>Drive Sure</h3><p>A car marketplace support platform for helping users find, assess, and purchase vehicles with confidence.</p><div class="proj-tech"><span class="tag">Web Platform</span><span class="tag">Marketplace</span></div><a href="https://drive-sure-lyart.vercel.app/" class="proj-link" target="_blank">Live Demo <i class="fas fa-arrow-right"></i></a></div>
       </div>
       <div class="project-card featured reveal">
         <div class="proj-img" style="background:linear-gradient(135deg,#1a1a2e,#16213e)">
           <i class="fas fa-heartbeat" style="color:#b8913a;opacity:.8;font-size:2.2rem"></i>
           <span class="proj-winner"><i class="fas fa-trophy"></i> Best Overall Technical Project 2025</span>
         </div>
-        <div class="proj-body"><p class="proj-num">Project — 02 · Featured</p><h3>DiaConnect</h3><p>A diabetes tracking app with AI chat, caretaker alerts, and hidden sugars detection. Winner of the 2025 Best Overall Technical Project.</p><div class="proj-tech"><span class="tag">.NET MAUI</span><span class="tag">C#</span><span class="tag">XAML</span><span class="tag">ASP.NET</span><span class="tag">Azure</span></div><a href="https://github.com/HaanimP/DiaConnectFinal.git" class="proj-link" target="_blank">View Project <i class="fas fa-arrow-right"></i></a></div>
+        <div class="proj-body"><p class="proj-num">Project 02 · Featured</p><h3>DiaConnect</h3><p>A diabetes tracking app with AI chat, caretaker alerts, and hidden sugars detection. Winner of the 2025 Best Overall Technical Project.</p><div class="proj-tech"><span class="tag">.NET MAUI</span><span class="tag">C#</span><span class="tag">XAML</span><span class="tag">ASP.NET</span><span class="tag">Azure</span></div><a href="https://github.com/HaanimP/DiaConnectFinal.git" class="proj-link" target="_blank">View Project <i class="fas fa-arrow-right"></i></a></div>
       </div>
       <div class="project-card reveal">
         <div class="proj-img"><i class="fas fa-images"></i></div>
-        <div class="proj-body"><p class="proj-num">Project — 03</p><h3>Pinterest App</h3><p>A Pinterest-inspired application for discovering, sharing, and organising visual content and inspiration.</p><div class="proj-tech"><span class="tag">XAML</span><span class="tag">C#</span></div><a href="https://github.com/HaanimP/Pinterest-App-Assignment.git" class="proj-link" target="_blank">View Project <i class="fas fa-arrow-right"></i></a></div>
+        <div class="proj-body"><p class="proj-num">Project 03</p><h3>Pinterest App</h3><p>A Pinterest-inspired application for discovering, sharing, and organising visual content and inspiration.</p><div class="proj-tech"><span class="tag">XAML</span><span class="tag">C#</span></div><a href="https://github.com/HaanimP/Pinterest-App-Assignment.git" class="proj-link" target="_blank">View Project <i class="fas fa-arrow-right"></i></a></div>
       </div>
       <div class="project-card reveal">
         <div class="proj-img"><i class="fas fa-laptop-code"></i></div>
-        <div class="proj-body"><p class="proj-num">Project — 04</p><h3>Women with Vision</h3><p>A non-profit website showcasing work, branch locations, contact info, and a simple way to donate.</p><div class="proj-tech"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span></div><a href="https://womenwithvision.netlify.app/home" class="proj-link" target="_blank">Live Demo <i class="fas fa-arrow-right"></i></a></div>
+        <div class="proj-body"><p class="proj-num">Project 04</p><h3>Women with Vision</h3><p>A non-profit website showcasing work, branch locations, contact info, and a simple way to donate.</p><div class="proj-tech"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span></div><a href="https://womenwithvision.netlify.app/home" class="proj-link" target="_blank">Live Demo <i class="fas fa-arrow-right"></i></a></div>
       </div>
       <div class="project-card reveal">
         <div class="proj-img"><i class="fas fa-birthday-cake"></i></div>
-        <div class="proj-body"><p class="proj-num">Project — 05</p><h3>Sugar Bakez</h3><p>A small business website showcasing baked goods, the owner, and available services.</p><div class="proj-tech"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span></div><a href="https://sugarbakez.netlify.app/" class="proj-link" target="_blank">Live Demo <i class="fas fa-arrow-right"></i></a></div>
+        <div class="proj-body"><p class="proj-num">Project 05</p><h3>Sugar Bakez</h3><p>A small business website showcasing baked goods, the owner, and available services.</p><div class="proj-tech"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span></div><a href="https://sugarbakez.netlify.app/" class="proj-link" target="_blank">Live Demo <i class="fas fa-arrow-right"></i></a></div>
       </div>
       <div class="project-card reveal">
         <div class="proj-img"><i class="fas fa-route"></i></div>
-        <div class="proj-body"><p class="proj-num">Project — 06</p><h3>Path Align</h3><p>A site that helps students find their best learning path based on personality test results.</p><div class="proj-tech"><span class="tag">WordPress</span><span class="tag">Power BI</span><span class="tag">Excel</span></div><a href="https://personatest.lcstudio-incubate.co.za/" class="proj-link" target="_blank">Live Demo <i class="fas fa-arrow-right"></i></a></div>
+        <div class="proj-body"><p class="proj-num">Project 06</p><h3>Path Align</h3><p>A site that helps students find their best learning path based on personality test results.</p><div class="proj-tech"><span class="tag">WordPress</span><span class="tag">Power BI</span><span class="tag">Excel</span></div><a href="https://personatest.lcstudio-incubate.co.za/" class="proj-link" target="_blank">Live Demo <i class="fas fa-arrow-right"></i></a></div>
       </div>
 
     </div>
@@ -390,7 +395,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.5);padding:4rem 0 2.5rem}
     <div class="causes-grid-b">
       <div class="cause-card ice reveal"><div class="cause-accent"></div><h3>Abolish ICE</h3><p>Opposing immigration enforcement and detention systems that separate families and violate human rights. Advocating for immigration justice and protecting immigrant communities.</p><div class="cause-stats-row"><div class="c-stat"><i class="fas fa-users"></i><span>Family Unity</span></div><div class="c-stat"><i class="fas fa-balance-scale"></i><span>Justice</span></div></div><a href="https://www.instagram.com/" target="_blank" class="cause-link"><i class="fab fa-instagram"></i> Learn More</a></div>
       <div class="cause-card water reveal"><div class="cause-accent"></div><h3>Save Our Water</h3><p>Advocating for water conservation and sustainable resource management in the face of AI technology's growing environmental impact. Clean water is a human right.</p><div class="cause-stats-row"><div class="c-stat"><i class="fas fa-leaf"></i><span>Sustainability</span></div><div class="c-stat"><i class="fas fa-globe"></i><span>Environment</span></div></div><a href="https://www.instagram.com/" target="_blank" class="cause-link"><i class="fab fa-instagram"></i> Learn More</a></div>
-      <div class="cause-card epstein reveal"><div class="cause-accent"></div><h3>Release the Epstein Files</h3><p>Demanding transparency and accountability through the full release of the Epstein documents. Truth and justice for all survivors — exposing systemic abuse and those who enabled it.</p><div class="cause-stats-row"><div class="c-stat"><i class="fas fa-balance-scale"></i><span>Justice</span></div><div class="c-stat"><i class="fas fa-eye"></i><span>Transparency</span></div></div><a href="https://www.instagram.com/" target="_blank" class="cause-link"><i class="fab fa-instagram"></i> Learn More</a></div>
+      <div class="cause-card epstein reveal"><div class="cause-accent"></div><h3>Release the Epstein Files</h3><p>Demanding transparency and accountability through the full release of the Epstein documents. Truth and justice for all survivors exposing systemic abuse and those who enabled it.</p><div class="cause-stats-row"><div class="c-stat"><i class="fas fa-balance-scale"></i><span>Justice</span></div><div class="c-stat"><i class="fas fa-eye"></i><span>Transparency</span></div></div><a href="https://www.instagram.com/" target="_blank" class="cause-link"><i class="fab fa-instagram"></i> Learn More</a></div>
     </div>
   </div>
 </section>
@@ -407,7 +412,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.5);padding:4rem 0 2.5rem}
       <div class="pres-card reveal"><div class="pres-icon" style="background:linear-gradient(135deg,#10b981,#059669)"><i class="fas fa-graduation-cap"></i></div><h3>EdVance</h3><p>Using Azure AI to solve a challenge in the education environment.</p><a href="https://www.canva.com/design/DAGgAngASrE/5y5qGX709No7l07z7lEhbw/view" class="pres-btn" target="_blank">View Presentation <i class="fas fa-arrow-right"></i></a></div>
       <div class="pres-card reveal"><div class="pres-icon" style="background:linear-gradient(135deg,#f59e0b,#d97706)"><i class="fas fa-solar-panel"></i></div><h3>Power Track</h3><p>Energy and cost savings from solar panels vs traditional energy sources.</p><a href="https://www.canva.com/design/DAGPyv-jw5w/2mlLOLek20Yq6UkLWdDijg/view" class="pres-btn" target="_blank">View Presentation <i class="fas fa-arrow-right"></i></a></div>
       <div class="pres-card reveal"><div class="pres-icon" style="background:linear-gradient(135deg,#ef4444,#dc2626)"><i class="fas fa-id-badge"></i></div><h3>Intern Profiles</h3><p>A project displaying intern profiles, skills, projects, and achievements.</p><a href="https://www.canva.com/design/DAGP9qSbvXk/scjmbZdE2ytNvz4CtfFdDg/view" class="pres-btn" target="_blank">View Presentation <i class="fas fa-arrow-right"></i></a></div>
-      <div class="pres-card reveal"><div class="pres-icon" style="background:linear-gradient(135deg,#8b5cf6,#7c3aed)"><i class="fab fa-drupal"></i></div><h3>Drupal</h3><p>Fundamental concepts, tools, and features of Drupal — core functionality and usage.</p><a href="https://www.canva.com/design/DAGMVXxqV10/cTtxqBV297KnAFiyzTEihQ/view" class="pres-btn" target="_blank">View Presentation <i class="fas fa-arrow-right"></i></a></div>
+      <div class="pres-card reveal"><div class="pres-icon" style="background:linear-gradient(135deg,#8b5cf6,#7c3aed)"><i class="fab fa-drupal"></i></div><h3>Drupal</h3><p>Fundamental concepts, tools, and features of Drupal: core functionality and usage.</p><a href="https://www.canva.com/design/DAGMVXxqV10/cTtxqBV297KnAFiyzTEihQ/view" class="pres-btn" target="_blank">View Presentation <i class="fas fa-arrow-right"></i></a></div>
     </div>
   </div>
 </section>
@@ -418,12 +423,12 @@ footer{background:var(--ink);color:rgba(255,255,255,.5);padding:4rem 0 2.5rem}
     <p class="section-label reveal">Career</p>
     <h2 class="section-heading reveal">Professional <em>experience</em></h2>
     <div class="timeline-wrap">
-      <div class="tl-item reveal"><div class="tl-date">Dec 2025<br>— Present</div><div class="tl-body"><h3>Software Development Intern</h3><p class="tl-company">School of Pharmacy UWC, The Gatees Foundation</p><p class="tl-desc">Managed internal and stakeholder communication for a confidential regulatory technology project while contributing to improving clarity, usability and workflow logic in a high-stakes digital environment. Assisted in preparing structured updates and reviews for senior academic and industry stakeholders.</p></div></div>
-      <div class="tl-item reveal"><div class="tl-date">Feb 2025<br>— May 2025</div><div class="tl-body"><h3>Social Media Manager</h3><p class="tl-company">The Three Stars</p><p class="tl-desc">Led comprehensive social media strategy including content management, client consultation, team collaboration, and brand outreach initiatives that significantly increased engagement.</p></div></div>
-      <div class="tl-item reveal"><div class="tl-date">Dec 2024<br>— May 2025</div><div class="tl-body"><h3>Business Team Lead</h3><p class="tl-company">The Three Stars</p><p class="tl-desc">Managed daily standups and progress tracking, ensured project punctuality and task completion, while providing mentorship and guidance to team members.</p></div></div>
-      <div class="tl-item reveal"><div class="tl-date">Nov 2024<br>— May 2025</div><div class="tl-body"><h3>Web Designer</h3><p class="tl-company">The Three Stars</p><p class="tl-desc">Created comprehensive wireframes and prototypes, designed user-friendly interfaces, developed responsive web solutions, and collaborated effectively with cross-functional development teams.</p></div></div>
-      <div class="tl-item reveal"><div class="tl-date">Oct 2024<br>— Nov 2024</div><div class="tl-body"><h3>Assistant Lecturer</h3><p class="tl-company">LC Studio</p><p class="tl-desc">Facilitated student progress through structured check-ins, maintained high standards for punctuality and task completion, while providing comprehensive educational support.</p></div></div>
-      <div class="tl-item reveal"><div class="tl-date">Apr 2024<br>— Nov 2024</div><div class="tl-body"><h3>Software Engineer Intern</h3><p class="tl-company">LC Studio</p><p class="tl-desc">Advanced technical skills in Linux, Python, and C++ through intensive self-study, collaborated with cross-functional teams during Scrum processes, and developed innovative project prototypes.</p></div></div>
+      <div class="tl-item reveal"><div class="tl-date">Dec 2025 - Present</div><div class="tl-body"><h3>Software Development Intern</h3><p class="tl-company">School of Pharmacy UWC, The Gatees Foundation</p><p class="tl-desc">Managed internal and stakeholder communication for a confidential regulatory technology project while contributing to improving clarity, usability and workflow logic in a high-stakes digital environment. Assisted in preparing structured updates and reviews for senior academic and industry stakeholders.</p></div></div>
+      <div class="tl-item reveal"><div class="tl-date">Feb 2025 - May 2025</div><div class="tl-body"><h3>Social Media Manager</h3><p class="tl-company">The Three Stars</p><p class="tl-desc">Led comprehensive social media strategy including content management, client consultation, team collaboration, and brand outreach initiatives that significantly increased engagement.</p></div></div>
+      <div class="tl-item reveal"><div class="tl-date">Dec 2024 - May 2025</div><div class="tl-body"><h3>Business Team Lead</h3><p class="tl-company">The Three Stars</p><p class="tl-desc">Managed daily standups and progress tracking, ensured project punctuality and task completion, while providing mentorship and guidance to team members.</p></div></div>
+      <div class="tl-item reveal"><div class="tl-date">Nov 2024 - May 2025</div><div class="tl-body"><h3>Web Designer</h3><p class="tl-company">The Three Stars</p><p class="tl-desc">Created comprehensive wireframes and prototypes, designed user-friendly interfaces, developed responsive web solutions, and collaborated effectively with cross-functional development teams.</p></div></div>
+      <div class="tl-item reveal"><div class="tl-date">Oct 2024 - Nov 2024</div><div class="tl-body"><h3>Assistant Lecturer</h3><p class="tl-company">LC Studio</p><p class="tl-desc">Facilitated student progress through structured check-ins, maintained high standards for punctuality and task completion, while providing comprehensive educational support.</p></div></div>
+      <div class="tl-item reveal"><div class="tl-date">Apr 2024 - Nov 2024</div><div class="tl-body"><h3>Software Engineer Intern</h3><p class="tl-company">LC Studio</p><p class="tl-desc">Advanced technical skills in Linux, Python, and C++ through intensive self-study, collaborated with cross-functional teams during Scrum processes, and developed innovative project prototypes.</p></div></div>
     </div>
   </div>
 </section>
@@ -434,9 +439,9 @@ footer{background:var(--ink);color:rgba(255,255,255,.5);padding:4rem 0 2.5rem}
     <p class="section-label reveal">Education</p>
     <h2 class="section-heading reveal">Academic <em>background</em></h2>
     <div class="timeline-wrap">
-      <div class="tl-item reveal"><div class="tl-date">Mar 2025<br>— Nov 2025</div><div class="tl-body"><h3>Software Development Student</h3><p class="tl-company">University of the Western Cape — Future Innovation Lab powered by Samsung</p><p class="tl-desc">Advanced studies in software development with focus on cutting-edge technologies, innovation, and practical application of software engineering principles. Earned Distinctions (Summa Cum Laude) in Multi-Platform Software Development and Digital Social Innovation for Impact. Top Student award &amp; 2025 Best Overall Technical Project winner for DiaConnect.</p></div></div>
-      <div class="tl-item reveal"><div class="tl-date">Sep 2023<br>— Mar 2024</div><div class="tl-body"><h3>Certificate of Excellence, Web Development</h3><p class="tl-company">Life Choices Academy</p><p class="tl-desc">Comprehensive training in web development technologies including HTML, CSS, JavaScript, and modern frameworks. Achieved excellence in all modules with hands-on project experience.</p></div></div>
-      <div class="tl-item reveal"><div class="tl-date">Jan 2018<br>— Dec 2022</div><div class="tl-body"><h3>National Senior Certificate</h3><p class="tl-company">South Peninsula High School</p><p class="tl-desc">Completed secondary education with strong academic performance, laying the foundation for future studies in technology and computer science.</p></div></div>
+      <div class="tl-item reveal"><div class="tl-date">Mar 2025 - Nov 2025</div><div class="tl-body"><h3>Software Development Student</h3><p class="tl-company">University of the Western Cape - Future Innovation Lab powered by Samsung</p><p class="tl-desc">Advanced studies in software development with focus on cutting-edge technologies, innovation, and practical application of software engineering principles. Earned Distinctions (Summa Cum Laude) in Multi-Platform Software Development and Digital Social Innovation for Impact. Top Student award &amp; 2025 Best Overall Technical Project winner for DiaConnect.</p></div></div>
+      <div class="tl-item reveal"><div class="tl-date">Sep 2023 - Mar 2024</div><div class="tl-body"><h3>Certificate of Excellence, Web Development</h3><p class="tl-company">Life Choices Academy</p><p class="tl-desc">Comprehensive training in web development technologies including HTML, CSS, JavaScript, and modern frameworks. Achieved excellence in all modules with hands-on project experience.</p></div></div>
+      <div class="tl-item reveal"><div class="tl-date">Jan 2018 - Dec 2022</div><div class="tl-body"><h3>National Senior Certificate</h3><p class="tl-company">South Peninsula High School</p><p class="tl-desc">Completed secondary education with strong academic performance, laying the foundation for future studies in technology and computer science.</p></div></div>
     </div>
   </div>
 </section>
@@ -449,7 +454,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.5);padding:4rem 0 2.5rem}
     <div class="testi-wrap reveal">
       <div class="testi-slide active">
         <div class="testi-quote">"</div>
-        <p class="testi-text">I reached out via LinkedIn to Haanim, to ask her can she please review my CV. In no time she responded to my dm. Her feedback was incredibly helpful — clear, constructive, and exactly what I needed to polish my CV. I really appreciate the time and effort she took to assist me, especially without even knowing me personally. She is always open to assisting others as well.</p>
+        <p class="testi-text">I reached out via LinkedIn to Haanim, to ask her can she please review my CV. In no time she responded to my dm. Her feedback was incredibly helpful - clear, constructive, and exactly what I needed to polish my CV. I really appreciate the time and effort she took to assist me, especially without even knowing me personally. She is always open to assisting others as well.</p>
         <p class="testi-author">Asandile Langeni</p>
         <p class="testi-role">LinkedIn Connection</p>
       </div>
@@ -461,7 +466,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.5);padding:4rem 0 2.5rem}
       </div>
       <div class="testi-slide">
         <div class="testi-quote">"</div>
-        <p class="testi-text">Working with Haanim at The Three Stars Digital Solutions was honestly a wonderful experience. She's one of those people who just gets it — super reliable, easy to talk to, and always brings her best to the table. She has a natural sense of leadership and a way of making the team feel grounded and supported, even during hectic deadlines. You always knew you could count on her and I would most definitely recommend her.</p>
+        <p class="testi-text">Working with Haanim at The Three Stars Digital Solutions was honestly a wonderful experience. She's one of those people who just gets it - super reliable, easy to talk to, and always brings her best to the table. She has a natural sense of leadership and a way of making the team feel grounded and supported, even during hectic deadlines. You always knew you could count on her and I would most definitely recommend her.</p>
         <p class="testi-author">Ammara Hoosen</p>
         <p class="testi-role">Co-Founder of The Three Stars, Developer and Designer</p>
       </div>
@@ -485,11 +490,12 @@ footer{background:var(--ink);color:rgba(255,255,255,.5);padding:4rem 0 2.5rem}
   <div class="wrap">
     <p class="section-label reveal">Connect</p>
     <h2 class="section-heading reveal">Find me <em>online</em></h2>
+    <p class="section-sub reveal">Follow my journey across platforms. I share insights on technology, design, innovation, and more.</p>
     <div class="socials-grid">
-      <a href="https://www.instagram.com/haanim_pietersen" target="_blank" class="social-card instagram reveal"><div class="social-icon"><i class="fab fa-instagram"></i></div><h3>Instagram</h3></a>
-      <a href="https://tiktok.com/@haanim_pietersen" target="_blank" class="social-card tiktok reveal"><div class="social-icon"><i class="fab fa-tiktok"></i></div><h3>TikTok</h3></a>
-      <a href="https://www.linkedin.com/in/haanim-pietersen-172bb9264/" target="_blank" class="social-card linkedin reveal"><div class="social-icon"><i class="fab fa-linkedin"></i></div><h3>LinkedIn</h3></a>
-      <a href="https://github.com/HaanimP" target="_blank" class="social-card github reveal"><div class="social-icon"><i class="fab fa-github"></i></div><h3>GitHub</h3></a>
+      <a href="https://www.instagram.com/haanim_pietersen" target="_blank" class="social-card instagram reveal"><div class="social-icon"><i class="fab fa-instagram"></i></div><h3>Instagram</h3><p>Daily insights & stories</p></a>
+      <a href="https://tiktok.com/@haanim_pietersen" target="_blank" class="social-card tiktok reveal"><div class="social-icon"><i class="fab fa-tiktok"></i></div><h3>TikTok</h3><p>Creative content & tech tips</p></a>
+      <a href="https://www.linkedin.com/in/haanim-pietersen-172bb9264/" target="_blank" class="social-card linkedin reveal"><div class="social-icon"><i class="fab fa-linkedin"></i></div><h3>LinkedIn</h3><p>Professional network</p></a>
+      <a href="https://github.com/HaanimP" target="_blank" class="social-card github reveal"><div class="social-icon"><i class="fab fa-github"></i></div><h3>GitHub</h3><p>Code & projects</p></a>
     </div>
   </div>
 </section>
@@ -510,7 +516,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.5);padding:4rem 0 2.5rem}
       </div>
       <div class="contact-form-box reveal">
         <h3>Send a Message</h3>
-        <form id="contactForm">
+        <form id="contactForm" action="https://formspree.io/f/xykljokl" method="POST">
           <div class="f-group"><label>Full Name</label><input type="text" name="name" required></div>
           <div class="f-group"><label>Email Address</label><input type="email" name="email" required></div>
           <div class="f-group"><label>Subject</label><input type="text" name="subject" required></div>
@@ -554,8 +560,8 @@ document.getElementById('tNext').addEventListener('click',()=>{cur=(cur+1)%slide
 document.getElementById('tPrev').addEventListener('click',()=>{cur=(cur-1+slides.length)%slides.length;showSlide(cur)});
 dots.forEach(d=>d.addEventListener('click',()=>{cur=+d.dataset.s;showSlide(cur)}));
 setInterval(()=>{cur=(cur+1)%slides.length;showSlide(cur)},6000);
-document.getElementById('contactForm').addEventListener('submit',function(e){e.preventDefault();const d=new FormData(this);const body=`Dear Haanim,\n\nName: ${d.get('name')}\nEmail: ${d.get('email')}\nSubject: ${d.get('subject')}\n\n${d.get('message')}\n\n---\nSent from portfolio`;window.location.href=`mailto:haanimpietersen@gmail.com?subject=${encodeURIComponent('Portfolio: '+d.get('subject'))}&body=${encodeURIComponent(body)}`;const btn=this.querySelector('button');btn.innerHTML='<i class="fas fa-check-circle"></i> Sent!';setTimeout(()=>{btn.innerHTML='<i class="fas fa-paper-plane"></i>Send Message';this.reset()},3500)});
-document.getElementById('downloadCV').addEventListener('click',function(e){e.preventDefault();const cv=`HAANIM PIETERSEN\nSoftware Development Intern | Human Rights Advocate\n\nCONTACT\nCape Town | +27 71 433 2419 | haanimpietersen@gmail.com\nlinkedin.com/in/haanim-pietersen-172bb9264 | github.com/HaanimP\n\nAWARDS\n- 2025 Best Overall Technical Project (DiaConnect)\n- Summa Cum Laude — Multi-Platform Software Development\n- Top Student — Samsung Future Innovation Lab\n\nEXPERIENCE\nSoftware Development Intern — School of Pharmacy UWC (Dec 2025–Present)\nSocial Media Manager — The Three Stars (Feb–May 2025)\nBusiness Team Lead — The Three Stars (Dec 2024–May 2025)\nWeb Designer — The Three Stars (Nov 2024–May 2025)\nAssistant Lecturer — LC Studio (Oct–Nov 2024)\nSoftware Engineer Intern — LC Studio (Apr–Nov 2024)\n\nEDUCATION\nUWC — Samsung Future Innovation Lab (Mar–Nov 2025)\nLife Choices Academy — Web Dev Certificate (Sep 2023–Mar 2024)\nSouth Peninsula High School — NSC (2018–2022)\n\nSKILLS\nHTML, CSS, JavaScript, Bootstrap, Vue.js, Python, C++, Node.js, C#, .NET, ASP.NET, .NET MAUI, XAML, MySQL, Power BI, Azure, Linux, Scrum, WordPress\n\nGenerated: ${new Date().toLocaleDateString('en-ZA')}`;const blob=new Blob([cv],{type:'text/plain;charset=utf-8'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='Haanim_Pietersen_CV_2026.txt';document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(url)});
+document.getElementById('contactForm').addEventListener('submit',function(e){e.preventDefault();const btn=this.querySelector('button');const formData=new FormData(this);btn.innerHTML='<i class="fas fa-spinner fa-spin"></i> Sending...';btn.disabled=true;fetch('https://formspree.io/f/xykljokl',{method:'POST',body:formData,headers:{'Accept':'application/json'}}).then(response=>{if(response.ok){btn.innerHTML='<i class="fas fa-check-circle"></i> Sent!';setTimeout(()=>{window.location.href='thankyou.html'},1500)}else{btn.innerHTML='<i class="fas fa-paper-plane"></i> Send Message';btn.disabled=false;alert('There was an error sending your message. Please try again.')}}).catch(error=>{console.error('Error:',error);btn.innerHTML='<i class="fas fa-paper-plane"></i> Send Message';btn.disabled=false;alert('There was an error sending your message. Please try again.')})});
+document.getElementById('downloadCV').addEventListener('click',function(e){e.preventDefault();const cv=`HAANIM PIETERSEN\nSoftware Development Intern | Human Rights Advocate\n\nCONTACT\nCape Town | +27 71 433 2419 | haanimpietersen@gmail.com\nlinkedin.com/in/haanim-pietersen-172bb9264 | github.com/HaanimP\n\nAWARDS\n- 2025 Best Overall Technical Project (DiaConnect)\n- Summa Cum Laude - Multi-Platform Software Development\n- Top Student - Samsung Future Innovation Lab\n\nEXPERIENCE\nSoftware Development Intern - School of Pharmacy UWC (Dec 2025 - Present)\nSocial Media Manager - The Three Stars (Feb - May 2025)\nBusiness Team Lead - The Three Stars (Dec 2024 - May 2025)\nWeb Designer - The Three Stars (Nov 2024 - May 2025)\nAssistant Lecturer - LC Studio (Oct - Nov 2024)\nSoftware Engineer Intern - LC Studio (Apr - Nov 2024)\n\nEDUCATION\nUWC - Samsung Future Innovation Lab (Mar - Nov 2025)\nLife Choices Academy - Web Dev Certificate (Sep 2023 - Mar 2024)\nSouth Peninsula High School - NSC (2018 - 2022)\n\nSKILLS\nHTML, CSS, JavaScript, Bootstrap, Vue.js, Python, C++, Node.js, C#, .NET, ASP.NET, .NET MAUI, XAML, MySQL, Power BI, Azure, Linux, Scrum, WordPress\n\nGenerated: ${new Date().toLocaleDateString('en-ZA')}`;const blob=new Blob([cv],{type:'text/plain;charset=utf-8'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='Haanim_Pietersen_CV_2026.txt';document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(url)});
 </script>
 </body>
 </html>
