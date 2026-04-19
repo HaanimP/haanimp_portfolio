@@ -1,3133 +1,561 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Haanim Pietersen - Software Developer</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Haanim Pietersen — Software Developer</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+<style>
+:root{--ink:#0e0e0e;--paper:#f5f0e8;--paper-2:#ede8df;--gold:#b8913a;--gold-light:#d4a853;--muted:#6b6560;--muted-2:#9b9590;--rule:rgba(14,14,14,0.12);--white:#fdfaf5}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--paper);color:var(--ink);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:.03;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='512' height='512' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");background-size:200px}
 
-        :root {
-            --primary-color: #0f172a;
-            --secondary-color: #1e293b;
-            --accent-color: #5C3D2E;
-            --accent-light: #8B6F47;
-            --accent-dark: #4a2f23;
-            --text-primary: #0f172a;
-            --text-secondary: #64748b;
-            --text-light: #94a3b8;
-            --border-color: #e2e8f0;
-            --bg-primary: #ffffff;
-            --bg-secondary: #f8fafc;
-            --bg-accent: #f1f5f9;
-            --shadow-light: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
-            --shadow-medium: 0 10px 25px rgba(0, 0, 0, 0.1);
-            --shadow-heavy: 0 20px 40px rgba(0, 0, 0, 0.15);
-            --gradient-primary: linear-gradient(135deg, #5C3D2E 0%, #8B6F47 100%);
-            --gradient-secondary: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
-        }
+/* NAV */
+nav{position:fixed;top:0;width:100%;z-index:1000;background:rgba(245,240,232,.95);backdrop-filter:blur(16px);border-bottom:1px solid var(--rule)}
+.nav-container{max-width:1320px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding:0 2.5rem;height:64px}
+.logo{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:1.15rem;letter-spacing:.04em;color:var(--ink)}
+.logo span{color:var(--gold)}
+.nav-links{display:flex;gap:0;list-style:none}
+.nav-links a{display:block;padding:0 .75rem;height:64px;line-height:64px;font-size:.66rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;color:var(--muted);transition:color .3s;white-space:nowrap}
+.nav-links a:hover,.nav-links a.active{color:var(--ink)}
+.mobile-menu{display:none;cursor:pointer;font-size:1.1rem;color:var(--ink)}
 
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            line-height: 1.6;
-            color: var(--text-primary);
-            background: var(--bg-primary);
-            overflow-x: hidden;
-        }
+/* HERO */
+.hero{min-height:100vh;padding-top:64px;display:grid;grid-template-columns:1fr 1fr;position:relative;overflow:hidden}
+.hero-left{display:flex;flex-direction:column;justify-content:center;padding:6rem 4rem 6rem 5rem;border-right:1px solid var(--rule)}
+.hero-eyebrow{font-family:'DM Mono',monospace;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:2rem;display:flex;align-items:center;gap:1rem}
+.hero-eyebrow::before{content:'';display:inline-block;width:40px;height:1px;background:var(--gold)}
+.hero-name{font-family:'Cormorant Garamond',serif;font-size:clamp(3.2rem,6vw,5.5rem);font-weight:300;line-height:1.0;letter-spacing:-.02em;color:var(--ink);margin-bottom:.3rem}
+.hero-name em{font-style:italic;color:var(--gold)}
+.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1rem,2vw,1.3rem);font-weight:400;font-style:italic;color:var(--muted);margin-bottom:2.5rem}
+.hero-desc{font-size:.92rem;line-height:1.85;color:var(--muted);max-width:440px;margin-bottom:3.5rem;font-weight:300}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap}
+.btn-gold{padding:.85rem 2.2rem;background:var(--gold);color:var(--white);font-size:.72rem;font-weight:500;letter-spacing:.15em;text-transform:uppercase;text-decoration:none;border:none;cursor:pointer;transition:background .3s,transform .2s;display:inline-flex;align-items:center;gap:.6rem;font-family:'DM Sans',sans-serif}
+.btn-gold:hover{background:#a07c30;transform:translateY(-1px)}
+.btn-outline{padding:.85rem 2.2rem;background:transparent;color:var(--ink);font-size:.72rem;font-weight:500;letter-spacing:.15em;text-transform:uppercase;text-decoration:none;border:1px solid var(--rule);cursor:pointer;transition:border-color .3s,color .3s;display:inline-flex;align-items:center;gap:.6rem}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold)}
+.hero-right{position:relative;overflow:hidden;background:var(--paper-2)}
+.hero-right img{width:100%;height:100%;object-fit:cover;object-position:top center;filter:grayscale(15%) contrast(1.03);transition:transform .6s ease}
+.hero-right:hover img{transform:scale(1.02)}
+.hero-overlay{position:absolute;bottom:0;left:0;right:0;padding:2.5rem;background:linear-gradient(to top,rgba(14,14,14,.7) 0%,transparent 100%)}
+.hero-tag{display:inline-block;font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.8);border:1px solid rgba(255,255,255,.3);padding:.35rem .75rem;margin-right:.5rem;margin-bottom:.5rem}
+.hero-scroll{position:absolute;bottom:2.5rem;left:5rem;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted-2);display:flex;align-items:center;gap:.75rem;font-family:'DM Mono',monospace}
+.hero-scroll::after{content:'';display:block;width:40px;height:1px;background:var(--muted-2);animation:lineGrow 2s ease infinite}
+@keyframes lineGrow{0%,100%{width:40px;opacity:.4}50%{width:60px;opacity:1}}
 
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(226, 232, 240, 0.5);
-            z-index: 1000;
-            transition: all 0.3s ease;
-        }
+/* SECTIONS */
+.section{padding:8rem 0}
+.section.alt{background:var(--paper-2)}
+.wrap{max-width:1320px;margin:0 auto;padding:0 2.5rem}
+.section-label{font-family:'DM Mono',monospace;font-size:.65rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem;display:flex;align-items:center;gap:1rem}
+.section-label::after{content:'';display:inline-block;width:40px;height:1px;background:var(--gold)}
+.section-heading{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,4vw,3.2rem);font-weight:400;line-height:1.1;letter-spacing:-.02em}
+.section-heading em{font-style:italic;color:var(--gold)}
+.section-sub{font-size:.9rem;color:var(--muted);line-height:1.7;font-weight:300;max-width:520px;margin-top:1.2rem}
 
-        nav.scrolled {
-            background: rgba(255, 255, 255, 0.95);
-            box-shadow: var(--shadow-light);
-        }
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1fr 1.6fr;gap:6rem;align-items:start;margin-top:5rem}
+.stat-cluster{display:grid;grid-template-columns:1fr 1fr;gap:1px}
+.stat-cell{padding:2.5rem 1.5rem;background:var(--white);border:1px solid var(--rule);text-align:center;transition:background .3s}
+.stat-cell:hover{background:var(--paper-2)}
+.stat-num{font-family:'Cormorant Garamond',serif;font-size:3rem;font-weight:300;color:var(--gold);line-height:1;display:block;margin-bottom:.4rem}
+.stat-name{font-size:.65rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:500}
+.about-text p{font-size:.95rem;line-height:1.9;color:var(--muted);margin-bottom:1.4rem;font-weight:300}
+.about-text p:last-child{margin-bottom:0}
+.award-row{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.8rem}
+.award-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(184,145,58,.1);border:1px solid rgba(184,145,58,.3);color:var(--gold);padding:.4rem .9rem;font-size:.68rem;letter-spacing:.08em;font-weight:500}
 
-        .nav-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 2rem;
-            position: relative;
-        }
+/* SKILLS */
+.skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:5rem;border:1px solid var(--rule)}
+.skill-cell{padding:2.5rem;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);transition:background .3s;position:relative;overflow:hidden}
+.skill-cell:hover{background:rgba(184,145,58,.04)}
+.skill-cell::before{content:attr(data-num);position:absolute;top:1.2rem;right:1.5rem;font-family:'Cormorant Garamond',serif;font-size:3.5rem;font-weight:300;color:rgba(184,145,58,.08);line-height:1}
+.skill-cell:nth-child(3n){border-right:none}
+.skill-ico{width:40px;height:40px;background:linear-gradient(135deg,var(--gold),var(--gold-light));display:flex;align-items:center;justify-content:center;color:white;font-size:.9rem;margin-bottom:1.5rem}
+.skill-cell h3{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:500;margin-bottom:.75rem}
+.skill-cell p{font-size:.82rem;color:var(--muted);line-height:1.7;margin-bottom:1.2rem;font-weight:300}
+.tags{display:flex;flex-wrap:wrap;gap:.4rem}
+.tag{font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.1em;padding:.2rem .6rem;border:1px solid var(--rule);color:var(--muted);text-transform:uppercase}
 
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            background: var(--gradient-primary);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: -0.025em;
-            z-index: 1001;
-            margin-right: auto;
-        }
+/* PROJECTS */
+.projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:5rem}
+.project-card{background:var(--white);border:1px solid var(--rule);overflow:hidden;transition:transform .3s;position:relative}
+.project-card:hover{transform:translateY(-4px);box-shadow:0 16px 48px rgba(14,14,14,.1)}
+.project-card.featured{border-color:rgba(184,145,58,.5)}
+.proj-img{height:175px;background:var(--paper-2);display:flex;align-items:center;justify-content:center;position:relative}
+.proj-img i{font-size:2.2rem;color:var(--gold);opacity:.5}
+.proj-winner{position:absolute;top:1rem;right:1rem;background:var(--gold);color:white;font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;padding:.3rem .7rem;font-weight:500}
+.proj-body{padding:1.75rem}
+.proj-num{font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.18em;color:var(--gold);margin-bottom:.5rem}
+.proj-body h3{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:500;margin-bottom:.6rem}
+.proj-body p{font-size:.82rem;color:var(--muted);line-height:1.7;margin-bottom:1.1rem;font-weight:300}
+.proj-tech{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1.3rem}
+.proj-link{display:inline-flex;align-items:center;gap:.5rem;font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;font-weight:500;color:var(--gold);text-decoration:none;border-bottom:1px solid var(--gold);padding-bottom:.1rem;transition:opacity .2s}
+.proj-link:hover{opacity:.7}
 
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-            flex-wrap: wrap;
-            margin-left: auto;
-        }
+/* HUMANITARIAN */
+.humanitarian{background:var(--ink);padding:8rem 0}
+.hum-header{margin-bottom:5rem}
+.hum-header .section-label{color:var(--gold-light)}
+.hum-header .section-label::after{background:var(--gold-light)}
+.hum-header .section-heading{color:var(--white)}
+.hum-header .section-sub{color:rgba(255,255,255,.5);max-width:560px}
+.hum-intro{font-size:.93rem;line-height:1.9;color:rgba(255,255,255,.6);font-weight:300;max-width:700px;margin-bottom:4rem}
+.causes-grid-a{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.08);margin-bottom:1px}
+.causes-grid-b{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.08)}
+.cause-card{background:var(--ink);padding:2.5rem 2rem;transition:background .3s;display:flex;flex-direction:column}
+.cause-card:hover{background:rgba(255,255,255,.04)}
+.cause-accent{width:32px;height:2px;margin-bottom:1.8rem}
+.cause-card.palestine .cause-accent{background:#ff4444}
+.cause-card.sudan .cause-accent{background:#009639}
+.cause-card.gbv .cause-accent{background:#9333ea}
+.cause-card.congo .cause-accent{background:#e88c00}
+.cause-card.ice .cause-accent{background:#3b82f6}
+.cause-card.water .cause-accent{background:#06b6d4}
+.cause-card.epstein .cause-accent{background:#ef4444}
+.cause-card h3{font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:400;color:var(--white);margin-bottom:1rem}
+.cause-card p{font-size:.8rem;line-height:1.8;color:rgba(255,255,255,.5);font-weight:300;flex:1;margin-bottom:1.8rem}
+.cause-stats-row{display:flex;gap:.75rem;margin-bottom:1.8rem}
+.c-stat{flex:1;padding:.75rem .5rem;border:1px solid rgba(255,255,255,.1);text-align:center}
+.c-stat i{display:block;font-size:.85rem;margin-bottom:.3rem;color:rgba(255,255,255,.35)}
+.c-stat span{font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.35);font-weight:500}
+.cause-link{display:inline-flex;align-items:center;gap:.5rem;font-size:.63rem;letter-spacing:.18em;text-transform:uppercase;font-weight:500;text-decoration:none;padding:.6rem 1.1rem;border:1px solid rgba(255,255,255,.18);color:rgba(255,255,255,.65);transition:all .3s;align-self:flex-start}
+.cause-link:hover{border-color:var(--gold);color:var(--gold)}
 
-        .nav-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.95rem;
-            transition: all 0.3s ease;
-            position: relative;
-            letter-spacing: -0.01em;
-            white-space: nowrap;
-        }
+/* PRESENTATIONS */
+.presentations-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:5rem}
+.pres-card{padding:2.5rem;background:var(--white);border:1px solid var(--rule);transition:all .3s}
+.pres-card:hover{border-color:var(--gold);transform:translateY(-3px)}
+.pres-icon{width:44px;height:44px;display:flex;align-items:center;justify-content:center;font-size:1rem;color:white;margin-bottom:1.5rem}
+.pres-card h3{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:500;margin-bottom:.7rem}
+.pres-card p{font-size:.81rem;color:var(--muted);line-height:1.7;margin-bottom:1.4rem;font-weight:300}
+.pres-btn{display:inline-flex;align-items:center;gap:.5rem;font-size:.67rem;letter-spacing:.15em;text-transform:uppercase;font-weight:500;color:var(--gold);text-decoration:none;transition:opacity .2s}
+.pres-btn:hover{opacity:.7}
 
-        .nav-links a:hover,
-        .nav-links a.active {
-            color: var(--accent-color);
-        }
+/* TIMELINE */
+.timeline-wrap{max-width:860px;margin:5rem auto 0}
+.tl-item{display:grid;grid-template-columns:140px 1fr;gap:3rem;margin-bottom:3rem;padding-bottom:3rem;border-bottom:1px solid var(--rule)}
+.tl-item:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+.tl-date{font-family:'DM Mono',monospace;font-size:.63rem;letter-spacing:.1em;color:var(--gold);padding-top:.2rem;line-height:1.6}
+.tl-body h3{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:500;margin-bottom:.25rem}
+.tl-company{font-size:.78rem;color:var(--muted);margin-bottom:.85rem;font-weight:400;letter-spacing:.04em}
+.tl-desc{font-size:.85rem;color:var(--muted);line-height:1.75;font-weight:300}
 
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--accent-color);
-            transition: width 0.3s ease;
-        }
+/* TESTIMONIALS */
+.testi-wrap{max-width:860px;margin:5rem auto 0}
+.testi-slide{display:none;padding:4rem 5rem;background:var(--white);border:1px solid var(--rule);position:relative}
+.testi-slide.active{display:block}
+.testi-quote{position:absolute;top:2.5rem;left:4rem;font-family:'Cormorant Garamond',serif;font-size:6rem;line-height:1;color:var(--gold);opacity:.18;font-style:italic}
+.testi-text{font-family:'Cormorant Garamond',serif;font-size:clamp(1.05rem,2vw,1.3rem);line-height:1.7;font-style:italic;font-weight:300;color:var(--ink);margin-bottom:2.5rem}
+.testi-author{font-size:.82rem;font-weight:500;margin-bottom:.25rem}
+.testi-role{font-size:.75rem;color:var(--muted);font-weight:300}
+.testi-controls{display:flex;justify-content:space-between;align-items:center;margin-top:2rem}
+.testi-dots{display:flex;gap:.6rem}
+.testi-dot{width:24px;height:2px;background:var(--rule);cursor:pointer;transition:background .3s}
+.testi-dot.active{background:var(--gold)}
+.testi-btns{display:flex;gap:.5rem}
+.testi-btn{width:44px;height:44px;border:1px solid var(--rule);background:transparent;cursor:pointer;color:var(--ink);font-size:.85rem;transition:all .3s;display:flex;align-items:center;justify-content:center}
+.testi-btn:hover{background:var(--ink);color:var(--white);border-color:var(--ink)}
 
-        .nav-links a:hover::after,
-        .nav-links a.active::after {
-            width: 100%;
-        }
+/* SOCIALS */
+.socials-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-top:5rem}
+.social-card{padding:2.5rem 2rem;text-align:center;border:1px solid var(--rule);text-decoration:none;color:inherit;transition:all .3s;background:var(--white)}
+.social-card:hover{border-color:var(--gold);transform:translateY(-4px)}
+.social-icon{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.2rem;color:white;margin:0 auto 1.2rem}
+.social-card.instagram .social-icon{background:linear-gradient(45deg,#405de6,#833ab4,#e1306c,#fd1d1d)}
+.social-card.tiktok .social-icon{background:linear-gradient(45deg,#010101,#69c9d0)}
+.social-card.linkedin .social-icon{background:linear-gradient(135deg,#0077b5,#00a0dc)}
+.social-card.github .social-icon{background:linear-gradient(135deg,#333,#24292e)}
+.social-card h3{font-size:.83rem;font-weight:500;letter-spacing:.06em}
 
-        .mobile-menu {
-            display: none;
-            color: var(--text-primary);
-            font-size: 1.25rem;
-            cursor: pointer;
-            z-index: 1001;
-        }
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:5rem;margin-top:5rem;align-items:start}
+.contact-info-box h3{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:400;margin-bottom:2rem}
+.c-item{display:flex;gap:1.2rem;margin-bottom:1.8rem;align-items:flex-start}
+.c-icon{width:40px;height:40px;flex-shrink:0;background:linear-gradient(135deg,var(--gold),var(--gold-light));display:flex;align-items:center;justify-content:center;color:white;font-size:.8rem}
+.c-detail h4{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;margin-bottom:.3rem;font-weight:500}
+.c-detail p,.c-detail a{font-size:.88rem;color:var(--muted);text-decoration:none;font-weight:300}
+.c-detail a:hover{color:var(--gold)}
+.contact-form-box{background:var(--white);padding:3rem;border:1px solid var(--rule)}
+.contact-form-box h3{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:400;margin-bottom:2rem}
+.f-group{margin-bottom:1.5rem}
+.f-group label{display:block;font-size:.67rem;letter-spacing:.14em;text-transform:uppercase;font-weight:500;color:var(--muted);margin-bottom:.6rem}
+.f-group input,.f-group textarea{width:100%;padding:.9rem 1rem;border:1px solid var(--rule);background:var(--paper);font-family:'DM Sans',sans-serif;font-size:.88rem;color:var(--ink);transition:border-color .3s;font-weight:300}
+.f-group input:focus,.f-group textarea:focus{outline:none;border-color:var(--gold)}
+.f-group textarea{resize:vertical;min-height:120px}
 
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 50%, #e0e7ff 100%);
-            position: relative;
-            padding-top: 80px;
-        }
+/* FOOTER */
+footer{background:var(--ink);color:rgba(255,255,255,.5);padding:4rem 0 2.5rem}
+.footer-inner{max-width:1320px;margin:0 auto;padding:0 2.5rem;display:flex;flex-direction:column;align-items:center;gap:2rem}
+.footer-logo{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:400;color:var(--white)}
+.footer-socials{display:flex;gap:1rem}
+.f-social{width:40px;height:40px;border:1px solid rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.5);text-decoration:none;font-size:.85rem;transition:all .3s}
+.f-social:hover{border-color:var(--gold);color:var(--gold)}
+.footer-bottom{display:flex;flex-direction:column;align-items:center;gap:.4rem;font-size:.75rem;letter-spacing:.06em;border-top:1px solid rgba(255,255,255,.08);padding-top:2rem;width:100%;text-align:center}
+.footer-bottom span{color:var(--gold)}
 
-        .hero-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
-            gap: 4rem;
-            align-items: center;
-            width: 100%;
-        }
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in-view{opacity:1;transform:translateY(0)}
 
-        .hero-text h1 {
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 800;
-            background: var(--gradient-primary);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 1.5rem;
-            letter-spacing: -0.04em;
-            line-height: 1.1;
-        }
-
-        .hero-text .subtitle {
-            font-size: clamp(1rem, 2.5vw, 1.25rem);
-            color: var(--text-secondary);
-            margin-bottom: 2rem;
-            font-weight: 600;
-            line-height: 1.5;
-        }
-
-        .hero-text .description {
-            font-size: clamp(0.95rem, 2vw, 1.1rem);
-            color: var(--text-secondary);
-            margin-bottom: 3rem;
-            line-height: 1.8;
-        }
-
-        .btn-group {
-            display: flex;
-            gap: 1rem;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: 10px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.95rem;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.75rem;
-            letter-spacing: -0.01em;
-            white-space: nowrap;
-        }
-
-        .btn-primary {
-            background: var(--gradient-primary);
-            color: white;
-            box-shadow: 0 10px 25px rgba(92, 61, 46, 0.3);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 15px 40px rgba(92, 61, 46, 0.4);
-        }
-
-        .btn-secondary {
-            background: white;
-            color: var(--accent-color);
-            border: 2px solid var(--accent-color);
-            box-shadow: var(--shadow-light);
-        }
-
-        .btn-secondary:hover {
-            background: var(--accent-color);
-            color: white;
-            transform: translateY(-2px);
-        }
-
-        .profile-img {
-            width: 100%;
-            max-width: 450px;
-            aspect-ratio: 1;
-            border-radius: 20px;
-            object-fit: cover;
-            box-shadow: 0 20px 60px rgba(124, 58, 237, 0.2);
-            border: 2px solid rgba(124, 58, 237, 0.1);
-        };
-        }
-
-        .hero-image {
-            text-align: center;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .profile-img {
-            width: min(350px, 80vw);
-            height: min(350px, 80vw);
-            max-width: 400px;
-            max-height: 400px;
-            border-radius: 20px;
-            object-fit: cover;
-            box-shadow: var(--shadow-heavy);
-            transition: transform 0.3s ease;
-        }
-
-        .profile-img:hover {
-            transform: scale(1.02);
-        }
-
-/* Humanitarian Section - Equal Height Cards Fix */
-.humanitarian {
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #2d3a4a 100%);
-    color: white;
-    position: relative;
-    padding: 6rem 0;
+/* RESPONSIVE */
+@media(max-width:1200px){
+  .causes-grid-a{grid-template-columns:repeat(2,1fr)}
+  .causes-grid-b{grid-template-columns:repeat(3,1fr)}
+  .projects-grid{grid-template-columns:repeat(2,1fr)}
 }
-
-.humanitarian-content {
-    text-align: center;
+@media(max-width:1100px){
+  .hero{grid-template-columns:1fr}
+  .hero-left{padding:5rem 3rem;border-right:none;border-bottom:1px solid var(--rule)}
+  .hero-right{height:60vw;max-height:500px}
+  .skills-grid{grid-template-columns:repeat(2,1fr)}
+  .skill-cell:nth-child(3n){border-right:1px solid var(--rule)}
+  .skill-cell:nth-child(2n){border-right:none}
+  .about-grid{grid-template-columns:1fr;gap:4rem}
+  .contact-grid{grid-template-columns:1fr;gap:3rem}
+  .presentations-grid{grid-template-columns:repeat(2,1fr)}
+  .pricing-grid{grid-template-columns:1fr}
 }
-
-.humanitarian .section-title {
-    background: linear-gradient(135deg, #8B6F47 0%, #A0826D 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    font-size: clamp(2rem, 5vw, 2.5rem);
-    padding: 0 1rem;
-    font-weight: 800;
+@media(max-width:860px){
+  .nav-links{display:none;position:absolute;top:64px;left:0;right:0;background:var(--paper);flex-direction:column;padding:1.5rem 2.5rem;border-bottom:1px solid var(--rule);gap:0}
+  .nav-links.active{display:flex}
+  .nav-links a{height:auto;line-height:1;padding:.8rem 0;border-bottom:1px solid var(--rule)}
+  .mobile-menu{display:block}
+  .socials-grid{grid-template-columns:repeat(2,1fr)}
+  .tl-item{grid-template-columns:1fr;gap:.5rem}
+  .presentations-grid{grid-template-columns:1fr}
+  .causes-grid-a{grid-template-columns:1fr;background:none;gap:1px}
+  .causes-grid-b{grid-template-columns:1fr;background:none;gap:1px}
+  .projects-grid{grid-template-columns:1fr}
 }
-
-.humanitarian .section-subtitle {
-    color: rgba(255,255,255,0.8);
-    font-size: clamp(1rem, 2.5vw, 1.1rem);
-    padding: 0 1rem;
-    font-weight: 500;
+@media(max-width:560px){
+  .wrap{padding:0 1.5rem}
+  .section{padding:5rem 0}
+  .hero-left{padding:4rem 1.5rem}
+  .skills-grid{grid-template-columns:1fr}
+  .skill-cell:nth-child(2n){border-right:1px solid var(--rule)}
+  .socials-grid{grid-template-columns:1fr}
+  .testi-slide{padding:2.5rem 2rem}
+  .testi-quote{left:1.5rem;font-size:4rem}
+  .contact-form-box{padding:2rem}
+  .stat-cluster{grid-template-columns:1fr}
+  .pricing-col{padding:2rem}
 }
-
-.humanitarian-text {
-    font-size: clamp(1rem, 2.2vw, 1.1rem);
-    line-height: 1.8;
-    color: rgba(255,255,255,0.9);
-    margin-bottom: 3rem;
-    max-width: 900px;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 0 1.5rem;
-}
-
-.causes-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
-    margin: 3rem 0;
-    padding: 0 1rem;
-    align-items: stretch; /* KEY FIX: Makes all cards same height */
-}
-
-.cause-card {
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 16px;
-    padding: 2.5rem 2rem;
-    backdrop-filter: blur(10px);
-    transition: all 0.3s ease;
-    display: flex; /* KEY FIX: Flexbox layout */
-    flex-direction: column; /* KEY FIX: Stack items vertically */
-    height: 100%; /* KEY FIX: Fill grid cell height */
-}
-
-.cause-card:hover {
-    background: rgba(255,255,255,0.1);
-    transform: translateY(-4px);
-}
-
-.cause-icon {
-    width: 80px;
-    height: 80px;
-    margin: 0 auto 1.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2.5rem;
-    border-radius: 16px;
-    transition: transform 0.3s ease;
-    flex-shrink: 0; /* KEY FIX: Prevent icon from shrinking */
-}
-
-.cause-card:hover .cause-icon {
-    transform: scale(1.1);
-}
-
-.cause-card.palestine .cause-icon {
-    background: linear-gradient(135deg, #ff4444, #cc0000);
-}
-
-.cause-card.sudan .cause-icon {
-    background: linear-gradient(135deg, #009639, #ffcc00);
-}
-
-.cause-card.gbv .cause-icon {
-    background: linear-gradient(135deg, #9333ea, #c026d3);
-}
-
-.cause-card.congo .cause-icon {
-    background: linear-gradient(135deg, #0066cc, #ff8800);
-}
-
-.cause-card.ice .cause-icon {
-    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
-}
-
-.cause-card.water .cause-icon {
-    background: linear-gradient(135deg, #06b6d4, #0891b2);
-}
-
-.cause-card.epstein .cause-icon {
-    background: linear-gradient(135deg, #dc2626, #991b1b);
-}
-
-.cause-card h3 {
-    font-size: clamp(1.25rem, 3vw, 1.5rem);
-    font-weight: 600;
-    margin-bottom: 1rem;
-    color: white;
-    flex-shrink: 0; /* KEY FIX: Prevent title from shrinking */
-}
-
-.cause-card p {
-    color: rgba(255,255,255,0.8);
-    line-height: 1.7;
-    margin-bottom: 1.5rem;
-    font-size: clamp(0.95rem, 2vw, 1rem);
-    flex-grow: 1; /* KEY FIX: Let description take available space */
-    display: -webkit-box; /* For text clamping */
-    -webkit-line-clamp: 6; /* Limit to 6 lines */
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-}
-
-.cause-stats {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
-    margin-bottom: 1.5rem;
-    flex-shrink: 0; /* KEY FIX: Prevent stats from shrinking */
-    min-height: 80px; /* KEY FIX: Minimum height for stat boxes container */
-}
-
-.stat-box {
-    background: rgba(255,255,255,0.08);
-    padding: 1rem;
-    border-radius: 8px;
-    text-align: center;
-    transition: all 0.3s ease;
-    display: flex; /* KEY FIX: Flexbox for equal height */
-    flex-direction: column; /* KEY FIX: Stack icon and text */
-    align-items: center; /* KEY FIX: Center content */
-    justify-content: center; /* KEY FIX: Center vertically */
-    min-height: 70px; /* KEY FIX: Ensure consistent height */
-}
-
-.stat-box:hover {
-    background: rgba(255,255,255,0.12);
-}
-
-.stat-box i {
-    font-size: clamp(1rem, 2.5vw, 1.25rem);
-    margin-bottom: 0.5rem;
-    display: block;
-}
-
-.stat-box span {
-    font-weight: 500;
-    font-size: clamp(0.8rem, 1.8vw, 0.85rem);
-    display: block;
-}
-
-.cause-link {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    color: white;
-    text-decoration: none;
-    font-weight: 500;
-    padding: 0.75rem 1.5rem;
-    border-radius: 8px;
-    transition: all 0.3s ease;
-    font-size: clamp(0.9rem, 2vw, 1rem);
-    width: 100%;
-    max-width: 200px;
-    margin: 0 auto;
-    flex-shrink: 0; /* KEY FIX: Prevent button from shrinking */
-}
-
-.cause-card.palestine .cause-link {
-    background: linear-gradient(135deg, #ff4444, #cc0000);
-}
-
-.cause-card.sudan .cause-link {
-    background: linear-gradient(135deg, #009639, #006b29);
-}
-
-.cause-card.gbv .cause-link {
-    background: linear-gradient(135deg, #9333ea, #7e22ce);
-}
-
-.cause-card.congo .cause-link {
-    background: linear-gradient(135deg, #0066cc, #ff8800);
-}
-
-.cause-card.ice .cause-link {
-    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
-}
-
-.cause-card.water .cause-link {
-    background: linear-gradient(135deg, #06b6d4, #0891b2);
-}
-
-.cause-card.epstein .cause-link {
-    background: linear-gradient(135deg, #dc2626, #991b1b);
-}
-
-.cause-link:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 30px rgba(0,0,0,0.3);
-}
-
-/* Tablet Screens (768px - 1024px) */
-@media (max-width: 1024px) {
-    .humanitarian {
-        padding: 5rem 0;
-    }
-    
-    .causes-grid {
-        gap: 1.5rem;
-    }
-    
-    .cause-card {
-        padding: 2rem 1.5rem;
-    }
-    
-    .cause-card p {
-        -webkit-line-clamp: 5; /* Allow more lines on tablet */
-    }
-    
-    .cause-stats {
-        min-height: 75px;
-    }
-    
-    .stat-box {
-        min-height: 65px;
-    }
-}
-
-/* Mobile Screens (480px - 768px) */
-@media (max-width: 768px) {
-    .humanitarian {
-        padding: 4rem 0;
-    }
-    
-    .humanitarian-text {
-        margin-bottom: 2rem;
-    }
-    
-    .causes-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-        margin: 2rem 0;
-    }
-    
-    .cause-card {
-        padding: 2rem 1.5rem;
-        height: auto; /* Allow natural height on mobile */
-    }
-    
-    .cause-card p {
-        -webkit-line-clamp: unset; /* Show full text on mobile */
-        display: block;
-    }
-    
-    .cause-icon {
-        width: 70px;
-        height: 70px;
-        font-size: 2rem;
-    }
-    
-    .cause-stats {
-        gap: 0.75rem;
-        min-height: 70px;
-    }
-    
-    .stat-box {
-        padding: 0.75rem;
-        min-height: 60px;
-    }
-    
-    .cause-link {
-        max-width: 100%;
-    }
-}
-
-/* Small Mobile Screens (320px - 480px) */
-@media (max-width: 480px) {
-    .humanitarian {
-        padding: 3rem 0;
-    }
-    
-    .humanitarian .section-title {
-        margin-bottom: 0.75rem;
-    }
-    
-    .humanitarian-text {
-        margin-bottom: 1.5rem;
-        padding: 0 1rem;
-    }
-    
-    .causes-grid {
-        padding: 0 0.5rem;
-        gap: 1.25rem;
-        margin: 1.5rem 0;
-    }
-    
-    .cause-card {
-        padding: 1.75rem 1.25rem;
-    }
-    
-    .cause-icon {
-        width: 60px;
-        height: 60px;
-        font-size: 1.75rem;
-        margin-bottom: 1rem;
-    }
-    
-    .cause-card h3 {
-        margin-bottom: 0.75rem;
-    }
-    
-    .cause-card p {
-        margin-bottom: 1.25rem;
-    }
-    
-    .cause-stats {
-        gap: 0.5rem;
-        margin-bottom: 1.25rem;
-        min-height: 65px;
-    }
-    
-    .stat-box {
-        padding: 0.5rem;
-        min-height: 55px;
-    }
-    
-    .stat-box i {
-        margin-bottom: 0.25rem;
-    }
-    
-    .cause-link {
-        padding: 0.65rem 1.25rem;
-    }
-}
-
-/* Extra Small Screens (< 320px) */
-@media (max-width: 320px) {
-    .humanitarian {
-        padding: 2.5rem 0;
-    }
-    
-    .causes-grid {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-    }
-    
-    .cause-card {
-        padding: 1.5rem 1rem;
-    }
-    
-    .cause-icon {
-        width: 50px;
-        height: 50px;
-        font-size: 1.5rem;
-    }
-}
-
-        /* Sections */
-        section {
-            padding: 6rem 0;
-        }
-
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        .section-title {
-            font-size: clamp(2rem, 4vw, 2.5rem);
-            font-weight: 800;
-            background: var(--gradient-primary);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 1rem;
-            letter-spacing: -0.02em;
-            text-align: center;
-        }
-
-        .section-subtitle {
-            font-size: clamp(1rem, 2.2vw, 1.1rem);
-            color: var(--text-secondary);
-            margin-bottom: 4rem;
-            max-width: 600px;
-            text-align: center;
-            margin-left: auto;
-            margin-right: auto;
-            font-weight: 500;
-        }
-
-        /* About Section */
-        .about {
-            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
-        }
-
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1.5fr;
-            gap: 4rem;
-            align-items: start;
-        }
-
-        .about-stats {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-        }
-
-        .stat-item {
-            text-align: center;
-            padding: 2.5rem 2rem;
-            background: white;
-            border-radius: 16px;
-            box-shadow: var(--shadow-light);
-            border: 1px solid rgba(226, 232, 240, 0.5);
-            transition: all 0.3s ease;
-        }
-
-        .stat-item:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-medium);
-            border-color: var(--accent-color);
-        }
-            box-shadow: var(--shadow-light);
-            border: 1px solid var(--border-color);
-            transition: all 0.3s ease;
-        }
-
-        .stat-item:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-medium);
-        }
-
-        .stat-number {
-            font-size: clamp(2rem, 4vw, 2.5rem);
-            font-weight: 700;
-            color: var(--accent-color);
-            display: block;
-            margin-bottom: 0.5rem;
-        }
-
-        .stat-label {
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-            font-weight: 500;
-        }
-
-        .about-text {
-            font-size: clamp(1rem, 2.2vw, 1.1rem);
-            line-height: 1.8;
-            color: var(--text-secondary);
-        }
-
-        .about-text p {
-            margin-bottom: 1.5rem;
-        }
-
-        /* Skills Section */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .skill-card {
-            background: white;
-            padding: 2.5rem 2rem;
-            border-radius: 16px;
-            box-shadow: var(--shadow-light);
-            border: 1px solid rgba(226, 232, 240, 0.5);
-            transition: all 0.3s ease;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .skill-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: var(--gradient-primary);
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.3s ease;
-        }
-
-        .skill-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-medium);
-            border-color: var(--accent-color);
-        }
-
-        .skill-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .skill-icon {
-            width: 70px;
-            height: 70px;
-            background: var(--gradient-primary);
-            border-radius: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.75rem;
-            color: white;
-            margin: 0 auto 1.5rem;
-            box-shadow: 0 10px 25px rgba(92, 61, 46, 0.2);
-        }
-
-        .skill-card h3 {
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: 1rem;
-        }
-
-        .skill-card p {
-            color: var(--text-secondary);
-            line-height: 1.6;
-            text-align: left;
-            font-weight: 500;
-        }
-
-        .skill-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-top: 1rem;
-            justify-content: flex-start;
-        }
-
-        .skill-tag {
-            background: linear-gradient(135deg, rgba(92, 61, 46, 0.1), rgba(139, 111, 71, 0.1));
-            color: var(--accent-color);
-            padding: 0.35rem 0.85rem;
-            border-radius: 12px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            border: 1px solid rgba(92, 61, 46, 0.2);
-        }
-
-        /* Projects Section */
-        .projects {
-            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
-        }
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2.5rem;
-        }
-
-        .project-card {
-            background: white;
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: var(--shadow-light);
-            border: 1px solid rgba(226, 232, 240, 0.5);
-            transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-            position: relative;
-        }
-
-        .project-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-heavy);
-            border-color: var(--accent-color);
-        }
-
-        .project-image {
-            height: 250px;
-            background: linear-gradient(135deg, rgba(124, 58, 237, 0.05), rgba(167, 139, 250, 0.05));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .project-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s ease;
-        }
-
-        .project-image:hover img {
-            transform: scale(1.05);
-        }
-
-        .project-image .placeholder-icon {
-            font-size: 3.5rem;
-            color: var(--accent-color);
-        }
-
-        .project-content {
-            padding: 2rem;
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-        }
-
-        .project-content h3 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: 1rem;
-        }
-
-        .project-content p {
-            color: var(--text-secondary);
-            line-height: 1.6;
-            margin-bottom: 1.5rem;
-            flex-grow: 1;
-            height: 75px;
-            overflow: hidden;
-            display: -webkit-box;
-            -webkit-line-clamp: 3;
-            -webkit-box-orient: vertical;
-            font-weight: 500;
-        }
-
-        .project-tech {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 1.5rem;
-            margin-top: auto;
-        }
-
-        .tech-tag {
-            background: linear-gradient(135deg, rgba(92, 61, 46, 0.1), rgba(139, 111, 71, 0.1));
-            color: var(--accent-color);
-            padding: 0.35rem 0.85rem;
-            border-radius: 12px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            border: 1px solid rgba(92, 61, 46, 0.2);
-        }
-
-        .project-links {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .project-link {
-            padding: 0.75rem 1.5rem;
-            border-radius: 10px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.85rem;
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
-        .project-link.primary {
-            background: var(--gradient-primary);
-            color: white;
-            box-shadow: 0 5px 15px rgba(92, 61, 46, 0.2);
-        }
-
-        .project-link.primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(92, 61, 46, 0.3);
-        }
-
-        .project-link.secondary {
-            background: transparent;
-            color: var(--accent-color);
-            border: 2px solid var(--accent-color);
-        }
-
-        .project-link.secondary:hover {
-            background: var(--accent-color);
-            color: white;
-            transform: translateY(-2px);
-        }
-
-        /* Presentations Section */
-        .presentations-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .presentation-card {
-            background: white;
-            padding: 2.5rem 2rem;
-            border-radius: 16px;
-            box-shadow: var(--shadow-light);
-            border: 1px solid rgba(226, 232, 240, 0.5);
-            transition: all 0.3s ease;
-            text-align: center;
-        }
-
-        .presentation-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-medium);
-            border-color: var(--accent-color);
-        }
-
-        .presentation-icon {
-            width: 80px;
-            height: 80px;
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            color: white;
-            margin: 0 auto 1.5rem;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-        }
-
-        .presentation-card h3 {
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: 1rem;
-        }
-
-        .presentation-card p {
-            color: var(--text-secondary);
-            line-height: 1.6;
-            margin-bottom: 1.5rem;
-            font-weight: 500;
-        }
-
-        .presentation-btn {
-            background: var(--gradient-primary);
-            color: white;
-            padding: 0.875rem 1.75rem;
-            border-radius: 10px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.75rem;
-            box-shadow: 0 5px 15px rgba(92, 61, 46, 0.2);
-        }
-
-        .presentation-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(92, 61, 46, 0.3);
-        }
-            background: #7a3d10;
-            transform: translateY(-2px);
-        }
-
-        /* Experience Section */
-        .experience {
-            background: white;
-        }
-
-        .experience .section-title {
-            background: var(--gradient-primary);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .timeline {
-            position: relative;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 50%;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: var(--border-color);
-            transform: translateX(-50%);
-        }
-
-        .timeline-item {
-            margin-bottom: 4rem;
-            position: relative;
-        }
-
-        .timeline-content {
-            background: var(--bg-primary);
-            padding: 2.5rem;
-            border-radius: 16px;
-            box-shadow: var(--shadow-light);
-            border: 1px solid var(--border-color);
-            width: 45%;
-            position: relative;
-            transition: all 0.3s ease;
-        }
-
-        .timeline-content:hover {
-            box-shadow: var(--shadow-medium);
-            transform: translateY(-2px);
-        }
-
-        .timeline-item:nth-child(odd) .timeline-content {
-            margin-left: auto;
-        }
-
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: 50%;
-            top: 40px;
-            width: 16px;
-            height: 16px;
-            background: var(--accent-color);
-            border: 4px solid var(--bg-primary);
-            border-radius: 50%;
-            transform: translateX(-50%);
-            z-index: 2;
-            box-shadow: var(--shadow-light);
-        }
-
-        .timeline-date {
-            color: var(--accent-color);
-            font-weight: 600;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-bottom: 0.5rem;
-        }
-
-        .timeline-title {
-            color: var(--text-primary);
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .timeline-company {
-            color: var(--text-secondary);
-            font-weight: 500;
-            margin-bottom: 1rem;
-        }
-
-        .timeline-description {
-            color: var(--text-secondary);
-            line-height: 1.6;
-        }
-
-        /* Education Section - same styling as Experience */
-        .education {
-            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
-        }
-
-        .education .section-title {
-            background: var(--gradient-primary);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        /* Testimonials Section */
-        .testimonials {
-            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
-        }
-
-        .testimonials .section-title {
-            background: var(--gradient-primary);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .testimonials-carousel {
-            position: relative;
-            max-width: 800px;
-            margin: 0 auto;
-            overflow: hidden;
-            border-radius: 16px;
-        }
-
-        .testimonial-slide {
-            display: none;
-            background: var(--bg-primary);
-            padding: 3rem 2rem;
-            text-align: center;
-            box-shadow: var(--shadow-light);
-            border: 1px solid var(--border-color);
-        }
-
-        .testimonial-slide.active {
-            display: block;
-        }
-
-        .testimonial-content {
-            font-size: clamp(1rem, 2.2vw, 1.25rem);
-            line-height: 1.7;
-            color: var(--text-secondary);
-            margin-bottom: 2rem;
-            font-style: italic;
-        }
-
-        .testimonial-author {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-bottom: 0.5rem;
-        }
-
-        .testimonial-role {
-            color: var(--text-light);
-            font-size: 0.95rem;
-        }
-
-        .carousel-controls {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-
-        .carousel-btn {
-            width: 50px;
-            height: 50px;
-            border: none;
-            border-radius: 50%;
-            background: var(--accent-color);
-            color: white;
-            font-size: 1.25rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .carousel-btn:hover {
-            background: #7a3d10;
-            transform: scale(1.1);
-        }
-
-        .carousel-indicators {
-            display: flex;
-            justify-content: center;
-            gap: 0.5rem;
-            margin-top: 1.5rem;
-        }
-
-        .indicator {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: var(--border-color);
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .indicator.active {
-            background: var(--accent-color);
-        }
-
-        /* Social Section */
-        .social-section {
-            background: var(--bg-primary);
-        }
-
-        /* Services Section */
-        .services {
-            background: white;
-        }
-
-        .services .section-title {
-            background: var(--gradient-primary);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .services-content {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .services-intro {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .services-intro p {
-            font-size: 1.1rem;
-            color: var(--text-secondary);
-            line-height: 1.8;
-            margin-bottom: 1rem;
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-
-        .service-category {
-            background: var(--bg-secondary);
-            border: 1px solid var(--border-color);
-            padding: 2rem;
-            border-radius: 16px;
-            transition: all 0.3s ease;
-            box-shadow: var(--shadow-light);
-        }
-
-        .service-category:hover {
-            transform: translateY(-6px);
-            box-shadow: var(--shadow-medium);
-        }
-
-        .service-category h3 {
-            font-size: 1.3rem;
-            font-weight: 600;
-            color: var(--accent-color);
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
-        .service-list {
-            list-style: none;
-        }
-
-        .service-list li {
-            color: var(--text-secondary);
-            margin-bottom: 1rem;
-            padding-left: 1.5rem;
-            position: relative;
-            line-height: 1.6;
-        }
-
-        .service-list li:before {
-            content: "•";
-            position: absolute;
-            left: 0;
-            color: var(--accent-color);
-            font-weight: bold;
-            font-size: 1.25rem;
-        }
-
-        .services-note {
-            background: linear-gradient(135deg, rgba(92, 61, 46, 0.1), rgba(139, 111, 71, 0.1));
-            border-left: 4px solid var(--accent-color);
-            padding: 2rem;
-            border-radius: 12px;
-            margin-top: 3rem;
-            border: 1px solid rgba(92, 61, 46, 0.2);
-        }
-
-        .services-note h4 {
-            color: var(--text-primary);
-            margin-bottom: 1rem;
-            font-size: 1.1rem;
-            font-weight: 700;
-        }
-
-        .services-note p {
-            color: var(--text-secondary);
-            line-height: 1.7;
-            margin-bottom: 0.75rem;
-            font-weight: 500;
-        }
-
-        .services-note p:last-child {
-            margin-bottom: 0;
-        }
-
-        .social-section {
-            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
-        }
-
-        .social-section .section-title {
-            background: var(--gradient-primary);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .social-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .social-card {
-            background: white;
-            border: 1px solid rgba(226, 232, 240, 0.5);
-            padding: 2rem;
-            border-radius: 16px;
-            text-align: center;
-            transition: all 0.3s ease;
-            box-shadow: var(--shadow-light);
-            text-decoration: none;
-            color: inherit;
-            display: block;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .social-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: var(--gradient-primary);
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.3s ease;
-        }
-
-        .social-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-medium);
-            text-decoration: none;
-            color: inherit;
-            border-color: var(--accent-color);
-        }
-
-        .social-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .social-icon {
-            width: 70px;
-            height: 70px;
-            border-radius: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            margin: 0 auto 1rem;
-            color: white;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-        }
-
-        .social-card.instagram .social-icon {
-            background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
-        }
-
-        .social-card.tiktok .social-icon {
-            background: linear-gradient(45deg, #000000, #25f4ee);
-        }
-
-        .social-card.linkedin .social-icon {
-            background: linear-gradient(45deg, #0077b5, #00a0dc);
-        }
-
-        .social-card.github .social-icon {
-            background: linear-gradient(45deg, #333, #24292e);
-        }
-
-        .social-card h3 {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: 0.5rem;
-        }
-
-        .social-card p {
-            color: var(--text-secondary);
-            font-size: 0.85rem;
-            font-weight: 500;
-        }
-
-        /* Contact Section */
-        .contact {
-            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
-        }
-
-        .contact-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: start;
-        }
-
-        .contact-info,
-        .contact-form {
-            background: white;
-            padding: 3rem;
-            border-radius: 16px;
-            box-shadow: var(--shadow-light);
-            border: 1px solid rgba(226, 232, 240, 0.5);
-        }
-
-        .contact-info h3,
-        .contact-form h3 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            background: var(--gradient-primary);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 2rem;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-        }
-
-        .contact-icon {
-            width: 50px;
-            height: 50px;
-            background: var(--gradient-primary);
-            color: white;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            box-shadow: 0 5px 15px rgba(92, 61, 46, 0.2);
-        }
-
-        .contact-details h4 {
-            font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: 0.25rem;
-        }
-
-        .contact-details p,
-        .contact-details a {
-            color: var(--text-secondary);
-            text-decoration: none;
-        }
-
-        .contact-details a:hover {
-            color: var(--accent-color);
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: var(--text-primary);
-            font-weight: 600;
-            font-size: 0.95rem;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 1rem;
-            border: 1px solid rgba(226, 232, 240, 0.8);
-            border-radius: 10px;
-            font-size: 0.95rem;
-            font-family: inherit;
-            transition: all 0.3s ease;
-            background: #f8fafc;
-            color: var(--text-primary);
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--accent-color);
-            background: white;
-            box-shadow: 0 0 0 3px rgba(92, 61, 46, 0.1);
-            transform: translateY(-1px);
-        }
-
-        .form-group textarea {
-            resize: vertical;
-            min-height: 150px;
-        }
-
-        /* Footer */
-        footer {
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-            color: white;
-            padding: 4rem 0 2rem;
-        }
-
-        .footer-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            text-align: center;
-        }
-
-        .footer-socials {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .footer-socials a {
-            width: 50px;
-            height: 50px;
-            background: rgba(255,255,255,0.1);
-            color: white;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.25rem;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            border: 1px solid rgba(255,255,255,0.2);
-        }
-
-        .footer-socials a:hover {
-            background: var(--gradient-primary);
-            transform: translateY(-4px);
-            border-color: rgba(255,255,255,0.5);
-            box-shadow: 0 10px 30px rgba(92, 61, 46, 0.3);
-        }
-
-        .footer-text {
-            color: rgba(255,255,255,0.7);
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-
-        .footer-text:first-of-type {
-            margin-bottom: 0.5rem;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 1200px) {
-            .nav-container,
-            .container,
-            .hero-content {
-                padding-left: 2rem;
-                padding-right: 2rem;
-            }
-            
-            .nav-links {
-                gap: 1.5rem;
-            }
-            
-            .nav-links a {
-                font-size: 0.85rem;
-            }
-        }
-
-        @media (max-width: 968px) {
-            .nav-links {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background: rgba(255, 255, 255, 0.98);
-                flex-direction: column;
-                padding: 2rem;
-                box-shadow: var(--shadow-medium);
-                border-top: 1px solid var(--border-color);
-                gap: 1rem;
-            }
-
-            .nav-links.active {
-                display: flex;
-            }
-
-            .mobile-menu {
-                display: block;
-            }
-
-            .hero-content {
-                grid-template-columns: 1fr;
-                gap: 3rem;
-                text-align: center;
-            }
-
-            .about-content,
-            .contact-content {
-                grid-template-columns: 1fr;
-                gap: 3rem;
-            }
-
-            .about-stats {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 1rem;
-            }
-
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .timeline::before {
-                left: 30px;
-            }
-
-            .timeline-content {
-                width: calc(100% - 80px);
-                margin-left: 80px !important;
-            }
-
-            .timeline-item::before {
-                left: 30px;
-                transform: none;
-            }
-
-            section {
-                padding: 4rem 0;
-            }
-
-            .skills-grid,
-            .presentations-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .social-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 640px) {
-            .nav-container,
-            .container,
-            .hero-content {
-                padding-left: 1.5rem;
-                padding-right: 1.5rem;
-            }
-
-            .nav-container {
-                padding: 0.75rem 1.5rem;
-            }
-
-            .about-stats {
-                grid-template-columns: 1fr;
-            }
-
-            .btn-group {
-                flex-direction: column;
-                width: 100%;
-            }
-
-            .btn {
-                width: 100%;
-                justify-content: center;
-            }
-
-            .contact-info,
-            .contact-form {
-                padding: 2rem;
-            }
-
-            .testimonial-slide {
-                padding: 2rem 1.5rem;
-            }
-
-            .palestine-gallery {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 1rem;
-            }
-
-            .gallery-item {
-                height: 120px;
-            }
-
-            .social-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 640px) {
-            .nav-container,
-            .container,
-            .hero-content {
-                padding-left: 1.5rem;
-                padding-right: 1.5rem;
-            }
-
-            .nav-container {
-                padding: 0.75rem 1.5rem;
-            }
-
-            .about-stats {
-                grid-template-columns: 1fr;
-            }
-
-            .btn-group {
-                flex-direction: column;
-                width: 100%;
-            }
-
-            .btn {
-                width: 100%;
-                justify-content: center;
-            }
-
-            .contact-info,
-            .contact-form {
-                padding: 2rem;
-            }
-
-            .testimonial-slide {
-                padding: 2rem 1.5rem;
-            }
-
-            .palestine-gallery {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 1rem;
-            }
-
-            .gallery-item {
-                height: 120px;
-            }
-
-            .social-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .services-note {
-                padding: 1.5rem;
-            }
-
-            .project-links {
-                flex-direction: column;
-            }
-
-            .project-link {
-                justify-content: center;
-            }
-
-            .footer-socials {
-                gap: 1rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hero {
-                padding-top: 100px;
-            }
-
-            .profile-img {
-                width: min(280px, 90vw);
-                height: min(280px, 90vw);
-            }
-
-            .stat-item {
-                padding: 1.5rem 1rem;
-            }
-
-            .skill-card,
-            .presentation-card {
-                padding: 2rem 1.5rem;
-            }
-
-            .project-content {
-                padding: 1.5rem;
-            }
-
-            .timeline-content {
-                padding: 2rem;
-            }
-
-            .btn-palestine {
-                padding: 0.875rem 1.5rem;
-                font-size: 0.9rem;
-            }
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .fade-in-up {
-            animation: fadeInUp 0.8s ease-out;
-        }
-
-        @keyframes slideInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes slideInRight {
-            from {
-                opacity: 0;
-                transform: translateX(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        .hero-text {
-            animation: slideInLeft 1s ease-out;
-        }
-
-        .hero-image {
-            animation: slideInRight 1s ease-out;
-        }
-    </style>
+</style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav id="navbar">
-        <div class="nav-container">
-            <div class="logo">Haanim Pietersen</div>
-            <ul class="nav-links">
-                <li><a href="#home" class="nav-link">Home</a></li>
-                <li><a href="#humanitarian" class="nav-link">Humanitarian</a></li>
-                <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#skills" class="nav-link">Skills</a></li>
-                <li><a href="#projects" class="nav-link">Projects</a></li>
-                <li><a href="#presentations" class="nav-link">Presentations</a></li>
-                <li><a href="#experience" class="nav-link">Experience</a></li>
-                <li><a href="#education" class="nav-link">Education</a></li>
-                <li><a href="#services" class="nav-link">Services</a></li>
-                <li><a href="#testimonials" class="nav-link">Testimonials</a></li>
-                <li><a href="#socials" class="nav-link">Socials</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
-            </ul>
-            <div class="mobile-menu">
-                <i class="fas fa-bars"></i>
-            </div>
-        </div>
-    </nav>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <div class="hero-text">
-                <h1>Haanim Pietersen</h1>
-                <p class="subtitle">Software Development Intern | Standing for Human Rights & Palestinian Freedom</p>
-                <p class="description">I'm a software development intern at the School of Pharmacy UWC with a passion for creating meaningful digital solutions. With expertise spanning web design, social media management, software engineering, and team leadership, I bring a versatile skill set to every project. Currently managing stakeholder communication and UX improvements for regulatory technology initiatives while leveraging my background in business leadership, design, and development. Committed to using technology as a force for positive change and human rights advocacy.</p>
-                <div class="btn-group">
-                    <a href="#contact" class="btn btn-primary">
-                        <i class="fas fa-envelope"></i>
-                        Get In Touch
-                    </a>
-                    <a href="/files/Haanim 2025 CV.pdf" class="btn btn-secondary" id="downloadCV">
-                        <i class="fas fa-download"></i>
-                        Download CV
-                    </a>
-                </div>
-            </div>
-            <div class="hero-image">
-                <img src="/files/IMG-20250528-WA0042.jpg" alt="Haanim Pietersen" class="profile-img">
-            </div>
-        </div>
-    </section>
+<nav id="navbar">
+  <div class="nav-container">
+    <div class="logo">Haanim <span>Pietersen</span></div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home" class="nav-link">Home</a></li>
+      <li><a href="#humanitarian" class="nav-link">Humanitarian</a></li>
+      <li><a href="#about" class="nav-link">About</a></li>
+      <li><a href="#skills" class="nav-link">Skills</a></li>
+      <li><a href="#projects" class="nav-link">Projects</a></li>
+      <li><a href="#presentations" class="nav-link">Talks</a></li>
+      <li><a href="#experience" class="nav-link">Experience</a></li>
+      <li><a href="#education" class="nav-link">Education</a></li>
+      <li><a href="#testimonials" class="nav-link">Testimonials</a></li>
+      <li><a href="#socials" class="nav-link">Socials</a></li>
+      <li><a href="#contact" class="nav-link">Contact</a></li>
+    </ul>
+    <div class="mobile-menu" id="mobileMenu"><i class="fas fa-bars"></i></div>
+  </div>
+</nav>
 
-    <!-- Humanitarian Section with Balanced Text -->
-<section id="humanitarian" class="humanitarian">
-    <div class="container">
-        <div class="humanitarian-content">
-            <h2 class="section-title">Stand for Humanity</h2>
-            <p class="section-subtitle">Using my platform to advocate for human rights, justice, and dignity for all.</p>
-            <p class="humanitarian-text">
-                As a technology professional, I believe in using my voice and skills to stand for those who face injustice. I am committed to raising awareness about critical humanitarian crises and social issues that demand our attention and action.
-            </p>
-
-            <div class="causes-grid">
-                <!-- Palestine Card -->
-                <div class="cause-card palestine">
-                    <div class="cause-icon">
-                        <i class="fas fa-flag"></i>
-                    </div>
-                    <h3>Free Palestine</h3>
-                    <p>Standing with the Palestinian people in their fight for freedom and dignity. Every voice matters in the pursuit of justice and peace.</p>
-                    <div class="cause-stats">
-                        <div class="stat-box">
-                            <i class="fas fa-heart"></i>
-                            <span>Solidarity</span>
-                        </div>
-                        <div class="stat-box">
-                            <i class="fas fa-fist-raised"></i>
-                            <span>Resistance</span>
-                        </div>
-                    </div>
-                    <a href="https://www.instagram.com/eye.on.palestine/" target="_blank" class="cause-link">
-                        <i class="fab fa-instagram"></i>
-                        Learn More
-                    </a>
-                </div>
-
-                <!-- Sudan Card -->
-                <div class="cause-card sudan">
-                    <div class="cause-icon">
-                        <i class="fas fa-hand-holding-heart"></i>
-                    </div>
-                    <h3>Support Sudan</h3>
-                    <p>Raising awareness about the ongoing genocide and humanitarian crisis in Sudan. The world must not look away from the suffering of the Sudanese people.</p>
-                    <div class="cause-stats">
-                        <div class="stat-box">
-                            <i class="fas fa-dove"></i>
-                            <span>Peace</span>
-                        </div>
-                        <div class="stat-box">
-                            <i class="fas fa-hands-helping"></i>
-                            <span>Support</span>
-                        </div>
-                    </div>
-                    <a href="https://www.instagram.com/eye.on.sudan/" target="_blank" class="cause-link">
-                        <i class="fab fa-instagram"></i>
-                        Learn More
-                    </a>
-                </div>
-
-                <!-- GBV Card -->
-                <div class="cause-card gbv">
-                    <div class="cause-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h3>End Gender-Based Violence</h3>
-                    <p>Taking a stand against all forms of gender-based violence. Creating a safer world starts with speaking up, supporting survivors, and demanding change.</p>
-                    <div class="cause-stats">
-                        <div class="stat-box">
-                            <i class="fas fa-user-shield"></i>
-                            <span>Protection</span>
-                        </div>
-                        <div class="stat-box">
-                            <i class="fas fa-balance-scale"></i>
-                            <span>Justice</span>
-                        </div>
-                    </div>
-                    <a href="https://www.instagram.com/gbv.awareness/" target="_blank" class="cause-link">
-                        <i class="fab fa-instagram"></i>
-                        Take Action
-                    </a>
-                </div>
-
-                <!-- Congo Card -->
-                <div class="cause-card congo">
-                    <div class="cause-icon">
-                        <i class="fas fa-flag"></i>
-                    </div>
-                    <h3>Support Congo</h3>
-                    <p>Standing with the people of the Democratic Republic of the Congo in their struggle for peace, stability, and justice. Raising awareness about ongoing conflicts and humanitarian needs.</p>
-                    <div class="cause-stats">
-                        <div class="stat-box">
-                            <i class="fas fa-hand-holding-heart"></i>
-                            <span>Compassion</span>
-                        </div>
-                        <div class="stat-box">
-                            <i class="fas fa-earth-africa"></i>
-                            <span>Solidarity</span>
-                        </div>
-                    </div>
-                    <a href="#" class="cause-link">
-                        <i class="fas fa-heart"></i>
-                        Learn More
-                    </a>
-                </div>
-
-                <!-- ICE Card -->
-                <div class="cause-card ice">
-                    <div class="cause-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <h3>Abolish ICE</h3>
-                    <p>Opposing immigration enforcement and detention systems that separate families and violate human rights. Advocating for immigration justice and protecting immigrant communities.</p>
-                    <div class="cause-stats">
-                        <div class="stat-box">
-                            <i class="fas fa-family"></i>
-                            <span>Family Unity</span>
-                        </div>
-                        <div class="stat-box">
-                            <i class="fas fa-gavel"></i>
-                            <span>Justice</span>
-                        </div>
-                    </div>
-                    <a href="#" class="cause-link">
-                        <i class="fas fa-heart"></i>
-                        Learn More
-                    </a>
-                </div>
-
-                <!-- Water Conservation Card -->
-                <div class="cause-card water">
-                    <div class="cause-icon">
-                        <i class="fas fa-droplet"></i>
-                    </div>
-                    <h3>Save Our Water</h3>
-                    <p>Advocating for water conservation and sustainable resource management in the face of AI technology's growing environmental impact. Clean water is a human right.</p>
-                    <div class="cause-stats">
-                        <div class="stat-box">
-                            <i class="fas fa-leaf"></i>
-                            <span>Sustainability</span>
-                        </div>
-                        <div class="stat-box">
-                            <i class="fas fa-earth"></i>
-                            <span>Environment</span>
-                        </div>
-                    </div>
-                    <a href="#" class="cause-link">
-                        <i class="fas fa-heart"></i>
-                        Learn More
-                    </a>
-                </div>
-
-                <!-- Epstein Files Card -->
-                <div class="cause-card epstein">
-                    <div class="cause-icon">
-                        <i class="fas fa-gavel"></i>
-                    </div>
-                    <h3>Release the Epstein Files</h3>
-                    <p>Demanding transparency and accountability through the full release of the Epstein documents. Truth and justice for all survivors. Exposing systemic abuse and the powerful figures who enabled it.</p>
-                    <div class="cause-stats">
-                        <div class="stat-box">
-                            <i class="fas fa-balance-scale"></i>
-                            <span>Justice</span>
-                        </div>
-                        <div class="stat-box">
-                            <i class="fas fa-eye"></i>
-                            <span>Transparency</span>
-                        </div>
-                    </div>
-                    <a href="#" class="cause-link">
-                        <i class="fas fa-heart"></i>
-                        Learn More
-                    </a>
-                </div>
-            </div>
-        </div>
+<!-- HERO -->
+<section id="home" class="hero">
+  <div class="hero-left">
+    <p class="hero-eyebrow">Portfolio — 2026</p>
+    <h1 class="hero-name">Haanim<br><em>Pietersen</em></h1>
+    <p class="hero-title">Software Development Intern &amp; Human Rights Advocate</p>
+    <p class="hero-desc">Software Development Intern at the School of Pharmacy, UWC — with expertise spanning full-stack web development, mobile app development, cloud computing, social media management, and team leadership. Committed to building meaningful digital solutions and standing for justice.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-gold"><i class="fas fa-envelope"></i>Get In Touch</a>
+      <a href="/files/Haanim 2025 CV.pdf" class="btn-outline" id="downloadCV"><i class="fas fa-download"></i>Download CV</a>
     </div>
+    <div class="hero-scroll">Scroll to explore</div>
+  </div>
+  <div class="hero-right">
+    <img src="/files/IMG-20250528-WA0042.jpg" alt="Haanim Pietersen">
+    <div class="hero-overlay">
+      <span class="hero-tag">Cape Town, ZA</span>
+      <span class="hero-tag">UWC</span>
+      <span class="hero-tag">Open to Work</span>
+    </div>
+  </div>
 </section>
 
-    <!-- About Section -->
-    <section id="about" class="about">
-        <div class="container">
-            <h2 class="section-title">About Me</h2>
-            <p class="section-subtitle">Passionate about technology, human rights, and creating meaningful digital solutions.</p>
-            <div class="about-content">
-                <div class="about-stats">
-                    <div class="stat-item">
-                        <span class="stat-number">3</span>
-                        <span class="stat-label">Years Experience</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number">30+</span>
-                        <span class="stat-label">Projects Completed</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number">4</span>
-                        <span class="stat-label">Languages Spoken</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number">7</span>
-                        <span class="stat-label">Certifications</span>
-                    </div>
-                </div>
-                <div class="about-text">
-                    <p>I am a Software Development Intern at the School of Pharmacy, University of the Western Cape, with 3+ years of professional experience in technology. My diverse skill set spans full-stack web development, mobile app development (.NET MAUI), cloud computing (Azure), social media management, and software engineering.</p>
-                    <p>A high-achiever and award-winning developer, I earned Distinctions (Summa Cum Laude) in Introduction to Multi-Platform Software Development and Digital Social Innovation for Impact. I was recognized as Top Student for Digital Social Innovation for Impact at Samsung's Future Innovation Lab, where I also won the 2025 Best Overall Technical Project award for DiaConnect. My professional journey includes leading teams, managing complex digital projects, stakeholder communication, UX design, and building scalable solutions that solve real-world problems. I've successfully delivered 30+ projects across various domains.</p>
-                    <p>I'm fluent in English and Afrikaans, with basic proficiency in German and Mandarin. My technical expertise includes Python, C#, .NET MAUI, ASP.NET, Azure, WordPress, Elementor, and modern web technologies. My certifications include Python Essentials, Mobile Digital Literacy, Linux Administration, Social Media Marketing, and Inbound Marketing.</p>
-                    <p>Beyond technology, I'm deeply committed to using my skills for positive change. I'm a passionate human rights advocate standing firmly for Palestinian freedom and justice, leveraging my platform to raise awareness and contribute to meaningful causes that matter.</p>
-                </div>
-            </div>
+<!-- ABOUT -->
+<section id="about" class="section alt">
+  <div class="wrap">
+    <p class="section-label reveal">About</p>
+    <h2 class="section-heading reveal">Passionate about<br><em>technology &amp; people</em></h2>
+    <div class="about-grid">
+      <div class="stat-cluster reveal">
+        <div class="stat-cell"><span class="stat-num" data-target="3">0</span><span class="stat-name">Years Experience</span></div>
+        <div class="stat-cell"><span class="stat-num" data-target="30">0</span><span class="stat-name">Projects Done</span></div>
+        <div class="stat-cell"><span class="stat-num" data-target="4">0</span><span class="stat-name">Languages</span></div>
+        <div class="stat-cell"><span class="stat-num" data-target="7">0</span><span class="stat-name">Certifications</span></div>
+      </div>
+      <div class="about-text reveal">
+        <p>I am a Software Development Intern at the School of Pharmacy, University of the Western Cape, with 3+ years of professional experience in technology. My diverse skill set spans full-stack web development, mobile app development (.NET MAUI), cloud computing (Azure), social media management, and software engineering.</p>
+        <p>A high-achiever and award-winning developer — I earned Distinctions (Summa Cum Laude) in Introduction to Multi-Platform Software Development and Digital Social Innovation for Impact. I was recognised as Top Student for Digital Social Innovation for Impact at Samsung's Future Innovation Lab, and won the 2025 Best Overall Technical Project award for DiaConnect.</p>
+        <p>My professional journey includes leading teams, managing complex digital projects, stakeholder communication, UX design, and building scalable solutions that solve real-world problems across 30+ delivered projects.</p>
+        <p>I'm fluent in English and Afrikaans, with basic proficiency in German and Mandarin. Beyond technology, I'm deeply committed to human rights advocacy — standing firmly for Palestinian freedom and justice, leveraging my platform to raise awareness for causes that matter.</p>
+        <div class="award-row">
+          <span class="award-badge"><i class="fas fa-trophy"></i> 2025 Best Overall Technical Project</span>
+          <span class="award-badge"><i class="fas fa-star"></i> Summa Cum Laude</span>
+          <span class="award-badge"><i class="fas fa-medal"></i> Top Student — Samsung FIL</span>
         </div>
-    </section>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- Skills Section -->
-    <section id="skills" class="skills">
-        <div class="container">
-            <h2 class="section-title">Skills & Expertise</h2>
-            <p class="section-subtitle">A comprehensive skill set built through education, experience, and continuous learning.</p>
-            <div class="skills-grid">
-                <div class="skill-card">
-                    <div class="skill-icon">
-                        <i class="fas fa-code"></i>
-                    </div>
-                    <h3>Frontend Development</h3>
-                    <p>Proficient in modern frontend technologies and responsive design principles for creating engaging user experiences.</p>
-                    <div class="skill-tags">
-                        <span class="skill-tag">HTML</span>
-                        <span class="skill-tag">CSS</span>
-                        <span class="skill-tag">JavaScript</span>
-                        <span class="skill-tag">Bootstrap</span>
-                        <span class="skill-tag">Vue.js</span>
-                    </div>
-                </div>
-                <div class="skill-card">
-                    <div class="skill-icon">
-                        <i class="fas fa-server"></i>
-                    </div>
-                    <h3>Backend Development</h3>
-                    <p>Proficient in server-side development, database management, and API design with modern frameworks.</p>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Python</span>
-                        <span class="skill-tag">C++</span>
-                        <span class="skill-tag">Node.js</span>
-                        <span class="skill-tag">C#</span>
-                        <span class="skill-tag">.NET</span>
-                    </div>
-                </div>
-                <div class="skill-card">
-                    <div class="skill-icon">
-                        <i class="fas fa-database"></i>
-                    </div>
-                    <h3>Database & Analytics</h3>
-                    <p>Experienced in database design, data analysis, and business intelligence solutions.</p>
-                    <div class="skill-tags">
-                        <span class="skill-tag">MySQL</span>
-                        <span class="skill-tag">Power BI</span>
-                        <span class="skill-tag">Data Analysis</span>
-                    </div>
-                </div>
-                <div class="skill-card">
-                    <div class="skill-icon">
-                        <i class="fas fa-mobile-alt"></i>
-                    </div>
-                    <h3>Mobile & Desktop Development</h3>
-                    <p>Specialized in cross-platform development and modern UI/UX design principles.</p>
-                    <div class="skill-tags">
-                        <span class="skill-tag">MAUI</span>
-                        <span class="skill-tag">XAML</span>
-                        <span class="skill-tag">Mobile Design</span>
-                    </div>
-                </div>
-                <div class="skill-card">
-                    <div class="skill-icon">
-                        <i class="fas fa-cloud"></i>
-                    </div>
-                    <h3>Cloud & DevOps</h3>
-                    <p>Strong foundation in cloud platforms, system administration, and deployment strategies.</p>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Azure</span>
-                        <span class="skill-tag">Linux</span>
-                        <span class="skill-tag">System Admin</span>
-                    </div>
-                </div>
-                <div class="skill-card">
-                    <div class="skill-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <h3>Project Management & Marketing</h3>
-                    <p>Proven leadership skills in agile methodologies, team coordination, and digital marketing strategies.</p>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Scrum</span>
-                        <span class="skill-tag">WordPress</span>
-                        <span class="skill-tag">Elementor</span>
-                        <span class="skill-tag">Teams</span>
-                        <span class="skill-tag">Office Suite</span>
-                    </div>
-                </div>
-            </div>
+<!-- SKILLS -->
+<section id="skills" class="section">
+  <div class="wrap">
+    <p class="section-label reveal">Expertise</p>
+    <h2 class="section-heading reveal">Skills &amp; <em>capabilities</em></h2>
+    <div class="skills-grid">
+      <div class="skill-cell reveal" data-num="01"><div class="skill-ico"><i class="fas fa-code"></i></div><h3>Frontend Development</h3><p>Modern frontend technologies and responsive design for engaging user experiences.</p><div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span><span class="tag">Bootstrap</span><span class="tag">Vue.js</span></div></div>
+      <div class="skill-cell reveal" data-num="02"><div class="skill-ico"><i class="fas fa-server"></i></div><h3>Backend Development</h3><p>Server-side development, database management, and API design with modern frameworks.</p><div class="tags"><span class="tag">Python</span><span class="tag">C++</span><span class="tag">Node.js</span><span class="tag">C#</span><span class="tag">.NET</span><span class="tag">ASP.NET</span></div></div>
+      <div class="skill-cell reveal" data-num="03"><div class="skill-ico"><i class="fas fa-database"></i></div><h3>Database &amp; Analytics</h3><p>Database design, data analysis, and business intelligence solutions.</p><div class="tags"><span class="tag">MySQL</span><span class="tag">Power BI</span><span class="tag">Data Analysis</span></div></div>
+      <div class="skill-cell reveal" data-num="04"><div class="skill-ico"><i class="fas fa-mobile-alt"></i></div><h3>Mobile &amp; Desktop</h3><p>Cross-platform development with .NET MAUI and modern UI/UX design principles.</p><div class="tags"><span class="tag">MAUI</span><span class="tag">XAML</span><span class="tag">.NET MAUI</span><span class="tag">Mobile Design</span></div></div>
+      <div class="skill-cell reveal" data-num="05"><div class="skill-ico"><i class="fas fa-cloud"></i></div><h3>Cloud &amp; DevOps</h3><p>Cloud platforms, system administration, and deployment strategies.</p><div class="tags"><span class="tag">Azure</span><span class="tag">Linux</span><span class="tag">System Admin</span></div></div>
+      <div class="skill-cell reveal" data-num="06"><div class="skill-ico"><i class="fas fa-users"></i></div><h3>Project &amp; Marketing</h3><p>Agile methodologies, team coordination, and digital marketing strategies.</p><div class="tags"><span class="tag">Scrum</span><span class="tag">WordPress</span><span class="tag">Elementor</span><span class="tag">Teams</span><span class="tag">Office Suite</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="section alt">
+  <div class="wrap">
+    <p class="section-label reveal">Work</p>
+    <h2 class="section-heading reveal">Featured <em>projects</em></h2>
+    <div class="projects-grid">
+      <div class="project-card reveal">
+        <div class="proj-img"><i class="fas fa-car-side"></i></div>
+        <div class="proj-body"><p class="proj-num">Project — 01</p><h3>Drive Sure</h3><p>A car marketplace support platform for helping users find, assess, and purchase vehicles with confidence.</p><div class="proj-tech"><span class="tag">Web Platform</span><span class="tag">Marketplace</span></div><a href="https://drive-sure-lyart.vercel.app/" class="proj-link" target="_blank">Live Demo <i class="fas fa-arrow-right"></i></a></div>
+      </div>
+      <div class="project-card featured reveal">
+        <div class="proj-img" style="background:linear-gradient(135deg,#1a1a2e,#16213e)">
+          <i class="fas fa-heartbeat" style="color:#b8913a;opacity:.8;font-size:2.2rem"></i>
+          <span class="proj-winner"><i class="fas fa-trophy"></i> Best Overall Technical Project 2025</span>
         </div>
-    </section>
+        <div class="proj-body"><p class="proj-num">Project — 02 · Featured</p><h3>DiaConnect</h3><p>A diabetes tracking app with AI chat, caretaker alerts, and hidden sugars detection. Winner of the 2025 Best Overall Technical Project.</p><div class="proj-tech"><span class="tag">.NET MAUI</span><span class="tag">C#</span><span class="tag">XAML</span><span class="tag">ASP.NET</span><span class="tag">Azure</span></div><a href="https://github.com/HaanimP/DiaConnectFinal.git" class="proj-link" target="_blank">View Project <i class="fas fa-arrow-right"></i></a></div>
+      </div>
+      <div class="project-card reveal">
+        <div class="proj-img"><i class="fas fa-images"></i></div>
+        <div class="proj-body"><p class="proj-num">Project — 03</p><h3>Pinterest App</h3><p>A Pinterest-inspired application for discovering, sharing, and organising visual content and inspiration.</p><div class="proj-tech"><span class="tag">XAML</span><span class="tag">C#</span></div><a href="https://github.com/HaanimP/Pinterest-App-Assignment.git" class="proj-link" target="_blank">View Project <i class="fas fa-arrow-right"></i></a></div>
+      </div>
+      <div class="project-card reveal">
+        <div class="proj-img"><i class="fas fa-laptop-code"></i></div>
+        <div class="proj-body"><p class="proj-num">Project — 04</p><h3>Women with Vision</h3><p>A non-profit website showcasing work, branch locations, contact info, and a simple way to donate.</p><div class="proj-tech"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span></div><a href="https://womenwithvision.netlify.app/home" class="proj-link" target="_blank">Live Demo <i class="fas fa-arrow-right"></i></a></div>
+      </div>
+      <div class="project-card reveal">
+        <div class="proj-img"><i class="fas fa-birthday-cake"></i></div>
+        <div class="proj-body"><p class="proj-num">Project — 05</p><h3>Sugar Bakez</h3><p>A small business website showcasing baked goods, the owner, and available services.</p><div class="proj-tech"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span></div><a href="https://sugarbakez.netlify.app/" class="proj-link" target="_blank">Live Demo <i class="fas fa-arrow-right"></i></a></div>
+      </div>
+      <div class="project-card reveal">
+        <div class="proj-img"><i class="fas fa-route"></i></div>
+        <div class="proj-body"><p class="proj-num">Project — 06</p><h3>Path Align</h3><p>A site that helps students find their best learning path based on personality test results.</p><div class="proj-tech"><span class="tag">WordPress</span><span class="tag">Power BI</span><span class="tag">Excel</span></div><a href="https://personatest.lcstudio-incubate.co.za/" class="proj-link" target="_blank">Live Demo <i class="fas fa-arrow-right"></i></a></div>
+      </div>
 
-    <!-- Projects Section -->
-    <section id="projects" class="projects">
-        <div class="container">
-            <h2 class="section-title">Featured Projects</h2>
-            <p class="section-subtitle">A showcase of my recent work and technical achievements across different domains.</p>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-image">
-                        <i class="fas fa-heart-pulse placeholder-icon"></i>
-                    </div>
-                    <div class="project-content">
-                        <h3>DiaConnect</h3>
-                        <p>A diabetes tracking app with AI chat, caretaker alerts, and hidden sugars detection. 2025 Best Overall Technical Project winner.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">.NET MAUI</span>
-                            <span class="tech-tag">C#</span>
-                            <span class="tech-tag">XAML</span>
-                            <span class="tech-tag">ASP.NET</span>
-                            <span class="tech-tag">Azure</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/HaanimP/DiaConnectApi.git" class="project-link primary" target="_blank">
-                                <i class="fas fa-external-link-alt"></i>
-                                View Project
-                            </a>
-                        </div>
-                    </div>
-                </div>
+    </div>
+  </div>
+</section>
 
-                <div class="project-card">
-                    <div class="project-image">
-                        <i class="fab fa-pinterest placeholder-icon"></i>
-                    </div>
-                    <div class="project-content">
-                        <h3>Pinterest App</h3>
-                        <p>A Pinterest-inspired application for discovering, sharing, and organizing visual content and inspiration.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">XAML</span>
-                            <span class="tech-tag">C#</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/HaanimP/Pinterest-App-Assignment.git" class="project-link primary" target="_blank">
-                                <i class="fas fa-external-link-alt"></i>
-                                View Project
-                            </a>
-                        </div>
-                    </div>
-                </div>
+<!-- HUMANITARIAN -->
+<section id="humanitarian" class="humanitarian">
+  <div class="wrap">
+    <div class="hum-header">
+      <p class="section-label reveal">Values</p>
+      <h2 class="section-heading reveal">Stand for <em>Humanity</em></h2>
+      <p class="section-sub reveal">Using my platform to advocate for human rights, justice, and dignity for all.</p>
+    </div>
+    <p class="hum-intro reveal">As a technology professional, I believe in using my voice and skills to stand for those who face injustice. I am committed to raising awareness about critical humanitarian crises and social issues that demand our attention and action.</p>
+    <div class="causes-grid-a">
+      <div class="cause-card palestine reveal"><div class="cause-accent"></div><h3>Free Palestine</h3><p>Standing with the Palestinian people in their fight for freedom and dignity. Every voice matters in the pursuit of justice and peace.</p><div class="cause-stats-row"><div class="c-stat"><i class="fas fa-heart"></i><span>Solidarity</span></div><div class="c-stat"><i class="fas fa-fist-raised"></i><span>Resistance</span></div></div><a href="https://www.instagram.com/eye.on.palestine/" target="_blank" class="cause-link"><i class="fab fa-instagram"></i> Learn More</a></div>
+      <div class="cause-card sudan reveal"><div class="cause-accent"></div><h3>Support Sudan</h3><p>Raising awareness about the ongoing genocide and humanitarian crisis in Sudan. The world must not look away from the suffering of the Sudanese people.</p><div class="cause-stats-row"><div class="c-stat"><i class="fas fa-dove"></i><span>Peace</span></div><div class="c-stat"><i class="fas fa-hands-helping"></i><span>Support</span></div></div><a href="https://www.instagram.com/eye.on.sudan/" target="_blank" class="cause-link"><i class="fab fa-instagram"></i> Learn More</a></div>
+      <div class="cause-card gbv reveal"><div class="cause-accent"></div><h3>End Gender-Based Violence</h3><p>Taking a stand against all forms of gender-based violence. Creating a safer world starts with speaking up, supporting survivors, and demanding change.</p><div class="cause-stats-row"><div class="c-stat"><i class="fas fa-user-shield"></i><span>Protection</span></div><div class="c-stat"><i class="fas fa-balance-scale"></i><span>Justice</span></div></div><a href="https://www.instagram.com/gbv.awareness/" target="_blank" class="cause-link"><i class="fab fa-instagram"></i> Take Action</a></div>
+      <div class="cause-card congo reveal"><div class="cause-accent"></div><h3>Support Congo</h3><p>Standing with the people of the DRC in their struggle for peace, stability, and justice. Raising awareness about ongoing conflicts and humanitarian needs.</p><div class="cause-stats-row"><div class="c-stat"><i class="fas fa-heart"></i><span>Compassion</span></div><div class="c-stat"><i class="fas fa-fist-raised"></i><span>Solidarity</span></div></div><a href="https://www.instagram.com/" target="_blank" class="cause-link"><i class="fab fa-instagram"></i> Learn More</a></div>
+    </div>
+    <div class="causes-grid-b">
+      <div class="cause-card ice reveal"><div class="cause-accent"></div><h3>Abolish ICE</h3><p>Opposing immigration enforcement and detention systems that separate families and violate human rights. Advocating for immigration justice and protecting immigrant communities.</p><div class="cause-stats-row"><div class="c-stat"><i class="fas fa-users"></i><span>Family Unity</span></div><div class="c-stat"><i class="fas fa-balance-scale"></i><span>Justice</span></div></div><a href="https://www.instagram.com/" target="_blank" class="cause-link"><i class="fab fa-instagram"></i> Learn More</a></div>
+      <div class="cause-card water reveal"><div class="cause-accent"></div><h3>Save Our Water</h3><p>Advocating for water conservation and sustainable resource management in the face of AI technology's growing environmental impact. Clean water is a human right.</p><div class="cause-stats-row"><div class="c-stat"><i class="fas fa-leaf"></i><span>Sustainability</span></div><div class="c-stat"><i class="fas fa-globe"></i><span>Environment</span></div></div><a href="https://www.instagram.com/" target="_blank" class="cause-link"><i class="fab fa-instagram"></i> Learn More</a></div>
+      <div class="cause-card epstein reveal"><div class="cause-accent"></div><h3>Release the Epstein Files</h3><p>Demanding transparency and accountability through the full release of the Epstein documents. Truth and justice for all survivors — exposing systemic abuse and those who enabled it.</p><div class="cause-stats-row"><div class="c-stat"><i class="fas fa-balance-scale"></i><span>Justice</span></div><div class="c-stat"><i class="fas fa-eye"></i><span>Transparency</span></div></div><a href="https://www.instagram.com/" target="_blank" class="cause-link"><i class="fab fa-instagram"></i> Learn More</a></div>
+    </div>
+  </div>
+</section>
 
-                <div class="project-card">
-                    <div class="project-image">
-                        <i class="fas fa-laptop-code placeholder-icon"></i>
-                    </div>
-                    <div class="project-content">
-                        <h3>Women with Vision</h3>
-                        <p>A non-profit website showcasing work, branch locations, contact info, and a simple way to donate.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">HTML</span>
-                            <span class="tech-tag">CSS</span>
-                            <span class="tech-tag">JavaScript</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://womenwithvision.netlify.app/home" class="project-link primary" target="_blank">
-                                <i class="fas fa-external-link-alt"></i>
-                                Live Demo
-                            </a>
-                        </div>
-                    </div>
-                </div>
+<!-- PRESENTATIONS -->
+<section id="presentations" class="section">
+  <div class="wrap">
+    <p class="section-label reveal">Talks</p>
+    <h2 class="section-heading reveal">Presentations &amp; <em>knowledge sharing</em></h2>
+    <p class="section-sub reveal">Sharing insights through educational presentations and technical talks.</p>
+    <div class="presentations-grid">
+      <div class="pres-card reveal"><div class="pres-icon" style="background:linear-gradient(135deg,#4f46e5,#7c3aed)"><i class="fas fa-user-md"></i></div><h3>Hamilton Naki</h3><p>Our group's role model and the characteristics of a truly great one.</p><a href="https://www.canva.com/design/DAGhUu6uC4Q/h6CnfVWGW5uX0YSy6_KaFw/view" class="pres-btn" target="_blank">View Presentation <i class="fas fa-arrow-right"></i></a></div>
+      <div class="pres-card reveal"><div class="pres-icon" style="background:linear-gradient(135deg,#06b6d4,#0891b2)"><i class="fas fa-briefcase"></i></div><h3>The Future of Work</h3><p>How the future of work looks and the skills needed to thrive in it.</p><a href="https://www.canva.com/design/DAGhCOQ_nO0/2QmZqIVg4avjXP07BERAAg/view" class="pres-btn" target="_blank">View Presentation <i class="fas fa-arrow-right"></i></a></div>
+      <div class="pres-card reveal"><div class="pres-icon" style="background:linear-gradient(135deg,#10b981,#059669)"><i class="fas fa-graduation-cap"></i></div><h3>EdVance</h3><p>Using Azure AI to solve a challenge in the education environment.</p><a href="https://www.canva.com/design/DAGgAngASrE/5y5qGX709No7l07z7lEhbw/view" class="pres-btn" target="_blank">View Presentation <i class="fas fa-arrow-right"></i></a></div>
+      <div class="pres-card reveal"><div class="pres-icon" style="background:linear-gradient(135deg,#f59e0b,#d97706)"><i class="fas fa-solar-panel"></i></div><h3>Power Track</h3><p>Energy and cost savings from solar panels vs traditional energy sources.</p><a href="https://www.canva.com/design/DAGPyv-jw5w/2mlLOLek20Yq6UkLWdDijg/view" class="pres-btn" target="_blank">View Presentation <i class="fas fa-arrow-right"></i></a></div>
+      <div class="pres-card reveal"><div class="pres-icon" style="background:linear-gradient(135deg,#ef4444,#dc2626)"><i class="fas fa-id-badge"></i></div><h3>Intern Profiles</h3><p>A project displaying intern profiles, skills, projects, and achievements.</p><a href="https://www.canva.com/design/DAGP9qSbvXk/scjmbZdE2ytNvz4CtfFdDg/view" class="pres-btn" target="_blank">View Presentation <i class="fas fa-arrow-right"></i></a></div>
+      <div class="pres-card reveal"><div class="pres-icon" style="background:linear-gradient(135deg,#8b5cf6,#7c3aed)"><i class="fab fa-drupal"></i></div><h3>Drupal</h3><p>Fundamental concepts, tools, and features of Drupal — core functionality and usage.</p><a href="https://www.canva.com/design/DAGMVXxqV10/cTtxqBV297KnAFiyzTEihQ/view" class="pres-btn" target="_blank">View Presentation <i class="fas fa-arrow-right"></i></a></div>
+    </div>
+  </div>
+</section>
 
-                <div class="project-card">
-                    <div class="project-image">
-                        <i class="fas fa-birthday-cake placeholder-icon"></i>
-                    </div>
-                    <div class="project-content">
-                        <h3>Sugar Bakez</h3>
-                        <p>A small business website showcasing baked goods, the owner, and available services.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">HTML</span>
-                            <span class="tech-tag">CSS</span>
-                            <span class="tech-tag">JavaScript</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://sugarbakez.netlify.app/" class="project-link primary" target="_blank">
-                                <i class="fas fa-external-link-alt"></i>
-                                Live Demo
-                            </a>
-                        </div>
-                    </div>
-                </div>
+<!-- EXPERIENCE -->
+<section id="experience" class="section alt">
+  <div class="wrap">
+    <p class="section-label reveal">Career</p>
+    <h2 class="section-heading reveal">Professional <em>experience</em></h2>
+    <div class="timeline-wrap">
+      <div class="tl-item reveal"><div class="tl-date">Dec 2025<br>— Present</div><div class="tl-body"><h3>Software Development Intern</h3><p class="tl-company">School of Pharmacy UWC, The Gatees Foundation</p><p class="tl-desc">Managed internal and stakeholder communication for a confidential regulatory technology project while contributing to improving clarity, usability and workflow logic in a high-stakes digital environment. Assisted in preparing structured updates and reviews for senior academic and industry stakeholders.</p></div></div>
+      <div class="tl-item reveal"><div class="tl-date">Feb 2025<br>— May 2025</div><div class="tl-body"><h3>Social Media Manager</h3><p class="tl-company">The Three Stars</p><p class="tl-desc">Led comprehensive social media strategy including content management, client consultation, team collaboration, and brand outreach initiatives that significantly increased engagement.</p></div></div>
+      <div class="tl-item reveal"><div class="tl-date">Dec 2024<br>— May 2025</div><div class="tl-body"><h3>Business Team Lead</h3><p class="tl-company">The Three Stars</p><p class="tl-desc">Managed daily standups and progress tracking, ensured project punctuality and task completion, while providing mentorship and guidance to team members.</p></div></div>
+      <div class="tl-item reveal"><div class="tl-date">Nov 2024<br>— May 2025</div><div class="tl-body"><h3>Web Designer</h3><p class="tl-company">The Three Stars</p><p class="tl-desc">Created comprehensive wireframes and prototypes, designed user-friendly interfaces, developed responsive web solutions, and collaborated effectively with cross-functional development teams.</p></div></div>
+      <div class="tl-item reveal"><div class="tl-date">Oct 2024<br>— Nov 2024</div><div class="tl-body"><h3>Assistant Lecturer</h3><p class="tl-company">LC Studio</p><p class="tl-desc">Facilitated student progress through structured check-ins, maintained high standards for punctuality and task completion, while providing comprehensive educational support.</p></div></div>
+      <div class="tl-item reveal"><div class="tl-date">Apr 2024<br>— Nov 2024</div><div class="tl-body"><h3>Software Engineer Intern</h3><p class="tl-company">LC Studio</p><p class="tl-desc">Advanced technical skills in Linux, Python, and C++ through intensive self-study, collaborated with cross-functional teams during Scrum processes, and developed innovative project prototypes.</p></div></div>
+    </div>
+  </div>
+</section>
 
-                <div class="project-card">
-                    <div class="project-image">
-                        <i class="fas fa-route placeholder-icon"></i>
-                    </div>
-                    <div class="project-content">
-                        <h3>Path Align</h3>
-                        <p>A site that helps students find their best learning path based on personality test results.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">WordPress</span>
-                            <span class="tech-tag">Power BI</span>
-                            <span class="tech-tag">Excel</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://personatest.lcstudio-incubate.co.za/" class="project-link primary" target="_blank">
-                                <i class="fas fa-external-link-alt"></i>
-                                Live Demo
-                            </a>
-                        </div>
-                    </div>
-                </div>
+<!-- EDUCATION -->
+<section id="education" class="section">
+  <div class="wrap">
+    <p class="section-label reveal">Education</p>
+    <h2 class="section-heading reveal">Academic <em>background</em></h2>
+    <div class="timeline-wrap">
+      <div class="tl-item reveal"><div class="tl-date">Mar 2025<br>— Nov 2025</div><div class="tl-body"><h3>Software Development Student</h3><p class="tl-company">University of the Western Cape — Future Innovation Lab powered by Samsung</p><p class="tl-desc">Advanced studies in software development with focus on cutting-edge technologies, innovation, and practical application of software engineering principles. Earned Distinctions (Summa Cum Laude) in Multi-Platform Software Development and Digital Social Innovation for Impact. Top Student award &amp; 2025 Best Overall Technical Project winner for DiaConnect.</p></div></div>
+      <div class="tl-item reveal"><div class="tl-date">Sep 2023<br>— Mar 2024</div><div class="tl-body"><h3>Certificate of Excellence, Web Development</h3><p class="tl-company">Life Choices Academy</p><p class="tl-desc">Comprehensive training in web development technologies including HTML, CSS, JavaScript, and modern frameworks. Achieved excellence in all modules with hands-on project experience.</p></div></div>
+      <div class="tl-item reveal"><div class="tl-date">Jan 2018<br>— Dec 2022</div><div class="tl-body"><h3>National Senior Certificate</h3><p class="tl-company">South Peninsula High School</p><p class="tl-desc">Completed secondary education with strong academic performance, laying the foundation for future studies in technology and computer science.</p></div></div>
+    </div>
+  </div>
+</section>
 
-                <div class="project-card">
-                    <div class="project-image">
-                        <i class="fas fa-cloud-sun placeholder-icon"></i>
-                    </div>
-                    <div class="project-content">
-                        <h3>Weather App</h3>
-                        <p>A weather app providing local forecasts using C++ and Python.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">C++</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://weather-app-navy-nu-74.vercel.app/" class="project-link primary" target="_blank">
-                                <i class="fas fa-external-link-alt"></i>
-                                Live Demo
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<!-- TESTIMONIALS -->
+<section id="testimonials" class="section">
+  <div class="wrap">
+    <p class="section-label reveal">Testimonials</p>
+    <h2 class="section-heading reveal">What people <em>say</em></h2>
+    <div class="testi-wrap reveal">
+      <div class="testi-slide active">
+        <div class="testi-quote">"</div>
+        <p class="testi-text">I reached out via LinkedIn to Haanim, to ask her can she please review my CV. In no time she responded to my dm. Her feedback was incredibly helpful — clear, constructive, and exactly what I needed to polish my CV. I really appreciate the time and effort she took to assist me, especially without even knowing me personally. She is always open to assisting others as well.</p>
+        <p class="testi-author">Asandile Langeni</p>
+        <p class="testi-role">LinkedIn Connection</p>
+      </div>
+      <div class="testi-slide">
+        <div class="testi-quote">"</div>
+        <p class="testi-text">It was a pleasure having Haanim on our team. She is a disciplined and dedicated professional who consistently prioritizes project goals and delivers high-quality work. Her skills in web development are strong, and she brings a keen eye for both functionality and design. Haanim also excels in leadership roles, guiding her team with clarity, structure, and a steady hand. Her versatility and work ethic make her an invaluable asset to any team.</p>
+        <p class="testi-author">Ni-shaat Gafieldien</p>
+        <p class="testi-role">Co-Founder of The Three Stars, Developer and Designer</p>
+      </div>
+      <div class="testi-slide">
+        <div class="testi-quote">"</div>
+        <p class="testi-text">Working with Haanim at The Three Stars Digital Solutions was honestly a wonderful experience. She's one of those people who just gets it — super reliable, easy to talk to, and always brings her best to the table. She has a natural sense of leadership and a way of making the team feel grounded and supported, even during hectic deadlines. You always knew you could count on her and I would most definitely recommend her.</p>
+        <p class="testi-author">Ammara Hoosen</p>
+        <p class="testi-role">Co-Founder of The Three Stars, Developer and Designer</p>
+      </div>
+      <div class="testi-controls">
+        <div class="testi-dots">
+          <div class="testi-dot active" data-s="0"></div>
+          <div class="testi-dot" data-s="1"></div>
+          <div class="testi-dot" data-s="2"></div>
         </div>
-    </section>
-
-    <!-- Presentations Section -->
-    <section id="presentations" class="presentations">
-        <div class="container">
-            <h2 class="section-title">Presentations & Talks</h2>
-            <p class="section-subtitle">Sharing knowledge and insights through educational presentations and technical talks.</p>
-            <div class="presentations-grid">
-                <div class="presentation-card">
-                    <div class="presentation-icon" style="background: linear-gradient(135deg, #4f46e5, #7c3aed);">
-                        <i class="fas fa-user-md"></i>
-                    </div>
-                    <h3>Hamilton Naki</h3>
-                    <p>This presentation talks about our groups role model and also the characteristics of a good role model.</p>
-                    <a href="https://www.canva.com/design/DAGhUu6uC4Q/h6CnfVWGW5uX0YSy6_KaFw/view?utm_content=DAGhUu6uC4Q&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=he82d6e8c08" class="presentation-btn" tab="_blank">
-                        <i class="fas fa-play"></i>
-                        View Presentation
-                    </a>
-                </div>
-
-                <div class="presentation-card">
-                    <div class="presentation-icon" style="background: linear-gradient(135deg, #06b6d4, #0891b2);">
-                        <i class="fas fa-briefcase"></i>
-                    </div>
-                    <h3>The Future of Work</h3>
-                    <p>This presentation showcases our opinion on how the future of work would look like and the skills needed to thrive in it.</p>
-                    <a href="https://www.canva.com/design/DAGhCOQ_nO0/2QmZqIVg4avjXP07BERAAg/view?utm_content=DAGhCOQ_nO0&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=ha61d871940" class="presentation-btn" tab="_blank">
-                        <i class="fas fa-play"></i>
-                        View Presentation
-                    </a>
-                </div>
-
-                <div class="presentation-card">
-                    <div class="presentation-icon" style="background: linear-gradient(135deg, #10b981, #059669);">
-                        <i class="fas fa-graduation-cap"></i>
-                    </div>
-                    <h3>EdVance Presentation</h3>
-                    <p>This presentation was a group task on how we would use Azure AI to solve an issue in the education environment.</p>
-                    <a href="https://www.canva.com/design/DAGgAngASrE/5y5qGX709No7l07z7lEhbw/view?utm_content=DAGgAngASrE&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h3584ac18f5" class="presentation-btn" tab="_blank">
-                        <i class="fas fa-play"></i>
-                        View Presentation
-                    </a>
-                </div>
-
-                <div class="presentation-card">
-                    <div class="presentation-icon" style="background: linear-gradient(135deg, #f59e0b, #d97706);">
-                        <i class="fas fa-solar-panel"></i>
-                    </div>
-                    <h3>Power Track</h3>
-                    <p>This presentation shows how much energy and money people save by using solar panels instead of traditional energy sources.</p>
-                    <a href="https://www.canva.com/design/DAGPyv-jw5w/2mlLOLek20Yq6UkLWdDijg/view?utm_content=DAGPyv-jw5w&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h6b053a63fb" class="presentation-btn" tab="_blank">
-                        <i class="fas fa-play"></i>
-                        View Presentation
-                    </a>
-                </div>
-
-                <div class="presentation-card">
-                    <div class="presentation-icon" style="background: linear-gradient(135deg, #ef4444, #dc2626);">
-                        <i class="fas fa-id-badge"></i>
-                    </div>
-                    <h3>Intern Profiles</h3>
-                    <p>This presentation showcases a project created to display intern profiles, including their information, skills, projects, and achievements.</p>
-                    <a href="https://www.canva.com/design/DAGP9qSbvXk/scjmbZdE2ytNvz4CtfFdDg/view?utm_content=DAGP9qSbvXk&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h3d5c888908" class="presentation-btn" tab="_blank">
-                        <i class="fas fa-play"></i>
-                        View Presentation
-                    </a>
-                </div>
-
-                <div class="presentation-card">
-                    <div class="presentation-icon" style="background: linear-gradient(135deg, #8b5cf6, #7c3aed);">
-                        <i class="fab fa-drupal"></i>
-                    </div>
-                    <h3>Drupal Presentation</h3>
-                    <p>This presentation provides an overview of the fundamental concepts, tools, and features of Drupal, focusing on its core functionalities and basic usage.</p>
-                    <a href="https://www.canva.com/design/DAGMVXxqV10/cTtxqBV297KnAFiyzTEihQ/view?utm_content=DAGMVXxqV10&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hc0e6a9c712" class="presentation-btn" tab="_blank">
-                        <i class="fas fa-play"></i>
-                        View Presentation
-                    </a>
-                </div>
-            </div>
+        <div class="testi-btns">
+          <button class="testi-btn" id="tPrev"><i class="fas fa-chevron-left"></i></button>
+          <button class="testi-btn" id="tNext"><i class="fas fa-chevron-right"></i></button>
         </div>
-    </section>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- Experience Section -->
-    <section id="experience" class="experience">
-        <div class="container">
-            <h2 class="section-title">Professional Experience</h2>
-            <p class="section-subtitle">A track record of leadership, technical excellence, and continuous growth in the technology sector.</p>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-date">Dec 2025 - Present</div>
-                        <h3 class="timeline-title">Software Development Intern</h3>
-                        <div class="timeline-company">School of Pharmacy UWC, The Gatees Foundation</div>
-                        <p class="timeline-description">Managed internal and stakeholder communication for a confidential regulatory technology project while contributing to improving clarity, usability and workflow logic in a high-stakes digital environment. Assisted in preparing structured updates and reviews for senior academic and industry stakeholders.</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-date">Feb 2025 - May 2025</div>
-                        <h3 class="timeline-title">Social Media Manager</h3>
-                        <div class="timeline-company">The Three Stars</div>
-                        <p class="timeline-description">Led comprehensive social media strategy including content management, client consultation, team collaboration, and brand outreach initiatives that significantly increased engagement.</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-date">Dec 2024 - May 2025</div>
-                        <h3 class="timeline-title">Business Team Lead</h3>
-                        <div class="timeline-company">The Three Stars</div>
-                        <p class="timeline-description">Managed daily standups and progress tracking, ensured project punctuality and task completion, while providing mentorship and guidance to team members.</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-date">Nov 2024 - May 2025</div>
-                        <h3 class="timeline-title">Web Designer</h3>
-                        <div class="timeline-company">The Three Stars</div>
-                        <p class="timeline-description">Created comprehensive wireframes and prototypes, designed user-friendly interfaces, developed responsive web solutions, and collaborated effectively with cross-functional development teams.</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-date">Oct 2024 - Nov 2024</div>
-                        <h3 class="timeline-title">Assistant Lecturer</h3>
-                        <div class="timeline-company">LC Studio</div>
-                        <p class="timeline-description">Facilitated student progress through structured check-ins, maintained high standards for punctuality and task completion, while providing comprehensive educational support.</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-date">Apr 2024 - Nov 2024</div>
-                        <h3 class="timeline-title">Software Engineer Intern</h3>
-                        <div class="timeline-company">LC Studio</div>
-                        <p class="timeline-description">Advanced technical skills in Linux, Python, and C++ through intensive self-study, collaborated with cross-functional teams during Scrum processes, and developed innovative project prototypes.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- SOCIALS -->
+<section id="socials" class="section alt">
+  <div class="wrap">
+    <p class="section-label reveal">Connect</p>
+    <h2 class="section-heading reveal">Find me <em>online</em></h2>
+    <div class="socials-grid">
+      <a href="https://www.instagram.com/haanim_pietersen" target="_blank" class="social-card instagram reveal"><div class="social-icon"><i class="fab fa-instagram"></i></div><h3>Instagram</h3></a>
+      <a href="https://tiktok.com/@haanim_pietersen" target="_blank" class="social-card tiktok reveal"><div class="social-icon"><i class="fab fa-tiktok"></i></div><h3>TikTok</h3></a>
+      <a href="https://www.linkedin.com/in/haanim-pietersen-172bb9264/" target="_blank" class="social-card linkedin reveal"><div class="social-icon"><i class="fab fa-linkedin"></i></div><h3>LinkedIn</h3></a>
+      <a href="https://github.com/HaanimP" target="_blank" class="social-card github reveal"><div class="social-icon"><i class="fab fa-github"></i></div><h3>GitHub</h3></a>
+    </div>
+  </div>
+</section>
 
-    <!-- Education Section -->
-    <section id="education" class="education">
-        <div class="container">
-            <h2 class="section-title">Education</h2>
-            <p class="section-subtitle">Academic background and continuous learning journey in technology and software development.</p>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-date">March 2025 - November 2025</div>
-                        <h3 class="timeline-title">Software Development Student</h3>
-                        <div class="timeline-company">University of the Western Cape - Future Innovation Lab powered by Samsung</div>
-                        <p class="timeline-description">Currently pursuing advanced studies in software development with focus on cutting-edge technologies, innovation, and practical application of software engineering principles.</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-date">September 2023 - March 2024</div>
-                        <h3 class="timeline-title">Certificate of Excellence, Web Development</h3>
-                        <div class="timeline-company">Life Choices Academy</div>
-                        <p class="timeline-description">Comprehensive training in web development technologies including HTML, CSS, JavaScript, and modern frameworks. Achieved excellence in all modules with hands-on project experience.</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-date">January 2018 - December 2022</div>
-                        <h3 class="timeline-title">National Senior Certificate</h3>
-                        <div class="timeline-company">South Peninsula High School</div>
-                        <p class="timeline-description">Completed secondary education with strong academic performance, laying the foundation for future studies in technology and computer science.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- CONTACT -->
+<section id="contact" class="section">
+  <div class="wrap">
+    <p class="section-label reveal">Contact</p>
+    <h2 class="section-heading reveal">Get in <em>touch</em></h2>
+    <p class="section-sub reveal">Ready to collaborate or discuss opportunities? I'd love to hear from you.</p>
+    <div class="contact-grid">
+      <div class="contact-info-box reveal">
+        <h3>Contact Information</h3>
+        <div class="c-item"><div class="c-icon"><i class="fas fa-map-marker-alt"></i></div><div class="c-detail"><h4>Location</h4><p>Cape Town, South Africa</p></div></div>
+        <div class="c-item"><div class="c-icon"><i class="fas fa-phone"></i></div><div class="c-detail"><h4>Phone</h4><p>+27 71 433 2419 / 84 465 1333</p></div></div>
+        <div class="c-item"><div class="c-icon"><i class="fas fa-envelope"></i></div><div class="c-detail"><h4>Email</h4><p>haanimpietersen@gmail.com</p></div></div>
+        <div class="c-item"><div class="c-icon"><i class="fas fa-link"></i></div><div class="c-detail"><h4>Links</h4><a href="https://linktr.ee/haanim.pietersen" target="_blank">linktr.ee/haanim.pietersen</a></div></div>
+      </div>
+      <div class="contact-form-box reveal">
+        <h3>Send a Message</h3>
+        <form id="contactForm">
+          <div class="f-group"><label>Full Name</label><input type="text" name="name" required></div>
+          <div class="f-group"><label>Email Address</label><input type="email" name="email" required></div>
+          <div class="f-group"><label>Subject</label><input type="text" name="subject" required></div>
+          <div class="f-group"><label>Message</label><textarea name="message" rows="5" required></textarea></div>
+          <button type="submit" class="btn-gold" style="width:100%;justify-content:center"><i class="fas fa-paper-plane"></i>Send Message</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- Services Section -->
-    <section id="services" class="services">
-        <div class="container">
-            <h2 class="section-title">Freelance Web & Digital Services</h2>
-            <p class="section-subtitle">I help individuals and small brands set up clean, affordable websites, digital profiles, and more.</p>
-            
-            <div class="services-content">
-                <div class="services-intro">
-                    <p>Whether you need a professional online presence or digital assistance, I provide tailored solutions at transparent, competitive prices.</p>
-                </div>
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">Haanim Pietersen</div>
+    <div class="footer-socials">
+      <a href="https://www.instagram.com/haanim_pietersen" target="_blank" class="f-social"><i class="fab fa-instagram"></i></a>
+      <a href="https://tiktok.com/@haanim_pietersen" target="_blank" class="f-social"><i class="fab fa-tiktok"></i></a>
+      <a href="https://www.linkedin.com/in/haanim-pietersen-172bb9264/" target="_blank" class="f-social"><i class="fab fa-linkedin"></i></a>
+      <a href="https://github.com/HaanimP" target="_blank" class="f-social"><i class="fab fa-github"></i></a>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Haanim Pietersen. All rights reserved.</p>
+      <p>Standing for Human Rights &amp; <span>Palestinian Freedom</span></p>
+    </div>
+  </div>
+</footer>
 
-                <div class="services-grid">
-                    <!-- Services Category 1 -->
-                    <div class="service-category">
-                        <h3><i class="fas fa-user-circle"></i> Professional Setup</h3>
-                        <ul class="service-list">
-                            <li>CV & LinkedIn Setup – R200</li>
-                            <li>Branding Package – R300</li>
-                            <li>Consultations – R300 per Hour</li>
-                        </ul>
-                    </div>
-
-                    <!-- Services Category 2 -->
-                    <div class="service-category">
-                        <h3><i class="fas fa-globe"></i> Website Solutions</h3>
-                        <ul class="service-list">
-                            <li>Starter Website – R500</li>
-                            <li>Business Website – R1500</li>
-                            <li>Website Maintenance – R300 per Month</li>
-                            <li>Website Setup Assistance – R400</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="services-note">
-                    <h4><i class="fas fa-info-circle"></i> Full Transparency Guarantee</h4>
-                    <p>I guide you through setting up your own domain & hosting, so you understand the costs directly.</p>
-                    <p>I leave domain & hosting payments in your hands for complete transparency.</p>
-                    <p>You pay the providers directly, and I assist with the setup.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section id="testimonials" class="testimonials">
-        <div class="container">
-            <h2 class="section-title">What People Say</h2>
-            <p class="section-subtitle">Feedback from colleagues, clients, and collaborators I've had the pleasure to work with.</p>
-            <div class="testimonials-carousel">
-                <div class="testimonial-slide active">
-                    <div class="testimonial-content">
-                        "I reached out via LinkedIn to Haanim, to ask her can she please review my CV. In no time she responded to my dm. Her feedback was incredibly helpful—clear, constructive, and exactly what I needed to polish my cv. I really appreciate the time and effort she took to assist me, especially without even knowing me personally. Thanks again for your generosity and support! She is always open to assisting others as well."
-                    </div>
-                    <div class="testimonial-author">Asandile Langeni</div>
-                    <div class="testimonial-role">LinkedIn Connection</div>
-                </div>
-
-                <div class="testimonial-slide">
-                    <div class="testimonial-content">
-                        "It was a pleasure having Haanim on our team. She is a disciplined and dedicated professional who consistently prioritizes project goals and delivers high-quality work. Her skills in web development are strong, and she brings a keen eye for both functionality and design. Haanim also excels in leadership roles, guiding her team with clarity, structure, and a steady hand. In addition to her technical capabilities, she's an exceptional social media manager, bringing creativity, strategy, and consistency to every campaign. Her versatility and work ethic make her an invaluable asset to any team."
-                    </div>
-                    <div class="testimonial-author">Ni-shaat Gafieldien</div>
-                    <div class="testimonial-role">Co-Founder of The Three Stars, Developer and Designer</div>
-                </div>
-
-                <div class="testimonial-slide">
-                    <div class="testimonial-content">
-                        "Working with Haanim at The Three Stars Digital Solutions was honestly a wonderful experience. She's one of those people who just gets it, she's super reliable, easy to talk to, and always brings her best to the table. Whether we were deep in project work or just figuring things out on the fly, she was calm, focused, and always open to new ideas. She has a natural sense of leadership and a way of making the team feel grounded and supported, even during hectic deadlines. You always knew you could count on her and I would most definitely recommend her."
-                    </div>
-                    <div class="testimonial-author">Ammara Hoosen</div>
-                    <div class="testimonial-role">Co-Founder of the Three Stars, Developer and Designer</div>
-                </div>
-            </div>
-            
-            <div class="carousel-controls">
-                <button class="carousel-btn" id="prevBtn">
-                    <i class="fas fa-chevron-left"></i>
-                </button>
-                <button class="carousel-btn" id="nextBtn">
-                    <i class="fas fa-chevron-right"></i>
-                </button>
-            </div>
-            
-            <div class="carousel-indicators">
-                <div class="indicator active" data-slide="0"></div>
-                <div class="indicator" data-slide="1"></div>
-                <div class="indicator" data-slide="2"></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Social Media Section -->
-    <section id="socials" class="social-section">
-        <div class="container">
-            <h2 class="section-title">Connect With Me</h2>
-            <p class="section-subtitle">Stay updated with my journey and connect across different platforms.</p>
-            <div class="social-grid">
-                <a href="https://www.instagram.com/haanim_pietersen" target="_blank" class="social-card instagram">
-                    <div class="social-icon">
-                        <i class="fab fa-instagram"></i>
-                    </div>
-                    <h3>Instagram</h3>
-                </a>
-                <a href="https://tiktok.com/@haanim_pietersen" target="_blank" class="social-card tiktok">
-                    <div class="social-icon">
-                        <i class="fab fa-tiktok"></i>
-                    </div>
-                    <h3>TikTok</h3>
-                </a>
-                <a href="https://www.linkedin.com/in/haanim-pietersen-172bb9264/" target="_blank" class="social-card linkedin">
-                    <div class="social-icon">
-                        <i class="fab fa-linkedin"></i>
-                    </div>
-                    <h3>LinkedIn</h3>
-                </a>
-                <a href="https://github.com/HaanimP" target="_blank" class="social-card github">
-                    <div class="social-icon">
-                        <i class="fab fa-github"></i>
-                    </div>
-                    <h3>GitHub</h3>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
-            <p class="section-subtitle">Ready to collaborate or discuss opportunities? I'd love to hear from you.</p>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <h3>Contact Information</h3>
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h4>Location</h4>
-                            <p>Cape Town, South Africa</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-phone"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h4>Phone</h4>
-                            <p>+27 71 433 2419/84 465 1333</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h4>Email</h4>
-                            <p>haanimpietersen@gmail.com</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-link"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h4>Links</h4>
-                            <p><a href="https://linktr.ee/haanim.pietersen" target="_blank">linktr.ee/haanim.pietersen</a></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="contact-form">
-                    <h3>Send a Message</h3>
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <label for="name">Full Name</label>
-                            <input type="text" id="name" name="name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email Address</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="subject">Subject</label>
-                            <input type="text" id="subject" name="subject" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" name="message" rows="5" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">
-                            <i class="fas fa-paper-plane"></i>
-                            Send Message
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <div class="footer-socials">
-                <a href="https://www.instagram.com/haanim_pietersen" target="_blank" aria-label="Instagram">
-                    <i class="fab fa-instagram"></i>
-                </a>
-                <a href="https://tiktok.com/@haanim_pietersen" target="_blank" aria-label="TikTok">
-                    <i class="fab fa-tiktok"></i>
-                </a>
-                <a href="https://www.linkedin.com/in/haanim-pietersen-172bb9264/" target="_blank" aria-label="LinkedIn">
-                    <i class="fab fa-linkedin"></i>
-                </a>
-                <a href="https://github.com/HaanimP" target="_blank" aria-label="GitHub">
-                    <i class="fab fa-github"></i>
-                </a>
-            </div>
-            <p class="footer-text">&copy; 2026 Haanim Pietersen. All rights reserved.</p>
-            <p class="footer-text">Standing for Human Rights & Palestinian Freedom</p>
-        </div>
-    </footer>
-
-    <script>
-        // Mobile Menu Toggle
-        document.addEventListener('DOMContentLoaded', function() {
-            const mobileMenu = document.querySelector('.mobile-menu');
-            const navLinks = document.querySelector('.nav-links');
-            
-            mobileMenu.addEventListener('click', function() {
-                navLinks.classList.toggle('active');
-                const icon = this.querySelector('i');
-                if (navLinks.classList.contains('active')) {
-                    icon.classList.remove('fa-bars');
-                    icon.classList.add('fa-times');
-                } else {
-                    icon.classList.remove('fa-times');
-                    icon.classList.add('fa-bars');
-                }
-            });
-
-            // Close mobile menu when clicking on links
-            document.querySelectorAll('.nav-link').forEach(link => {
-                link.addEventListener('click', function() {
-                    navLinks.classList.remove('active');
-                    const icon = mobileMenu.querySelector('i');
-                    icon.classList.remove('fa-times');
-                    icon.classList.add('fa-bars');
-                });
-            });
-        });
-
-        // Testimonial Carousel Functionality
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('.testimonial-slide');
-        const indicators = document.querySelectorAll('.indicator');
-        const totalSlides = slides.length;
-
-        function showSlide(index) {
-            slides.forEach(slide => slide.classList.remove('active'));
-            indicators.forEach(indicator => indicator.classList.remove('active'));
-            
-            slides[index].classList.add('active');
-            indicators[index].classList.add('active');
-        }
-
-        function nextSlide() {
-            currentSlide = (currentSlide + 1) % totalSlides;
-            showSlide(currentSlide);
-        }
-
-        function prevSlide() {
-            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-            showSlide(currentSlide);
-        }
-
-        // Event listeners for carousel controls
-        document.getElementById('nextBtn').addEventListener('click', nextSlide);
-        document.getElementById('prevBtn').addEventListener('click', prevSlide);
-
-        // Event listeners for indicators
-        indicators.forEach((indicator, index) => {
-            indicator.addEventListener('click', () => {
-                currentSlide = index;
-                showSlide(currentSlide);
-            });
-        });
-
-        // Auto-play carousel
-        setInterval(nextSlide, 5000);
-
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                const targetSection = document.querySelector(targetId);
-                
-                if (targetSection) {
-                    const navHeight = document.querySelector('nav').offsetHeight;
-                    const targetPosition = targetSection.offsetTop - navHeight;
-                    
-                    window.scrollTo({
-                        top: targetPosition,
-                        behavior: 'smooth'
-                    });
-                    
-                    // Update active nav link
-                    document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
-                    this.classList.add('active');
-                }
-            });
-        });
-
-        // Navbar scroll effects and active link highlighting
-        window.addEventListener('scroll', function() {
-            const navbar = document.getElementById('navbar');
-            const navLinks = document.querySelectorAll('.nav-link');
-            const sections = document.querySelectorAll('section');
-            
-            // Navbar background effect
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-            
-            // Active section highlighting
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (scrollY >= sectionTop - 200) {
-                    current = section.getAttribute('id');
-                }
-            });
-            
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${current}`) {
-                    link.classList.add('active');
-                }
-            });
-        });
-
-        // Intersection Observer for fade-in animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver(function(entries) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('fade-in-up');
-                }
-            });
-        }, observerOptions);
-
-        // Observe elements for animation
-        document.querySelectorAll('.skill-card, .timeline-item, .stat-item, .social-card, .project-card, .presentation-card').forEach(el => {
-            observer.observe(el);
-        });
-
-        // Counter animation for statistics
-        function animateCounter(element, target, duration = 2000) {
-            let start = 0;
-            const increment = target / (duration / 16);
-            
-            function updateCounter() {
-                start += increment;
-                if (start < target) {
-                    element.textContent = Math.floor(start) + '+';
-                    requestAnimationFrame(updateCounter);
-                } else {
-                    element.textContent = target + '+';
-                }
-            }
-            updateCounter();
-        }
-
-        // Stats animation on scroll
-        const statsObserver = new IntersectionObserver(function(entries) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const number = entry.target.querySelector('.stat-number');
-                    const target = parseInt(number.textContent);
-                    number.textContent = '0';
-                    setTimeout(() => {
-                        animateCounter(number, target);
-                    }, 300);
-                    statsObserver.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.5 });
-
-        document.querySelectorAll('.stat-item').forEach(item => {
-            statsObserver.observe(item);
-        });
-
-        // Enhanced contact form handling
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const formData = new FormData(this);
-            const name = formData.get('name');
-            const email = formData.get('email');
-            const subject = formData.get('subject');
-            const message = formData.get('message');
-            
-            // Create professionally formatted email content
-            const emailSubject = `Portfolio Contact: ${subject}`;
-            const emailBody = `Dear Haanim,
-
-You have received a new message through your portfolio website.
-
-CONTACT DETAILS:
-Name: ${name}
-Email: ${email}
-Subject: ${subject}
-
-MESSAGE:
-${message}
-
----
-This message was sent through your portfolio contact form.
-Please reply directly to: ${email}
-
-Best regards,
-Portfolio Contact System`;
-
-            // Create mailto link
-            const mailtoLink = `mailto:haanimpietersen@gmail.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
-            
-            // Open email client
-            window.location.href = mailtoLink;
-            
-            // Show success feedback
-            const submitBtn = this.querySelector('button[type="submit"]');
-            const originalContent = submitBtn.innerHTML;
-            
-            submitBtn.innerHTML = '<i class="fas fa-check-circle"></i> Message Sent Successfully!';
-            submitBtn.style.background = 'linear-gradient(135deg, #10b981, #059669)';
-            submitBtn.disabled = true;
-            
-            setTimeout(() => {
-                submitBtn.innerHTML = originalContent;
-                submitBtn.style.background = '';
-                submitBtn.disabled = false;
-                this.reset();
-            }, 4000);
-        });
-
-        // Enhanced CV download functionality
-        document.getElementById('downloadCV').addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            const cvContent = `HAANIM PIETERSEN
-Software Development Student | Human Rights Advocate | Tech Professional
-
-═══════════════════════════════════════════════════════════════════════════════
-
-CONTACT INFORMATION
-Location: Cape Town, South Africa
-Phone: +27 71 433 2419
-Email: haanimpietersen@gmail.com
-LinkedIn: linkedin.com/in/haanim-pietersen-172bb9264
-Portfolio: linktr.ee/haanim.pietersen
-GitHub: github.com/HaanimP
-
-═══════════════════════════════════════════════════════════════════════════════
-
-EDUCATION
-
-University of the Western Cape                                      March 2025 - Present
-Software Development Student
-Future Innovation Lab powered by Samsung
-• Focus: Advanced Software Engineering, Mobile Development, Cloud Computing
-
-Life Choices Academy                                           September 2023 - March 2024
-Certificate of Excellence in Web Development
-• Comprehensive training in full-stack web development
-• Specialized in modern JavaScript frameworks and responsive design
-
-South Peninsula High School                                    January 2018 - December 2022
-National Senior Certificate
-• Academic Excellence in Mathematics and Physical Sciences
-
-═══════════════════════════════════════════════════════════════════════════════
-
-PROFESSIONAL EXPERIENCE
-
-Social Media Manager | The Three Stars                    February 2025 - May 2025
-• Developed and executed comprehensive social media strategies
-• Managed client relationships and provided strategic consultation
-• Increased audience engagement by 150%
-
-Business Team Lead | The Three Stars                     December 2024 - May 2025
-• Led agile development teams using Scrum methodology
-• Conducted daily standups and sprint planning sessions
-• Improved team productivity by 40%
-
-Web Designer | The Three Stars                          November 2024 - May 2025
-• Created wireframes, prototypes, and user interface designs
-• Developed responsive web solutions
-• Collaborated with development teams
-
-Assistant Lecturer | LC Studio                           October 2024 - November 2024
-• Facilitated educational workshops on web development
-• Provided technical guidance and mentorship
-• Developed curriculum materials
-
-Software Engineer Intern | LC Studio                     April 2024 - November 2024
-• Advanced technical proficiency in Linux, Python, and C++
-• Participated in Scrum ceremonies
-• Developed innovative project prototypes
-
-Generated: ${new Date().toLocaleDateString('en-ZA')}`;
-
-            // Create and download file
-            const blob = new Blob([cvContent], { type: 'text/plain;charset=utf-8' });
-            const url = window.URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = `Haanim_Pietersen_CV_${new Date().getFullYear()}.txt`;
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            window.URL.revokeObjectURL(url);
-            
-            // Visual feedback
-            const btn = this;
-            const originalContent = btn.innerHTML;
-            
-            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Preparing CV...';
-            btn.disabled = true;
-            
-            setTimeout(() => {
-                btn.innerHTML = '<i class="fas fa-check-circle"></i> CV Downloaded!';
-                
-                setTimeout(() => {
-                    btn.innerHTML = originalContent;
-                    btn.disabled = false;
-                }, 2500);
-            }, 1000);
-        });
-
-        // Initialize enhanced animations
-        window.addEventListener('load', function() {
-            // Add reveal animations to sections
-            const revealObserver = new IntersectionObserver(function(entries) {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                    }
-                });
-            }, { 
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            });
-
-            // Apply reveal animation to sections
-            document.querySelectorAll('section').forEach(section => {
-                section.style.opacity = '0';
-                section.style.transform = 'translateY(30px)';
-                section.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
-                revealObserver.observe(section);
-            });
-        });
-    </script>
+<script>
+const mm=document.getElementById('mobileMenu'),nl=document.getElementById('navLinks');
+mm.addEventListener('click',()=>{nl.classList.toggle('active');mm.querySelector('i').className=nl.classList.contains('active')?'fas fa-times':'fas fa-bars'});
+document.querySelectorAll('.nav-link').forEach(l=>l.addEventListener('click',()=>{nl.classList.remove('active');mm.querySelector('i').className='fas fa-bars'}));
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t)window.scrollTo({top:t.offsetTop-64,behavior:'smooth'})})});
+window.addEventListener('scroll',()=>{let cur='';document.querySelectorAll('section[id]').forEach(s=>{if(scrollY>=s.offsetTop-200)cur=s.id});document.querySelectorAll('.nav-link').forEach(l=>l.classList.toggle('active',l.getAttribute('href')===`#${cur}`))});
+const ro=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('in-view'),80);ro.unobserve(e.target)}})},{threshold:.08,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+const co=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){const el=e.target,target=parseInt(el.dataset.target);let n=0;const step=target/40;const t=setInterval(()=>{n+=step;if(n>=target){el.textContent=target+'+';clearInterval(t)}else el.textContent=Math.floor(n)+'+'},40);co.unobserve(el)}})},{threshold:.5});
+document.querySelectorAll('.stat-num[data-target]').forEach(el=>co.observe(el));
+let cur=0;const slides=document.querySelectorAll('.testi-slide'),dots=document.querySelectorAll('.testi-dot');
+function showSlide(i){slides.forEach(s=>s.classList.remove('active'));dots.forEach(d=>d.classList.remove('active'));slides[i].classList.add('active');dots[i].classList.add('active')}
+document.getElementById('tNext').addEventListener('click',()=>{cur=(cur+1)%slides.length;showSlide(cur)});
+document.getElementById('tPrev').addEventListener('click',()=>{cur=(cur-1+slides.length)%slides.length;showSlide(cur)});
+dots.forEach(d=>d.addEventListener('click',()=>{cur=+d.dataset.s;showSlide(cur)}));
+setInterval(()=>{cur=(cur+1)%slides.length;showSlide(cur)},6000);
+document.getElementById('contactForm').addEventListener('submit',function(e){e.preventDefault();const d=new FormData(this);const body=`Dear Haanim,\n\nName: ${d.get('name')}\nEmail: ${d.get('email')}\nSubject: ${d.get('subject')}\n\n${d.get('message')}\n\n---\nSent from portfolio`;window.location.href=`mailto:haanimpietersen@gmail.com?subject=${encodeURIComponent('Portfolio: '+d.get('subject'))}&body=${encodeURIComponent(body)}`;const btn=this.querySelector('button');btn.innerHTML='<i class="fas fa-check-circle"></i> Sent!';setTimeout(()=>{btn.innerHTML='<i class="fas fa-paper-plane"></i>Send Message';this.reset()},3500)});
+document.getElementById('downloadCV').addEventListener('click',function(e){e.preventDefault();const cv=`HAANIM PIETERSEN\nSoftware Development Intern | Human Rights Advocate\n\nCONTACT\nCape Town | +27 71 433 2419 | haanimpietersen@gmail.com\nlinkedin.com/in/haanim-pietersen-172bb9264 | github.com/HaanimP\n\nAWARDS\n- 2025 Best Overall Technical Project (DiaConnect)\n- Summa Cum Laude — Multi-Platform Software Development\n- Top Student — Samsung Future Innovation Lab\n\nEXPERIENCE\nSoftware Development Intern — School of Pharmacy UWC (Dec 2025–Present)\nSocial Media Manager — The Three Stars (Feb–May 2025)\nBusiness Team Lead — The Three Stars (Dec 2024–May 2025)\nWeb Designer — The Three Stars (Nov 2024–May 2025)\nAssistant Lecturer — LC Studio (Oct–Nov 2024)\nSoftware Engineer Intern — LC Studio (Apr–Nov 2024)\n\nEDUCATION\nUWC — Samsung Future Innovation Lab (Mar–Nov 2025)\nLife Choices Academy — Web Dev Certificate (Sep 2023–Mar 2024)\nSouth Peninsula High School — NSC (2018–2022)\n\nSKILLS\nHTML, CSS, JavaScript, Bootstrap, Vue.js, Python, C++, Node.js, C#, .NET, ASP.NET, .NET MAUI, XAML, MySQL, Power BI, Azure, Linux, Scrum, WordPress\n\nGenerated: ${new Date().toLocaleDateString('en-ZA')}`;const blob=new Blob([cv],{type:'text/plain;charset=utf-8'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='Haanim_Pietersen_CV_2026.txt';document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(url)});
+</script>
 </body>
 </html>
