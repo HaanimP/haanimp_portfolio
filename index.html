@@ -334,7 +334,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.4);padding:5rem 0 2.5rem}
     <p class="hero-desc">Software Development Intern at the School of Pharmacy, UWC with expertise spanning full-stack web development, mobile app development, cloud computing, social media management, and team leadership. Committed to building meaningful digital solutions and standing for justice.</p>
     <div class="hero-actions">
       <a href="#contact" class="btn-gold"><i class="fas fa-envelope"></i>Get In Touch</a>
-      <a href="/files/Haanim 2025 CV.pdf" class="btn-outline" id="downloadCV"><i class="fas fa-download"></i>Download CV</a>
+      <a href="/img/Haanim '26 CV.pdf" class="btn-outline" download><i class="fas fa-download"></i>Download CV</a>
     </div>
     <div class="hero-scroll">Scroll to explore <div class="hero-scroll-line"></div></div>
   </div>
@@ -702,8 +702,7 @@ setInterval(()=>{cur=(cur+1)%slides.length;showSlide(cur)},6000);
 // Contact form
 document.getElementById('contactForm').addEventListener('submit',function(e){e.preventDefault();const btn=this.querySelector('button');const formData=new FormData(this);btn.innerHTML='<i class="fas fa-spinner fa-spin"></i> Sending...';btn.disabled=true;fetch('https://formspree.io/f/xykljokl',{method:'POST',body:formData,headers:{'Accept':'application/json'}}).then(res=>{if(res.ok){btn.innerHTML='<i class="fas fa-check-circle"></i> Sent!';setTimeout(()=>{window.location.href='thankyou.html'},1500)}else{btn.innerHTML='<i class="fas fa-paper-plane"></i> Send Message';btn.disabled=false}}).catch(()=>{btn.innerHTML='<i class="fas fa-paper-plane"></i> Send Message';btn.disabled=false})});
 
-// CV download
-document.getElementById('downloadCV').addEventListener('click',function(e){e.preventDefault();const cv=`HAANIM PIETERSEN\nSoftware Developer · Human Rights Advocate\n\nCONTACT\nCape Town, South Africa\n+27 71 433 2419 / 84 465 1333\nhaanimpietersen@gmail.com\nlinkedin.com/in/haanim-pietersen-172bb9264\ngithub.com/HaanimP\nlinktr.ee/haanim.pietersen\n\nAWARDS\n· 2025 Best Overall Technical Project — DiaConnect\n· Summa Cum Laude — Multi-Platform Software Development\n· Top Student — Samsung Future Innovation Lab, UWC\n\nEXPERIENCE\nSoftware Development Intern · School of Pharmacy UWC (Dec 2025–Present)\nSocial Media Manager · The Three Stars (Feb–May 2025)\nBusiness Team Lead · The Three Stars (Dec 2024–May 2025)\nWeb Designer · The Three Stars (Nov 2024–May 2025)\nAssistant Lecturer · LC Studio (Oct–Nov 2024)\nSoftware Engineer Intern · LC Studio (Apr–Nov 2024)\n\nEDUCATION\nUWC · Samsung Future Innovation Lab (Mar–Nov 2025)\nLife Choices Academy · Web Dev Certificate of Excellence (Sep 2023–Mar 2024)\nSouth Peninsula High School · National Senior Certificate (2018–2022)\n\nSKILLS\nFrontend: HTML, CSS, JavaScript, Bootstrap, Vue.js\nBackend: Python, C++, Node.js, C#, .NET, ASP.NET\nMobile: .NET MAUI, XAML\nDatabase: MySQL, Power BI, Data Analysis\nCloud: Azure, Linux, System Admin\nProject: Scrum, WordPress, Elementor, Teams, Office Suite\n\nLANGUAGES: English (Fluent), Afrikaans (Fluent), German (Basic), Mandarin (Basic)\n\nGenerated: ${new Date().toLocaleDateString('en-ZA')}`;const blob=new Blob([cv],{type:'text/plain;charset=utf-8'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='Haanim_Pietersen_CV_2026.txt';document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(url)});
+
 </script>
 </body>
 </html>
