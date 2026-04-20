@@ -1,0 +1,38 @@
+<svg width="72" height="72" viewBox="0 0 72 72" role="img" xmlns="http://www.w3.org/2000/svg">
+  <title style="fill:rgb(0, 0, 0);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto">The Three Stars Digital Solutions logo</title>
+
+  <defs>
+    <linearGradient id="fade1" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#fdfaf4" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#fdfaf4" stop-opacity="0.9"/>
+    </linearGradient>
+    <linearGradient id="fade2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#fdfaf4" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#fdfaf4" stop-opacity="0.8"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="72" height="72" fill="#0d0c0a" rx="10" style="fill:rgb(13, 12, 10);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+
+  <!-- ARC 1 — lower arc -->
+  <path d="M 10 44 Q 26 52 46 47" fill="none" stroke="url(#fade1)" stroke-width="1.4" stroke-linecap="round" style="fill:none;color:rgb(0, 0, 0);stroke-width:1.4px;stroke-linecap:round;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+
+  <!-- Large sparkle star -->
+  <g transform="translate(49,45)" style="fill:rgb(0, 0, 0);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto">
+    <path d="M0,-8 C0.5,-2.2 2.2,-0.5 8,0 C2.2,0.5 0.5,2.2 0,8 C-0.5,2.2 -2.2,0.5 -8,0 C-2.2,-0.5 -0.5,-2.2 0,-8Z" fill="#fdfaf4" style="fill:rgb(253, 250, 244);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+  </g>
+
+  <!-- ARC 2 — upper arc -->
+  <path d="M 18 33 Q 34 40 52 36" fill="none" stroke="url(#fade2)" stroke-width="1.1" stroke-linecap="round" style="fill:none;color:rgb(0, 0, 0);stroke-width:1.1px;stroke-linecap:round;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+
+  <!-- Medium sparkle star -->
+  <g transform="translate(55,34)" style="fill:rgb(0, 0, 0);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto">
+    <path d="M0,-5.5 C0.3,-1.5 1.5,-0.3 5.5,0 C1.5,0.3 0.3,1.5 0,5.5 C-0.3,1.5 -1.5,0.3 -5.5,0 C-1.5,-0.3 -0.3,-1.5 0,-5.5Z" fill="#fdfaf4" style="fill:rgb(253, 250, 244);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+  </g>
+
+  <!-- Small sparkle star -->
+  <g transform="translate(61,25)" style="fill:rgb(0, 0, 0);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto">
+    <path d="M0,-4 C0.2,-1.1 1.1,-0.2 4,0 C1.1,0.2 0.2,1.1 0,4 C-0.2,1.1 -1.1,0.2 -4,0 C-1.1,-0.2 -0.2,-1.1 0,-4Z" fill="#fdfaf4" style="fill:rgb(253, 250, 244);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+  </g>
+
+</svg>

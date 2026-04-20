@@ -1,0 +1,49 @@
+<svg width="100%" viewBox="0 0 690 430" role="img" xmlns="http://www.w3.org/2000/svg" style="">
+  <title style="fill:rgb(0, 0, 0);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto">The Three Stars Digital Solutions logo</title>
+  <desc style="fill:rgb(0, 0, 0);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto">Deep dark background with warm white shooting star arcs and sparkle stars</desc>
+
+  <defs>
+    <linearGradient id="fade1" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#fdfaf4" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#fdfaf4" stop-opacity="0.85"/>
+    </linearGradient>
+    <linearGradient id="fade2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#fdfaf4" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#fdfaf4" stop-opacity="0.75"/>
+    </linearGradient>
+  </defs>
+
+  
+
+  <rect width="680" height="420" fill="#0d0c0a" rx="16" style="fill:rgb(13, 12, 10);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+
+  <!-- ARC 1 — lower arc, bows downward -->
+  <path d="M 205 230 Q 280 268 358 248" fill="none" stroke="url(#fade1)" stroke-width="2.2" stroke-linecap="round" style="fill:none;color:rgb(0, 0, 0);stroke-width:2.2px;stroke-linecap:round;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+
+  <!-- Large sparkle star at end of arc 1 -->
+  <g transform="translate(368,242)" style="fill:rgb(0, 0, 0);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto">
+    <path d="M0,-24 C1.5,-6.5 6.5,-1.5 24,0 C6.5,1.5 1.5,6.5 0,24 C-1.5,6.5 -6.5,1.5 -24,0 C-6.5,-1.5 -1.5,-6.5 0,-24Z" fill="#fdfaf4" style="fill:rgb(253, 250, 244);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+    <path d="M0,-9 C0.5,-2.5 2.5,-0.5 9,0 C2.5,0.5 0.5,2.5 0,9 C-0.5,2.5 -2.5,0.5 -9,0 C-2.5,-0.5 -0.5,-2.5 0,-9Z" fill="#fdfaf4" opacity="0.4" style="fill:rgb(253, 250, 244);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.4;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+  </g>
+
+  <!-- ARC 2 — upper arc, bows downward -->
+  <path d="M 242 195 Q 310 228 388 208" fill="none" stroke="url(#fade2)" stroke-width="1.8" stroke-linecap="round" style="fill:none;color:rgb(0, 0, 0);stroke-width:1.8px;stroke-linecap:round;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+
+  <!-- Medium sparkle star at end of arc 2 -->
+  <g transform="translate(397,202)" style="fill:rgb(0, 0, 0);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto">
+    <path d="M0,-16 C1,-4.5 4.5,-1 16,0 C4.5,1 1,4.5 0,16 C-1,4.5 -4.5,1 -16,0 C-4.5,-1 -1,-4.5 0,-16Z" fill="#fdfaf4" style="fill:rgb(253, 250, 244);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+    <path d="M0,-6.5 C0.4,-1.8 1.8,-0.4 6.5,0 C1.8,0.4 0.4,1.8 0,6.5 C-0.4,1.8 -1.8,0.4 -6.5,0 C-1.8,-0.4 -0.4,-1.8 0,-6.5Z" fill="#fdfaf4" opacity="0.4" style="fill:rgb(253, 250, 244);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.4;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+  </g>
+
+  <!-- Small sparkle star floating between -->
+  <g transform="translate(418,178)" style="fill:rgb(0, 0, 0);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto">
+    <path d="M0,-11 C0.65,-3 3,-0.65 11,0 C3,0.65 0.65,3 0,11 C-0.65,3 -3,0.65 -11,0 C-3,-0.65 -0.65,-3 0,-11Z" fill="#fdfaf4" style="fill:rgb(253, 250, 244);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+    <path d="M0,-4.5 C0.25,-1.2 1.2,-0.25 4.5,0 C1.2,0.25 0.25,1.2 0,4.5 C-0.25,1.2 -1.2,0.25 -4.5,0 exterior-0.25,1.2 -1.2,0.25 -4.5,0 C-1.2,-0.25 -0.25,-1.2 0,-4.5Z" fill="#fdfaf4" opacity="0.35" style="fill:rgb(253, 250, 244);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.35;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+  </g>
+
+  <!-- Brand name -->
+  <text x="340" y="332" text-anchor="middle" style="fill:rgb(253, 250, 244);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:Raleway, sans-serif;font-size:36px;font-weight:600;text-anchor:middle;dominant-baseline:auto">THE THREE STARS</text>
+  <line x1="235" y1="348" x2="445" y2="348" stroke="#fdfaf4" stroke-width="0.5" opacity="0.4" style="fill:rgb(0, 0, 0);stroke:rgb(253, 250, 244);color:rgb(0, 0, 0);stroke-width:0.5px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.4;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+  <text x="340" y="370" text-anchor="middle" style="fill:rgb(253, 250, 244);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:Raleway, sans-serif;font-size:12px;font-weight:300;text-anchor:middle;dominant-baseline:auto">DIGITAL SOLUTIONS</text>
+
+</svg>

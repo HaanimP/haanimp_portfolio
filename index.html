@@ -3,112 +3,176 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Haanim Pietersen - Software Developer</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<title>Haanim Pietersen — Software Developer & Human Rights Advocate</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 <style>
-:root{--ink:#0e0e0e;--paper:#f5f0e8;--paper-2:#ede8df;--gold:#b8913a;--gold-light:#d4a853;--muted:#6b6560;--muted-2:#9b9590;--rule:rgba(14,14,14,0.12);--white:#fdfaf5}
+:root {
+  --ink:#0d0c0a;--paper:#f6f1e9;--paper-2:#ede7da;--gold:#b8913a;--gold-light:#d4a853;
+  --muted:#6b6158;--muted-2:#9b9390;--rule:rgba(13,12,10,.1);--rule-2:rgba(13,12,10,.06);
+  --white:#fdfaf4;--dark:#0d0c0a;--dark-2:#161411;
+}
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;font-size:16px}
 body{font-family:'DM Sans',sans-serif;background:var(--paper);color:var(--ink);overflow-x:hidden;-webkit-font-smoothing:antialiased}
-body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:.03;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='512' height='512' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");background-size:200px}
+body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:.028;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='512' height='512' filter='url(%23n)'/%3E%3C/svg%3E");background-size:180px}
 
 /* NAV */
-nav{position:fixed;top:0;width:100%;z-index:1000;background:rgba(245,240,232,.95);backdrop-filter:blur(16px);border-bottom:1px solid var(--rule)}
-.nav-container{max-width:1320px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding:0 2.5rem;height:64px}
-.logo{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:1.15rem;letter-spacing:.04em;color:var(--ink)}
-.logo span{color:var(--gold)}
+nav{position:fixed;top:0;width:100%;z-index:1000;transition:all .4s ease}
+nav.scrolled{background:rgba(246,241,233,.96);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--rule);box-shadow:0 2px 24px rgba(13,12,10,.06)}
+.nav-container{max-width:1400px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding:0 3rem;height:68px}
+.logo{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:1.2rem;letter-spacing:.05em;color:var(--ink);text-decoration:none;display:flex;align-items:center;gap:.5rem}
+.logo-dot{color:var(--gold)}
 .nav-links{display:flex;gap:0;list-style:none}
-.nav-links a{display:block;padding:0 .75rem;height:64px;line-height:64px;font-size:.66rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;color:var(--muted);transition:color .3s;white-space:nowrap}
+.nav-links a{display:block;padding:0 .7rem;height:68px;line-height:68px;font-size:.61rem;font-weight:500;letter-spacing:.13em;text-transform:uppercase;text-decoration:none;color:var(--muted);transition:color .3s;white-space:nowrap;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:14px;left:.7rem;right:.7rem;height:1px;background:var(--gold);transform:scaleX(0);transition:transform .3s ease}
 .nav-links a:hover,.nav-links a.active{color:var(--ink)}
+.nav-links a:hover::after,.nav-links a.active::after{transform:scaleX(1)}
 .mobile-menu{display:none;cursor:pointer;font-size:1.1rem;color:var(--ink)}
 
 /* HERO */
-.hero{min-height:100vh;padding-top:64px;display:grid;grid-template-columns:1fr 1fr;position:relative;overflow:hidden}
-.hero-left{display:flex;flex-direction:column;justify-content:center;padding:6rem 4rem 6rem 5rem;border-right:1px solid var(--rule)}
-.hero-eyebrow{font-family:'DM Mono',monospace;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:2rem;display:flex;align-items:center;gap:1rem}
-.hero-eyebrow::before{content:'';display:inline-block;width:40px;height:1px;background:var(--gold)}
-.hero-name{font-family:'Cormorant Garamond',serif;font-size:clamp(3.2rem,6vw,5.5rem);font-weight:300;line-height:1.0;letter-spacing:-.02em;color:var(--ink);margin-bottom:.3rem}
+.hero{min-height:100vh;padding-top:68px;display:grid;grid-template-columns:1fr 1fr;position:relative;overflow:hidden}
+.hero-left{display:flex;flex-direction:column;justify-content:center;padding:7rem 5rem 7rem 6rem;border-right:1px solid var(--rule);position:relative;z-index:1}
+.hero-left::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 0% 50%,rgba(184,145,58,.05) 0%,transparent 70%);pointer-events:none}
+.hero-eyebrow{font-family:'DM Mono',monospace;font-size:.65rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin-bottom:2.2rem;display:flex;align-items:center;gap:1rem}
+.hero-eyebrow::before{content:'';display:inline-block;width:36px;height:1px;background:linear-gradient(90deg,transparent,var(--gold))}
+.hero-name{font-family:'Cormorant Garamond',serif;font-size:clamp(3.5rem,6.5vw,6rem);font-weight:300;line-height:.95;letter-spacing:-.03em;color:var(--ink);margin-bottom:.4rem}
 .hero-name em{font-style:italic;color:var(--gold)}
-.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1rem,2vw,1.3rem);font-weight:400;font-style:italic;color:var(--muted);margin-bottom:2.5rem}
-.hero-desc{font-size:.92rem;line-height:1.85;color:var(--muted);max-width:440px;margin-bottom:3.5rem;font-weight:300}
+.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1rem,2vw,1.35rem);font-weight:400;font-style:italic;color:var(--muted);margin-bottom:2.8rem;margin-top:.6rem}
+.hero-desc{font-size:.91rem;line-height:1.9;color:var(--muted);max-width:450px;margin-bottom:3.5rem;font-weight:300;border-left:2px solid var(--gold);padding-left:1.5rem}
 .hero-actions{display:flex;gap:1rem;flex-wrap:wrap}
-.btn-gold{padding:.85rem 2.2rem;background:var(--gold);color:var(--white);font-size:.72rem;font-weight:500;letter-spacing:.15em;text-transform:uppercase;text-decoration:none;border:none;cursor:pointer;transition:background .3s,transform .2s;display:inline-flex;align-items:center;gap:.6rem;font-family:'DM Sans',sans-serif}
-.btn-gold:hover{background:#a07c30;transform:translateY(-1px)}
-.btn-outline{padding:.85rem 2.2rem;background:transparent;color:var(--ink);font-size:.72rem;font-weight:500;letter-spacing:.15em;text-transform:uppercase;text-decoration:none;border:1px solid var(--rule);cursor:pointer;transition:border-color .3s,color .3s;display:inline-flex;align-items:center;gap:.6rem}
-.btn-outline:hover{border-color:var(--gold);color:var(--gold)}
+.btn-gold{padding:.9rem 2.4rem;background:var(--gold);color:var(--white);font-size:.7rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;text-decoration:none;border:1px solid var(--gold);cursor:pointer;transition:all .3s;display:inline-flex;align-items:center;gap:.6rem;font-family:'DM Sans',sans-serif;position:relative;overflow:hidden}
+.btn-gold::before{content:'';position:absolute;inset:0;background:rgba(255,255,255,.1);transform:translateX(-100%);transition:transform .4s ease}
+.btn-gold:hover::before{transform:translateX(0)}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 12px 36px rgba(184,145,58,.3)}
+.btn-outline{padding:.9rem 2.4rem;background:transparent;color:var(--ink);font-size:.7rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;text-decoration:none;border:1px solid var(--rule);cursor:pointer;transition:all .3s;display:inline-flex;align-items:center;gap:.6rem}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-2px)}
 .hero-right{position:relative;overflow:hidden;background:var(--paper-2)}
-.hero-right img{width:100%;height:100%;object-fit:cover;object-position:top center;filter:grayscale(15%) contrast(1.03);transition:transform .6s ease}
-.hero-right:hover img{transform:scale(1.02)}
-.hero-overlay{position:absolute;bottom:0;left:0;right:0;padding:2.5rem;background:linear-gradient(to top,rgba(14,14,14,.7) 0%,transparent 100%)}
-.hero-tag{display:inline-block;font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.8);border:1px solid rgba(255,255,255,.3);padding:.35rem .75rem;margin-right:.5rem;margin-bottom:.5rem}
-.hero-scroll{position:absolute;bottom:2.5rem;left:5rem;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted-2);display:flex;align-items:center;gap:.75rem;font-family:'DM Mono',monospace}
-.hero-scroll::after{content:'';display:block;width:40px;height:1px;background:var(--muted-2);animation:lineGrow 2s ease infinite}
-@keyframes lineGrow{0%,100%{width:40px;opacity:.4}50%{width:60px;opacity:1}}
+.hero-right img{width:100%;height:100%;object-fit:cover;object-position:top center;filter:grayscale(8%) contrast(1.05) brightness(.98);transition:transform .8s ease}
+.hero-right:hover img{transform:scale(1.03)}
+.hero-scroll{position:absolute;bottom:2.5rem;left:6rem;font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted-2);display:flex;align-items:center;gap:.75rem;font-family:'DM Mono',monospace}
+.hero-scroll-line{width:48px;height:1px;background:var(--muted-2);position:relative;overflow:hidden}
+.hero-scroll-line::after{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:var(--gold);animation:scanLine 2s ease infinite}
+@keyframes scanLine{0%{left:-100%}100%{left:100%}}
 
-/* SECTIONS */
-.section{padding:8rem 0}
+/* SHARED */
+.section{padding:9rem 0}
 .section.alt{background:var(--paper-2)}
-.wrap{max-width:1320px;margin:0 auto;padding:0 2.5rem}
-.section-label{font-family:'DM Mono',monospace;font-size:.65rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem;display:flex;align-items:center;gap:1rem}
-.section-label::after{content:'';display:inline-block;width:40px;height:1px;background:var(--gold)}
-.section-heading{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,4vw,3.2rem);font-weight:400;line-height:1.1;letter-spacing:-.02em}
+.wrap{max-width:1400px;margin:0 auto;padding:0 3rem}
+.section-label{font-family:'DM Mono',monospace;font-size:.63rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin-bottom:1.4rem;display:flex;align-items:center;gap:1rem}
+.section-label::after{content:'';display:inline-block;width:36px;height:1px;background:linear-gradient(90deg,var(--gold),transparent)}
+.section-heading{font-family:'Cormorant Garamond',serif;font-size:clamp(2.4rem,4.5vw,3.5rem);font-weight:400;line-height:1.05;letter-spacing:-.025em}
 .section-heading em{font-style:italic;color:var(--gold)}
-.section-sub{font-size:.9rem;color:var(--muted);line-height:1.7;font-weight:300;max-width:520px;margin-top:1.2rem}
+.section-sub{font-size:.9rem;color:var(--muted);line-height:1.75;font-weight:300;max-width:540px;margin-top:1.3rem}
 
 /* ABOUT */
-.about-grid{display:grid;grid-template-columns:1fr 1.6fr;gap:6rem;align-items:start;margin-top:5rem}
-.stat-cluster{display:grid;grid-template-columns:1fr 1fr;gap:1px}
-.stat-cell{padding:2.5rem 1.5rem;background:var(--white);border:1px solid var(--rule);text-align:center;transition:background .3s}
-.stat-cell:hover{background:var(--paper-2)}
-.stat-num{font-family:'Cormorant Garamond',serif;font-size:3rem;font-weight:300;color:var(--gold);line-height:1;display:block;margin-bottom:.4rem}
-.stat-name{font-size:.65rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:500}
-.about-text p{font-size:.95rem;line-height:1.9;color:var(--muted);margin-bottom:1.4rem;font-weight:300}
-.about-text p:last-child{margin-bottom:0}
-.award-row{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.8rem}
-.award-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(184,145,58,.1);border:1px solid rgba(184,145,58,.3);color:var(--gold);padding:.4rem .9rem;font-size:.68rem;letter-spacing:.08em;font-weight:500}
+.about-grid{display:grid;grid-template-columns:1fr 1.7fr;gap:7rem;align-items:start;margin-top:5rem}
+.stat-cluster{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule);border:1px solid var(--rule)}
+.stat-cell{padding:2.8rem 1.5rem;background:var(--white);text-align:center;transition:background .3s;position:relative;overflow:hidden}
+.stat-cell::before{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--gold);transform:scaleX(0);transition:transform .4s ease}
+.stat-cell:hover{background:var(--paper)}
+.stat-cell:hover::before{transform:scaleX(1)}
+.stat-num{font-family:'Cormorant Garamond',serif;font-size:3.2rem;font-weight:300;color:var(--gold);line-height:1;display:block;margin-bottom:.5rem}
+.stat-name{font-size:.63rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:500}
+.about-text p{font-size:.93rem;line-height:1.9;color:var(--muted);margin-bottom:1.5rem;font-weight:300}
+.award-row{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:2rem}
+.award-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(184,145,58,.08);border:1px solid rgba(184,145,58,.25);color:var(--gold);padding:.45rem 1rem;font-size:.67rem;letter-spacing:.1em;font-weight:500;transition:all .3s}
+.award-badge:hover{background:rgba(184,145,58,.15);border-color:var(--gold)}
 
 /* SKILLS */
 .skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:5rem;border:1px solid var(--rule)}
-.skill-cell{padding:2.5rem;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);transition:background .3s;position:relative;overflow:hidden}
-.skill-cell:hover{background:rgba(184,145,58,.04)}
-.skill-cell::before{content:attr(data-num);position:absolute;top:1.2rem;right:1.5rem;font-family:'Cormorant Garamond',serif;font-size:3.5rem;font-weight:300;color:rgba(184,145,58,.08);line-height:1}
+.skill-cell{padding:2.8rem;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);transition:background .4s;position:relative;overflow:hidden}
+.skill-cell::after{content:attr(data-num);position:absolute;top:1rem;right:1.5rem;font-family:'Cormorant Garamond',serif;font-size:4rem;font-weight:300;color:rgba(184,145,58,.06);line-height:1;transition:color .4s}
+.skill-cell:hover{background:rgba(184,145,58,.03)}
+.skill-cell:hover::after{color:rgba(184,145,58,.12)}
 .skill-cell:nth-child(3n){border-right:none}
-.skill-ico{width:40px;height:40px;background:linear-gradient(135deg,var(--gold),var(--gold-light));display:flex;align-items:center;justify-content:center;color:white;font-size:.9rem;margin-bottom:1.5rem}
-.skill-cell h3{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:500;margin-bottom:.75rem}
-.skill-cell p{font-size:.82rem;color:var(--muted);line-height:1.7;margin-bottom:1.2rem;font-weight:300}
+.skill-cell:nth-last-child(-n+3){border-bottom:none}
+.skill-ico{width:42px;height:42px;background:linear-gradient(135deg,var(--gold),var(--gold-light));display:flex;align-items:center;justify-content:center;color:white;font-size:.9rem;margin-bottom:1.6rem}
+.skill-cell h3{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:500;margin-bottom:.8rem}
+.skill-cell p{font-size:.82rem;color:var(--muted);line-height:1.72;margin-bottom:1.3rem;font-weight:300}
 .tags{display:flex;flex-wrap:wrap;gap:.4rem}
-.tag{font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.1em;padding:.2rem .6rem;border:1px solid var(--rule);color:var(--muted);text-transform:uppercase}
+.tag{font-family:'DM Mono',monospace;font-size:.58rem;letter-spacing:.1em;padding:.22rem .65rem;border:1px solid var(--rule);color:var(--muted);text-transform:uppercase;transition:all .3s}
+.tag:hover{border-color:var(--gold);color:var(--gold)}
 
 /* PROJECTS */
 .projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:5rem}
-.project-card{background:var(--white);border:1px solid var(--rule);overflow:hidden;transition:transform .3s;position:relative}
-.project-card:hover{transform:translateY(-4px);box-shadow:0 16px 48px rgba(14,14,14,.1)}
-.project-card.featured{border-color:rgba(184,145,58,.5)}
-.proj-img{height:175px;background:var(--paper-2);display:flex;align-items:center;justify-content:center;position:relative}
-.proj-img i{font-size:2.2rem;color:var(--gold);opacity:.5}
-.proj-winner{position:absolute;top:1rem;right:1rem;background:var(--gold);color:white;font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;padding:.3rem .7rem;font-weight:500}
-.proj-body{padding:1.75rem}
-.proj-num{font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.18em;color:var(--gold);margin-bottom:.5rem}
-.proj-body h3{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:500;margin-bottom:.6rem}
-.proj-body p{font-size:.82rem;color:var(--muted);line-height:1.7;margin-bottom:1.1rem;font-weight:300}
-.proj-tech{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1.3rem}
-.proj-link{display:inline-flex;align-items:center;gap:.5rem;font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;font-weight:500;color:var(--gold);text-decoration:none;border-bottom:1px solid var(--gold);padding-bottom:.1rem;transition:opacity .2s}
-.proj-link:hover{opacity:.7}
+.project-card{background:var(--white);border:1px solid var(--rule);overflow:hidden;transition:all .4s cubic-bezier(0.4,0,0.2,1);position:relative}
+.project-card:hover{transform:translateY(-6px);box-shadow:0 24px 60px rgba(13,12,10,.12);border-color:rgba(184,145,58,.3)}
+.project-card.featured{border-color:rgba(184,145,58,.4)}
+.proj-img{height:180px;background:var(--paper-2);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.proj-img::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,transparent 50%,rgba(184,145,58,.04))}
+.proj-img i{font-size:2.4rem;color:var(--gold);opacity:.4;z-index:1}
+.proj-winner{position:absolute;top:1rem;right:1rem;background:var(--gold);color:white;font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;padding:.35rem .8rem;font-weight:500;z-index:2;box-shadow:0 4px 16px rgba(184,145,58,.4)}
+.proj-body{padding:1.8rem}
+.proj-num{font-family:'DM Mono',monospace;font-size:.58rem;letter-spacing:.2em;color:var(--gold);margin-bottom:.5rem}
+.proj-body h3{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:500;margin-bottom:.65rem}
+.proj-body p{font-size:.82rem;color:var(--muted);line-height:1.72;margin-bottom:1.2rem;font-weight:300}
+.proj-tech{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1.4rem}
+.proj-link{display:inline-flex;align-items:center;gap:.5rem;font-size:.67rem;letter-spacing:.16em;text-transform:uppercase;font-weight:500;color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(184,145,58,.4);padding-bottom:.1rem;transition:all .3s}
+.proj-link:hover{border-color:var(--gold);gap:.8rem}
+
+/* ─── THE THREE STARS ─── */
+.t3s-section{background:var(--dark);padding:9rem 0;position:relative;overflow:hidden}
+.t3s-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 70% 50%,rgba(184,145,58,.07) 0%,transparent 60%);pointer-events:none}
+.t3s-inner{display:grid;grid-template-columns:1fr 1fr;gap:7rem;align-items:center}
+.t3s-label{font-family:'DM Mono',monospace;font-size:.63rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gold-light);margin-bottom:1.4rem;display:flex;align-items:center;gap:1rem}
+.t3s-label::after{content:'';display:inline-block;width:36px;height:1px;background:linear-gradient(90deg,var(--gold-light),transparent)}
+/* logo */
+.t3s-logo-wrap{display:flex;align-items:center;gap:1.4rem;margin-bottom:2rem}
+.t3s-logo-box{width:72px;height:72px;border:1px solid rgba(184,145,58,.3);background:rgba(184,145,58,.05);display:flex;align-items:center;justify-content:center;flex-shrink:0;overflow:hidden}
+.t3s-logo-box img{width:100%;height:100%;object-fit:contain}
+.t3s-logo-box .t3s-logo-fallback{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:400;color:var(--gold-light);letter-spacing:.1em}
+.t3s-logo-text-name{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:400;color:var(--white);line-height:1.1}
+.t3s-logo-text-sub{font-family:'DM Mono',monospace;font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-top:.3rem}
+/* heading */
+.t3s-heading{font-family:'Cormorant Garamond',serif;font-size:clamp(2.4rem,4.5vw,3.5rem);font-weight:400;line-height:1.05;letter-spacing:-.025em;color:var(--white);margin-bottom:1.5rem}
+.t3s-heading em{font-style:italic;color:var(--gold-light)}
+.t3s-intro{font-size:.92rem;line-height:1.9;color:rgba(255,255,255,.5);font-weight:300;margin-bottom:2.8rem;border-left:2px solid rgba(184,145,58,.4);padding-left:1.5rem}
+/* team */
+.t3s-team{display:flex;align-items:center;margin-bottom:2.8rem}
+.t3s-avatar{width:46px;height:46px;border-radius:50%;border:2px solid var(--dark);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:.95rem;font-weight:500;color:var(--gold-light);margin-right:-10px;overflow:hidden;flex-shrink:0;background:rgba(184,145,58,.12)}
+.t3s-avatar img{width:100%;height:100%;object-fit:cover;object-position:top}
+.t3s-team-note{margin-left:24px;font-size:.82rem;color:rgba(255,255,255,.4);font-weight:300;font-style:italic;font-family:'Cormorant Garamond',serif}
+/* buttons */
+.t3s-btns{display:flex;gap:1rem;flex-wrap:wrap}
+.btn-t3s-primary{padding:.9rem 2rem;background:var(--gold);color:var(--white);font-size:.7rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;border:1px solid var(--gold);display:inline-flex;align-items:center;gap:.6rem;font-family:'DM Sans',sans-serif;transition:all .3s;position:relative;overflow:hidden}
+.btn-t3s-primary:hover{background:#a07c30;border-color:#a07c30;transform:translateY(-2px);box-shadow:0 12px 36px rgba(184,145,58,.3)}
+.btn-t3s-insta{padding:.9rem 2rem;background:linear-gradient(135deg,#405de6,#833ab4,#e1306c);color:white;font-size:.7rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;border:none;display:inline-flex;align-items:center;gap:.6rem;font-family:'DM Sans',sans-serif;transition:all .3s}
+.btn-t3s-insta:hover{transform:translateY(-2px);box-shadow:0 12px 36px rgba(225,48,108,.3)}
+/* services — 3-col equal grid */
+.t3s-services{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.07)}
+.t3s-service{padding:1.8rem 1.6rem;background:rgba(255,255,255,.02);transition:background .3s;display:flex;flex-direction:column}
+.t3s-service:hover{background:rgba(255,255,255,.05)}
+.t3s-service-icon{font-size:1.2rem;margin-bottom:.9rem;display:block}
+.t3s-service h4{font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:400;color:var(--white);margin-bottom:.5rem;line-height:1.3}
+.t3s-service p{font-size:.77rem;color:rgba(255,255,255,.38);line-height:1.6;font-weight:300;flex:1}
+/* "Free" badge on spotlight tile */
+.t3s-service.spotlight{position:relative}
+.t3s-service.spotlight::after{content:'Free';position:absolute;top:.75rem;right:.75rem;font-family:'DM Mono',monospace;font-size:.5rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-light);border:1px solid rgba(184,145,58,.35);padding:.18rem .45rem}
 
 /* HUMANITARIAN */
-.humanitarian{background:var(--ink);padding:8rem 0}
+.humanitarian{background:var(--ink);padding:9rem 0;position:relative}
+.humanitarian::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 30% 50%,rgba(184,145,58,.05) 0%,transparent 65%);pointer-events:none}
 .hum-header{margin-bottom:5rem}
 .hum-header .section-label{color:var(--gold-light)}
-.hum-header .section-label::after{background:var(--gold-light)}
+.hum-header .section-label::after{background:linear-gradient(90deg,var(--gold-light),transparent)}
 .hum-header .section-heading{color:var(--white)}
-.hum-header .section-sub{color:rgba(255,255,255,.5);max-width:560px}
-.hum-intro{font-size:.93rem;line-height:1.9;color:rgba(255,255,255,.6);font-weight:300;max-width:700px;margin-bottom:4rem}
-.causes-grid-a{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.08);margin-bottom:1px}
-.causes-grid-b{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.08)}
-.cause-card{background:var(--ink);padding:2.5rem 2rem;transition:background .3s;display:flex;flex-direction:column}
-.cause-card:hover{background:rgba(255,255,255,.04)}
-.cause-accent{width:32px;height:2px;margin-bottom:1.8rem}
+.hum-header .section-sub{color:rgba(255,255,255,.45)}
+.hum-intro{font-size:.92rem;line-height:1.9;color:rgba(255,255,255,.5);font-weight:300;max-width:680px;margin-bottom:4.5rem;border-left:2px solid rgba(184,145,58,.4);padding-left:1.5rem}
+.causes-grid-a{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.07);margin-bottom:1px}
+.causes-grid-b{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.07)}
+.cause-card{background:var(--ink);padding:2.5rem 2rem;transition:background .3s;display:flex;flex-direction:column;position:relative;overflow:hidden}
+.cause-card::after{content:'';position:absolute;top:0;left:0;right:0;height:1px;opacity:0;transition:opacity .3s}
+.cause-card.palestine::after{background:#ff4444}
+.cause-card.sudan::after{background:#009639}
+.cause-card.gbv::after{background:#9333ea}
+.cause-card.congo::after{background:#e88c00}
+.cause-card.ice::after{background:#3b82f6}
+.cause-card.water::after{background:#06b6d4}
+.cause-card.epstein::after{background:#ef4444}
+.cause-card:hover{background:rgba(255,255,255,.025)}
+.cause-card:hover::after{opacity:1}
+.cause-accent{width:28px;height:2px;margin-bottom:1.8rem}
 .cause-card.palestine .cause-accent{background:#ff4444}
 .cause-card.sudan .cause-accent{background:#009639}
 .cause-card.gbv .cause-accent{background:#9333ea}
@@ -116,101 +180,87 @@ nav{position:fixed;top:0;width:100%;z-index:1000;background:rgba(245,240,232,.95
 .cause-card.ice .cause-accent{background:#3b82f6}
 .cause-card.water .cause-accent{background:#06b6d4}
 .cause-card.epstein .cause-accent{background:#ef4444}
-.cause-card h3{font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:400;color:var(--white);margin-bottom:1rem}
-.cause-card p{font-size:.8rem;line-height:1.8;color:rgba(255,255,255,.5);font-weight:300;flex:1;margin-bottom:1.8rem}
-.cause-stats-row{display:flex;gap:.75rem;margin-bottom:1.8rem}
-.c-stat{flex:1;padding:.75rem .5rem;border:1px solid rgba(255,255,255,.1);text-align:center}
-.c-stat i{display:block;font-size:.85rem;margin-bottom:.3rem;color:rgba(255,255,255,.35)}
-.c-stat span{font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.35);font-weight:500}
-.cause-link{display:inline-flex;align-items:center;gap:.5rem;font-size:.63rem;letter-spacing:.18em;text-transform:uppercase;font-weight:500;text-decoration:none;padding:.6rem 1.1rem;border:1px solid rgba(255,255,255,.18);color:rgba(255,255,255,.65);transition:all .3s;align-self:flex-start}
+.cause-card h3{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:400;color:var(--white);margin-bottom:1rem}
+.cause-card p{font-size:.8rem;line-height:1.8;color:rgba(255,255,255,.45);font-weight:300;flex:1;margin-bottom:1.8rem}
+.cause-link{display:inline-flex;align-items:center;gap:.5rem;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;font-weight:500;text-decoration:none;padding:.6rem 1.1rem;border:1px solid rgba(255,255,255,.14);color:rgba(255,255,255,.55);transition:all .3s;align-self:flex-start}
 .cause-link:hover{border-color:var(--gold);color:var(--gold)}
 
 /* PRESENTATIONS */
 .presentations-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:5rem}
-.pres-card{padding:2.5rem;background:var(--white);border:1px solid var(--rule);transition:all .3s}
-.pres-card:hover{border-color:var(--gold);transform:translateY(-3px)}
-.pres-icon{width:44px;height:44px;display:flex;align-items:center;justify-content:center;font-size:1rem;color:white;margin-bottom:1.5rem}
-.pres-card h3{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:500;margin-bottom:.7rem}
-.pres-card p{font-size:.81rem;color:var(--muted);line-height:1.7;margin-bottom:1.4rem;font-weight:300}
-.pres-btn{display:inline-flex;align-items:center;gap:.5rem;font-size:.67rem;letter-spacing:.15em;text-transform:uppercase;font-weight:500;color:var(--gold);text-decoration:none;transition:opacity .2s}
-.pres-btn:hover{opacity:.7}
+.pres-card{padding:2.5rem;background:var(--white);border:1px solid var(--rule);transition:all .4s cubic-bezier(0.4,0,0.2,1);position:relative;overflow:hidden}
+.pres-card::before{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--gold);transform:scaleX(0);transition:transform .4s ease}
+.pres-card:hover{transform:translateY(-4px);border-color:rgba(184,145,58,.3);box-shadow:0 16px 48px rgba(13,12,10,.1)}
+.pres-card:hover::before{transform:scaleX(1)}
+.pres-icon{width:46px;height:46px;display:flex;align-items:center;justify-content:center;font-size:1rem;color:white;margin-bottom:1.6rem}
+.pres-card h3{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:500;margin-bottom:.7rem}
+.pres-card p{font-size:.81rem;color:var(--muted);line-height:1.7;margin-bottom:1.5rem;font-weight:300}
+.pres-btn{display:inline-flex;align-items:center;gap:.5rem;font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;font-weight:500;color:var(--gold);text-decoration:none;transition:gap .3s}
+.pres-btn:hover{gap:.8rem}
 
 /* TIMELINE */
-.timeline-wrap{max-width:860px;margin:5rem auto 0}
-.tl-item{display:grid;grid-template-columns:140px 1fr;gap:3rem;margin-bottom:3rem;padding-bottom:3rem;border-bottom:1px solid var(--rule)}
+.timeline-wrap{max-width:880px;margin:5rem auto 0}
+.tl-item{display:grid;grid-template-columns:150px 1fr;gap:3rem;margin-bottom:3.5rem;padding-bottom:3.5rem;border-bottom:1px solid var(--rule);position:relative}
+.tl-item::before{content:'';position:absolute;left:150px;top:.3rem;width:7px;height:7px;border-radius:50%;background:var(--gold);transform:translateX(-50%)}
 .tl-item:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
-.tl-date{font-family:'DM Mono',monospace;font-size:.63rem;letter-spacing:.1em;color:var(--gold);padding-top:.2rem;line-height:1.6}
-.tl-body h3{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:500;margin-bottom:.25rem}
-.tl-company{font-size:.78rem;color:var(--muted);margin-bottom:.85rem;font-weight:400;letter-spacing:.04em}
-.tl-desc{font-size:.85rem;color:var(--muted);line-height:1.75;font-weight:300}
+.tl-date{font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.1em;color:var(--gold);padding-top:.2rem;line-height:1.6;text-align:right;padding-right:2rem}
+.tl-body h3{font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:500;margin-bottom:.3rem}
+.tl-company{font-size:.78rem;color:var(--muted);margin-bottom:.9rem;font-weight:400;letter-spacing:.04em}
+.tl-desc{font-size:.85rem;color:var(--muted);line-height:1.8;font-weight:300}
 
 /* TESTIMONIALS */
-.testi-wrap{max-width:860px;margin:5rem auto 0}
-.testi-slide{display:none;padding:4rem 5rem;background:var(--white);border:1px solid var(--rule);position:relative}
+.testi-wrap{max-width:880px;margin:5rem auto 0}
+.testi-slide{display:none;padding:4.5rem 5rem;background:var(--white);border:1px solid var(--rule);position:relative;overflow:hidden}
+.testi-slide::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold),transparent)}
 .testi-slide.active{display:block}
-.testi-quote{position:absolute;top:2.5rem;left:4rem;font-family:'Cormorant Garamond',serif;font-size:6rem;line-height:1;color:var(--gold);opacity:.18;font-style:italic}
-.testi-text{font-family:'Cormorant Garamond',serif;font-size:clamp(1.05rem,2vw,1.3rem);line-height:1.7;font-style:italic;font-weight:300;color:var(--ink);margin-bottom:2.5rem}
-.testi-author{font-size:.82rem;font-weight:500;margin-bottom:.25rem}
-.testi-role{font-size:.75rem;color:var(--muted);font-weight:300}
-.testi-controls{display:flex;justify-content:space-between;align-items:center;margin-top:2rem}
-.testi-dots{display:flex;gap:.6rem}
-.testi-dot{width:24px;height:2px;background:var(--rule);cursor:pointer;transition:background .3s}
-.testi-dot.active{background:var(--gold)}
+.testi-quote{position:absolute;top:2rem;left:4.5rem;font-family:'Cormorant Garamond',serif;font-size:7rem;line-height:1;color:var(--gold);opacity:.1;font-style:italic}
+.testi-text{font-family:'Cormorant Garamond',serif;font-size:clamp(1.05rem,2vw,1.3rem);line-height:1.75;font-style:italic;font-weight:300;color:var(--ink);margin-bottom:2.5rem}
+.testi-author{font-size:.84rem;font-weight:500;margin-bottom:.3rem}
+.testi-role{font-size:.76rem;color:var(--muted);font-weight:300}
+.testi-controls{display:flex;justify-content:space-between;align-items:center;margin-top:2.5rem}
+.testi-dots{display:flex;gap:.7rem}
+.testi-dot{width:28px;height:2px;background:var(--rule);cursor:pointer;transition:all .3s}
+.testi-dot.active{background:var(--gold);width:48px}
 .testi-btns{display:flex;gap:.5rem}
-.testi-btn{width:44px;height:44px;border:1px solid var(--rule);background:transparent;cursor:pointer;color:var(--ink);font-size:.85rem;transition:all .3s;display:flex;align-items:center;justify-content:center}
+.testi-btn{width:46px;height:46px;border:1px solid var(--rule);background:transparent;cursor:pointer;color:var(--ink);font-size:.85rem;transition:all .3s;display:flex;align-items:center;justify-content:center}
 .testi-btn:hover{background:var(--ink);color:var(--white);border-color:var(--ink)}
 
-/* SOCIALS */
-.socials-section{background:linear-gradient(135deg,rgba(184,145,58,.04) 0%,rgba(184,145,58,.02) 100%)}
-.socials-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;margin-top:5rem}
-.social-card{padding:3rem 2rem;text-align:center;border:1px solid var(--rule);text-decoration:none;color:inherit;transition:all .4s cubic-bezier(0.4,0,0.2,1);background:var(--white);position:relative;overflow:hidden}
-.social-card::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(135deg,transparent,rgba(184,145,58,.04));opacity:0;transition:opacity .4s}
-.social-card:hover{border-color:var(--gold);transform:translateY(-6px);box-shadow:0 20px 60px rgba(184,145,58,.12)}
-.social-card:hover::before{opacity:1}
-.social-card:hover .social-icon{transform:scale(1.12) rotate(5deg)}
-.social-icon{width:64px;height:64px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.5rem;color:white;margin:0 auto 1.8rem;transition:transform .4s;position:relative;z-index:1;box-shadow:0 12px 32px rgba(0,0,0,.15)}
-.social-card.instagram .social-icon{background:linear-gradient(135deg,#405de6,#833ab4,#e1306c,#fd1d1d)}
-.social-card.tiktok .social-icon{background:linear-gradient(135deg,#010101,#25f4ee,#69c9d0)}
-.social-card.linkedin .social-icon{background:linear-gradient(135deg,#0077b5,#00a0dc)}
-.social-card.github .social-icon{background:linear-gradient(135deg,#333,#24292e)}
-.social-card h3{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:500;letter-spacing:.06em;margin-bottom:.8rem;position:relative;z-index:1}
-.social-card p{font-size:.78rem;color:var(--muted);line-height:1.6;position:relative;z-index:1}
-
 /* CONTACT */
-.contact-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:5rem;margin-top:5rem;align-items:start}
-.contact-info-box h3{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:400;margin-bottom:2rem}
-.c-item{display:flex;gap:1.2rem;margin-bottom:1.8rem;align-items:flex-start}
-.c-icon{width:40px;height:40px;flex-shrink:0;background:linear-gradient(135deg,var(--gold),var(--gold-light));display:flex;align-items:center;justify-content:center;color:white;font-size:.8rem}
-.c-detail h4{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;margin-bottom:.3rem;font-weight:500}
-.c-detail p,.c-detail a{font-size:.88rem;color:var(--muted);text-decoration:none;font-weight:300}
+.contact-grid{display:grid;grid-template-columns:1fr 1.5fr;gap:6rem;margin-top:5rem;align-items:start}
+.contact-info-box h3{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:400;margin-bottom:2.5rem}
+.c-item{display:flex;gap:1.3rem;margin-bottom:2rem;align-items:flex-start}
+.c-icon{width:42px;height:42px;flex-shrink:0;background:linear-gradient(135deg,var(--gold),var(--gold-light));display:flex;align-items:center;justify-content:center;color:white;font-size:.82rem}
+.c-detail h4{font-size:.65rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:.35rem;font-weight:500}
+.c-detail p,.c-detail a{font-size:.89rem;color:var(--muted);text-decoration:none;font-weight:300}
 .c-detail a:hover{color:var(--gold)}
-.contact-form-box{background:var(--white);padding:3rem;border:1px solid var(--rule)}
-.contact-form-box h3{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:400;margin-bottom:2rem}
-.f-group{margin-bottom:1.5rem}
-.f-group label{display:block;font-size:.67rem;letter-spacing:.14em;text-transform:uppercase;font-weight:500;color:var(--muted);margin-bottom:.6rem}
-.f-group input,.f-group textarea{width:100%;padding:.9rem 1rem;border:1px solid var(--rule);background:var(--paper);font-family:'DM Sans',sans-serif;font-size:.88rem;color:var(--ink);transition:border-color .3s;font-weight:300}
-.f-group input:focus,.f-group textarea:focus{outline:none;border-color:var(--gold)}
-.f-group textarea{resize:vertical;min-height:120px}
+.contact-form-box{background:var(--white);padding:3.5rem;border:1px solid var(--rule)}
+.contact-form-box h3{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:400;margin-bottom:2.5rem}
+.f-group{margin-bottom:1.6rem}
+.f-group label{display:block;font-size:.65rem;letter-spacing:.16em;text-transform:uppercase;font-weight:500;color:var(--muted);margin-bottom:.65rem}
+.f-group input,.f-group textarea{width:100%;padding:.95rem 1.1rem;border:1px solid var(--rule);background:var(--paper);font-family:'DM Sans',sans-serif;font-size:.88rem;color:var(--ink);transition:border-color .3s,box-shadow .3s;font-weight:300;outline:none}
+.f-group input:focus,.f-group textarea:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(184,145,58,.08)}
+.f-group textarea{resize:vertical;min-height:130px}
 
 /* FOOTER */
-footer{background:var(--ink);color:rgba(255,255,255,.5);padding:4rem 0 2.5rem}
-.footer-inner{max-width:1320px;margin:0 auto;padding:0 2.5rem;display:flex;flex-direction:column;align-items:center;gap:2rem}
-.footer-logo{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:400;color:var(--white)}
-.footer-socials{display:flex;gap:1rem}
-.f-social{width:40px;height:40px;border:1px solid rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.5);text-decoration:none;font-size:.85rem;transition:all .3s}
-.f-social:hover{border-color:var(--gold);color:var(--gold)}
-.footer-bottom{display:flex;flex-direction:column;align-items:center;gap:.4rem;font-size:.75rem;letter-spacing:.06em;border-top:1px solid rgba(255,255,255,.08);padding-top:2rem;width:100%;text-align:center}
+footer{background:var(--ink);color:rgba(255,255,255,.4);padding:5rem 0 2.5rem}
+.footer-inner{max-width:1400px;margin:0 auto;padding:0 3rem;display:flex;flex-direction:column;align-items:center;gap:2rem}
+.footer-logo{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:400;color:var(--white);letter-spacing:.04em}
+.footer-tagline{font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.28);text-align:center}
+.footer-socials{display:flex;gap:.75rem;flex-wrap:wrap;justify-content:center}
+.f-social{width:44px;height:44px;border:1px solid rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.4);text-decoration:none;font-size:.9rem;transition:all .3s}
+.f-social:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-2px)}
+.footer-rule{width:100%;height:1px;background:rgba(255,255,255,.07)}
+.footer-bottom{display:flex;flex-direction:column;align-items:center;gap:.5rem;font-size:.74rem;letter-spacing:.06em;text-align:center}
 .footer-bottom span{color:var(--gold)}
 
 /* REVEAL */
-.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s ease}
 .reveal.in-view{opacity:1;transform:translateY(0)}
 
 /* RESPONSIVE */
 @media(max-width:1200px){
   .causes-grid-a{grid-template-columns:repeat(2,1fr)}
-  .causes-grid-b{grid-template-columns:repeat(3,1fr)}
   .projects-grid{grid-template-columns:repeat(2,1fr)}
+  .t3s-inner{grid-template-columns:1fr;gap:4rem}
 }
 @media(max-width:1100px){
   .hero{grid-template-columns:1fr}
@@ -220,34 +270,36 @@ footer{background:var(--ink);color:rgba(255,255,255,.5);padding:4rem 0 2.5rem}
   .skill-cell:nth-child(3n){border-right:1px solid var(--rule)}
   .skill-cell:nth-child(2n){border-right:none}
   .about-grid{grid-template-columns:1fr;gap:4rem}
-  .contact-grid{grid-template-columns:1fr;gap:3rem}
+  .contact-grid{grid-template-columns:1fr;gap:3.5rem}
   .presentations-grid{grid-template-columns:repeat(2,1fr)}
-  .pricing-grid{grid-template-columns:1fr}
 }
 @media(max-width:860px){
-  .nav-links{display:none;position:absolute;top:64px;left:0;right:0;background:var(--paper);flex-direction:column;padding:1.5rem 2.5rem;border-bottom:1px solid var(--rule);gap:0}
+  .nav-links{display:none;position:absolute;top:68px;left:0;right:0;background:var(--paper);flex-direction:column;padding:1.5rem 3rem;border-bottom:1px solid var(--rule);gap:0;z-index:999}
   .nav-links.active{display:flex}
-  .nav-links a{height:auto;line-height:1;padding:.8rem 0;border-bottom:1px solid var(--rule)}
+  .nav-links a{height:auto;line-height:1;padding:.9rem 0;border-bottom:1px solid var(--rule-2)}
+  .nav-links a::after{display:none}
   .mobile-menu{display:block}
-  .socials-grid{grid-template-columns:repeat(2,1fr)}
   .tl-item{grid-template-columns:1fr;gap:.5rem}
+  .tl-item::before{display:none}
+  .tl-date{text-align:left;padding-right:0}
   .presentations-grid{grid-template-columns:1fr}
-  .causes-grid-a{grid-template-columns:1fr;background:none;gap:1px}
-  .causes-grid-b{grid-template-columns:1fr;background:none;gap:1px}
+  .causes-grid-a,.causes-grid-b{grid-template-columns:1fr;gap:0}
   .projects-grid{grid-template-columns:1fr}
+  .t3s-services{grid-template-columns:1fr 1fr}
 }
+@media(max-width:640px){.t3s-services{grid-template-columns:1fr}}
 @media(max-width:560px){
   .wrap{padding:0 1.5rem}
-  .section{padding:5rem 0}
+  .section{padding:6rem 0}
   .hero-left{padding:4rem 1.5rem}
+  .hero-scroll{left:1.5rem}
   .skills-grid{grid-template-columns:1fr}
   .skill-cell:nth-child(2n){border-right:1px solid var(--rule)}
-  .socials-grid{grid-template-columns:1fr}
-  .testi-slide{padding:2.5rem 2rem}
-  .testi-quote{left:1.5rem;font-size:4rem}
-  .contact-form-box{padding:2rem}
+  .testi-slide{padding:2.5rem 1.8rem}
+  .testi-quote{left:1.5rem;font-size:5rem}
+  .contact-form-box{padding:2rem 1.5rem}
   .stat-cluster{grid-template-columns:1fr}
-  .pricing-col{padding:2rem}
+  .nav-container{padding:0 1.5rem}
 }
 </style>
 </head>
@@ -255,28 +307,28 @@ footer{background:var(--ink);color:rgba(255,255,255,.5);padding:4rem 0 2.5rem}
 
 <nav id="navbar">
   <div class="nav-container">
-    <div class="logo">Haanim <span>Pietersen</span></div>
+    <a href="#home" class="logo">Haanim <span class="logo-dot">·</span> Pietersen</a>
     <ul class="nav-links" id="navLinks">
       <li><a href="#home" class="nav-link">Home</a></li>
-      <li><a href="#humanitarian" class="nav-link">Humanitarian</a></li>
+      <li><a href="#humanitarian" class="nav-link">Values</a></li>
       <li><a href="#about" class="nav-link">About</a></li>
       <li><a href="#skills" class="nav-link">Skills</a></li>
       <li><a href="#projects" class="nav-link">Projects</a></li>
       <li><a href="#presentations" class="nav-link">Talks</a></li>
       <li><a href="#experience" class="nav-link">Experience</a></li>
       <li><a href="#education" class="nav-link">Education</a></li>
+      <li><a href="#business" class="nav-link">Business</a></li>
       <li><a href="#testimonials" class="nav-link">Testimonials</a></li>
-      <li><a href="#socials" class="nav-link">Socials</a></li>
       <li><a href="#contact" class="nav-link">Contact</a></li>
     </ul>
     <div class="mobile-menu" id="mobileMenu"><i class="fas fa-bars"></i></div>
   </div>
 </nav>
 
-<!-- HERO -->
+<!-- HERO — no overlay tags on image -->
 <section id="home" class="hero">
   <div class="hero-left">
-    <p class="hero-eyebrow">Portfolio 2026</p>
+    <p class="hero-eyebrow">Portfolio · 2026</p>
     <h1 class="hero-name">Haanim<br><em>Pietersen</em></h1>
     <p class="hero-title">Software Development Intern &amp; Human Rights Advocate</p>
     <p class="hero-desc">Software Development Intern at the School of Pharmacy, UWC with expertise spanning full-stack web development, mobile app development, cloud computing, social media management, and team leadership. Committed to building meaningful digital solutions and standing for justice.</p>
@@ -284,14 +336,33 @@ footer{background:var(--ink);color:rgba(255,255,255,.5);padding:4rem 0 2.5rem}
       <a href="#contact" class="btn-gold"><i class="fas fa-envelope"></i>Get In Touch</a>
       <a href="/files/Haanim 2025 CV.pdf" class="btn-outline" id="downloadCV"><i class="fas fa-download"></i>Download CV</a>
     </div>
-    <div class="hero-scroll">Scroll to explore</div>
+    <div class="hero-scroll">Scroll to explore <div class="hero-scroll-line"></div></div>
   </div>
   <div class="hero-right">
-    <img src="/files/IMG-20250528-WA0042.jpg" alt="Haanim Pietersen">
-    <div class="hero-overlay">
-      <span class="hero-tag">Cape Town, ZA</span>
-      <span class="hero-tag">UWC</span>
-      <span class="hero-tag">Open to Work</span>
+    <img src="/img/IMG-20250528-WA0042 (1).jpg" alt="Haanim Pietersen">
+    <!-- overlay tags removed as requested -->
+  </div>
+</section>
+
+<!-- HUMANITARIAN -->
+<section id="humanitarian" class="humanitarian">
+  <div class="wrap">
+    <div class="hum-header">
+      <p class="section-label reveal">Values</p>
+      <h2 class="section-heading reveal">Stand for <em>Humanity</em></h2>
+      <p class="section-sub reveal">Using my platform to advocate for human rights, justice, and dignity for all.</p>
+    </div>
+    <p class="hum-intro reveal">As a technology professional, I believe in using my voice and skills to stand for those who face injustice. I am committed to raising awareness about critical humanitarian crises and social issues that demand our attention and action.</p>
+    <div class="causes-grid-a">
+      <div class="cause-card palestine reveal"><div class="cause-accent"></div><h3>Free Palestine</h3><p>Standing with the Palestinian people in their fight for freedom and dignity. Every voice matters in the pursuit of justice and peace.</p><a href="https://www.instagram.com/eye.on.palestine/" target="_blank" class="cause-link"><i class="fab fa-instagram"></i> Learn More</a></div>
+      <div class="cause-card sudan reveal"><div class="cause-accent"></div><h3>Support Sudan</h3><p>Raising awareness about the ongoing genocide and humanitarian crisis in Sudan. The world must not look away from the suffering of the Sudanese people.</p><a href="https://www.instagram.com/eye.on.sudan/" target="_blank" class="cause-link"><i class="fab fa-instagram"></i> Learn More</a></div>
+      <div class="cause-card gbv reveal"><div class="cause-accent"></div><h3>End Gender-Based Violence</h3><p>Taking a stand against all forms of gender-based violence. Creating a safer world starts with speaking up, supporting survivors, and demanding change.</p><a href="https://www.instagram.com/gbv.awareness/" target="_blank" class="cause-link"><i class="fab fa-instagram"></i> Take Action</a></div>
+      <div class="cause-card congo reveal"><div class="cause-accent"></div><h3>Support Congo</h3><p>Standing with the people of the DRC in their struggle for peace, stability, and justice. Raising awareness about ongoing conflicts and humanitarian needs.</p><a href="https://www.instagram.com/" target="_blank" class="cause-link"><i class="fab fa-instagram"></i> Learn More</a></div>
+    </div>
+    <div class="causes-grid-b">
+      <div class="cause-card ice reveal"><div class="cause-accent"></div><h3>Abolish ICE</h3><p>Opposing immigration enforcement and detention systems that separate families and violate human rights. Advocating for immigration justice and protecting immigrant communities.</p><a href="https://www.instagram.com/" target="_blank" class="cause-link"><i class="fab fa-instagram"></i> Learn More</a></div>
+      <div class="cause-card water reveal"><div class="cause-accent"></div><h3>Save Our Water</h3><p>Advocating for water conservation and sustainable resource management in the face of AI technology's growing environmental impact. Clean water is a human right.</p><a href="https://www.instagram.com/" target="_blank" class="cause-link"><i class="fab fa-instagram"></i> Learn More</a></div>
+      <div class="cause-card epstein reveal"><div class="cause-accent"></div><h3>Release the Epstein Files</h3><p>Demanding transparency and accountability through the full release of the Epstein documents. Truth and justice for all survivors exposing systemic abuse and those who enabled it.</p><a href="https://www.instagram.com/" target="_blank" class="cause-link"><i class="fab fa-instagram"></i> Learn More</a></div>
     </div>
   </div>
 </section>
@@ -316,7 +387,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.5);padding:4rem 0 2.5rem}
         <div class="award-row">
           <span class="award-badge"><i class="fas fa-trophy"></i> 2025 Best Overall Technical Project</span>
           <span class="award-badge"><i class="fas fa-star"></i> Summa Cum Laude</span>
-          <span class="award-badge"><i class="fas fa-medal"></i> Top Student - Samsung FIL</span>
+          <span class="award-badge"><i class="fas fa-medal"></i> Top Student · Samsung FIL</span>
         </div>
       </div>
     </div>
@@ -351,8 +422,8 @@ footer{background:var(--ink);color:rgba(255,255,255,.5);padding:4rem 0 2.5rem}
       </div>
       <div class="project-card featured reveal">
         <div class="proj-img" style="background:linear-gradient(135deg,#1a1a2e,#16213e)">
-          <i class="fas fa-heartbeat" style="color:#b8913a;opacity:.8;font-size:2.2rem"></i>
-          <span class="proj-winner"><i class="fas fa-trophy"></i> Best Overall Technical Project 2025</span>
+          <i class="fas fa-heartbeat" style="color:#b8913a;opacity:.8;font-size:2.4rem;z-index:1"></i>
+          <span class="proj-winner"><i class="fas fa-trophy"></i> Best Overall 2025</span>
         </div>
         <div class="proj-body"><p class="proj-num">Project 02 · Featured</p><h3>DiaConnect</h3><p>A diabetes tracking app with AI chat, caretaker alerts, and hidden sugars detection. Winner of the 2025 Best Overall Technical Project.</p><div class="proj-tech"><span class="tag">.NET MAUI</span><span class="tag">C#</span><span class="tag">XAML</span><span class="tag">ASP.NET</span><span class="tag">Azure</span></div><a href="https://github.com/HaanimP/DiaConnectFinal.git" class="proj-link" target="_blank">View Project <i class="fas fa-arrow-right"></i></a></div>
       </div>
@@ -361,7 +432,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.5);padding:4rem 0 2.5rem}
         <div class="proj-body"><p class="proj-num">Project 03</p><h3>Pinterest App</h3><p>A Pinterest-inspired application for discovering, sharing, and organising visual content and inspiration.</p><div class="proj-tech"><span class="tag">XAML</span><span class="tag">C#</span></div><a href="https://github.com/HaanimP/Pinterest-App-Assignment.git" class="proj-link" target="_blank">View Project <i class="fas fa-arrow-right"></i></a></div>
       </div>
       <div class="project-card reveal">
-        <div class="proj-img"><i class="fas fa-laptop-code"></i></div>
+        <div class="proj-img"><i class="fas fa-hand-holding-heart"></i></div>
         <div class="proj-body"><p class="proj-num">Project 04</p><h3>Women with Vision</h3><p>A non-profit website showcasing work, branch locations, contact info, and a simple way to donate.</p><div class="proj-tech"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span></div><a href="https://womenwithvision.netlify.app/home" class="proj-link" target="_blank">Live Demo <i class="fas fa-arrow-right"></i></a></div>
       </div>
       <div class="project-card reveal">
@@ -372,30 +443,6 @@ footer{background:var(--ink);color:rgba(255,255,255,.5);padding:4rem 0 2.5rem}
         <div class="proj-img"><i class="fas fa-route"></i></div>
         <div class="proj-body"><p class="proj-num">Project 06</p><h3>Path Align</h3><p>A site that helps students find their best learning path based on personality test results.</p><div class="proj-tech"><span class="tag">WordPress</span><span class="tag">Power BI</span><span class="tag">Excel</span></div><a href="https://personatest.lcstudio-incubate.co.za/" class="proj-link" target="_blank">Live Demo <i class="fas fa-arrow-right"></i></a></div>
       </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- HUMANITARIAN -->
-<section id="humanitarian" class="humanitarian">
-  <div class="wrap">
-    <div class="hum-header">
-      <p class="section-label reveal">Values</p>
-      <h2 class="section-heading reveal">Stand for <em>Humanity</em></h2>
-      <p class="section-sub reveal">Using my platform to advocate for human rights, justice, and dignity for all.</p>
-    </div>
-    <p class="hum-intro reveal">As a technology professional, I believe in using my voice and skills to stand for those who face injustice. I am committed to raising awareness about critical humanitarian crises and social issues that demand our attention and action.</p>
-    <div class="causes-grid-a">
-      <div class="cause-card palestine reveal"><div class="cause-accent"></div><h3>Free Palestine</h3><p>Standing with the Palestinian people in their fight for freedom and dignity. Every voice matters in the pursuit of justice and peace.</p><div class="cause-stats-row"><div class="c-stat"><i class="fas fa-heart"></i><span>Solidarity</span></div><div class="c-stat"><i class="fas fa-fist-raised"></i><span>Resistance</span></div></div><a href="https://www.instagram.com/eye.on.palestine/" target="_blank" class="cause-link"><i class="fab fa-instagram"></i> Learn More</a></div>
-      <div class="cause-card sudan reveal"><div class="cause-accent"></div><h3>Support Sudan</h3><p>Raising awareness about the ongoing genocide and humanitarian crisis in Sudan. The world must not look away from the suffering of the Sudanese people.</p><div class="cause-stats-row"><div class="c-stat"><i class="fas fa-dove"></i><span>Peace</span></div><div class="c-stat"><i class="fas fa-hands-helping"></i><span>Support</span></div></div><a href="https://www.instagram.com/eye.on.sudan/" target="_blank" class="cause-link"><i class="fab fa-instagram"></i> Learn More</a></div>
-      <div class="cause-card gbv reveal"><div class="cause-accent"></div><h3>End Gender-Based Violence</h3><p>Taking a stand against all forms of gender-based violence. Creating a safer world starts with speaking up, supporting survivors, and demanding change.</p><div class="cause-stats-row"><div class="c-stat"><i class="fas fa-user-shield"></i><span>Protection</span></div><div class="c-stat"><i class="fas fa-balance-scale"></i><span>Justice</span></div></div><a href="https://www.instagram.com/gbv.awareness/" target="_blank" class="cause-link"><i class="fab fa-instagram"></i> Take Action</a></div>
-      <div class="cause-card congo reveal"><div class="cause-accent"></div><h3>Support Congo</h3><p>Standing with the people of the DRC in their struggle for peace, stability, and justice. Raising awareness about ongoing conflicts and humanitarian needs.</p><div class="cause-stats-row"><div class="c-stat"><i class="fas fa-heart"></i><span>Compassion</span></div><div class="c-stat"><i class="fas fa-fist-raised"></i><span>Solidarity</span></div></div><a href="https://www.instagram.com/" target="_blank" class="cause-link"><i class="fab fa-instagram"></i> Learn More</a></div>
-    </div>
-    <div class="causes-grid-b">
-      <div class="cause-card ice reveal"><div class="cause-accent"></div><h3>Abolish ICE</h3><p>Opposing immigration enforcement and detention systems that separate families and violate human rights. Advocating for immigration justice and protecting immigrant communities.</p><div class="cause-stats-row"><div class="c-stat"><i class="fas fa-users"></i><span>Family Unity</span></div><div class="c-stat"><i class="fas fa-balance-scale"></i><span>Justice</span></div></div><a href="https://www.instagram.com/" target="_blank" class="cause-link"><i class="fab fa-instagram"></i> Learn More</a></div>
-      <div class="cause-card water reveal"><div class="cause-accent"></div><h3>Save Our Water</h3><p>Advocating for water conservation and sustainable resource management in the face of AI technology's growing environmental impact. Clean water is a human right.</p><div class="cause-stats-row"><div class="c-stat"><i class="fas fa-leaf"></i><span>Sustainability</span></div><div class="c-stat"><i class="fas fa-globe"></i><span>Environment</span></div></div><a href="https://www.instagram.com/" target="_blank" class="cause-link"><i class="fab fa-instagram"></i> Learn More</a></div>
-      <div class="cause-card epstein reveal"><div class="cause-accent"></div><h3>Release the Epstein Files</h3><p>Demanding transparency and accountability through the full release of the Epstein documents. Truth and justice for all survivors exposing systemic abuse and those who enabled it.</p><div class="cause-stats-row"><div class="c-stat"><i class="fas fa-balance-scale"></i><span>Justice</span></div><div class="c-stat"><i class="fas fa-eye"></i><span>Transparency</span></div></div><a href="https://www.instagram.com/" target="_blank" class="cause-link"><i class="fab fa-instagram"></i> Learn More</a></div>
     </div>
   </div>
 </section>
@@ -423,12 +470,12 @@ footer{background:var(--ink);color:rgba(255,255,255,.5);padding:4rem 0 2.5rem}
     <p class="section-label reveal">Career</p>
     <h2 class="section-heading reveal">Professional <em>experience</em></h2>
     <div class="timeline-wrap">
-      <div class="tl-item reveal"><div class="tl-date">Dec 2025 - Present</div><div class="tl-body"><h3>Software Development Intern</h3><p class="tl-company">School of Pharmacy UWC, The Gatees Foundation</p><p class="tl-desc">Managed internal and stakeholder communication for a confidential regulatory technology project while contributing to improving clarity, usability and workflow logic in a high-stakes digital environment. Assisted in preparing structured updates and reviews for senior academic and industry stakeholders.</p></div></div>
-      <div class="tl-item reveal"><div class="tl-date">Feb 2025 - May 2025</div><div class="tl-body"><h3>Social Media Manager</h3><p class="tl-company">The Three Stars</p><p class="tl-desc">Led comprehensive social media strategy including content management, client consultation, team collaboration, and brand outreach initiatives that significantly increased engagement.</p></div></div>
-      <div class="tl-item reveal"><div class="tl-date">Dec 2024 - May 2025</div><div class="tl-body"><h3>Business Team Lead</h3><p class="tl-company">The Three Stars</p><p class="tl-desc">Managed daily standups and progress tracking, ensured project punctuality and task completion, while providing mentorship and guidance to team members.</p></div></div>
-      <div class="tl-item reveal"><div class="tl-date">Nov 2024 - May 2025</div><div class="tl-body"><h3>Web Designer</h3><p class="tl-company">The Three Stars</p><p class="tl-desc">Created comprehensive wireframes and prototypes, designed user-friendly interfaces, developed responsive web solutions, and collaborated effectively with cross-functional development teams.</p></div></div>
-      <div class="tl-item reveal"><div class="tl-date">Oct 2024 - Nov 2024</div><div class="tl-body"><h3>Assistant Lecturer</h3><p class="tl-company">LC Studio</p><p class="tl-desc">Facilitated student progress through structured check-ins, maintained high standards for punctuality and task completion, while providing comprehensive educational support.</p></div></div>
-      <div class="tl-item reveal"><div class="tl-date">Apr 2024 - Nov 2024</div><div class="tl-body"><h3>Software Engineer Intern</h3><p class="tl-company">LC Studio</p><p class="tl-desc">Advanced technical skills in Linux, Python, and C++ through intensive self-study, collaborated with cross-functional teams during Scrum processes, and developed innovative project prototypes.</p></div></div>
+      <div class="tl-item reveal"><div class="tl-date">Dec 2025 — Present</div><div class="tl-body"><h3>Software Development Intern</h3><p class="tl-company">School of Pharmacy UWC · The Gatees Foundation</p><p class="tl-desc">Managed internal and stakeholder communication for a confidential regulatory technology project while contributing to improving clarity, usability and workflow logic in a high-stakes digital environment. Assisted in preparing structured updates and reviews for senior academic and industry stakeholders.</p></div></div>
+      <div class="tl-item reveal"><div class="tl-date">Feb — May 2025</div><div class="tl-body"><h3>Social Media Manager</h3><p class="tl-company">The Three Stars</p><p class="tl-desc">Led comprehensive social media strategy including content management, client consultation, team collaboration, and brand outreach initiatives that significantly increased engagement.</p></div></div>
+      <div class="tl-item reveal"><div class="tl-date">Dec 2024 — May 2025</div><div class="tl-body"><h3>Business Team Lead</h3><p class="tl-company">The Three Stars</p><p class="tl-desc">Managed daily standups and progress tracking, ensured project punctuality and task completion, while providing mentorship and guidance to team members.</p></div></div>
+      <div class="tl-item reveal"><div class="tl-date">Nov 2024 — May 2025</div><div class="tl-body"><h3>Web Designer</h3><p class="tl-company">The Three Stars</p><p class="tl-desc">Created comprehensive wireframes and prototypes, designed user-friendly interfaces, developed responsive web solutions, and collaborated effectively with cross-functional development teams.</p></div></div>
+      <div class="tl-item reveal"><div class="tl-date">Oct — Nov 2024</div><div class="tl-body"><h3>Assistant Lecturer</h3><p class="tl-company">LC Studio</p><p class="tl-desc">Facilitated student progress through structured check-ins, maintained high standards for punctuality and task completion, while providing comprehensive educational support.</p></div></div>
+      <div class="tl-item reveal"><div class="tl-date">Apr — Nov 2024</div><div class="tl-body"><h3>Software Engineer Intern</h3><p class="tl-company">LC Studio</p><p class="tl-desc">Advanced technical skills in Linux, Python, and C++ through intensive self-study, collaborated with cross-functional teams during Scrum processes, and developed innovative project prototypes.</p></div></div>
     </div>
   </div>
 </section>
@@ -439,22 +486,116 @@ footer{background:var(--ink);color:rgba(255,255,255,.5);padding:4rem 0 2.5rem}
     <p class="section-label reveal">Education</p>
     <h2 class="section-heading reveal">Academic <em>background</em></h2>
     <div class="timeline-wrap">
-      <div class="tl-item reveal"><div class="tl-date">Mar 2025 - Nov 2025</div><div class="tl-body"><h3>Software Development Student</h3><p class="tl-company">University of the Western Cape - Future Innovation Lab powered by Samsung</p><p class="tl-desc">Advanced studies in software development with focus on cutting-edge technologies, innovation, and practical application of software engineering principles. Earned Distinctions (Summa Cum Laude) in Multi-Platform Software Development and Digital Social Innovation for Impact. Top Student award &amp; 2025 Best Overall Technical Project winner for DiaConnect.</p></div></div>
-      <div class="tl-item reveal"><div class="tl-date">Sep 2023 - Mar 2024</div><div class="tl-body"><h3>Certificate of Excellence, Web Development</h3><p class="tl-company">Life Choices Academy</p><p class="tl-desc">Comprehensive training in web development technologies including HTML, CSS, JavaScript, and modern frameworks. Achieved excellence in all modules with hands-on project experience.</p></div></div>
-      <div class="tl-item reveal"><div class="tl-date">Jan 2018 - Dec 2022</div><div class="tl-body"><h3>National Senior Certificate</h3><p class="tl-company">South Peninsula High School</p><p class="tl-desc">Completed secondary education with strong academic performance, laying the foundation for future studies in technology and computer science.</p></div></div>
+      <div class="tl-item reveal"><div class="tl-date">Mar — Nov 2025</div><div class="tl-body"><h3>Software Development Student</h3><p class="tl-company">University of the Western Cape — Future Innovation Lab powered by Samsung</p><p class="tl-desc">Advanced studies in software development with focus on cutting-edge technologies, innovation, and practical application of software engineering principles. Earned Distinctions (Summa Cum Laude) in Multi-Platform Software Development and Digital Social Innovation for Impact. Top Student award &amp; 2025 Best Overall Technical Project winner for DiaConnect.</p></div></div>
+      <div class="tl-item reveal"><div class="tl-date">Sep 2023 — Mar 2024</div><div class="tl-body"><h3>Certificate of Excellence, Web Development</h3><p class="tl-company">Life Choices Academy</p><p class="tl-desc">Comprehensive training in web development technologies including HTML, CSS, JavaScript, and modern frameworks. Achieved excellence in all modules with hands-on project experience.</p></div></div>
+      <div class="tl-item reveal"><div class="tl-date">Jan 2018 — Dec 2022</div><div class="tl-body"><h3>National Senior Certificate</h3><p class="tl-company">South Peninsula High School</p><p class="tl-desc">Completed secondary education with strong academic performance, laying the foundation for future studies in technology and computer science.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- THE THREE STARS -->
+<section id="business" class="t3s-section">
+  <div class="wrap">
+    <div class="t3s-inner">
+
+      <!-- LEFT col -->
+      <div>
+        <p class="t3s-label reveal">Co-Founded Venture</p>
+
+        <!-- Logo area -->
+        <div class="t3s-logo-wrap reveal">
+          <div class="t3s-logo-box">
+            <!--
+              To add the Three Stars logo:
+              1. Save your logo file as /files/t3s-logo.png (or .svg)
+              2. The img tag below will load it automatically
+              3. If the file isn't found, "T3S" displays as fallback text
+            -->
+            <img src="/img/three_stars_logo_72px.svg" alt="The Three Stars Logo"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <span class="t3s-logo-fallback" style="display:none">T3S</span>
+          </div>
+          <div>
+            <p class="t3s-logo-text-name">The Three Stars</p>
+            <p class="t3s-logo-text-sub">Digital Solutions Agency · Est. 2024</p>
+          </div>
+        </div>
+
+        <h2 class="t3s-heading reveal">We bring your<br><em>brand to life</em></h2>
+        <p class="t3s-intro reveal">A digital solutions agency co-founded with Ni-shaat and Ammara three women who started The Three Stars in 2024, grew our skills, and came back ready to do the work we love. Websites, branding, social media and beyond, crafted with intention by three creative women who genuinely care about your business.</p>
+
+        <div class="t3s-team reveal">
+          <div class="t3s-avatar">
+            <img src="/img/IMG-20250528-WA0042 (1).jpg" alt="Haanim"
+              onerror="this.style.display='none';this.parentNode.innerText='H'">
+          </div>
+          <div class="t3s-avatar">
+            <img src="/img/WhatsApp Image 2026-04-19 at 16.59.48.jpeg" alt="Ni-shaat"
+              onerror="this.style.display='none';this.parentNode.innerText='N'">
+          </div>
+          <div class="t3s-avatar">A</div>
+          <span class="t3s-team-note">Three women. One vision. Your brand, elevated.</span>
+        </div>
+
+        <div class="t3s-btns reveal">
+          <a href="https://t3s-ten.vercel.app/" target="_blank" class="btn-t3s-primary">
+            <i class="fas fa-external-link-alt"></i>Visit Our Website
+          </a>
+          <a href="https://www.instagram.com/the.thr33.stars" target="_blank" class="btn-t3s-insta">
+            <i class="fab fa-instagram"></i>Follow Us on Instagram
+          </a>
+        </div>
+      </div>
+
+      <!-- RIGHT col: equal 3-col service grid -->
+      <div class="reveal">
+        <div class="t3s-services">
+          <div class="t3s-service">
+            <span class="t3s-service-icon">🌐</span>
+            <h4>Web Design &amp; Development</h4>
+            <p>Custom websites built to reflect your brand, convert visitors, and grow with your business.</p>
+          </div>
+          <div class="t3s-service">
+            <span class="t3s-service-icon">✨</span>
+            <h4>Branding &amp; Identity</h4>
+            <p>Logos, colour palettes, and full brand identity that feels cohesive and uniquely yours.</p>
+          </div>
+          <div class="t3s-service">
+            <span class="t3s-service-icon">🃏</span>
+            <h4>Print &amp; Digital Design</h4>
+            <p>Business cards, occasion cards, and branded digital assets, designed with care.</p>
+          </div>
+          <div class="t3s-service">
+            <span class="t3s-service-icon">📱</span>
+            <h4>Social Media Management</h4>
+            <p>Full strategy, content creation, scheduling and engagement — all handled for you.</p>
+          </div>
+          <div class="t3s-service">
+            <span class="t3s-service-icon">🎨</span>
+            <h4>Social Media Content</h4>
+            <p>Quality posts and graphics without the full monthly management commitment.</p>
+          </div>
+          <div class="t3s-service spotlight">
+            <span class="t3s-service-icon">⭐</span>
+            <h4>Business Spotlight</h4>
+            <p>A dedicated highlight showcase for small businesses we believe in — our way of giving back.</p>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
 
 <!-- TESTIMONIALS -->
-<section id="testimonials" class="section">
+<section id="testimonials" class="section alt">
   <div class="wrap">
     <p class="section-label reveal">Testimonials</p>
     <h2 class="section-heading reveal">What people <em>say</em></h2>
     <div class="testi-wrap reveal">
       <div class="testi-slide active">
         <div class="testi-quote">"</div>
-        <p class="testi-text">I reached out via LinkedIn to Haanim, to ask her can she please review my CV. In no time she responded to my dm. Her feedback was incredibly helpful - clear, constructive, and exactly what I needed to polish my CV. I really appreciate the time and effort she took to assist me, especially without even knowing me personally. She is always open to assisting others as well.</p>
+        <p class="testi-text">I reached out via LinkedIn to Haanim, to ask her can she please review my CV. In no time she responded to my DM. Her feedback was incredibly helpful — clear, constructive, and exactly what I needed to polish my CV. I really appreciate the time and effort she took to assist me, especially without even knowing me personally. She is always open to assisting others as well.</p>
         <p class="testi-author">Asandile Langeni</p>
         <p class="testi-role">LinkedIn Connection</p>
       </div>
@@ -462,13 +603,13 @@ footer{background:var(--ink);color:rgba(255,255,255,.5);padding:4rem 0 2.5rem}
         <div class="testi-quote">"</div>
         <p class="testi-text">It was a pleasure having Haanim on our team. She is a disciplined and dedicated professional who consistently prioritizes project goals and delivers high-quality work. Her skills in web development are strong, and she brings a keen eye for both functionality and design. Haanim also excels in leadership roles, guiding her team with clarity, structure, and a steady hand. Her versatility and work ethic make her an invaluable asset to any team.</p>
         <p class="testi-author">Ni-shaat Gafieldien</p>
-        <p class="testi-role">Co-Founder of The Three Stars, Developer and Designer</p>
+        <p class="testi-role">Co-Founder of The Three Stars · Developer &amp; Designer</p>
       </div>
       <div class="testi-slide">
         <div class="testi-quote">"</div>
-        <p class="testi-text">Working with Haanim at The Three Stars Digital Solutions was honestly a wonderful experience. She's one of those people who just gets it - super reliable, easy to talk to, and always brings her best to the table. She has a natural sense of leadership and a way of making the team feel grounded and supported, even during hectic deadlines. You always knew you could count on her and I would most definitely recommend her.</p>
+        <p class="testi-text">Working with Haanim at The Three Stars Digital Solutions was honestly a wonderful experience. She's one of those people who just gets it — super reliable, easy to talk to, and always brings her best to the table. She has a natural sense of leadership and a way of making the team feel grounded and supported, even during hectic deadlines. You always knew you could count on her and I would most definitely recommend her.</p>
         <p class="testi-author">Ammara Hoosen</p>
-        <p class="testi-role">Co-Founder of The Three Stars, Developer and Designer</p>
+        <p class="testi-role">Co-Founder of The Three Stars · Developer &amp; Designer</p>
       </div>
       <div class="testi-controls">
         <div class="testi-dots">
@@ -481,21 +622,6 @@ footer{background:var(--ink);color:rgba(255,255,255,.5);padding:4rem 0 2.5rem}
           <button class="testi-btn" id="tNext"><i class="fas fa-chevron-right"></i></button>
         </div>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- SOCIALS -->
-<section id="socials" class="section alt">
-  <div class="wrap">
-    <p class="section-label reveal">Connect</p>
-    <h2 class="section-heading reveal">Find me <em>online</em></h2>
-    <p class="section-sub reveal">Follow my journey across platforms. I share insights on technology, design, innovation, and more.</p>
-    <div class="socials-grid">
-      <a href="https://www.instagram.com/haanim_pietersen" target="_blank" class="social-card instagram reveal"><div class="social-icon"><i class="fab fa-instagram"></i></div><h3>Instagram</h3><p>Daily insights & stories</p></a>
-      <a href="https://tiktok.com/@haanim_pietersen" target="_blank" class="social-card tiktok reveal"><div class="social-icon"><i class="fab fa-tiktok"></i></div><h3>TikTok</h3><p>Creative content & tech tips</p></a>
-      <a href="https://www.linkedin.com/in/haanim-pietersen-172bb9264/" target="_blank" class="social-card linkedin reveal"><div class="social-icon"><i class="fab fa-linkedin"></i></div><h3>LinkedIn</h3><p>Professional network</p></a>
-      <a href="https://github.com/HaanimP" target="_blank" class="social-card github reveal"><div class="social-icon"><i class="fab fa-github"></i></div><h3>GitHub</h3><p>Code & projects</p></a>
     </div>
   </div>
 </section>
@@ -528,40 +654,56 @@ footer{background:var(--ink);color:rgba(255,255,255,.5);padding:4rem 0 2.5rem}
   </div>
 </section>
 
+<!-- FOOTER — socials live here now, Connect section removed -->
 <footer>
   <div class="footer-inner">
     <div class="footer-logo">Haanim Pietersen</div>
+    <p class="footer-tagline">Software Developer · Human Rights Advocate · Cape Town, South Africa</p>
     <div class="footer-socials">
-      <a href="https://www.instagram.com/haanim_pietersen" target="_blank" class="f-social"><i class="fab fa-instagram"></i></a>
-      <a href="https://tiktok.com/@haanim_pietersen" target="_blank" class="f-social"><i class="fab fa-tiktok"></i></a>
-      <a href="https://www.linkedin.com/in/haanim-pietersen-172bb9264/" target="_blank" class="f-social"><i class="fab fa-linkedin"></i></a>
-      <a href="https://github.com/HaanimP" target="_blank" class="f-social"><i class="fab fa-github"></i></a>
+      <a href="https://www.instagram.com/haanim_pietersen" target="_blank" class="f-social" title="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="https://tiktok.com/@haanim_pietersen" target="_blank" class="f-social" title="TikTok"><i class="fab fa-tiktok"></i></a>
+      <a href="https://www.linkedin.com/in/haanim-pietersen-172bb9264/" target="_blank" class="f-social" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+      <a href="https://github.com/HaanimP" target="_blank" class="f-social" title="GitHub"><i class="fab fa-github"></i></a>
+      <a href="https://linktr.ee/haanim.pietersen" target="_blank" class="f-social" title="Linktree"><i class="fas fa-link"></i></a>
     </div>
+    <div class="footer-rule"></div>
     <div class="footer-bottom">
-      <p>&copy; 2026 Haanim Pietersen. All rights reserved.</p>
+      <p>© 2026 Haanim Pietersen. All rights reserved.</p>
       <p>Standing for Human Rights &amp; <span>Palestinian Freedom</span></p>
     </div>
   </div>
 </footer>
 
 <script>
-const mm=document.getElementById('mobileMenu'),nl=document.getElementById('navLinks');
+// NAV
+const mm=document.getElementById('mobileMenu'),nl=document.getElementById('navLinks'),navbar=document.getElementById('navbar');
 mm.addEventListener('click',()=>{nl.classList.toggle('active');mm.querySelector('i').className=nl.classList.contains('active')?'fas fa-times':'fas fa-bars'});
 document.querySelectorAll('.nav-link').forEach(l=>l.addEventListener('click',()=>{nl.classList.remove('active');mm.querySelector('i').className='fas fa-bars'}));
-document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t)window.scrollTo({top:t.offsetTop-64,behavior:'smooth'})})});
-window.addEventListener('scroll',()=>{let cur='';document.querySelectorAll('section[id]').forEach(s=>{if(scrollY>=s.offsetTop-200)cur=s.id});document.querySelectorAll('.nav-link').forEach(l=>l.classList.toggle('active',l.getAttribute('href')===`#${cur}`))});
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const href=a.getAttribute('href');if(href==='#')return;const t=document.querySelector(href);if(t){e.preventDefault();window.scrollTo({top:t.offsetTop-68,behavior:'smooth'})}})});
+window.addEventListener('scroll',()=>{navbar.classList.toggle('scrolled',scrollY>20);let cur='';document.querySelectorAll('section[id]').forEach(s=>{if(scrollY>=s.offsetTop-200)cur=s.id});document.querySelectorAll('.nav-link').forEach(l=>l.classList.toggle('active',l.getAttribute('href')===`#${cur}`))});
+navbar.classList.add('scrolled');
+
+// Reveal
 const ro=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('in-view'),80);ro.unobserve(e.target)}})},{threshold:.08,rootMargin:'0px 0px -40px 0px'});
 document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+
+// Counter
 const co=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){const el=e.target,target=parseInt(el.dataset.target);let n=0;const step=target/40;const t=setInterval(()=>{n+=step;if(n>=target){el.textContent=target+'+';clearInterval(t)}else el.textContent=Math.floor(n)+'+'},40);co.unobserve(el)}})},{threshold:.5});
 document.querySelectorAll('.stat-num[data-target]').forEach(el=>co.observe(el));
+
+// Slider
 let cur=0;const slides=document.querySelectorAll('.testi-slide'),dots=document.querySelectorAll('.testi-dot');
 function showSlide(i){slides.forEach(s=>s.classList.remove('active'));dots.forEach(d=>d.classList.remove('active'));slides[i].classList.add('active');dots[i].classList.add('active')}
 document.getElementById('tNext').addEventListener('click',()=>{cur=(cur+1)%slides.length;showSlide(cur)});
 document.getElementById('tPrev').addEventListener('click',()=>{cur=(cur-1+slides.length)%slides.length;showSlide(cur)});
 dots.forEach(d=>d.addEventListener('click',()=>{cur=+d.dataset.s;showSlide(cur)}));
 setInterval(()=>{cur=(cur+1)%slides.length;showSlide(cur)},6000);
-document.getElementById('contactForm').addEventListener('submit',function(e){e.preventDefault();const btn=this.querySelector('button');const formData=new FormData(this);btn.innerHTML='<i class="fas fa-spinner fa-spin"></i> Sending...';btn.disabled=true;fetch('https://formspree.io/f/xykljokl',{method:'POST',body:formData,headers:{'Accept':'application/json'}}).then(response=>{if(response.ok){btn.innerHTML='<i class="fas fa-check-circle"></i> Sent!';setTimeout(()=>{window.location.href='thankyou.html'},1500)}else{btn.innerHTML='<i class="fas fa-paper-plane"></i> Send Message';btn.disabled=false;alert('There was an error sending your message. Please try again.')}}).catch(error=>{console.error('Error:',error);btn.innerHTML='<i class="fas fa-paper-plane"></i> Send Message';btn.disabled=false;alert('There was an error sending your message. Please try again.')})});
-document.getElementById('downloadCV').addEventListener('click',function(e){e.preventDefault();const cv=`HAANIM PIETERSEN\nSoftware Development Intern | Human Rights Advocate\n\nCONTACT\nCape Town | +27 71 433 2419 | haanimpietersen@gmail.com\nlinkedin.com/in/haanim-pietersen-172bb9264 | github.com/HaanimP\n\nAWARDS\n- 2025 Best Overall Technical Project (DiaConnect)\n- Summa Cum Laude - Multi-Platform Software Development\n- Top Student - Samsung Future Innovation Lab\n\nEXPERIENCE\nSoftware Development Intern - School of Pharmacy UWC (Dec 2025 - Present)\nSocial Media Manager - The Three Stars (Feb - May 2025)\nBusiness Team Lead - The Three Stars (Dec 2024 - May 2025)\nWeb Designer - The Three Stars (Nov 2024 - May 2025)\nAssistant Lecturer - LC Studio (Oct - Nov 2024)\nSoftware Engineer Intern - LC Studio (Apr - Nov 2024)\n\nEDUCATION\nUWC - Samsung Future Innovation Lab (Mar - Nov 2025)\nLife Choices Academy - Web Dev Certificate (Sep 2023 - Mar 2024)\nSouth Peninsula High School - NSC (2018 - 2022)\n\nSKILLS\nHTML, CSS, JavaScript, Bootstrap, Vue.js, Python, C++, Node.js, C#, .NET, ASP.NET, .NET MAUI, XAML, MySQL, Power BI, Azure, Linux, Scrum, WordPress\n\nGenerated: ${new Date().toLocaleDateString('en-ZA')}`;const blob=new Blob([cv],{type:'text/plain;charset=utf-8'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='Haanim_Pietersen_CV_2026.txt';document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(url)});
+
+// Contact form
+document.getElementById('contactForm').addEventListener('submit',function(e){e.preventDefault();const btn=this.querySelector('button');const formData=new FormData(this);btn.innerHTML='<i class="fas fa-spinner fa-spin"></i> Sending...';btn.disabled=true;fetch('https://formspree.io/f/xykljokl',{method:'POST',body:formData,headers:{'Accept':'application/json'}}).then(res=>{if(res.ok){btn.innerHTML='<i class="fas fa-check-circle"></i> Sent!';setTimeout(()=>{window.location.href='thankyou.html'},1500)}else{btn.innerHTML='<i class="fas fa-paper-plane"></i> Send Message';btn.disabled=false}}).catch(()=>{btn.innerHTML='<i class="fas fa-paper-plane"></i> Send Message';btn.disabled=false})});
+
+// CV download
+document.getElementById('downloadCV').addEventListener('click',function(e){e.preventDefault();const cv=`HAANIM PIETERSEN\nSoftware Developer · Human Rights Advocate\n\nCONTACT\nCape Town, South Africa\n+27 71 433 2419 / 84 465 1333\nhaanimpietersen@gmail.com\nlinkedin.com/in/haanim-pietersen-172bb9264\ngithub.com/HaanimP\nlinktr.ee/haanim.pietersen\n\nAWARDS\n· 2025 Best Overall Technical Project — DiaConnect\n· Summa Cum Laude — Multi-Platform Software Development\n· Top Student — Samsung Future Innovation Lab, UWC\n\nEXPERIENCE\nSoftware Development Intern · School of Pharmacy UWC (Dec 2025–Present)\nSocial Media Manager · The Three Stars (Feb–May 2025)\nBusiness Team Lead · The Three Stars (Dec 2024–May 2025)\nWeb Designer · The Three Stars (Nov 2024–May 2025)\nAssistant Lecturer · LC Studio (Oct–Nov 2024)\nSoftware Engineer Intern · LC Studio (Apr–Nov 2024)\n\nEDUCATION\nUWC · Samsung Future Innovation Lab (Mar–Nov 2025)\nLife Choices Academy · Web Dev Certificate of Excellence (Sep 2023–Mar 2024)\nSouth Peninsula High School · National Senior Certificate (2018–2022)\n\nSKILLS\nFrontend: HTML, CSS, JavaScript, Bootstrap, Vue.js\nBackend: Python, C++, Node.js, C#, .NET, ASP.NET\nMobile: .NET MAUI, XAML\nDatabase: MySQL, Power BI, Data Analysis\nCloud: Azure, Linux, System Admin\nProject: Scrum, WordPress, Elementor, Teams, Office Suite\n\nLANGUAGES: English (Fluent), Afrikaans (Fluent), German (Basic), Mandarin (Basic)\n\nGenerated: ${new Date().toLocaleDateString('en-ZA')}`;const blob=new Blob([cv],{type:'text/plain;charset=utf-8'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='Haanim_Pietersen_CV_2026.txt';document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(url)});
 </script>
 </body>
 </html>
