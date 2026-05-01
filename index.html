@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Haanim Pietersen — Software Developer & Human Rights Advocate</title>
+<title>Haanim Pietersen Software Developer & Human Rights Advocate</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -127,8 +127,10 @@ nav.scrolled{background:rgba(246,241,233,.96);backdrop-filter:blur(20px);-webkit
 .tag:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-2px)}
 
 /* PROJECTS */
-.projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:5rem}
-.project-card{background:var(--white);border:1px solid var(--rule);overflow:hidden;transition:all .5s cubic-bezier(0.23,1,0.32,1);position:relative;transform-style:preserve-3d;cursor:none}
+.projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem}
+.project-card,.pres-card{display:none;background:var(--white);border:1px solid var(--rule);overflow:hidden;transition:all .5s cubic-bezier(0.23,1,0.32,1);position:relative;transform-style:preserve-3d;cursor:none}
+.project-card.hide,.pres-card.hide{display:none!important}
+.project-card.show,.pres-card.show{display:block!important}
 .project-card:hover{transform:perspective(900px) rotateX(-8deg) rotateY(4deg) translateY(-10px) scale(1.02);box-shadow:0 32px 72px rgba(13,12,10,.14),0 0 0 1px rgba(184,145,58,.25);border-color:rgba(184,145,58,.3)}
 .project-card.featured{border-color:rgba(184,145,58,.4)}
 .project-card.featured:hover{box-shadow:0 40px 80px rgba(184,145,58,.2),0 0 0 1px rgba(184,145,58,.4)}
@@ -184,46 +186,17 @@ nav.scrolled{background:rgba(246,241,233,.96);backdrop-filter:blur(20px);-webkit
 .t3s-service.spotlight{position:relative}
 .t3s-service.spotlight::after{content:'Free';position:absolute;top:.75rem;right:.75rem;font-family:'DM Mono',monospace;font-size:.5rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-light);border:1px solid rgba(184,145,58,.35);padding:.18rem .45rem}
 
-/* HUMANITARIAN */
-.humanitarian{background:var(--ink);padding:9rem 0;position:relative;overflow:hidden}
-.humanitarian::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 30% 50%,rgba(184,145,58,.05) 0%,transparent 65%);pointer-events:none}
-#hum-canvas{position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.3}
-.hum-header{margin-bottom:5rem;position:relative;z-index:1}
-.hum-header .section-label{color:var(--gold-light)}
-.hum-header .section-label::after{background:linear-gradient(90deg,var(--gold-light),transparent)}
-.hum-header .section-heading{color:var(--white)}
-.hum-header .section-sub{color:rgba(255,255,255,.45)}
-.hum-intro{font-size:.92rem;line-height:1.9;color:rgba(255,255,255,.5);font-weight:300;max-width:680px;margin-bottom:4.5rem;border-left:2px solid rgba(184,145,58,.4);padding-left:1.5rem;position:relative;z-index:1}
-.causes-grid-a{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.07);margin-bottom:1px;position:relative;z-index:1}
-.causes-grid-b{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.07);position:relative;z-index:1}
-.cause-card{background:var(--ink);padding:2.5rem 2rem;transition:all .5s cubic-bezier(0.23,1,0.32,1);display:flex;flex-direction:column;position:relative;overflow:hidden;transform-style:preserve-3d;cursor:none}
-.cause-card::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;opacity:0;transition:opacity .3s}
-.cause-card.palestine::after{background:#ff4444}
-.cause-card.sudan::after{background:#009639}
-.cause-card.gbv::after{background:#9333ea}
-.cause-card.congo::after{background:#e88c00}
-.cause-card.ice::after{background:#3b82f6}
-.cause-card.water::after{background:#06b6d4}
-.cause-card.epstein::after{background:#ef4444}
-.cause-card:hover{background:rgba(255,255,255,.03);transform:perspective(700px) rotateX(-6deg) rotateY(3deg) translateY(-6px);box-shadow:0 24px 48px rgba(0,0,0,.4)}
-.cause-card:hover::after{opacity:1}
-.cause-accent{width:28px;height:2px;margin-bottom:1.8rem;transition:width .4s ease}
-.cause-card:hover .cause-accent{width:48px}
-.cause-card.palestine .cause-accent{background:#ff4444}
-.cause-card.sudan .cause-accent{background:#009639}
-.cause-card.gbv .cause-accent{background:#9333ea}
-.cause-card.congo .cause-accent{background:#e88c00}
-.cause-card.ice .cause-accent{background:#3b82f6}
-.cause-card.water .cause-accent{background:#06b6d4}
-.cause-card.epstein .cause-accent{background:#ef4444}
-.cause-card h3{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:400;color:var(--white);margin-bottom:1rem}
-.cause-card p{font-size:.8rem;line-height:1.8;color:rgba(255,255,255,.45);font-weight:300;flex:1;margin-bottom:1.8rem}
-.cause-link{display:inline-flex;align-items:center;gap:.5rem;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;font-weight:500;text-decoration:none;padding:.6rem 1.1rem;border:1px solid rgba(255,255,255,.14);color:rgba(255,255,255,.55);transition:all .3s;align-self:flex-start;cursor:none}
-.cause-link:hover{border-color:var(--gold);color:var(--gold)}
+/* TICKER WRAP */
+.ticker-wrap{width:100%;overflow:hidden;background:var(--ink);padding:1.2rem 0;border-top:1px solid rgba(255,255,255,.1);border-bottom:1px solid rgba(255,255,255,.1);position:relative;z-index:1}
+.ticker-content{display:flex;gap:3rem;animation:scroll-ticker 25s linear infinite;will-change:transform;font-size:clamp(.85rem,2vw,1.3rem)}
+.ticker-content:hover{animation-play-state:paused}
+.ticker-item{white-space:nowrap;font-family:'Cormorant Garamond',serif;font-weight:400;color:rgba(255,255,255,.5);letter-spacing:.04em;transition:color .3s;cursor:pointer}
+.ticker-item:hover{color:var(--gold-light)}
+.ticker-item::before{content:'• ';color:var(--gold-light);margin-right:.5rem}
+@keyframes scroll-ticker{0%{transform:translateX(0%)}100%{transform:translateX(-50%)}}
 
 /* PRESENTATIONS */
-.presentations-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:5rem}
-.pres-card{padding:2.5rem;background:var(--white);border:1px solid var(--rule);transition:all .5s cubic-bezier(0.23,1,0.32,1);position:relative;overflow:hidden;transform-style:preserve-3d;cursor:none}
+.pres-card{padding:2.5rem;border:1px solid var(--rule)}
 .pres-card::before{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--gold);transform:scaleX(0);transition:transform .4s ease}
 .pres-card:hover{transform:perspective(800px) rotateX(-7deg) rotateY(4deg) translateY(-8px);border-color:rgba(184,145,58,.3);box-shadow:0 24px 56px rgba(13,12,10,.12)}
 .pres-card:hover::before{transform:scaleX(1)}
@@ -233,6 +206,9 @@ nav.scrolled{background:rgba(246,241,233,.96);backdrop-filter:blur(20px);-webkit
 .pres-card p{font-size:.81rem;color:var(--muted);line-height:1.7;margin-bottom:1.5rem;font-weight:300}
 .pres-btn{display:inline-flex;align-items:center;gap:.5rem;font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;font-weight:500;color:var(--gold);text-decoration:none;transition:gap .3s;cursor:none}
 .pres-btn:hover{gap:.8rem}
+
+.filter-btn{padding:.7rem 1.6rem;background:transparent;border:1px solid var(--rule);color:var(--muted);font-size:.7rem;font-weight:500;letter-spacing:.13em;text-transform:uppercase;cursor:none;transition:all .3s;display:inline-block;font-family:'DM Sans',sans-serif}
+.filter-btn:hover,.filter-btn.active{background:var(--gold);color:var(--white);border-color:var(--gold)}
 
 /* TIMELINE */
 .timeline-wrap{max-width:880px;margin:5rem auto 0}
@@ -374,11 +350,9 @@ footer{background:var(--ink);color:rgba(255,255,255,.4);padding:5rem 0 2.5rem}
     <a href="#home" class="logo">Haanim <span class="logo-dot">·</span> Pietersen</a>
     <ul class="nav-links" id="navLinks">
       <li><a href="#home" class="nav-link">Home</a></li>
-      <li><a href="#humanitarian" class="nav-link">Values</a></li>
       <li><a href="#about" class="nav-link">About</a></li>
       <li><a href="#skills" class="nav-link">Skills</a></li>
-      <li><a href="#projects" class="nav-link">Projects</a></li>
-      <li><a href="#presentations" class="nav-link">Talks</a></li>
+      <li><a href="#work" class="nav-link">Work</a></li>
       <li><a href="#experience" class="nav-link">Experience</a></li>
       <li><a href="#education" class="nav-link">Education</a></li>
       <li><a href="#business" class="nav-link">Business</a></li>
@@ -411,29 +385,24 @@ footer{background:var(--ink);color:rgba(255,255,255,.4);padding:5rem 0 2.5rem}
   </div>
 </section>
 
-<!-- HUMANITARIAN -->
-<section id="humanitarian" class="humanitarian">
-  <canvas id="hum-canvas"></canvas>
-  <div class="wrap">
-    <div class="hum-header">
-      <p class="section-label reveal">Values</p>
-      <h2 class="section-heading reveal">Stand for <em>Humanity</em></h2>
-      <p class="section-sub reveal">Using my platform to advocate for human rights, justice, and dignity for all.</p>
-    </div>
-    <p class="hum-intro reveal">As a technology professional, I believe in using my voice and skills to stand for those who face injustice. I am committed to raising awareness about critical humanitarian crises and social issues that demand our attention and action.</p>
-    <div class="causes-grid-a">
-      <div class="cause-card palestine reveal"><div class="cause-accent"></div><h3>Free Palestine</h3><p>Standing with the Palestinian people in their fight for freedom and dignity. Every voice matters in the pursuit of justice and peace.</p><a href="https://www.instagram.com/eye.on.palestine/" target="_blank" class="cause-link"><i class="fab fa-instagram"></i> Learn More</a></div>
-      <div class="cause-card sudan reveal"><div class="cause-accent"></div><h3>Support Sudan</h3><p>Raising awareness about the ongoing genocide and humanitarian crisis in Sudan. The world must not look away from the suffering of the Sudanese people.</p><a href="https://www.instagram.com/eye.on.sudan/" target="_blank" class="cause-link"><i class="fab fa-instagram"></i> Learn More</a></div>
-      <div class="cause-card gbv reveal"><div class="cause-accent"></div><h3>End Gender-Based Violence</h3><p>Taking a stand against all forms of gender-based violence. Creating a safer world starts with speaking up, supporting survivors, and demanding change.</p><a href="https://www.instagram.com/gbv.awareness/" target="_blank" class="cause-link"><i class="fab fa-instagram"></i> Take Action</a></div>
-      <div class="cause-card congo reveal"><div class="cause-accent"></div><h3>Support Congo</h3><p>Standing with the people of the DRC in their struggle for peace, stability, and justice. Raising awareness about ongoing conflicts and humanitarian needs.</p><a href="https://www.instagram.com/" target="_blank" class="cause-link"><i class="fab fa-instagram"></i> Learn More</a></div>
-    </div>
-    <div class="causes-grid-b">
-      <div class="cause-card ice reveal"><div class="cause-accent"></div><h3>Abolish ICE</h3><p>Opposing immigration enforcement and detention systems that separate families and violate human rights. Advocating for immigration justice and protecting immigrant communities.</p><a href="https://www.instagram.com/" target="_blank" class="cause-link"><i class="fab fa-instagram"></i> Learn More</a></div>
-      <div class="cause-card water reveal"><div class="cause-accent"></div><h3>Save Our Water</h3><p>Advocating for water conservation and sustainable resource management in the face of AI technology's growing environmental impact. Clean water is a human right.</p><a href="https://www.instagram.com/" target="_blank" class="cause-link"><i class="fab fa-instagram"></i> Learn More</a></div>
-      <div class="cause-card epstein reveal"><div class="cause-accent"></div><h3>Release the Epstein Files</h3><p>Demanding transparency and accountability through the full release of the Epstein documents. Truth and justice for all survivors exposing systemic abuse and those who enabled it.</p><a href="https://www.instagram.com/" target="_blank" class="cause-link"><i class="fab fa-instagram"></i> Learn More</a></div>
-    </div>
+<div class="ticker-wrap">
+  <div class="ticker-content">
+    <span class="ticker-item">Free Palestine</span>
+    <span class="ticker-item">Abolish ICE</span>
+    <span class="ticker-item">End Gender-Based Violence</span>
+    <span class="ticker-item">Support Sudan</span>
+    <span class="ticker-item">Support Congo</span>
+    <span class="ticker-item">Save Our Water</span>
+    <span class="ticker-item">Release the Epstein Files</span>
+    <span class="ticker-item">Free Palestine</span>
+    <span class="ticker-item">Abolish ICE</span>
+    <span class="ticker-item">End Gender-Based Violence</span>
+    <span class="ticker-item">Support Sudan</span>
+    <span class="ticker-item">Support Congo</span>
+    <span class="ticker-item">Save Our Water</span>
+    <span class="ticker-item">Release the Epstein Files</span>
   </div>
-</section>
+</div>
 
 <div class="section-divider"></div>
 
@@ -458,6 +427,9 @@ footer{background:var(--ink);color:rgba(255,255,255,.4);padding:5rem 0 2.5rem}
           <span class="award-badge"><i class="fas fa-trophy"></i> 2025 Best Overall Technical Project</span>
           <span class="award-badge"><i class="fas fa-star"></i> Summa Cum Laude</span>
           <span class="award-badge"><i class="fas fa-medal"></i> Top Student · Samsung FIL</span>
+        </div>
+        <div style="margin-top:2.5rem">
+          <a href="social.html" class="btn-outline"><i class="fas fa-share-alt"></i>View My Social Media Portfolio</a>
         </div>
       </div>
     </div>
@@ -484,62 +456,56 @@ footer{background:var(--ink);color:rgba(255,255,255,.4);padding:5rem 0 2.5rem}
 
 <div class="section-divider"></div>
 
-<!-- PROJECTS -->
-<section id="projects" class="section alt">
+<!-- WORK -->
+<section id="work" class="section alt">
   <div class="wrap">
     <p class="section-label reveal">Work</p>
-    <h2 class="section-heading reveal">Featured <em>projects</em></h2>
-    <div class="projects-grid">
-      <div class="project-card reveal">
+    <h2 class="section-heading reveal">Projects &amp; <em>Presentations</em></h2>
+    
+    <div class="work-filter reveal" style="display:flex;gap:1rem;margin-bottom:3rem;margin-top:2rem">
+      <button class="filter-btn active" data-type="projects">All Projects</button>
+      <button class="filter-btn" data-type="presentations">All Presentations</button>
+    </div>
+    
+    <div class="projects-grid" id="projectsGrid">
+      <div class="project-card reveal show" data-category="web" data-type="projects">
         <div class="proj-img"><i class="fas fa-globe"></i></div>
         <div class="proj-body"><p class="proj-num">Project 01</p><h3>The Three Stars</h3><p>Digital solutions agency website showcasing our services, portfolio, team, and brand. Crafted with intention by three creative women who genuinely care about your business.</p><div class="proj-tech"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span></div><a href="https://t3s-ten.vercel.app/" class="proj-link" target="_blank">Live Demo <i class="fas fa-arrow-right"></i></a></div>
       </div>
-      <div class="project-card reveal">
+      <div class="project-card reveal show" data-category="web" data-type="projects">
         <div class="proj-img"><i class="fas fa-car-side"></i></div>
         <div class="proj-body"><p class="proj-num">Project 02</p><h3>Drive Sure</h3><p>A car marketplace support platform for helping users find, assess, and purchase vehicles with confidence.</p><div class="proj-tech"><span class="tag">Web Platform</span><span class="tag">Marketplace</span></div><a href="https://drive-sure-lyart.vercel.app/" class="proj-link" target="_blank">Live Demo <i class="fas fa-arrow-right"></i></a></div>
       </div>
-      <div class="project-card featured reveal">
+      <div class="project-card featured reveal show" data-category="fullstack" data-type="projects">
         <div class="proj-img" style="background:linear-gradient(135deg,#1a1a2e,#16213e)">
           <i class="fas fa-heartbeat" style="color:#b8913a;opacity:.8;font-size:2.4rem;z-index:1"></i>
           <span class="proj-winner"><i class="fas fa-trophy"></i> Best Overall 2025</span>
         </div>
         <div class="proj-body"><p class="proj-num">Project 03 · Featured</p><h3>DiaConnect</h3><p>A diabetes tracking app with AI chat, caretaker alerts, and hidden sugars detection. Winner of the 2025 Best Overall Technical Project.</p><div class="proj-tech"><span class="tag">.NET MAUI</span><span class="tag">C#</span><span class="tag">XAML</span><span class="tag">ASP.NET</span><span class="tag">Azure</span></div><a href="https://github.com/HaanimP/DiaConnectFinal.git" class="proj-link" target="_blank">View Project <i class="fas fa-arrow-right"></i></a></div>
       </div>
-      <div class="project-card reveal">
+      <div class="project-card reveal show" data-category="maui" data-type="projects">
         <div class="proj-img"><i class="fas fa-images"></i></div>
         <div class="proj-body"><p class="proj-num">Project 04</p><h3>Pinterest App</h3><p>A Pinterest-inspired application for discovering, sharing, and organising visual content and inspiration.</p><div class="proj-tech"><span class="tag">XAML</span><span class="tag">C#</span></div><a href="https://github.com/HaanimP/Pinterest-App-Assignment.git" class="proj-link" target="_blank">View Project <i class="fas fa-arrow-right"></i></a></div>
       </div>
-      <div class="project-card reveal">
+      <div class="project-card reveal show" data-category="web" data-type="projects">
         <div class="proj-img"><i class="fas fa-hand-holding-heart"></i></div>
         <div class="proj-body"><p class="proj-num">Project 05</p><h3>Women with Vision</h3><p>A non-profit website showcasing work, branch locations, contact info, and a simple way to donate.</p><div class="proj-tech"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span></div><a href="https://womenwithvision.netlify.app/home" class="proj-link" target="_blank">Live Demo <i class="fas fa-arrow-right"></i></a></div>
       </div>
-      <div class="project-card reveal">
+      <div class="project-card reveal show" data-category="web" data-type="projects">
         <div class="proj-img"><i class="fas fa-birthday-cake"></i></div>
         <div class="proj-body"><p class="proj-num">Project 06</p><h3>Sugar Bakez</h3><p>A small business website showcasing baked goods, the owner, and available services.</p><div class="proj-tech"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span></div><a href="https://sugarbakez.netlify.app/" class="proj-link" target="_blank">Live Demo <i class="fas fa-arrow-right"></i></a></div>
       </div>
-      <div class="project-card reveal">
+      <div class="project-card reveal show" data-category="web" data-type="projects">
         <div class="proj-img"><i class="fas fa-route"></i></div>
         <div class="proj-body"><p class="proj-num">Project 07</p><h3>Path Align</h3><p>A site that helps students find their best learning path based on personality test results.</p><div class="proj-tech"><span class="tag">WordPress</span><span class="tag">Power BI</span><span class="tag">Excel</span></div><a href="https://personatest.lcstudio-incubate.co.za/" class="proj-link" target="_blank">Live Demo <i class="fas fa-arrow-right"></i></a></div>
       </div>
-    </div>
-  </div>
-</section>
-
-<div class="section-divider"></div>
-
-<!-- PRESENTATIONS -->
-<section id="presentations" class="section">
-  <div class="wrap">
-    <p class="section-label reveal">Talks</p>
-    <h2 class="section-heading reveal">Presentations &amp; <em>knowledge sharing</em></h2>
-    <p class="section-sub reveal">Sharing insights through educational presentations and technical talks.</p>
-    <div class="presentations-grid">
-      <div class="pres-card reveal"><div class="pres-icon" style="background:linear-gradient(135deg,#4f46e5,#7c3aed)"><i class="fas fa-user-md"></i></div><h3>Hamilton Naki</h3><p>Our group's role model and the characteristics of a truly great one.</p><a href="https://www.canva.com/design/DAGhUu6uC4Q/h6CnfVWGW5uX0YSy6_KaFw/view" class="pres-btn" target="_blank">View Presentation <i class="fas fa-arrow-right"></i></a></div>
-      <div class="pres-card reveal"><div class="pres-icon" style="background:linear-gradient(135deg,#06b6d4,#0891b2)"><i class="fas fa-briefcase"></i></div><h3>The Future of Work</h3><p>How the future of work looks and the skills needed to thrive in it.</p><a href="https://www.canva.com/design/DAGhCOQ_nO0/2QmZqIVg4avjXP07BERAAg/view" class="pres-btn" target="_blank">View Presentation <i class="fas fa-arrow-right"></i></a></div>
-      <div class="pres-card reveal"><div class="pres-icon" style="background:linear-gradient(135deg,#10b981,#059669)"><i class="fas fa-graduation-cap"></i></div><h3>EdVance</h3><p>Using Azure AI to solve a challenge in the education environment.</p><a href="https://www.canva.com/design/DAGgAngASrE/5y5qGX709No7l07z7lEhbw/view" class="pres-btn" target="_blank">View Presentation <i class="fas fa-arrow-right"></i></a></div>
-      <div class="pres-card reveal"><div class="pres-icon" style="background:linear-gradient(135deg,#f59e0b,#d97706)"><i class="fas fa-solar-panel"></i></div><h3>Power Track</h3><p>Energy and cost savings from solar panels vs traditional energy sources.</p><a href="https://www.canva.com/design/DAGPyv-jw5w/2mlLOLek20Yq6UkLWdDijg/view" class="pres-btn" target="_blank">View Presentation <i class="fas fa-arrow-right"></i></a></div>
-      <div class="pres-card reveal"><div class="pres-icon" style="background:linear-gradient(135deg,#ef4444,#dc2626)"><i class="fas fa-id-badge"></i></div><h3>Intern Profiles</h3><p>A project displaying intern profiles, skills, projects, and achievements.</p><a href="https://www.canva.com/design/DAGP9qSbvXk/scjmbZdE2ytNvz4CtfFdDg/view" class="pres-btn" target="_blank">View Presentation <i class="fas fa-arrow-right"></i></a></div>
-      <div class="pres-card reveal"><div class="pres-icon" style="background:linear-gradient(135deg,#8b5cf6,#7c3aed)"><i class="fab fa-drupal"></i></div><h3>Drupal</h3><p>Fundamental concepts, tools, and features of Drupal: core functionality and usage.</p><a href="https://www.canva.com/design/DAGMVXxqV10/cTtxqBV297KnAFiyzTEihQ/view" class="pres-btn" target="_blank">View Presentation <i class="fas fa-arrow-right"></i></a></div>
+      
+      <div class="pres-card reveal hide" data-type="presentations"><div class="pres-icon" style="background:linear-gradient(135deg,#4f46e5,#7c3aed)"><i class="fas fa-user-md"></i></div><h3>Hamilton Naki</h3><p>Our group's role model and the characteristics of a truly great one.</p><a href="https://www.canva.com/design/DAGhUu6uC4Q/h6CnfVWGW5uX0YSy6_KaFw/view" class="pres-btn" target="_blank">View Presentation <i class="fas fa-arrow-right"></i></a></div>
+      <div class="pres-card reveal hide" data-type="presentations"><div class="pres-icon" style="background:linear-gradient(135deg,#06b6d4,#0891b2)"><i class="fas fa-briefcase"></i></div><h3>The Future of Work</h3><p>How the future of work looks and the skills needed to thrive in it.</p><a href="https://www.canva.com/design/DAGhCOQ_nO0/2QmZqIVg4avjXP07BERAAg/view" class="pres-btn" target="_blank">View Presentation <i class="fas fa-arrow-right"></i></a></div>
+      <div class="pres-card reveal hide" data-type="presentations"><div class="pres-icon" style="background:linear-gradient(135deg,#10b981,#059669)"><i class="fas fa-graduation-cap"></i></div><h3>EdVance</h3><p>Using Azure AI to solve a challenge in the education environment.</p><a href="https://www.canva.com/design/DAGgAngASrE/5y5qGX709No7l07z7lEhbw/view" class="pres-btn" target="_blank">View Presentation <i class="fas fa-arrow-right"></i></a></div>
+      <div class="pres-card reveal hide" data-type="presentations"><div class="pres-icon" style="background:linear-gradient(135deg,#f59e0b,#d97706)"><i class="fas fa-solar-panel"></i></div><h3>Power Track</h3><p>Energy and cost savings from solar panels vs traditional energy sources.</p><a href="https://www.canva.com/design/DAGPyv-jw5w/2mlLOLek20Yq6UkLWdDijg/view" class="pres-btn" target="_blank">View Presentation <i class="fas fa-arrow-right"></i></a></div>
+      <div class="pres-card reveal hide" data-type="presentations"><div class="pres-icon" style="background:linear-gradient(135deg,#ef4444,#dc2626)"><i class="fas fa-id-badge"></i></div><h3>Intern Profiles</h3><p>A project displaying intern profiles, skills, projects, and achievements.</p><a href="https://www.canva.com/design/DAGP9qSbvXk/scjmbZdE2ytNvz4CtfFdDg/view" class="pres-btn" target="_blank">View Presentation <i class="fas fa-arrow-right"></i></a></div>
+      <div class="pres-card reveal hide" data-type="presentations"><div class="pres-icon" style="background:linear-gradient(135deg,#8b5cf6,#7c3aed)"><i class="fab fa-drupal"></i></div><h3>Drupal</h3><p>Fundamental concepts, tools, and features of Drupal: core functionality and usage.</p><a href="https://www.canva.com/design/DAGMVXxqV10/cTtxqBV297KnAFiyzTEihQ/view" class="pres-btn" target="_blank">View Presentation <i class="fas fa-arrow-right"></i></a></div>
     </div>
   </div>
 </section>
@@ -677,36 +643,6 @@ footer{background:var(--ink);color:rgba(255,255,255,.4);padding:5rem 0 2.5rem}
 
 <div class="section-divider"></div>
 
-<!-- MARKETING -->
-<section id="marketing" class="section alt">
-  <div class="wrap">
-    <p class="section-label reveal">Social Media</p>
-    <h2 class="section-heading reveal">Social Media & <em>Marketing</em></h2>
-    <p class="section-sub reveal">Expert social media strategy, content creation, and digital marketing solutions to grow your brand presence.</p>
-    <div style="margin-top: 5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;">
-      <div class="reveal-left">
-        <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; margin-bottom: 1.5rem;">What I Offer</h3>
-        <ul style="list-style: none; gap: 1.2rem; display: flex; flex-direction: column;">
-          <li style="display: flex; align-items: center; gap: 1rem; font-size: 0.95rem;"><i class="fas fa-check" style="color: var(--gold); font-weight: bold;"></i>Content Strategy & Planning</li>
-          <li style="display: flex; align-items: center; gap: 1rem; font-size: 0.95rem;"><i class="fas fa-check" style="color: var(--gold); font-weight: bold;"></i>Social Media Management</li>
-          <li style="display: flex; align-items: center; gap: 1rem; font-size: 0.95rem;"><i class="fas fa-check" style="color: var(--gold); font-weight: bold;"></i>Graphics & Copywriting</li>
-          <li style="display: flex; align-items: center; gap: 1rem; font-size: 0.95rem;"><i class="fas fa-check" style="color: var(--gold); font-weight: bold;"></i>Analytics & Reporting</li>
-          <li style="display: flex; align-items: center; gap: 1rem; font-size: 0.95rem;"><i class="fas fa-check" style="color: var(--gold); font-weight: bold;"></i>Community Management</li>
-        </ul>
-        <a href="social.html" class="btn-gold" style="margin-top: 2.5rem;">Explore Services <i class="fas fa-arrow-right"></i></a>
-      </div>
-      <div class="reveal-right" style="background: var(--white); padding: 3rem; border: 1px solid var(--rule); text-align: center;">
-        <i class="fas fa-megaphone" style="font-size: 3rem; color: var(--gold); margin-bottom: 1.5rem; display: block;"></i>
-        <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; margin-bottom: 1rem;">Ready to Grow?</h3>
-        <p style="color: var(--muted); line-height: 1.8; margin-bottom: 2rem;">Discover comprehensive social media marketing solutions tailored to elevate your brand presence and reach.</p>
-        <a href="social.html" class="btn-outline" style="width: 100%; justify-content: center;">View Full Packages</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="section-divider"></div>
-
 <!-- CONTACT -->
 <section id="contact" class="section">
   <div class="wrap">
@@ -761,21 +697,32 @@ footer{background:var(--ink);color:rgba(255,255,255,.4);padding:5rem 0 2.5rem}
 const cursor = document.getElementById('cursor');
 const cursorRing = document.getElementById('cursorRing');
 let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
+let isMoving = false;
 
 document.addEventListener('mousemove', e => {
-  mouseX = e.clientX; mouseY = e.clientY;
+  mouseX = e.clientX;
+  mouseY = e.clientY;
   cursor.style.left = mouseX + 'px';
   cursor.style.top = mouseY + 'px';
-});
+  isMoving = true;
+}, { passive: true });
 
+let animFrameId = null;
 function animRing() {
-  ringX += (mouseX - ringX) * 0.12;
-  ringY += (mouseY - ringY) * 0.12;
+  if (!isMoving) {
+    animFrameId = null;
+    return;
+  }
+  ringX += (mouseX - ringX) * 0.2;
+  ringY += (mouseY - ringY) * 0.2;
   cursorRing.style.left = ringX + 'px';
   cursorRing.style.top = ringY + 'px';
-  requestAnimationFrame(animRing);
+  animFrameId = requestAnimationFrame(animRing);
 }
-animRing();
+
+document.addEventListener('mousemove', () => {
+  if (!animFrameId) animFrameId = requestAnimationFrame(animRing);
+}, { passive: true });
 
 document.querySelectorAll('a,button,.stat-cell,.skill-cell,.project-card,.pres-card,.cause-card,.t3s-service,.award-badge,.tag,.testi-btn').forEach(el => {
   el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
@@ -1153,8 +1100,45 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
   })();
 })();
 
-// ═══════════════════════════════════════════
-// AMBIENT PARTICLES CANVAS (full page bg)
+// WORK FILTER
+(function() {
+  document.addEventListener('click', function(e) {
+    var btn = e.target.closest('.filter-btn');
+    if (!btn) return;
+    
+    e.preventDefault();
+    var type = btn.dataset.type;
+    
+    // Toggle button states
+    document.querySelectorAll('.filter-btn').forEach(function(b) {
+      b.classList.toggle('active', b === btn);
+    });
+    
+    // Toggle cards
+    document.querySelectorAll('.project-card').forEach(function(card) {
+      if (type === 'projects') {
+        card.classList.add('show');
+        card.classList.remove('hide');
+      } else {
+        card.classList.remove('show');
+        card.classList.add('hide');
+      }
+    });
+    
+    document.querySelectorAll('.pres-card').forEach(function(card) {
+      if (type === 'presentations') {
+        card.classList.add('show');
+        card.classList.remove('hide');
+      } else {
+        card.classList.remove('show');
+        card.classList.add('hide');
+      }
+    });
+  });
+})();
+
+
+
 // ═══════════════════════════════════════════
 (function initParticles() {
   const canvas = document.getElementById('particles-canvas');
