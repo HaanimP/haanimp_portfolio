@@ -4,467 +4,603 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Social Media Management — Haanim Pietersen</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,600&family=DM+Mono:wght@300;400&family=Caveat:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300;1,9..40,400&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400;1,6..72,500&family=Caveat:wght@400;500;600&display=swap" rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 <style>
-/* ════════════════════════════════════════
-   TOKENS — match index.html
-════════════════════════════════════════ */
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   DESIGN TOKENS — exact match to index.html
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 :root {
-  --ink:       #1a1410;
-  --paper:     #f5efe3;
-  --paper-2:   #ede5d4;
-  --paper-3:   #e8dfc9;
-  --cream:     #fdf8f0;
-  --gold:      #b8913a;
-  --gold-2:    #c9a44d;
-  --gold-light:#e8c97a;
-  --rust:      #8b3a2a;
-  --sage:      #5c7a5e;
-  --dusty:     #7a6b5d;
-  --rule:      rgba(26,20,16,.12);
-  --rule-2:    rgba(26,20,16,.06);
-  --shadow:    rgba(26,20,16,.18);
+  --ink:        #18130e;
+  --ink-60:     rgba(24,19,14,.6);
+  --ink-30:     rgba(24,19,14,.3);
+  --ink-10:     rgba(24,19,14,.1);
+  --ink-05:     rgba(24,19,14,.05);
+  --paper:      #f6f0e6;
+  --paper-warm: #ede5d4;
+  --paper-aged: #e8dcc8;
+  --cream:      #faf7f1;
+  --gold:       #9a7a3a;
+  --gold-light: rgba(154,122,58,.18);
+  --rust:       #7a3220;
+  --sage:       #4a6a4e;
+  --rule:       rgba(154,122,58,.22);
+  --serif:      'Newsreader', Georgia, serif;
+  --sans:       'DM Sans', system-ui, sans-serif;
+  --hand:       'Caveat', cursive;
+  --classic:    'Libre Baskerville', Georgia, serif;
+  --col-max:    1200px;
 }
 
-*,*::before,*::after { margin:0; padding:0; box-sizing:border-box }
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   RESET & BASE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box }
 html { scroll-behavior:smooth; font-size:16px }
 body {
-  font-family:'Cormorant Garamond', serif;
-  background:var(--paper-2);
-  color:var(--ink);
-  overflow-x:hidden;
-  -webkit-font-smoothing:antialiased;
-  cursor:none;
-  background-image:linear-gradient(var(--rule-2) 1px, transparent 1px);
-  background-size:100% 28px;
+  font-family: var(--sans);
+  background: var(--paper);
+  color: var(--ink);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  cursor: none;
+}
+body::after {
+  content:'';
+  position:fixed; inset:0;
+  pointer-events:none; z-index:9997;
+  background-image: radial-gradient(circle, rgba(24,19,14,.07) 1px, transparent 1px);
+  background-size: 24px 24px;
 }
 body::before {
   content:'';
   position:fixed; inset:0;
   pointer-events:none; z-index:9998;
-  opacity:.045;
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='512' height='512' filter='url(%23n)'/%3E%3C/svg%3E");
-  background-size:180px;
+  opacity:.03;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='512' height='512' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 200px;
 }
 
-/* ════════════════════════════════════════
-   CURSOR — heart theme for social page
-════════════════════════════════════════ */
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   CURSOR
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 .cursor {
-  position:fixed; pointer-events:none; z-index:99999;
+  position:fixed; width:7px; height:7px;
+  background: var(--ink); border-radius:50%;
+  pointer-events:none; z-index:99999;
   transform:translate(-50%,-50%);
-  will-change:transform; transition:transform .1s;
-  font-size:16px; line-height:1; color:var(--gold);
-}
-.cursor::before { content:'♡'; display:block; transition:all .2s ease; }
-body.cursor-hover .cursor::before {
-  content:'♥'; font-size:18px;
-  filter:drop-shadow(0 0 5px rgba(184,145,58,.6));
+  transition: width .2s, height .2s, background .2s;
+  will-change: transform;
 }
 .cursor-ring {
-  position:fixed; width:40px; height:40px;
-  border:1.5px solid var(--gold); border-radius:50%;
+  position:fixed; width:32px; height:32px;
+  border: 1px solid var(--gold);
+  border-radius:50%;
   pointer-events:none; z-index:99998;
   transform:translate(-50%,-50%);
-  transition:transform .15s ease, width .3s, height .3s, box-shadow .3s;
-  will-change:transform;
+  transition: transform .18s ease, width .3s, height .3s, opacity .3s;
+  will-change: transform;
+  opacity: .7;
 }
-body.cursor-hover .cursor-ring {
-  width:56px; height:56px;
-  box-shadow:0 0 0 2px var(--gold-light), 0 0 0 4px rgba(184,145,58,.15);
-  border-color:transparent;
-}
+body.cursor-hover .cursor { width:5px; height:5px; background:var(--gold); }
+body.cursor-hover .cursor-ring { width:48px; height:48px; border-color:var(--gold); opacity:1; }
 
-/* ════════════════════════════════════════
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
    SCROLL PROGRESS
-════════════════════════════════════════ */
-.scroll-progress {
-  position:fixed; top:0; left:0; height:4px;
-  background:repeating-linear-gradient(90deg,var(--gold) 0,var(--gold) 8px,var(--gold-light) 8px,var(--gold-light) 16px);
-  z-index:9999; transition:width .1s linear; width:0%; opacity:.8;
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.scroll-bar {
+  position:fixed; top:0; left:0; height:2px;
+  background: var(--gold); z-index:9999;
+  width:0%; transition:width .08s linear;
+  opacity:.75;
 }
 
-/* ════════════════════════════════════════
-   NAV
-════════════════════════════════════════ */
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   NAV — exact match to index.html
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 nav {
-  position:fixed; top:0; width:100%;
-  z-index:1000; transition:all .4s ease;
-  background:rgba(245,239,227,.95);
-  backdrop-filter:blur(16px);
-  border-bottom:2px solid rgba(184,145,58,.3);
-  box-shadow:0 2px 20px rgba(26,20,16,.08);
+  position:fixed; top:0; width:100%; z-index:1000;
+  transition: background .4s, border-color .4s, box-shadow .4s;
 }
-.nav-container {
-  max-width:1320px; margin:0 auto;
-  display:flex; justify-content:space-between; align-items:center;
-  padding:0 2.5rem; height:64px;
+nav.scrolled {
+  background: rgba(246,240,230,.97);
+  backdrop-filter: blur(20px) saturate(1.6);
+  border-bottom: 1px solid var(--rule);
+  box-shadow: 0 1px 20px rgba(24,19,14,.06);
+}
+.nav-inner {
+  max-width: var(--col-max); margin:0 auto;
+  display:flex; align-items:center; justify-content:space-between;
+  padding: 0 2.5rem; height: 62px;
 }
 .logo {
-  font-family:'Caveat', cursive;
-  font-size:1.7rem; font-weight:700;
-  color:var(--ink); text-decoration:none; letter-spacing:.02em;
+  font-family: var(--hand);
+  font-size: 1.55rem; font-weight: 600;
+  color: var(--ink); text-decoration:none;
+  letter-spacing: .01em;
+  display:flex; align-items:center; gap:.3rem;
+}
+.logo-mark { color: var(--gold); }
+.nav-links {
+  display:flex; list-style:none; gap:0;
+}
+.nav-links a {
+  font-family: var(--sans);
+  font-size: .7rem; font-weight:400; letter-spacing:.1em; text-transform:uppercase;
+  color: var(--ink-60); text-decoration:none;
+  padding: 0 .9rem; height:62px; line-height:62px;
+  display:block; transition: color .25s;
   position:relative;
 }
-.logo::after {
-  content:''; position:absolute; bottom:-2px; left:0; right:0; height:2px;
-  background:var(--gold); transform:scaleX(.6); transform-origin:left; transition:transform .3s;
-}
-.logo:hover::after { transform:scaleX(1); }
-.logo-dot { color:var(--gold); }
-.nav-links { display:flex; gap:0; list-style:none; }
-.nav-links a {
-  display:block; padding:0 .65rem; height:64px; line-height:64px;
-  font-family:'DM Mono', monospace; font-size:.58rem; letter-spacing:.12em; text-transform:uppercase;
-  text-decoration:none; color:var(--dusty); transition:color .3s; position:relative;
-}
 .nav-links a::after {
-  content:''; position:absolute; bottom:10px; left:.65rem; right:.65rem;
-  height:1px; background:var(--gold); transform:scaleX(0); transition:transform .3s ease;
+  content:'';
+  position:absolute; bottom:12px; left:.9rem; right:.9rem;
+  height:1px; background:var(--gold);
+  transform:scaleX(0); transform-origin:left;
+  transition:transform .25s;
 }
 .nav-links a:hover, .nav-links a.active { color:var(--ink); }
 .nav-links a:hover::after, .nav-links a.active::after { transform:scaleX(1); }
-.mobile-menu { display:none; cursor:pointer; font-size:1.2rem; color:var(--ink); }
+.nav-toggle { display:none; background:none; border:none; cursor:pointer; color:var(--ink); font-size:1.1rem; }
 
-/* ════════════════════════════════════════
-   TICKER
-════════════════════════════════════════ */
-.ticker-wrap {
-  width:100%; overflow:hidden;
-  background:var(--ink); padding:.9rem 0;
-  border-top:2px solid var(--gold); border-bottom:2px solid var(--gold);
-  position:relative; z-index:5;
-}
-.ticker-content {
-  display:flex; gap:2.5rem;
-  animation:ticker 22s linear infinite;
-  will-change:transform; font-family:'Caveat', cursive; font-size:1.05rem;
-}
-.ticker-content:hover { animation-play-state:paused; }
-.ticker-item { white-space:nowrap; color:rgba(255,255,255,.55); transition:color .3s; cursor:pointer; }
-.ticker-item:hover { color:var(--gold-light); }
-.ticker-item::before { content:'✦ '; color:var(--gold-light); }
-@keyframes ticker { 0%{transform:translateX(0%)} 100%{transform:translateX(-50%)} }
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   UTILITY: SECTION SCAFFOLD
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.section { padding: 7rem 0; position:relative; }
+.section.tinted { background: var(--cream); }
+.section.dark { background: var(--ink); color: rgba(246,240,230,.85); }
+.wrap { max-width: var(--col-max); margin:0 auto; padding: 0 2.5rem; }
 
-/* ════════════════════════════════════════
-   SHARED
-════════════════════════════════════════ */
-.section { padding:8rem 0; position:relative; overflow:hidden; }
-.section.alt { background:var(--cream); }
-.section.dark { background:var(--ink); }
-.wrap { max-width:1320px; margin:0 auto; padding:0 2.5rem; }
-
-.section-header { margin-bottom:5rem; position:relative; display:inline-flex; align-items:flex-end; gap:1.5rem; }
-.section-tab {
-  font-family:'DM Mono', monospace; font-size:.58rem; letter-spacing:.2em; text-transform:uppercase;
-  color:white; background:var(--gold); padding:.4rem 1rem;
-  writing-mode:vertical-rl; transform:rotate(180deg);
-  box-shadow:2px 2px 0 rgba(0,0,0,.15);
+.chapter {
+  display:flex; align-items:flex-start; gap:1.8rem;
+  margin-bottom: 4.5rem;
 }
-.section-heading {
-  font-family:'Playfair Display', serif; font-size:clamp(2.2rem,4vw,3.2rem);
-  font-weight:700; line-height:1; letter-spacing:-.02em; color:var(--ink);
+.chapter-num {
+  font-family: var(--sans);
+  font-size:.65rem; letter-spacing:.18em; text-transform:uppercase;
+  color: var(--gold);
+  padding:.35rem .8rem;
+  border: 1px solid var(--rule);
+  white-space:nowrap; flex-shrink:0; margin-top:.35rem;
 }
-.section-heading em { font-style:italic; color:var(--gold); }
-.section-heading-hand {
-  font-family:'Caveat', cursive; font-size:1.1rem; color:var(--dusty);
-  display:block; margin-top:.4rem;
+.chapter-heading {
+  font-family: var(--serif);
+  font-size: clamp(2rem,3.5vw,2.8rem);
+  font-weight:400; line-height:1.1;
+  letter-spacing:-.02em; color:var(--ink);
 }
-.section-rule {
+.chapter-heading em { font-style:italic; color:var(--gold); }
+.chapter-note {
+  font-family: var(--hand);
+  font-size:1rem; color:var(--ink-60);
+  margin-top:.3rem; display:block;
+}
+.rule-gold {
   width:100%; height:1px;
-  background:linear-gradient(90deg, var(--gold), transparent);
-  margin-bottom:4rem; opacity:.4;
+  background: linear-gradient(90deg, var(--gold), transparent);
+  margin-bottom: 3.5rem; opacity:.35;
 }
-.section-divider { height:1px; background:linear-gradient(90deg,transparent,rgba(184,145,58,.4),transparent); }
+.divider { width:100%; height:1px; background:linear-gradient(90deg, transparent, rgba(154,122,58,.3), transparent); }
 
-/* ════════════════════════════════════════
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
    BUTTONS
-════════════════════════════════════════ */
-.btn-gold {
-  padding:.85rem 2.2rem; background:var(--gold); color:white;
-  font-family:'DM Mono', monospace; font-size:.65rem; letter-spacing:.15em; text-transform:uppercase;
-  text-decoration:none; border:none; cursor:none; transition:all .3s;
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.btn {
   display:inline-flex; align-items:center; gap:.6rem;
-  box-shadow:3px 3px 0 rgba(0,0,0,.18);
+  font-family: var(--sans); font-size:.7rem;
+  font-weight:400; letter-spacing:.1em; text-transform:uppercase;
+  text-decoration:none; padding:.82rem 2rem;
+  transition: all .25s; cursor:none;
 }
-.btn-gold:hover { transform:translate(-2px,-2px); box-shadow:5px 5px 0 rgba(0,0,0,.18); }
-.btn-outline {
-  padding:.85rem 2.2rem; background:transparent; color:var(--ink);
-  font-family:'DM Mono', monospace; font-size:.65rem; letter-spacing:.15em; text-transform:uppercase;
-  text-decoration:none; cursor:none; border:1.5px solid var(--rule); transition:all .3s;
-  display:inline-flex; align-items:center; gap:.6rem; box-shadow:2px 2px 0 var(--rule);
+.btn-primary {
+  background: var(--ink); color: var(--paper);
+  border: 1px solid var(--ink);
+  box-shadow: 3px 3px 0 var(--gold-light);
 }
-.btn-outline:hover {
-  border-color:var(--gold); color:var(--gold);
-  box-shadow:3px 3px 0 rgba(184,145,58,.3); transform:translate(-2px,-2px);
+.btn-primary:hover {
+  background: var(--gold); border-color: var(--gold);
+  box-shadow: 4px 4px 0 rgba(154,122,58,.3);
+  transform: translate(-1px,-1px);
 }
-.btn-t3s {
-  padding:.85rem 2.2rem; background:var(--gold); color:white;
-  font-family:'DM Mono', monospace; font-size:.65rem; letter-spacing:.15em; text-transform:uppercase;
-  text-decoration:none; cursor:none; border:1px solid var(--gold); transition:all .3s;
-  display:inline-flex; align-items:center; gap:.6rem; box-shadow:3px 3px 0 rgba(0,0,0,.18);
+.btn-secondary {
+  background: transparent; color: var(--ink);
+  border: 1px solid var(--ink-30);
+  box-shadow: 2px 2px 0 var(--ink-05);
 }
-.btn-t3s:hover { transform:translate(-2px,-2px); box-shadow:5px 5px 0 rgba(0,0,0,.2); }
+.btn-secondary:hover {
+  border-color: var(--gold); color: var(--gold);
+  box-shadow: 3px 3px 0 var(--gold-light);
+  transform: translate(-1px,-1px);
+}
+.btn-ghost-light {
+  background:transparent; color:rgba(246,240,230,.8);
+  border:1px solid rgba(246,240,230,.25);
+}
+.btn-ghost-light:hover {
+  background:rgba(246,240,230,.08);
+  border-color:rgba(246,240,230,.5);
+  color:rgba(246,240,230,1);
+}
 
 /* tags */
 .tag {
-  font-family:'DM Mono', monospace; font-size:.55rem; letter-spacing:.08em; text-transform:uppercase;
-  padding:.2rem .55rem; border:1px solid var(--rule); color:var(--dusty);
-  transition:all .25s; cursor:none; display:inline-block;
+  font-family: var(--sans);
+  font-size:.56rem; letter-spacing:.06em; text-transform:uppercase;
+  padding:.22rem .55rem;
+  border: 1px solid var(--ink-10);
+  color:var(--ink-60);
+  transition:all .2s; display:inline-block;
 }
 .tag:hover { border-color:var(--gold); color:var(--gold); }
 
-/* ════════════════════════════════════════
-   REVEAL
-════════════════════════════════════════ */
-.reveal {
-  opacity:0; transform:translateY(28px) rotate(.5deg);
-  transition:opacity .9s ease, transform .9s cubic-bezier(0.23,1,0.32,1);
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   TICKER
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.ticker-band {
+  width:100%; overflow:hidden;
+  background: var(--ink);
+  border-top: 1px solid rgba(154,122,58,.4);
+  border-bottom: 1px solid rgba(154,122,58,.4);
+  padding: .7rem 0;
 }
-.reveal.in-view { opacity:1; transform:translateY(0) rotate(0deg); }
-.reveal-left {
-  opacity:0; transform:translateX(-28px);
-  transition:opacity .9s ease, transform .9s cubic-bezier(0.23,1,0.32,1);
+.ticker-track {
+  display:flex; gap:3rem;
+  animation: scroll 28s linear infinite;
+  width:max-content;
 }
-.reveal-left.in-view { opacity:1; transform:translateX(0); }
-.reveal-right {
-  opacity:0; transform:translateX(28px);
-  transition:opacity .9s ease, transform .9s cubic-bezier(0.23,1,0.32,1);
+.ticker-track:hover { animation-play-state:paused; }
+.ticker-item {
+  font-family: var(--hand);
+  font-size:.95rem;
+  color: rgba(246,240,230,.45);
+  white-space:nowrap; transition:color .25s; cursor:pointer;
 }
-.reveal-right.in-view { opacity:1; transform:translateX(0); }
+.ticker-item:hover { color:rgba(154,122,58,.9); }
+.ticker-item::before { content:'— '; color:rgba(154,122,58,.5); }
+@keyframes scroll {
+  from { transform:translateX(0); }
+  to   { transform:translateX(-50%); }
+}
 
-/* ════════════════════════════════════════
-   HERO — dark, editorial, with polaroid
-════════════════════════════════════════ */
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   SCRAPBOOK ELEMENTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.tape {
+  display:block;
+  background: rgba(226,210,170,.45);
+  border-top: .5px solid rgba(226,210,170,.6);
+  border-bottom: .5px solid rgba(226,210,170,.6);
+  position:absolute; pointer-events:none;
+}
+.fold {
+  position:absolute; bottom:0; right:0;
+  width:28px; height:28px;
+  background: linear-gradient(225deg, var(--paper-warm) 50%, var(--paper-aged) 50%);
+  pointer-events:none;
+}
+.fold::after {
+  content:''; position:absolute; inset:0;
+  background: linear-gradient(225deg, transparent 49%, rgba(24,19,14,.06) 50%);
+}
+.annotation {
+  font-family: var(--hand);
+  font-size:.9rem; color:var(--rust);
+  opacity:.65; pointer-events:none; user-select:none;
+}
+.pin {
+  width:11px; height:11px; border-radius:50%;
+  background: radial-gradient(circle at 38% 38%, #c04030, #6a1a0c);
+  box-shadow: 0 2px 5px rgba(0,0,0,.3), inset 0 -1px 2px rgba(0,0,0,.2);
+  position:absolute; top:-7px; left:50%; transform:translateX(-50%); z-index:2;
+}
+.washi {
+  position:absolute; height:16px;
+  background: repeating-linear-gradient(
+    90deg,
+    rgba(154,122,58,.28) 0, rgba(154,122,58,.28) 6px,
+    rgba(200,172,100,.22) 6px, rgba(200,172,100,.22) 12px
+  );
+  pointer-events:none;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   HERO — dark, like index.html t3s section but adapted
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 .hero {
-  min-height:100vh; padding-top:64px;
-  background:var(--ink); position:relative; overflow:hidden;
+  min-height:100vh; padding-top:62px;
+  background: var(--ink); position:relative; overflow:hidden;
   display:grid; grid-template-columns:1fr 1fr;
 }
 .hero::before {
   content:''; position:absolute; inset:0;
-  background:radial-gradient(ellipse at 30% 60%,rgba(184,145,58,.1) 0%,transparent 60%);
+  background:
+    radial-gradient(ellipse at 30% 60%, rgba(154,122,58,.08) 0%, transparent 55%),
+    repeating-linear-gradient(0deg, transparent, transparent 30px, rgba(255,255,255,.015) 31px);
   pointer-events:none; z-index:0;
-  background-image:linear-gradient(rgba(255,255,255,.015) 1px, transparent 1px);
-  background-size:100% 28px;
 }
-/* gold accent strip on top */
 .hero::after {
-  content:''; position:absolute; top:64px; left:0; right:0; height:4px;
-  background:repeating-linear-gradient(90deg,var(--gold) 0,var(--gold) 30px,var(--gold-2) 30px,var(--gold-2) 60px,var(--gold-light) 60px,var(--gold-light) 90px);
-  z-index:2;
+  content:''; position:absolute; top:62px; left:0; right:0; height:3px;
+  background: var(--gold); opacity:.55; z-index:2;
 }
-
 .hero-left {
   display:flex; flex-direction:column; justify-content:center;
   padding:7rem 5rem 7rem 6rem;
-  border-right:1px solid rgba(255,255,255,.07);
+  border-right:1px solid rgba(255,255,255,.06);
   position:relative; z-index:1;
 }
 .hero-eyebrow {
-  font-family:'DM Mono', monospace; font-size:.6rem; letter-spacing:.22em; text-transform:uppercase;
-  color:var(--gold); margin-bottom:1.8rem; display:flex; align-items:center; gap:.8rem;
-  opacity:0; animation:fadeUp .7s .3s ease forwards;
+  font-family: var(--sans);
+  font-size:.65rem; letter-spacing:.18em; text-transform:uppercase;
+  color:rgba(154,122,58,.8); margin-bottom:1.8rem;
+  display:flex; align-items:center; gap:.75rem;
+  opacity:0; animation: rise .7s .3s ease forwards;
 }
-.hero-eyebrow::before { content:''; display:inline-block; width:24px; height:1px; background:var(--gold); }
+.hero-eyebrow::before { content:''; display:inline-block; width:22px; height:1px; background:rgba(154,122,58,.8); }
+.hero-eyebrow::after { content:''; display:inline-block; width:20px; height:1px; background:rgba(154,122,58,.6); }
 .hero-name {
-  font-family:'Playfair Display', serif;
-  font-size:clamp(3rem,5.5vw,5rem); font-weight:700;
-  line-height:.95; letter-spacing:-.02em; color:white;
-  margin-bottom:.3rem; opacity:0; animation:fadeUp .8s .45s ease forwards;
+  font-family: var(--serif);
+  font-size: clamp(3rem,5.5vw,5rem);
+  font-weight:400; line-height:.95;
+  letter-spacing:-.03em; color:rgba(246,240,230,.9);
+  margin-bottom:.5rem;
+  opacity:0; animation: rise .8s .45s ease forwards;
 }
-.hero-name em { font-style:italic; color:var(--gold); }
-.hero-title {
-  font-family:'Caveat', cursive; font-size:1.3rem; color:rgba(255,255,255,.45);
+.hero-name em { font-style:italic; color:rgba(154,122,58,.9); }
+.hero-subtitle {
+  font-family: var(--hand);
+  font-size:1.15rem; color:rgba(246,240,230,.45);
   margin-bottom:2.5rem; margin-top:.5rem;
-  opacity:0; animation:fadeUp .7s .6s ease forwards;
+  opacity:0; animation: rise .7s .6s ease forwards;
 }
-.hero-desc {
-  font-size:1rem; line-height:1.85; color:rgba(255,255,255,.55);
-  max-width:440px; margin-bottom:2.5rem;
-  border-left:3px solid rgba(184,145,58,.5); padding-left:1.2rem;
-  opacity:0; animation:fadeUp .7s .75s ease forwards;
+.hero-bio {
+  font-family: var(--sans);
+  font-size:.95rem; line-height:1.85; color:rgba(246,240,230,.5);
+  border-left: 2px solid rgba(154,122,58,.4);
+  padding-left:1.2rem;
+  margin-bottom:2rem;
+  opacity:0; animation: rise .7s .72s ease forwards;
 }
 .hero-cert {
   display:flex; align-items:center; gap:1rem;
-  padding:1.1rem 1.4rem;
-  border:1px solid rgba(184,145,58,.25); background:rgba(184,145,58,.06);
-  margin-bottom:2rem;
-  opacity:0; animation:fadeUp .7s .9s ease forwards;
+  padding:1rem 1.3rem;
+  border:1px solid rgba(154,122,58,.25); background:rgba(154,122,58,.06);
+  margin-bottom:2.2rem;
+  opacity:0; animation: rise .7s .86s ease forwards;
 }
-.hero-cert i { font-size:1.3rem; color:var(--gold-light); }
-.hero-cert-text { font-size:.8rem; color:rgba(255,255,255,.6); line-height:1.5; }
-.hero-cert-text strong { display:block; color:rgba(255,255,255,.9); font-weight:500; margin-bottom:.15rem; }
+.hero-cert i { font-size:1.2rem; color:rgba(154,122,58,.8); }
+.hero-cert-text { font-size:.82rem; color:rgba(246,240,230,.5); line-height:1.5; }
+.hero-cert-text strong { display:block; color:rgba(246,240,230,.9); font-weight:500; margin-bottom:.15rem; }
 .hero-actions {
-  display:flex; gap:1rem; flex-wrap:wrap;
-  opacity:0; animation:fadeUp .7s 1.05s ease forwards;
+  display:flex; gap:.85rem; flex-wrap:wrap;
+  opacity:0; animation: rise .7s 1s ease forwards;
 }
 .hero-scroll {
   position:absolute; bottom:2rem; left:6rem;
-  font-family:'Caveat', cursive; font-size:.95rem; color:rgba(255,255,255,.3);
+  font-family: var(--hand); font-size:.9rem; color:rgba(246,240,230,.3);
   display:flex; align-items:center; gap:.6rem;
-  opacity:0; animation:fadeUp .7s 1.3s ease forwards;
+  opacity:0; animation: rise .7s 1.2s ease forwards;
 }
-.hero-scroll-line { width:40px; height:1px; background:rgba(255,255,255,.25); position:relative; overflow:hidden; }
+.hero-scroll-line { width:40px; height:1px; background:rgba(255,255,255,.2); position:relative; overflow:hidden; }
 .hero-scroll-line::after { content:''; position:absolute; top:0; left:-100%; width:100%; height:100%; background:var(--gold); animation:scanLine 2s ease infinite; }
 @keyframes scanLine { 0%{left:-100%} 100%{left:100%} }
-@keyframes fadeUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
 
-/* hero right — polaroid on dark bg */
-.hero-right { position:relative; overflow:hidden; display:flex; align-items:center; justify-content:center; padding:4rem 3rem; }
-.hero-right-img-wrap {
-  position:relative; transform:rotate(1.5deg);
-  transition:transform .4s ease; display:inline-block;
+/* hero right */
+.hero-right {
+  position:relative; overflow:hidden;
+  display:flex; align-items:center; justify-content:center;
+  padding:4rem 3rem; z-index:1;
 }
-.hero-right-img-wrap:hover { transform:rotate(0deg) scale(1.02); }
-.polaroid-dark {
-  background:#0a0a0a; padding:1rem 1rem .8rem;
-  box-shadow:4px 4px 0 rgba(184,145,58,.15), 0 20px 50px rgba(0,0,0,.6);
+.hero-photo-wrap {
+  position:relative; display:inline-block;
+  opacity:0; animation: rise .8s .5s ease forwards;
 }
-.polaroid-dark img {
-  width:380px; max-width:100%; height:460px;
-  object-fit:cover; object-position:top center;
-  display:block;
-  filter:grayscale(10%) contrast(1.08) brightness(.85);
+.polaroid {
+  background: #0a0a0a;
+  padding: 1.1rem 1.1rem .75rem;
+  box-shadow:
+    0 1px 0 rgba(24,19,14,.12),
+    4px 4px 0 rgba(154,122,58,.12),
+    0 20px 50px rgba(0,0,0,.55);
+  transform: rotate(1deg);
+  transition: transform .5s cubic-bezier(.23,1,.32,1);
+  position:relative;
 }
-.polaroid-dark-caption {
-  font-family:'Caveat', cursive; font-size:1.1rem;
-  color:rgba(255,255,255,.5); text-align:center; padding:.8rem .5rem .2rem; letter-spacing:.04em;
+.polaroid:hover { transform: rotate(0deg) scale(1.01); }
+.polaroid img {
+  width:360px; max-width:100%; display:block;
+  height:440px; object-fit:cover; object-position:top center;
+  filter: sepia(6%) contrast(1.06) brightness(.88);
 }
-/* washi tape over photo */
-.washi-tl, .washi-br {
-  position:absolute; width:55px; height:16px;
-  background:repeating-linear-gradient(45deg,rgba(184,145,58,.3) 0,rgba(184,145,58,.3) 4px,rgba(232,201,122,.4) 4px,rgba(232,201,122,.4) 8px);
+.polaroid-caption {
+  font-family: var(--hand);
+  font-size:.95rem; color:rgba(255,255,255,.4);
+  text-align:center; padding:.65rem .4rem .1rem;
 }
-.washi-tl { top:-7px; left:14px; transform:rotate(-3deg); }
-.washi-br { bottom:-7px; right:14px; transform:rotate(-2deg); }
+.polaroid .washi-tl { width:54px; top:-8px; left:14px; transform:rotate(-2deg); }
+.polaroid .washi-tr { width:42px; top:-7px; right:18px; transform:rotate(2.5deg); }
+
 /* sticky notes on hero-right */
 .hero-sticky {
-  position:absolute; padding:.9rem 1rem;
-  font-family:'Caveat', cursive; font-size:.95rem; line-height:1.5;
-  box-shadow:2px 3px 10px rgba(0,0,0,.35);
+  position:absolute; padding:.8rem 1rem;
+  font-family: var(--hand); font-size:.92rem; line-height:1.4;
+  box-shadow: 2px 3px 8px rgba(0,0,0,.35); max-width:130px;
 }
-.hero-sticky-1 { background:#f8e8a0; color:#3a3010; transform:rotate(-3deg); top:20%; right:8%; max-width:130px; }
-.hero-sticky-2 { background:#c8dcc8; color:#1a301e; transform:rotate(2deg); bottom:22%; right:5%; max-width:130px; }
-.float-orb {
-  position:absolute; border-radius:50%; pointer-events:none; filter:blur(1px);
-}
-.float-orb-1 { width:280px; height:280px; background:radial-gradient(circle,rgba(184,145,58,.09),transparent 70%); top:10%; right:-80px; animation:floatOrb 8s ease-in-out infinite; }
-.float-orb-2 { width:180px; height:180px; background:radial-gradient(circle,rgba(184,145,58,.06),transparent 70%); bottom:15%; left:0; animation:floatOrb 6s ease-in-out infinite reverse; }
-@keyframes floatOrb { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-24px)} }
+.hero-sticky-1 { background:#f5e8a0; color:#3a3010; transform:rotate(-3deg); top:20%; right:6%; }
+.hero-sticky-2 { background:#c8dcc0; color:#1e3025; transform:rotate(2deg); bottom:22%; right:4%; }
 
-/* ════════════════════════════════════════
-   ABOUT — notebook style
-════════════════════════════════════════ */
-.about-grid { display:grid; grid-template-columns:280px 1fr; gap:5rem; align-items:start; }
-.stat-cluster {
-  display:flex; flex-direction:column; gap:0;
-  border:1.5px solid rgba(184,145,58,.25);
-  box-shadow:4px 4px 0 rgba(184,145,58,.12);
-  background:var(--paper); position:relative;
+@keyframes rise {
+  from { opacity:0; transform:translateY(20px); }
+  to   { opacity:1; transform:translateY(0); }
 }
-.stat-cluster::before {
-  content:''; position:absolute; top:-8px; left:50%; transform:translateX(-50%);
-  width:60px; height:16px; background:rgba(232,201,122,.5); border:1px solid rgba(232,201,122,.35);
-}
-.stat-cell {
-  padding:2rem 1.5rem; text-align:center;
-  border-bottom:1px solid var(--rule);
-  transition:background .3s; cursor:none;
-}
-.stat-cell:last-child { border-bottom:none; }
-.stat-cell:hover { background:rgba(184,145,58,.05); }
-.stat-num {
-  font-family:'Playfair Display', serif; font-size:2.8rem; font-weight:700;
-  color:var(--gold); line-height:1; display:block; margin-bottom:.3rem;
-}
-.stat-name {
-  font-family:'DM Mono', monospace; font-size:.58rem;
-  letter-spacing:.14em; text-transform:uppercase; color:var(--dusty);
-}
-.stat-hand { font-family:'Caveat', cursive; font-size:.85rem; color:var(--gold); display:block; margin-top:.2rem; }
-.about-text p { font-size:1.05rem; line-height:1.9; color:var(--dusty); margin-bottom:1.4rem; }
-.about-text strong { color:var(--ink); font-weight:600; }
-.cert-badges { display:flex; flex-wrap:wrap; gap:.6rem; margin-top:2rem; }
-.cert-badge {
-  display:inline-flex; align-items:center; gap:.5rem;
-  background:rgba(184,145,58,.1); border:1px solid rgba(184,145,58,.3);
-  color:var(--gold); padding:.5rem 1.1rem;
-  font-family:'Caveat', cursive; font-size:.95rem; font-weight:600;
-  transition:all .3s; cursor:none;
-}
-.cert-badge:hover { background:rgba(184,145,58,.18); transform:translateY(-2px); box-shadow:2px 2px 0 rgba(184,145,58,.2); }
 
-/* ════════════════════════════════════════
-   SERVICES — graph paper grid
-════════════════════════════════════════ */
-.services-wrap {
-  background:white;
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   REVEAL ANIMATIONS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.reveal { opacity:0; transform:translateY(26px); transition:opacity .85s ease, transform .85s cubic-bezier(.23,1,.32,1); }
+.reveal.up  { opacity:1; transform:translateY(0); }
+.rl { opacity:0; transform:translateX(-24px); transition:opacity .85s ease, transform .85s cubic-bezier(.23,1,.32,1); }
+.rl.up { opacity:1; transform:translateX(0); }
+.rr { opacity:0; transform:translateX(24px); transition:opacity .85s ease, transform .85s cubic-bezier(.23,1,.32,1); }
+.rr.up { opacity:1; transform:translateX(0); }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   ABOUT — ledger + body, exact index.html style
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.about-grid {
+  display:grid; grid-template-columns:260px 1fr;
+  gap:5rem; align-items:start;
+}
+.ledger {
+  border: 1px solid var(--rule);
+  background: white;
+  box-shadow: 4px 4px 0 var(--gold-light);
+  position:relative;
+}
+.ledger::before {
+  content:''; position:absolute; top:0; left:0; bottom:0; width:2px;
+  background: var(--gold); opacity:.4;
+}
+.ledger-tape {
+  width:56px; height:15px;
+  background: rgba(226,210,170,.5);
+  border:.5px solid rgba(226,210,170,.7);
+  position:absolute; top:-8px; left:50%;
+  transform:translateX(-50%) rotate(-1deg);
+}
+.ledger-row {
+  padding:1.6rem 1.4rem 1.5rem;
+  border-bottom: 1px solid var(--ink-05);
+  text-align:center; transition: background .25s;
+}
+.ledger-row:last-child { border-bottom:none; }
+.ledger-row:hover { background:rgba(154,122,58,.04); }
+.lnum {
+  font-family: var(--serif);
+  font-size:2.5rem; font-weight:400;
+  color: var(--gold); line-height:1;
+  display:block; margin-bottom:.25rem;
+}
+.llabel {
+  font-family: var(--sans);
+  font-size:.6rem; letter-spacing:.12em; text-transform:uppercase;
+  color: var(--ink-60);
+}
+.lnote {
+  font-family: var(--hand);
+  font-size:.85rem; color:var(--gold);
+  display:block; margin-top:.2rem;
+}
+.about-body p {
+  font-family: var(--sans);
+  font-size:.96rem; line-height:1.9; color:var(--ink-60);
+  margin-bottom:1.3rem;
+}
+.about-body strong { color:var(--ink); font-weight:500; }
+.award-strip { display:flex; flex-wrap:wrap; gap:.55rem; margin-top:2rem; }
+.award-tag {
+  display:inline-flex; align-items:center; gap:.45rem;
+  font-family: var(--hand); font-size:.9rem;
+  background: rgba(154,122,58,.09);
+  border: 1px solid rgba(154,122,58,.25);
+  color: var(--gold); padding:.4rem .9rem;
+  transition: all .25s;
+}
+.award-tag:hover { background:rgba(154,122,58,.16); transform:translateY(-2px); }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   SKILLS / SERVICES — graph-paper grid
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.graph-paper {
+  background: white;
   background-image:
-    linear-gradient(rgba(184,145,58,.08) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(184,145,58,.08) 1px, transparent 1px);
-  background-size:28px 28px;
-  border:1.5px solid rgba(184,145,58,.2);
-  box-shadow:5px 5px 0 rgba(184,145,58,.1);
-  padding:3rem; position:relative;
-  transform:rotate(.3deg);
+    linear-gradient(rgba(154,122,58,.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(154,122,58,.07) 1px, transparent 1px);
+  background-size: 28px 28px;
+  border: 1px solid var(--rule);
+  box-shadow: 5px 5px 0 var(--gold-light);
+  padding: 2.5rem; position:relative;
+  transform: rotate(.25deg);
 }
-.services-wrap::before {
-  content:'Services I offer';
-  position:absolute; top:-12px; left:30px;
-  font-family:'Caveat', cursive; font-size:.9rem; color:var(--dusty);
+.graph-paper::before {
+  content:'services I offer';
+  position:absolute; top:-11px; left:24px;
+  font-family: var(--hand); font-size:.88rem; color:var(--ink-60);
   background:white; padding:0 .5rem;
 }
 .services-grid {
   display:grid; grid-template-columns:repeat(3,1fr);
-  gap:0; border:1px solid var(--rule); transform:rotate(-.3deg);
+  border: 1px solid var(--ink-10);
+  transform: rotate(-.25deg);
 }
 .service-cell {
-  padding:2.2rem; border-right:1px solid var(--rule); border-bottom:1px solid var(--rule);
-  transition:all .4s ease; position:relative; overflow:hidden; cursor:none;
+  padding:2rem;
+  border-right: 1px solid var(--ink-10);
+  border-bottom: 1px solid var(--ink-10);
   background:white;
+  transition: all .35s ease;
+  position:relative; overflow:hidden; cursor:none;
 }
 .service-cell:nth-child(3n) { border-right:none; }
 .service-cell:nth-last-child(-n+3) { border-bottom:none; }
-.service-cell:hover { background:rgba(184,145,58,.04); transform:translateY(-3px); box-shadow:0 8px 24px rgba(184,145,58,.12); z-index:2; }
-.service-num {
-  font-family:'Caveat', cursive; font-size:3rem; font-weight:700;
-  color:rgba(184,145,58,.08); position:absolute; top:.5rem; right:1rem; line-height:1;
+.service-cell:hover {
+  background: rgba(154,122,58,.03);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(154,122,58,.1); z-index:2;
 }
-.service-ico {
-  width:38px; height:38px; background:var(--gold);
+.sk-num {
+  font-family: var(--sans);
+  font-size:.58rem; letter-spacing:.14em;
+  color:var(--gold); margin-bottom:1.1rem;
+}
+.sk-icon {
+  width:34px; height:34px;
+  background: var(--ink); color:rgba(246,240,230,.9);
   display:flex; align-items:center; justify-content:center;
-  color:white; font-size:.85rem; margin-bottom:1.2rem; transition:transform .3s;
+  font-size:.8rem; margin-bottom:1rem; transition:transform .3s;
 }
-.service-cell:hover .service-ico { transform:rotate(-8deg) scale(1.1); }
-.service-cell h3 { font-family:'Playfair Display', serif; font-size:1.1rem; font-weight:700; margin-bottom:.6rem; }
-.service-cell p { font-size:.88rem; color:var(--dusty); line-height:1.7; margin-bottom:1rem; }
+.service-cell:hover .sk-icon { transform:rotate(-6deg) scale(1.08); }
+.service-cell h3 {
+  font-family: var(--serif);
+  font-size:1.05rem; font-weight:400; margin-bottom:.5rem;
+}
+.service-cell p { font-size:.84rem; color:var(--ink-60); line-height:1.7; margin-bottom:.85rem; }
+.tag-row { display:flex; flex-wrap:wrap; gap:.3rem; }
 
-/* ════════════════════════════════════════
-   CONTENT GALLERY — scrapbook layout
-════════════════════════════════════════ */
-.gallery-filters { display:flex; gap:.6rem; flex-wrap:wrap; margin-bottom:3rem; }
-.filter-btn {
-  padding:.55rem 1.3rem; background:var(--paper);
-  border:1.5px solid rgba(184,145,58,.25); color:var(--dusty);
-  font-family:'Caveat', cursive; font-size:1rem;
-  cursor:none; transition:all .25s; box-shadow:2px 2px 0 rgba(0,0,0,.08);
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   CONTENT GALLERY — corkboard style
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.corkboard {
+  background: #c0ac92;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 300 300' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='c'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.5' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23c)' opacity='0.35'/%3E%3C/svg%3E");
+  padding:3.5rem 2.5rem;
+  border-top: 2px solid #a09278;
+  border-bottom: 2px solid #a09278;
+  box-shadow: inset 0 0 50px rgba(0,0,0,.08);
 }
-.filter-btn:hover, .filter-btn.active {
-  background:var(--gold); color:white; border-color:var(--gold);
-  box-shadow:3px 3px 0 rgba(0,0,0,.15);
+.gallery-filters {
+  display:flex; gap:.5rem; margin-bottom:2.5rem; flex-wrap:wrap;
+}
+.filter-btn {
+  font-family: var(--hand); font-size:.95rem;
+  padding:.5rem 1.2rem;
+  background:rgba(246,240,230,.7); color:var(--ink-60);
+  border:.5px solid rgba(24,19,14,.15);
+  cursor:none; transition:all .2s;
+  box-shadow:1px 2px 4px rgba(0,0,0,.1);
+}
+.filter-btn.active, .filter-btn:hover {
+  background:var(--ink); color:rgba(246,240,230,.9);
+  border-color:var(--ink); box-shadow:2px 3px 0 rgba(0,0,0,.2);
 }
 .gallery-grid {
   display:grid; grid-template-columns:repeat(4,1fr); gap:1rem;
 }
 .gallery-item {
   position:relative; overflow:hidden; cursor:none;
-  aspect-ratio:3/4; min-height:250px;
-  transition:all .4s cubic-bezier(0.23,1,0.32,1);
+  aspect-ratio:3/4; min-height:220px;
+  transition: all .4s cubic-bezier(.23,1,.32,1);
   box-shadow:3px 3px 0 rgba(0,0,0,.12);
 }
-/* slight random rotations — scrapbook feel */
 .gallery-item:nth-child(odd)  { transform:rotate(-.6deg); }
 .gallery-item:nth-child(even) { transform:rotate(.5deg); }
 .gallery-item:nth-child(3n)   { transform:rotate(.2deg); }
@@ -475,66 +611,67 @@ nav {
   background:linear-gradient(0deg,rgba(0,0,0,.8),transparent);
   padding:1.5rem 1rem .8rem;
   transform:translateY(100%); transition:transform .35s ease;
-  font-family:'Caveat', cursive; font-size:.95rem; color:rgba(255,255,255,.9); line-height:1.5;
+  font-family: var(--hand); font-size:.95rem; color:rgba(255,255,255,.9); line-height:1.5;
 }
 .gallery-item:hover .gallery-caption { transform:translateY(0); }
 .gallery-type-tag {
   position:absolute; top:.6rem; left:.6rem;
-  font-family:'DM Mono', monospace; font-size:.5rem; letter-spacing:.14em; text-transform:uppercase;
+  font-family: var(--sans); font-size:.5rem; letter-spacing:.14em; text-transform:uppercase;
   padding:.22rem .6rem; background:rgba(0,0,0,.55); color:rgba(255,255,255,.85); backdrop-filter:blur(4px);
 }
 .gallery-item[data-type="reel"] .gallery-type-tag { background:linear-gradient(135deg,rgba(64,93,230,.7),rgba(131,58,180,.7)); color:white; }
-.gallery-item[data-type="video"] .gallery-type-tag { background:rgba(184,145,58,.6); color:white; }
+.gallery-item[data-type="video"] .gallery-type-tag { background:rgba(154,122,58,.6); color:white; }
 .gallery-item.hidden { display:none; }
-/* AI label */
 .ai-label {
   position:absolute; top:0; left:0; right:0;
   background:rgba(0,0,0,.6); padding:.3rem .5rem;
-  font-family:'DM Mono', monospace; font-size:.4rem;
+  font-family: var(--sans); font-size:.4rem;
   color:rgba(255,255,255,.7); letter-spacing:.08em; text-align:center;
 }
 
-/* ════════════════════════════════════════
-   FEED MOCKUPS — pinboard style
-════════════════════════════════════════ */
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   FEED MOCKUPS — corkboard style
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 .pinboard-feeds {
-  background:#c8b89a;
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.3'/%3E%3C/svg%3E");
-  padding:4rem 2.5rem;
-  border:3px solid #a09078;
-  box-shadow:inset 0 0 40px rgba(0,0,0,.1);
-  position:relative;
+  background: #c0ac92;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 300 300' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='c'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.5' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23c)' opacity='0.35'/%3E%3C/svg%3E");
+  padding:3.5rem 2.5rem;
+  border-top: 2px solid #a09278;
+  border-bottom: 2px solid #a09278;
+  box-shadow: inset 0 0 50px rgba(0,0,0,.08);
 }
 .feeds-tabs {
-  display:flex; gap:0; width:fit-content; margin-bottom:3.5rem;
-  background:var(--paper); border:1.5px solid rgba(184,145,58,.25);
-  box-shadow:3px 3px 0 rgba(0,0,0,.12);
+  display:flex; gap:.5rem; margin-bottom:2.5rem; flex-wrap:wrap;
 }
 .feed-tab {
-  font-family:'Caveat', cursive; font-size:1.05rem;
-  padding:.65rem 1.6rem; border:none; background:transparent; color:var(--dusty);
-  cursor:none; transition:all .3s; border-right:1px solid rgba(184,145,58,.2);
+  font-family: var(--hand); font-size:1rem;
+  padding:.5rem 1.3rem;
+  background:rgba(246,240,230,.7); color:var(--ink-60);
+  border:.5px solid rgba(24,19,14,.15);
+  cursor:none; transition:all .2s;
+  box-shadow:1px 2px 4px rgba(0,0,0,.1);
 }
-.feed-tab:last-child { border-right:none; }
-.feed-tab.active { background:var(--ink); color:white; }
-.feed-tab:hover:not(.active) { background:rgba(184,145,58,.1); color:var(--ink); }
+.feed-tab.active, .feed-tab:hover {
+  background:var(--ink); color:rgba(246,240,230,.9);
+  border-color:var(--ink); box-shadow:2px 3px 0 rgba(0,0,0,.2);
+}
 .feed-panel { display:none; }
 .feed-panel.active { display:block; animation:fadeIn .4s ease; }
 @keyframes fadeIn { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
 
 .feed-layout { display:grid; grid-template-columns:280px 1fr; gap:4rem; align-items:start; }
 .feed-profile-card {
-  background:var(--cream); border:1.5px solid rgba(184,145,58,.25);
-  box-shadow:4px 4px 0 rgba(0,0,0,.12), 0 8px 24px rgba(0,0,0,.1);
+  background: var(--cream);
+  border: 1px solid var(--rule);
+  box-shadow: 4px 4px 0 rgba(0,0,0,.12), 0 8px 24px rgba(0,0,0,.1);
   padding:2rem 1.5rem;
   display:flex; flex-direction:column; align-items:center; gap:1.2rem;
   position:relative;
 }
-/* pushpin on profile card */
 .feed-profile-card::before {
   content:''; position:absolute; top:-8px; left:50%; transform:translateX(-50%);
   width:14px; height:14px; border-radius:50%;
-  background:radial-gradient(circle at 35% 35%, var(--rust), #5a1a0a);
+  background:radial-gradient(circle at 35% 35%, #c04030, #6a1a0c);
   box-shadow:0 2px 6px rgba(0,0,0,.4); z-index:2;
 }
 .feed-profile-pic {
@@ -542,19 +679,18 @@ nav {
   display:flex; align-items:center; justify-content:center;
   font-size:1.8rem; border:3px solid var(--gold);
 }
-.feed-handle { font-family:'Caveat', cursive; font-size:.9rem; color:var(--dusty); margin-top:.2rem; }
+.feed-handle { font-family:var(--hand); font-size:.9rem; color:var(--ink-60); margin-top:.2rem; }
 .feed-stats { display:flex; gap:1.5rem; text-align:center; border-top:1px solid var(--rule); padding-top:1rem; width:100%; }
-.feed-stat-num { font-family:'Playfair Display', serif; font-size:1.4rem; font-weight:700; color:var(--ink); display:block; line-height:1; }
-.feed-stat-label { font-family:'DM Mono', monospace; font-size:.55rem; letter-spacing:.1em; text-transform:uppercase; color:var(--dusty); }
-.feed-bio { font-family:'Caveat', cursive; font-size:1rem; color:var(--dusty); line-height:1.6; text-align:center; }
+.feed-stat-num { font-family:var(--serif); font-size:1.4rem; font-weight:400; color:var(--ink); display:block; line-height:1; }
+.feed-stat-label { font-family:var(--sans); font-size:.55rem; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-60); }
+.feed-bio { font-family:var(--hand); font-size:1rem; color:var(--ink-60); line-height:1.6; text-align:center; }
 .feed-note {
   margin-top:1.2rem; padding:1rem 1.2rem;
-  background:rgba(232,201,122,.2);
-  border-left:3px solid rgba(184,145,58,.5);
-  font-family:'Caveat', cursive; font-size:.95rem; color:var(--dusty); line-height:1.65;
+  background:rgba(154,122,58,.08);
+  border-left:2px solid var(--rule);
+  font-family:var(--hand); font-size:.95rem; color:var(--ink-60); line-height:1.65;
 }
 .feed-note strong { color:var(--ink); display:block; margin-bottom:.3rem; }
-
 .feed-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:3px; }
 .feed-post { aspect-ratio:1; overflow:hidden; position:relative; cursor:none; transition:all .3s; }
 .feed-post:hover { transform:scale(1.02); z-index:2; box-shadow:0 8px 24px rgba(0,0,0,.2); }
@@ -562,20 +698,18 @@ nav {
   position:absolute; inset:0; background:rgba(0,0,0,.4);
   opacity:0; transition:opacity .3s;
   display:flex; align-items:center; justify-content:center;
-  gap:.6rem; font-family:'Caveat', cursive; font-size:1rem; color:white;
+  gap:.6rem; font-family:var(--hand); font-size:1rem; color:white;
 }
 .feed-post:hover .feed-post-overlay { opacity:1; }
 .feed-post img, .feed-post video { width:100%; height:100%; object-fit:cover; }
-
-/* coming soon state */
 .coming-soon-state {
   display:flex; align-items:center; justify-content:center; min-height:360px; text-align:center;
 }
 .coming-soon-state h3 {
-  font-family:'Playfair Display', serif; font-size:2rem; color:var(--ink); margin-bottom:.5rem; margin-top:1.5rem;
+  font-family:var(--serif); font-size:2rem; color:var(--ink); margin-bottom:.5rem; margin-top:1.5rem; font-weight:400;
 }
 .coming-soon-state h3 em { font-style:italic; color:var(--gold); }
-.coming-soon-state p { font-size:.95rem; color:var(--dusty); max-width:380px; line-height:1.8; margin:0 auto; }
+.coming-soon-state p { font-size:.95rem; color:var(--ink-60); max-width:380px; line-height:1.8; margin:0 auto; }
 .pulse-dots { display:flex; gap:.4rem; justify-content:center; margin-top:1.5rem; }
 .pulse-dot {
   width:8px; height:8px; border-radius:50%; background:var(--gold);
@@ -585,165 +719,195 @@ nav {
 .pulse-dot:nth-child(3) { animation-delay:.6s; }
 @keyframes pulseDot { 0%,100%{opacity:.3} 50%{opacity:1} }
 
-/* ════════════════════════════════════════
-   PROCESS TIMELINE — dark notebook
-════════════════════════════════════════ */
-.timeline-section {
-  background:var(--ink); padding:9rem 0;
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   PROCESS — dark section like index.html
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.process-section {
+  background: var(--ink); padding: 8rem 0;
   position:relative; overflow:hidden;
 }
-.timeline-section::before {
+.process-section::before {
   content:''; position:absolute; inset:0;
   background:
-    radial-gradient(ellipse at 60% 40%, rgba(184,145,58,.07) 0%, transparent 60%),
-    repeating-linear-gradient(0deg, transparent, transparent 27px, rgba(255,255,255,.02) 28px);
+    radial-gradient(ellipse at 72% 48%, rgba(154,122,58,.06) 0%, transparent 55%),
+    repeating-linear-gradient(0deg, transparent, transparent 30px, rgba(255,255,255,.015) 31px);
   pointer-events:none;
 }
-.tl-track { position:relative; margin-top:4rem; padding-left:3rem; }
-.tl-track::before {
-  content:''; position:absolute; left:0; top:0; bottom:0; width:1px;
-  background:linear-gradient(180deg, var(--gold), rgba(184,145,58,.3) 80%, transparent);
+
+/* notebook on dark bg */
+.notebook-dark {
+  background: rgba(255,255,255,.03);
+  background-image: repeating-linear-gradient(
+    0deg, transparent, transparent 30px, rgba(255,255,255,.03) 31px
+  );
+  border: 1px solid rgba(255,255,255,.06);
+  box-shadow: 4px 4px 0 rgba(154,122,58,.1);
+  padding: 3rem 3rem 3rem 5rem;
+  position:relative;
 }
-.tl-step {
-  position:relative; margin-bottom:3rem; padding-left:3rem; padding-bottom:3rem;
-  border-bottom:1px solid rgba(255,255,255,.06);
+.notebook-dark::before {
+  content:''; position:absolute;
+  top:0; bottom:0; left:4rem; width:1.5px;
+  background: rgba(154,122,58,.35);
 }
-.tl-step:last-child { border-bottom:none; margin-bottom:0; padding-bottom:0; }
-.tl-step::before {
-  content:''; position:absolute; left:-3rem; top:.3rem;
-  width:9px; height:9px; border-radius:50%; background:var(--gold);
-  border:2px solid var(--ink); box-shadow:0 0 0 3px rgba(184,145,58,.3);
-  transition:all .4s ease;
+.hole-dark {
+  position:absolute; left:1.4rem;
+  width:16px; height:16px; border-radius:50%;
+  background: var(--ink);
+  border: 1px solid rgba(255,255,255,.06);
+  box-shadow: inset 0 1px 3px rgba(0,0,0,.3);
 }
-.tl-step:hover::before { box-shadow:0 0 0 6px rgba(184,145,58,.2); transform:scale(1.3); }
-.tl-step-num { font-family:'DM Mono', monospace; font-size:.58rem; letter-spacing:.2em; color:var(--gold); margin-bottom:.5rem; }
-.tl-step h3 { font-family:'Playfair Display', serif; font-size:1.3rem; font-weight:700; color:white; margin-bottom:.5rem; }
-.tl-step p { font-size:.9rem; color:rgba(255,255,255,.45); line-height:1.8; max-width:600px; }
-.tl-step-action { margin-top:1rem; }
-.tl-step-action a {
-  display:inline-flex; align-items:center; gap:.5rem;
-  font-family:'DM Mono', monospace; font-size:.62rem; letter-spacing:.15em; text-transform:uppercase;
-  color:var(--gold); text-decoration:none;
-  border-bottom:1px solid rgba(184,145,58,.4); padding-bottom:.1rem;
-  transition:all .3s; cursor:none;
+.hd1 { top:15%; } .hd2 { top:50%; transform:translateY(-50%); } .hd3 { top:85%; }
+
+.tl-row {
+  display:grid; grid-template-columns:120px 1fr;
+  gap:2.5rem; margin-bottom:2.8rem; padding-bottom:2.8rem;
+  border-bottom: 1px dashed rgba(255,255,255,.06);
+  position:relative;
 }
-.tl-step-action a:hover { border-color:var(--gold); gap:.8rem; }
-.tl-step-tag {
+.tl-row:last-child { border-bottom:none; margin-bottom:0; padding-bottom:0; }
+.tl-dot {
+  position:absolute; left:120px; top:.35rem;
+  width:7px; height:7px; border-radius:50%;
+  background:var(--gold); transform:translateX(-50%);
+  box-shadow:0 0 0 3px rgba(154,122,58,.18);
+  transition:all .3s;
+}
+.tl-row:hover .tl-dot { box-shadow:0 0 0 6px rgba(154,122,58,.12); transform:translateX(-50%) scale(1.3); }
+.tl-date {
+  font-family:var(--hand);
+  font-size:.95rem; color:rgba(154,122,58,.8);
+  text-align:right; padding-right:1.5rem; padding-top:.05rem;
+}
+.tl-body h3 { font-family:var(--serif); font-size:1.1rem; font-weight:400; color:rgba(246,240,230,.9); margin-bottom:.22rem; }
+.tl-company {
+  font-family:var(--sans);
+  font-size:.62rem; letter-spacing:.07em;
+  color:rgba(246,240,230,.4); margin-bottom:.65rem;
+}
+.tl-desc { font-size:.9rem; color:rgba(246,240,230,.45); line-height:1.8; }
+.tl-link {
+  display:inline-flex; align-items:center; gap:.45rem;
+  font-family:var(--sans); font-size:.6rem; letter-spacing:.1em; text-transform:uppercase;
+  color:rgba(154,122,58,.8); text-decoration:none;
+  border-bottom:1px solid rgba(154,122,58,.3); padding-bottom:.1rem;
+  margin-top:.7rem; transition:all .3s; cursor:none;
+}
+.tl-link:hover { color:var(--gold); gap:.7rem; }
+.tl-tag {
   display:inline-flex; align-items:center; gap:.4rem;
-  font-family:'DM Mono', monospace; font-size:.54rem; letter-spacing:.12em; text-transform:uppercase;
-  color:rgba(255,255,255,.3); border:1px solid rgba(255,255,255,.1); padding:.28rem .65rem; margin-top:.8rem;
+  font-family:var(--sans); font-size:.54rem; letter-spacing:.12em; text-transform:uppercase;
+  color:rgba(246,240,230,.3); border:1px solid rgba(255,255,255,.1); padding:.28rem .65rem; margin-top:.8rem;
 }
 
-/* ════════════════════════════════════════
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
    CTA — scrapbook card
-════════════════════════════════════════ */
-.cta-section {
-  padding:10rem 0; background:var(--cream); position:relative; overflow:hidden;
-}
-.cta-section::before {
-  content:''; position:absolute; inset:0;
-  background:radial-gradient(ellipse at 50% 50%,rgba(184,145,58,.08) 0%,transparent 65%);
-  pointer-events:none;
-}
-.cta-inner { max-width:760px; margin:0 auto; position:relative; z-index:1; }
-
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.cta-wrap { max-width:760px; margin:0 auto; position:relative; z-index:1; }
 .cta-card {
-  background:var(--paper);
-  border:1.5px solid rgba(184,145,58,.25);
+  background: var(--paper);
+  border: 1px solid var(--rule);
   padding:5rem 4rem; text-align:center; position:relative;
-  box-shadow:6px 6px 0 rgba(184,145,58,.15), 12px 12px 30px var(--shadow);
-  transform:rotate(-.3deg);
+  box-shadow: 6px 6px 0 var(--gold-light), 12px 12px 30px rgba(24,19,14,.12);
+  transform: rotate(-.3deg);
 }
 .cta-card-tape-tl {
-  position:absolute; top:-10px; left:50px; width:70px; height:20px;
-  background:rgba(232,201,122,.5); border:1px solid rgba(232,201,122,.35); transform:rotate(-2deg);
+  position:absolute; top:-10px; left:50px; width:70px; height:18px;
+  background:rgba(226,210,170,.55); border:.5px solid rgba(226,210,170,.4); transform:rotate(-2deg);
 }
 .cta-card-tape-tr {
-  position:absolute; top:-10px; right:70px; width:50px; height:20px;
-  background:rgba(232,201,122,.45); border:1px solid rgba(232,201,122,.3); transform:rotate(3deg);
+  position:absolute; top:-10px; right:70px; width:50px; height:18px;
+  background:rgba(226,210,170,.5); border:.5px solid rgba(226,210,170,.35); transform:rotate(3deg);
 }
 .cta-eyebrow {
-  font-family:'DM Mono', monospace; font-size:.62rem; letter-spacing:.24em; text-transform:uppercase;
-  color:var(--gold); margin-bottom:1.5rem;
+  font-family: var(--sans); font-size:.65rem; letter-spacing:.18em; text-transform:uppercase;
+  color: var(--gold); margin-bottom:1.5rem;
   display:flex; align-items:center; justify-content:center; gap:1rem;
 }
-.cta-eyebrow::before, .cta-eyebrow::after { content:''; display:inline-block; width:24px; height:1px; background:var(--gold); }
+.cta-eyebrow::before, .cta-eyebrow::after { content:''; display:inline-block; width:22px; height:1px; background:var(--gold); }
 .cta-heading {
-  font-family:'Playfair Display', serif; font-size:clamp(2.4rem,5vw,4rem);
-  font-weight:700; line-height:.95; letter-spacing:-.02em; margin-bottom:1.8rem;
+  font-family: var(--serif);
+  font-size:clamp(2.2rem,5vw,3.5rem);
+  font-weight:400; line-height:.95; letter-spacing:-.02em; margin-bottom:1.5rem;
 }
 .cta-heading em { font-style:italic; color:var(--gold); }
-.cta-hand { font-family:'Caveat', cursive; font-size:1.2rem; color:var(--dusty); margin-bottom:2rem; display:block; }
+.cta-hand { font-family:var(--hand); font-size:1.15rem; color:var(--ink-60); margin-bottom:2rem; display:block; }
 .cta-sub {
-  font-size:1rem; color:var(--dusty); line-height:1.85;
+  font-size:.95rem; color:var(--ink-60); line-height:1.85;
   margin-bottom:3rem;
-  border-left:3px solid rgba(184,145,58,.4);
-  border-right:3px solid rgba(184,145,58,.4);
+  border-left:2px solid var(--rule);
+  border-right:2px solid var(--rule);
   padding:1.2rem 1.8rem; text-align:left;
 }
-.cta-actions { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; }
-.cta-note { margin-top:2rem; font-family:'Caveat', cursive; font-size:.95rem; color:var(--dusty); opacity:.75; }
+.cta-actions { display:flex; gap:.85rem; justify-content:center; flex-wrap:wrap; }
+.cta-note { margin-top:2rem; font-family:var(--hand); font-size:.95rem; color:var(--ink-60); opacity:.7; }
 
-/* ════════════════════════════════════════
-   FOOTER
-════════════════════════════════════════ */
-footer { background:var(--ink); color:rgba(255,255,255,.4); padding:5rem 0 2.5rem; }
-.footer-inner { max-width:1320px; margin:0 auto; padding:0 2.5rem; display:flex; flex-direction:column; align-items:center; gap:1.8rem; }
-.footer-logo { font-family:'Caveat', cursive; font-size:2rem; font-weight:700; color:white; letter-spacing:.03em; }
-.footer-tagline { font-family:'DM Mono', monospace; font-size:.58rem; letter-spacing:.2em; text-transform:uppercase; color:rgba(255,255,255,.28); text-align:center; }
-.footer-socials { display:flex; gap:.65rem; flex-wrap:wrap; justify-content:center; }
-.f-social { width:42px; height:42px; border:1px solid rgba(255,255,255,.12); display:flex; align-items:center; justify-content:center; color:rgba(255,255,255,.4); text-decoration:none; font-size:.88rem; transition:all .3s; cursor:none; }
-.f-social:hover { border-color:var(--gold); color:var(--gold); transform:translateY(-3px); box-shadow:0 8px 20px rgba(184,145,58,.2); }
-.footer-rule { width:100%; height:1px; background:rgba(255,255,255,.07); }
-.footer-bottom { display:flex; flex-direction:column; align-items:center; gap:.4rem; font-size:.72rem; letter-spacing:.05em; text-align:center; }
-.footer-bottom span { color:var(--gold); }
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   FOOTER — exact match to index.html
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+footer {
+  background:var(--ink);
+  color:rgba(246,240,230,.4);
+  padding:5rem 0 2.5rem;
+}
+.footer-inner {
+  max-width:var(--col-max); margin:0 auto; padding:0 2.5rem;
+  display:flex; flex-direction:column; align-items:center; gap:1.6rem;
+}
+.footer-name { font-family:var(--hand); font-size:1.8rem; font-weight:600; color:rgba(246,240,230,.9); }
+.footer-tag { font-family:var(--sans); font-size:.6rem; letter-spacing:.18em; text-transform:uppercase; color:rgba(246,240,230,.28); text-align:center; }
+.footer-socials { display:flex; gap:.6rem; }
+.f-soc {
+  width:38px; height:38px;
+  border:1px solid rgba(255,255,255,.1);
+  display:flex; align-items:center; justify-content:center;
+  color:rgba(246,240,230,.35); text-decoration:none; font-size:.84rem;
+  transition:all .25s; cursor:none;
+}
+.f-soc:hover { border-color:var(--gold); color:rgba(154,122,58,.9); transform:translateY(-3px); }
+.footer-rule { width:100%; height:1px; background:rgba(255,255,255,.06); }
+.footer-bottom { font-size:.7rem; letter-spacing:.04em; text-align:center; line-height:2; }
+.footer-bottom span { color:rgba(154,122,58,.7); }
 
-/* ════════════════════════════════════════
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
    RESPONSIVE
-════════════════════════════════════════ */
-@media(max-width:1100px) {
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+@media(max-width:1060px) {
   .hero { grid-template-columns:1fr; }
-  .hero-left { padding:5rem 3rem; border-right:none; border-bottom:1px solid rgba(255,255,255,.07); }
+  .hero-left { padding:5rem 3rem; border-right:none; border-bottom:1px solid rgba(255,255,255,.06); }
   .hero-right { height:auto; padding:3rem; }
   .about-grid { grid-template-columns:1fr; gap:3rem; }
   .services-grid { grid-template-columns:repeat(2,1fr); }
-  .service-cell:nth-child(3n) { border-right:1px solid var(--rule); }
+  .service-cell:nth-child(3n) { border-right:1px solid var(--ink-10); }
   .service-cell:nth-child(2n) { border-right:none; }
   .gallery-grid { grid-template-columns:repeat(3,1fr); }
   .feed-layout { grid-template-columns:1fr; gap:3rem; }
 }
-@media(max-width:860px) {
-  .nav-links { display:none; position:absolute; top:64px; left:0; right:0; background:var(--cream); flex-direction:column; padding:1rem 2rem; border-bottom:1px solid var(--rule); gap:0; z-index:999; }
-  .nav-links.active { display:flex; }
-  .nav-links a { height:auto; line-height:1; padding:.8rem 0; border-bottom:1px solid var(--rule-2); }
+@media(max-width:820px) {
+  .nav-links { display:none; position:absolute; top:62px; left:0; right:0; flex-direction:column; background:rgba(246,240,230,.97); backdrop-filter:blur(20px); padding:1rem 2rem; border-bottom:1px solid var(--rule); z-index:999; }
+  .nav-links.open { display:flex; }
+  .nav-links a { height:auto; line-height:1; padding:.75rem 0; border-bottom:1px solid var(--ink-05); }
   .nav-links a::after { display:none; }
-  .mobile-menu { display:block; }
+  .nav-toggle { display:block; }
+  .services-grid { grid-template-columns:repeat(2,1fr); }
+  .cursor, .cursor-ring { display:none !important; }
   .hero-sticky { display:none; }
-  .cursor, .cursor-ring { display:none!important; }
 }
-@media(max-width:768px) {
-  .wrap { padding:0 1.5rem; }
+@media(max-width:600px) {
+  .wrap { padding:0 1.3rem; }
   .section { padding:5rem 0; }
-  .gallery-grid { grid-template-columns:repeat(2,1fr); gap:1rem; }
-  .gallery-item { min-height:180px; }
   .services-grid { grid-template-columns:1fr; }
-  .service-cell { border-right:none!important; }
-  .stat-cluster { display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--rule); }
-  .stat-cell { border-bottom:none; border-right:1px solid var(--rule); }
-  .stat-cell:nth-child(2n) { border-right:none; }
-  .nav-container { padding:0 1.5rem; }
-  .feeds-tabs { gap:.3rem; }
-  .feed-tab { font-size:.95rem; padding:.5rem 1rem; }
-}
-@media(max-width:560px) {
-  .gallery-grid { grid-template-columns:1fr 1fr; gap:1rem; }
-  .gallery-item { min-height:180px; }
-  .feeds-tabs { flex-wrap:wrap; gap:.5rem; width:100%; }
-  .feed-tab { font-size:.9rem; padding:.5rem 1rem; flex:1 1 auto; }
+  .service-cell { border-right:none !important; }
+  .gallery-grid { grid-template-columns:1fr 1fr; }
+  .pinboard-feeds { padding:2rem 1.5rem; }
+  .notebook-dark { padding:2.5rem 1.5rem 2.5rem 3.5rem; }
+  .notebook-dark::before { left:3rem; }
+  .tl-row { grid-template-columns:1fr; gap:.35rem; }
+  .tl-dot { display:none; }
+  .tl-date { text-align:left; padding-right:0; }
   .cta-card { padding:3rem 1.5rem; }
   .hero-left { padding:3rem 1.5rem; }
   .hero-scroll { left:1.5rem; }
-  .polaroid-dark img { height:320px; }
 }
 </style>
 </head>
@@ -751,38 +915,39 @@ footer { background:var(--ink); color:rgba(255,255,255,.4); padding:5rem 0 2.5re
 
 <div class="cursor" id="cursor"></div>
 <div class="cursor-ring" id="cursorRing"></div>
-<div class="scroll-progress" id="scrollProgress"></div>
+<div class="scroll-bar" id="scrollBar"></div>
 
-<!-- NAV -->
+<!-- ══════════════════════════════
+     NAV
+══════════════════════════════ -->
 <nav id="navbar">
-  <div class="nav-container">
-    <a href="index.html" class="logo">Haanim <span class="logo-dot">·</span> P.</a>
+  <div class="nav-inner">
+    <a href="index.html" class="logo">Haanim <span class="logo-mark">·</span> P.</a>
     <ul class="nav-links" id="navLinks">
-      <li><a href="index.html" class="nav-link">← Portfolio</a></li>
-      <li><a href="#home" class="nav-link">Home</a></li>
-      <li><a href="#about" class="nav-link">About</a></li>
-      <li><a href="#services" class="nav-link">Services</a></li>
-      <li><a href="#content" class="nav-link">Content</a></li>
-      <li><a href="#feeds" class="nav-link">Feeds</a></li>
-      <li><a href="#timeline" class="nav-link">Process</a></li>
-      <li><a href="#contact-cta" class="nav-link">Contact</a></li>
+      <li><a href="index.html" class="nl">← Portfolio</a></li>
+      <li><a href="#home" class="nl">Home</a></li>
+      <li><a href="#about" class="nl">About</a></li>
+      <li><a href="#services" class="nl">Services</a></li>
+      <li><a href="#content" class="nl">Content</a></li>
+      <li><a href="#feeds" class="nl">Feeds</a></li>
+      <li><a href="#process" class="nl">Process</a></li>
+      <li><a href="#contact-cta" class="nl">Contact</a></li>
     </ul>
-    <div class="mobile-menu" id="mobileMenu"><i class="fas fa-bars"></i></div>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu">
+      <i class="fas fa-bars"></i>
+    </button>
   </div>
 </nav>
 
-<!-- ══════════════════════════════════════
+<!-- ══════════════════════════════
      HERO
-══════════════════════════════════════ -->
+══════════════════════════════ -->
 <section id="home" class="hero">
-  <div class="float-orb float-orb-1"></div>
-  <div class="float-orb float-orb-2"></div>
-
   <div class="hero-left">
     <p class="hero-eyebrow">Social Media Management · 2026</p>
     <h1 class="hero-name">Let's grow<br>your <em>brand</em><br>together.</h1>
-    <p class="hero-title">Social Media Manager &amp; Content Strategist</p>
-    <p class="hero-desc">I'm Haanim a certified digital marketer and software developer with a sharp eye for storytelling, strategy, and aesthetics. I help brands show up online with intention and consistency.</p>
+    <p class="hero-subtitle">Social Media Manager &amp; Content Strategist</p>
+    <p class="hero-bio">I'm Haanim — a certified digital marketer and software developer with a sharp eye for storytelling, strategy, and aesthetics. I help brands show up online with intention and consistency.</p>
     <div class="hero-cert">
       <i class="fas fa-certificate"></i>
       <div class="hero-cert-text">
@@ -791,49 +956,49 @@ footer { background:var(--ink); color:rgba(255,255,255,.4); padding:5rem 0 2.5re
       </div>
     </div>
     <div class="hero-actions">
-      <a href="#contact-cta" class="btn-gold"><i class="fas fa-star"></i>Let's Work Together</a>
-      <a href="#services" class="btn-outline" style="color:rgba(255,255,255,.7);border-color:rgba(255,255,255,.2)"><i class="fas fa-arrow-down"></i>Explore Services</a>
+      <a href="#contact-cta" class="btn btn-primary"><i class="fas fa-star"></i>Let's Work Together</a>
+      <a href="#services" class="btn btn-ghost-light"><i class="fas fa-arrow-down"></i>Explore Services</a>
     </div>
     <div class="hero-scroll">scroll to explore <div class="hero-scroll-line"></div></div>
   </div>
 
   <div class="hero-right">
-    <div class="hero-right-img-wrap">
-      <div class="polaroid-dark">
-        <div class="washi-tl"></div>
-        <div class="washi-br"></div>
+    <div class="hero-photo-wrap">
+      <div class="polaroid">
+        <div class="washi washi-tl" style="position:absolute;"></div>
+        <div class="washi washi-tr" style="position:absolute;"></div>
         <img src="/img/IMG-20250528-WA0042 (1).jpg" alt="Haanim Pietersen">
-        <p class="polaroid-dark-caption">haanim · social media manager</p>
+        <p class="polaroid-caption">haanim · social media manager</p>
+        <div class="fold"></div>
       </div>
-      <div style="position:absolute;bottom:-24px;right:10px;font-family:'Caveat',cursive;font-size:.9rem;color:rgba(255,255,255,.4);transform:rotate(-1deg);">← that's me! ✦</div>
-    </div>
+      <div class="annotation" style="position:absolute;bottom:-26px;right:10px;transform:rotate(-1deg);">← that's me! ✦</div>
 
-    <!-- sticky notes -->
-    <div class="hero-sticky hero-sticky-1">
-      HubSpot<br>Certified ✦<br>2026
-    </div>
-    <div class="hero-sticky hero-sticky-2">
-      The Three<br>Stars Co-founder<br>⭐ since 2024
+      <div class="hero-sticky hero-sticky-1">
+        <div class="pin"></div>
+        HubSpot<br>Certified ✦<br>2026
+      </div>
+      <div class="hero-sticky hero-sticky-2">
+        <div class="pin"></div>
+        The Three<br>Stars Co-founder<br>⭐ since 2024
+      </div>
     </div>
   </div>
 </section>
 
 <!-- TICKER -->
-<div class="ticker-wrap">
-  <div class="ticker-content">
+<div class="ticker-band">
+  <div class="ticker-track">
     <span class="ticker-item">Free Palestine</span>
     <span class="ticker-item">Abolish ICE</span>
     <span class="ticker-item">End Gender-Based Violence</span>
     <span class="ticker-item">Support Sudan</span>
     <span class="ticker-item">Support Congo</span>
     <span class="ticker-item">Save Our Water</span>
-    <span class="ticker-item">Release the Epstein Files</span>
     <span class="ticker-item">Brand Identity</span>
     <span class="ticker-item">Instagram Growth</span>
     <span class="ticker-item">Reels &amp; Short-Form Video</span>
     <span class="ticker-item">Community Management</span>
     <span class="ticker-item">HubSpot Certified</span>
-    <span class="ticker-item">Social Media Analytics</span>
     <span class="ticker-item">The Three Stars Agency</span>
     <span class="ticker-item">Free Palestine</span>
     <span class="ticker-item">Abolish ICE</span>
@@ -844,144 +1009,144 @@ footer { background:var(--ink); color:rgba(255,255,255,.4); padding:5rem 0 2.5re
   </div>
 </div>
 
-<div class="section-divider"></div>
+<div class="divider"></div>
 
-<!-- ══════════════════════════════════════
+<!-- ══════════════════════════════
      ABOUT
-══════════════════════════════════════ -->
-<section id="about" class="section alt">
+══════════════════════════════ -->
+<section id="about" class="section tinted">
   <div class="wrap">
-    <div class="section-header reveal">
-      <span class="section-tab">About</span>
+    <div class="chapter reveal">
+      <span class="chapter-num">About</span>
       <div>
-        <h2 class="section-heading">Strategy meets <em>creativity</em></h2>
-        <span class="section-heading-hand">a bit about me &amp; what I do ✍</span>
+        <h2 class="chapter-heading">Strategy meets <em>creativity</em></h2>
+        <span class="chapter-note">a bit about me &amp; what I do ✍</span>
       </div>
     </div>
-    <div class="section-rule"></div>
+    <div class="rule-gold"></div>
 
     <div class="about-grid">
-      <div class="reveal-left">
-        <div class="stat-cluster">
-          <div class="stat-cell">
-            <span class="stat-num">2+</span>
-            <span class="stat-name">Years Managing T3S Socials</span>
-            <span class="stat-hand">and loving it!</span>
+      <div class="rl">
+        <div class="ledger">
+          <div class="ledger-tape"></div>
+          <div class="ledger-row">
+            <span class="lnum">2+</span>
+            <span class="llabel">Years Managing T3S Socials</span>
+            <span class="lnote">and loving it!</span>
           </div>
-          <div class="stat-cell">
-            <span class="stat-num">2</span>
-            <span class="stat-name">HubSpot Certifications</span>
-            <span class="stat-hand">internationally recognised</span>
+          <div class="ledger-row">
+            <span class="lnum">2</span>
+            <span class="llabel">HubSpot Certifications</span>
+            <span class="lnote">internationally recognised</span>
           </div>
-          <div class="stat-cell">
-            <span class="stat-num">30+</span>
-            <span class="stat-name">Projects Delivered</span>
-            <span class="stat-hand">and counting... ✦</span>
+          <div class="ledger-row">
+            <span class="lnum">30+</span>
+            <span class="llabel">Projects Delivered</span>
+            <span class="lnote">and counting... ✦</span>
           </div>
-          <div class="stat-cell">
-            <span class="stat-num">3</span>
-            <span class="stat-name">Content Pillars</span>
-            <span class="stat-hand">strategy · creativity · data</span>
+          <div class="ledger-row">
+            <span class="lnum">3</span>
+            <span class="llabel">Content Pillars</span>
+            <span class="lnote">strategy · creativity · data</span>
           </div>
         </div>
-        <p style="font-family:'Caveat',cursive;font-size:.95rem;color:var(--dusty);margin-top:1rem;transform:rotate(-.5deg);opacity:.8;">↑ these numbers matter to me</p>
+        <p class="annotation" style="display:block;margin-top:.8rem;transform:rotate(-.5deg);">↑ these numbers matter to me</p>
       </div>
 
-      <div class="about-text reveal-right">
-        <p>I'm Haanim Pietersen a software developer, certified digital marketer, and co-founder of <strong>The Three Stars</strong> digital agency. My background gives me a unique edge: I understand both the creative and technical sides of growing a brand online.</p>
-        <p>I co-manage <strong>The Three Stars' Instagram presence</strong> overseeing our content direction, brand voice, and community engagement. From crafting our posting strategy to collaborating on visuals, I've been hands-on in building our agency's digital identity from the ground up.</p>
+      <div class="about-body rr">
+        <p>I'm Haanim Pietersen — a software developer, certified digital marketer, and co-founder of <strong>The Three Stars</strong> digital agency. My background gives me a unique edge: I understand both the creative and technical sides of growing a brand online.</p>
+        <p>I co-manage <strong>The Three Stars' Instagram presence</strong> — overseeing our content direction, brand voice, and community engagement. From crafting our posting strategy to collaborating on visuals, I've been hands-on in building our agency's digital identity from the ground up.</p>
         <p>On the project management side, I've maintained and organised complex digital projects tracking deliverables on platforms like Trello and Monday, managing documentation, and ensuring every team member knew what was needed and when. That same discipline is what I bring to every social media account I manage.</p>
-        <p>I hold a <strong>HubSpot Inbound Marketing certification</strong> and a <strong>HubSpot Social Media Management certification</strong> internationally recognised credentials that underpin my approach to audience growth, content strategy, and measurable results.</p>
-        <div class="cert-badges">
-          <span class="cert-badge"><i class="fas fa-certificate"></i> HubSpot Inbound Marketing</span>
-          <span class="cert-badge"><i class="fas fa-certificate"></i> HubSpot Social Media Management</span>
+        <p>I hold a <strong>HubSpot Inbound Marketing certification</strong> and a <strong>HubSpot Social Media Management certification</strong> — internationally recognised credentials that underpin my approach to audience growth, content strategy, and measurable results.</p>
+        <div class="award-strip">
+          <span class="award-tag"><i class="fas fa-certificate"></i> HubSpot Inbound Marketing</span>
+          <span class="award-tag"><i class="fas fa-certificate"></i> HubSpot Social Media Management</span>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<div class="section-divider"></div>
+<div class="divider"></div>
 
-<!-- ══════════════════════════════════════
+<!-- ══════════════════════════════
      SERVICES
-══════════════════════════════════════ -->
+══════════════════════════════ -->
 <section id="services" class="section">
   <div class="wrap">
-    <div class="section-header reveal">
-      <span class="section-tab">Services</span>
+    <div class="chapter reveal">
+      <span class="chapter-num">Services</span>
       <div>
-        <h2 class="section-heading">What I <em>offer</em></h2>
-        <span class="section-heading-hand">tailored packages for small businesses ☑</span>
+        <h2 class="chapter-heading">What I <em>offer</em></h2>
+        <span class="chapter-note">tailored packages for small businesses ☑</span>
       </div>
     </div>
-    <div class="section-rule"></div>
+    <div class="rule-gold"></div>
 
-    <div class="services-wrap reveal">
+    <div class="graph-paper reveal">
       <div class="services-grid">
         <div class="service-cell">
-          <span class="service-num">01</span>
-          <div class="service-ico"><i class="fas fa-compass"></i></div>
+          <p class="sk-num">01</p>
+          <div class="sk-icon"><i class="fas fa-compass"></i></div>
           <h3>Strategy &amp; Audit</h3>
           <p>A full social media audit of your current presence, competitor analysis, and a custom content strategy with defined goals, posting cadence, and brand voice guidelines.</p>
-          <div class="tags"><span class="tag">Instagram</span><span class="tag">TikTok</span><span class="tag">Facebook</span></div>
+          <div class="tag-row"><span class="tag">Instagram</span><span class="tag">TikTok</span><span class="tag">Facebook</span></div>
         </div>
         <div class="service-cell">
-          <span class="service-num">02</span>
-          <div class="service-ico"><i class="fas fa-paint-brush"></i></div>
+          <p class="sk-num">02</p>
+          <div class="sk-icon"><i class="fas fa-paint-brush"></i></div>
           <h3>Content Creation</h3>
-          <p>Branded graphics, caption writing, and hashtag research. Delivered as a monthly batch of ready-to-post content all you have to do is hit publish.</p>
-          <div class="tags"><span class="tag">Graphics</span><span class="tag">Copywriting</span><span class="tag">Hashtags</span></div>
+          <p>Branded graphics, caption writing, and hashtag research. Delivered as a monthly batch of ready-to-post content — all you have to do is hit publish.</p>
+          <div class="tag-row"><span class="tag">Graphics</span><span class="tag">Copywriting</span><span class="tag">Hashtags</span></div>
         </div>
         <div class="service-cell">
-          <span class="service-num">03</span>
-          <div class="service-ico"><i class="fas fa-calendar-check"></i></div>
+          <p class="sk-num">03</p>
+          <div class="sk-icon"><i class="fas fa-calendar-check"></i></div>
           <h3>Full Management</h3>
-          <p>End-to-end management strategy, content, scheduling, story management, and monthly performance reports. You focus on your business; I'll handle the rest.</p>
-          <div class="tags"><span class="tag">Strategy</span><span class="tag">Scheduling</span><span class="tag">Reporting</span></div>
+          <p>End-to-end management — strategy, content, scheduling, story management, and monthly performance reports. You focus on your business; I'll handle the rest.</p>
+          <div class="tag-row"><span class="tag">Strategy</span><span class="tag">Scheduling</span><span class="tag">Reporting</span></div>
         </div>
         <div class="service-cell">
-          <span class="service-num">04</span>
-          <div class="service-ico"><i class="fas fa-comments"></i></div>
+          <p class="sk-num">04</p>
+          <div class="sk-icon"><i class="fas fa-comments"></i></div>
           <h3>Community Management</h3>
           <p>Responding to comments and DMs, managing your community, and nurturing relationships with your audience to turn followers into loyal customers.</p>
-          <div class="tags"><span class="tag">Engagement</span><span class="tag">DM Management</span></div>
+          <div class="tag-row"><span class="tag">Engagement</span><span class="tag">DM Management</span></div>
         </div>
         <div class="service-cell">
-          <span class="service-num">05</span>
-          <div class="service-ico"><i class="fas fa-chart-line"></i></div>
+          <p class="sk-num">05</p>
+          <div class="sk-icon"><i class="fas fa-chart-line"></i></div>
           <h3>Analytics &amp; Reporting</h3>
           <p>Monthly performance reports covering reach, engagement, follower growth, and content insights with clear recommendations to continuously improve your results.</p>
-          <div class="tags"><span class="tag">Analytics</span><span class="tag">Insights</span><span class="tag">Growth</span></div>
+          <div class="tag-row"><span class="tag">Analytics</span><span class="tag">Insights</span><span class="tag">Growth</span></div>
         </div>
         <div class="service-cell">
-          <span class="service-num">06</span>
-          <div class="service-ico"><i class="fas fa-video"></i></div>
+          <p class="sk-num">06</p>
+          <div class="sk-icon"><i class="fas fa-video"></i></div>
           <h3>Reels &amp; Short-Form Video</h3>
           <p>Scripting, editing direction, and captioning for Reels and TikToks built around trending audio and formats proven to boost reach organically.</p>
-          <div class="tags"><span class="tag">Reels</span><span class="tag">TikTok</span><span class="tag">Short-form</span></div>
+          <div class="tag-row"><span class="tag">Reels</span><span class="tag">TikTok</span><span class="tag">Short-form</span></div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<div class="section-divider"></div>
+<div class="divider"></div>
 
-<!-- ══════════════════════════════════════
+<!-- ══════════════════════════════
      CONTENT GALLERY
-══════════════════════════════════════ -->
-<section id="content" class="section alt">
+══════════════════════════════ -->
+<section id="content" class="section tinted" style="padding-bottom:0">
   <div class="wrap">
-    <div class="section-header reveal">
-      <span class="section-tab">Content</span>
+    <div class="chapter reveal">
+      <span class="chapter-num">Content</span>
       <div>
-        <h2 class="section-heading">Content I would <em>create</em></h2>
-        <span class="section-heading-hand">a snapshot of my content direction 📌</span>
+        <h2 class="chapter-heading">Content I would <em>create</em></h2>
+        <span class="chapter-note">a snapshot of my content direction 📌</span>
       </div>
     </div>
-    <div class="section-rule"></div>
-
+    <div class="rule-gold"></div>
     <div class="gallery-filters reveal">
       <button class="filter-btn active" data-filter="all">All Content</button>
       <button class="filter-btn" data-filter="static">Static Posts</button>
@@ -990,46 +1155,56 @@ footer { background:var(--ink); color:rgba(255,255,255,.4); padding:5rem 0 2.5re
       <button class="filter-btn" data-filter="story">Stories</button>
       <button class="filter-btn" data-filter="video">Videos</button>
     </div>
+  </div>
 
-    <div class="gallery-grid reveal">
+  <div class="corkboard">
+    <div class="gallery-grid" id="galleryGrid">
       <div class="gallery-item" data-type="static" style="background:linear-gradient(135deg,#1a1a2e,#16213e)">
+        <div class="pin"></div>
         <span class="gallery-type-tag">Static</span>
         <img src="img/content direction/brand quote.jpg" alt="Brand quote post">
-        <div class="gallery-caption">Brand quote post clean typography on a moody gradient for high shareability and saves.</div>
+        <div class="gallery-caption">Brand quote post — clean typography on a moody gradient for high shareability and saves.</div>
       </div>
-      <div class="gallery-item" data-type="carousel" style="background:linear-gradient(135deg,#b8913a,#2d1f0a)">
+      <div class="gallery-item" data-type="carousel" style="background:linear-gradient(135deg,#9a7a3a,#2d1f0a)">
+        <div class="pin"></div>
         <span class="gallery-type-tag">Carousel</span>
         <img src="img/content direction/social media manager.png" alt="5 Signs You Need a Social Media Manager">
         <div class="gallery-caption">Educational carousel drives saves and shares. Each slide delivers one tip with a branded layout.</div>
       </div>
       <div class="gallery-item" data-type="reel" style="background:linear-gradient(135deg,#405de6,#833ab4,#e1306c)">
+        <div class="pin"></div>
         <span class="gallery-type-tag">Reel</span>
         <video src="img/content direction/day in life.mp4" autoplay muted playsinline loop></video>
-        <div class="ai-label">✦ AI GENERATED  ✦</div>
-        <div class="gallery-caption">Trending Reel concept uses viral audio paired with relatable brand messaging to boost reach.</div>
+        <div class="ai-label">✦ AI GENERATED ✦</div>
+        <div class="gallery-caption">Trending Reel concept — uses viral audio paired with relatable brand messaging to boost reach.</div>
       </div>
       <div class="gallery-item" data-type="story" style="background:linear-gradient(180deg,#0d0c0a,#2d1f0a)">
+        <div class="pin"></div>
         <span class="gallery-type-tag">Story</span>
         <img src="img/content direction/This or That Poll.png" alt="This or that poll">
         <div class="gallery-caption">Interactive story poll boosts story views and tells the algorithm your audience is engaged.</div>
       </div>
       <div class="gallery-item" data-type="static" style="background:linear-gradient(160deg,#f6f1e9,#ede7da)">
+        <div class="pin"></div>
         <span class="gallery-type-tag">Static</span>
         <img src="img/content direction/product spotlight.jpg" alt="Product spotlight">
-        <div class="gallery-caption">Light mode product spotlight premium aesthetic, drives profile clicks and link in bio visits.</div>
+        <div class="gallery-caption">Light mode product spotlight — premium aesthetic, drives profile clicks and link in bio visits.</div>
       </div>
       <div class="gallery-item" data-type="video" style="background:linear-gradient(135deg,#0f2027,#203a43,#2c5364)">
+        <div class="pin"></div>
         <span class="gallery-type-tag">Video</span>
         <video src="img/content direction/behind the scenes.mp4" autoplay muted playsinline loop></video>
         <div class="ai-label">✦ AI GENERATED ✦</div>
         <div class="gallery-caption">Behind-the-scenes video humanises your brand, builds trust, and drives authentic engagement.</div>
       </div>
       <div class="gallery-item" data-type="carousel" style="background:linear-gradient(135deg,#1a0533,#3d1060)">
+        <div class="pin"></div>
         <span class="gallery-type-tag">Carousel</span>
         <img src="img/content direction/Transformation post.png" alt="Before and after transformation">
         <div class="gallery-caption">Before &amp; after carousel visually demonstrates value and positions you as a trusted expert.</div>
       </div>
-      <div class="gallery-item" data-type="story" style="background:linear-gradient(135deg,#b8913a,#7a5c1e)">
+      <div class="gallery-item" data-type="story" style="background:linear-gradient(135deg,#9a7a3a,#7a5c1e)">
+        <div class="pin"></div>
         <span class="gallery-type-tag">Story</span>
         <img src="img/content direction/Q and A.png" alt="Ask me anything Q&A story">
         <div class="gallery-caption">Q&amp;A story drives replies, boosts engagement score, and creates community dialogue.</div>
@@ -1038,23 +1213,22 @@ footer { background:var(--ink); color:rgba(255,255,255,.4); padding:5rem 0 2.5re
   </div>
 </section>
 
-<div class="section-divider"></div>
+<div class="divider"></div>
 
-<!-- ══════════════════════════════════════
-     FEED MOCKUPS — pinboard
-══════════════════════════════════════ -->
-<section id="feeds" class="section" style="padding-bottom:0">
+<!-- ══════════════════════════════
+     FEED MOCKUPS
+══════════════════════════════ -->
+<section id="feeds" class="section tinted" style="padding-bottom:0">
   <div class="wrap">
-    <div class="section-header reveal">
-      <span class="section-tab">Feeds</span>
+    <div class="chapter reveal">
+      <span class="chapter-num">Feeds</span>
       <div>
-        <h2 class="section-heading">How your <em>feed would look</em></h2>
-        <span class="section-heading-hand">curated aesthetics for different brands 📷</span>
+        <h2 class="chapter-heading">How your <em>feed would look</em></h2>
+        <span class="chapter-note">curated aesthetics for different brands 📷</span>
       </div>
     </div>
-    <div class="section-rule"></div>
-
-    <div class="feeds-tabs reveal" role="tablist">
+    <div class="rule-gold"></div>
+    <div class="feeds-tabs reveal">
       <button class="feed-tab active" data-feed="bakery">🧁 Bakery</button>
       <button class="feed-tab" data-feed="jewellery">💍 Jewellery</button>
       <button class="feed-tab" data-feed="bookstore">📚 Bookstore</button>
@@ -1065,11 +1239,11 @@ footer { background:var(--ink); color:rgba(255,255,255,.4); padding:5rem 0 2.5re
     <!-- BAKERY -->
     <div class="feed-panel active" id="feed-bakery">
       <div class="feed-layout">
-        <div class="reveal-left">
+        <div class="rl">
           <div class="feed-profile-card">
             <div class="feed-profile-pic" style="background:linear-gradient(135deg,#f9e4b7,#e8c785)">🧁</div>
             <div style="text-align:center">
-              <div style="font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700">@yourbakery</div>
+              <div style="font-family:var(--serif);font-size:1.1rem;font-weight:400">@yourbakery</div>
               <div class="feed-handle">homemade with love · cape town</div>
             </div>
             <div class="feed-stats">
@@ -1089,25 +1263,25 @@ footer { background:var(--ink); color:rgba(255,255,255,.4); padding:5rem 0 2.5re
             Warm, golden tones with natural light photography. Content mix of product shots, behind-the-scenes baking Reels, customer reposts, and seasonal specials. Posting cadence: 4–5× per week with daily Stories.
           </div>
         </div>
-        <div class="reveal-right">
+        <div class="rr">
           <div class="feed-grid">
-            <div class="feed-post" style="overflow:hidden"><img src="img/bakery/brownies.jpg" alt="Brownies"><div class="feed-post-overlay">❤️ 234 &nbsp; 💬 18</div></div>
-            <div class="feed-post" style="overflow:hidden;position:relative">
+            <div class="feed-post"><img src="img/bakery/brownies.jpg" alt="Brownies"><div class="feed-post-overlay">❤️ 234 &nbsp; 💬 18</div></div>
+            <div class="feed-post" style="position:relative">
               <video src="img/bakery/baking.mp4" autoplay muted playsinline loop style="width:100%;height:100%;object-fit:cover"></video>
               <div class="ai-label">✦ AI GENERATED ✦</div>
               <div class="feed-post-overlay">❤️ 1.2K &nbsp; 💬 67</div>
             </div>
-            <div class="feed-post" style="overflow:hidden"><img src="img/bakery/custom cake.jpg" alt="Custom cake"><div class="feed-post-overlay">❤️ 456 &nbsp; 💬 31</div></div>
-            <div class="feed-post" style="overflow:hidden"><img src="img/bakery/Seasonal Special.png" alt="Seasonal special"><div class="feed-post-overlay">❤️ 312 &nbsp; 💬 22</div></div>
-            <div class="feed-post" style="overflow:hidden"><img src="img/bakery/review graphic.jpg" alt="Review graphic"><div class="feed-post-overlay">❤️ 189 &nbsp; 💬 14</div></div>
-            <div class="feed-post" style="overflow:hidden"><img src="img/bakery/new menu item.png" alt="New menu item"><div class="feed-post-overlay">❤️ 678 &nbsp; 💬 54</div></div>
-            <div class="feed-post" style="overflow:hidden;position:relative">
+            <div class="feed-post"><img src="img/bakery/custom cake.jpg" alt="Custom cake"><div class="feed-post-overlay">❤️ 456 &nbsp; 💬 31</div></div>
+            <div class="feed-post"><img src="img/bakery/Seasonal Special.png" alt="Seasonal special"><div class="feed-post-overlay">❤️ 312 &nbsp; 💬 22</div></div>
+            <div class="feed-post"><img src="img/bakery/review graphic.jpg" alt="Review graphic"><div class="feed-post-overlay">❤️ 189 &nbsp; 💬 14</div></div>
+            <div class="feed-post"><img src="img/bakery/new menu item.png" alt="New menu item"><div class="feed-post-overlay">❤️ 678 &nbsp; 💬 54</div></div>
+            <div class="feed-post" style="position:relative">
               <video src="img/bakery/unboxing.mp4" autoplay muted playsinline loop style="width:100%;height:100%;object-fit:cover"></video>
               <div class="ai-label">✦ AI GENERATED ✦</div>
               <div class="feed-post-overlay">❤️ 891 &nbsp; 💬 43</div>
             </div>
-            <div class="feed-post" style="overflow:hidden"><img src="img/bakery/Order Preview.png" alt="Order preview"><div class="feed-post-overlay">❤️ 267 &nbsp; 💬 19</div></div>
-            <div class="feed-post" style="overflow:hidden"><img src="img/bakery/Bakery quote.png" alt="Bakery quote"><div class="feed-post-overlay">❤️ 144 &nbsp; 💬 9</div></div>
+            <div class="feed-post"><img src="img/bakery/Order Preview.png" alt="Order preview"><div class="feed-post-overlay">❤️ 267 &nbsp; 💬 19</div></div>
+            <div class="feed-post"><img src="img/bakery/Bakery quote.png" alt="Bakery quote"><div class="feed-post-overlay">❤️ 144 &nbsp; 💬 9</div></div>
           </div>
         </div>
       </div>
@@ -1117,13 +1291,11 @@ footer { background:var(--ink); color:rgba(255,255,255,.4); padding:5rem 0 2.5re
     <div class="feed-panel" id="feed-jewellery">
       <div class="coming-soon-state">
         <div>
-          <div style="font-size:3rem;animation:floatOrb 3s ease-in-out infinite">💍</div>
+          <div style="font-size:3rem">💍</div>
           <h3>Coming <em>Soon</em></h3>
           <p>Curating the perfect feed aesthetic for this jewellery brand. Check back soon!</p>
           <div class="pulse-dots">
-            <div class="pulse-dot"></div>
-            <div class="pulse-dot"></div>
-            <div class="pulse-dot"></div>
+            <div class="pulse-dot"></div><div class="pulse-dot"></div><div class="pulse-dot"></div>
           </div>
         </div>
       </div>
@@ -1133,13 +1305,11 @@ footer { background:var(--ink); color:rgba(255,255,255,.4); padding:5rem 0 2.5re
     <div class="feed-panel" id="feed-bookstore">
       <div class="coming-soon-state">
         <div>
-          <div style="font-size:3rem;animation:floatOrb 3s ease-in-out infinite;animation-delay:.2s">📚</div>
+          <div style="font-size:3rem">📚</div>
           <h3>Coming <em>Soon</em></h3>
           <p>Curating the perfect feed aesthetic for this bookstore. Check back soon!</p>
           <div class="pulse-dots">
-            <div class="pulse-dot"></div>
-            <div class="pulse-dot"></div>
-            <div class="pulse-dot"></div>
+            <div class="pulse-dot"></div><div class="pulse-dot"></div><div class="pulse-dot"></div>
           </div>
         </div>
       </div>
@@ -1147,89 +1317,114 @@ footer { background:var(--ink); color:rgba(255,255,255,.4); padding:5rem 0 2.5re
   </div>
 </section>
 
-<div class="section-divider"></div>
+<div class="divider"></div>
 
-<!-- ══════════════════════════════════════
-     PROCESS TIMELINE
-══════════════════════════════════════ -->
-<section id="timeline" class="timeline-section">
+<!-- ══════════════════════════════
+     PROCESS — dark notebook
+══════════════════════════════ -->
+<section id="process" class="process-section">
   <div class="wrap">
-    <div class="section-header reveal">
-      <span class="section-tab" style="background:var(--gold-light);color:var(--ink)">Process</span>
+    <div class="chapter reveal">
+      <span class="chapter-num" style="color:rgba(154,122,58,.8);border-color:rgba(154,122,58,.3)">Process</span>
       <div>
-        <h2 class="section-heading" style="color:white">From first click to <em>full launch</em></h2>
-        <span class="section-heading-hand" style="color:rgba(255,255,255,.4)">here's exactly what working with me looks like 📋</span>
+        <h2 class="chapter-heading" style="color:rgba(246,240,230,.9)">From first click to <em>full launch</em></h2>
+        <span class="chapter-note" style="color:rgba(246,240,230,.4)">here's exactly what working with me looks like 📋</span>
       </div>
     </div>
-    <div style="height:1px;background:linear-gradient(90deg,var(--gold-light),transparent);margin-bottom:4rem;opacity:.4"></div>
+    <div style="height:1px;background:linear-gradient(90deg,var(--gold),transparent);margin-bottom:3.5rem;opacity:.35"></div>
 
-    <div class="tl-track">
-      <div class="tl-step reveal">
-        <div class="tl-step-num">STEP 01</div>
-        <h3>Explore Our Work &amp; See If We're the Right Fit</h3>
-        <p>Before reaching out, take a few minutes to browse The Three Stars website. Get a feel for our aesthetic, our values, and the quality of work we deliver. If it resonates, we'd love to hear from you.</p>
-        <div class="tl-step-action"><a href="https://t3s-ten.vercel.app/" target="_blank"><i class="fas fa-external-link-alt"></i> Visit The Three Stars Website</a></div>
-        <div class="tl-step-tag"><i class="fas fa-clock" style="margin-right:.4rem"></i> 5–10 minutes</div>
+    <div class="notebook-dark reveal">
+      <div class="hole-dark hd1"></div>
+      <div class="hole-dark hd2"></div>
+      <div class="hole-dark hd3"></div>
+
+      <div class="tl-row">
+        <div class="tl-date">Step 01</div>
+        <div>
+          <div class="tl-dot"></div>
+          <h3>Explore Our Work &amp; See If We're the Right Fit</h3>
+          <p class="tl-desc">Before reaching out, take a few minutes to browse The Three Stars website. Get a feel for our aesthetic, our values, and the quality of work we deliver. If it resonates, we'd love to hear from you.</p>
+          <a href="https://t3s-ten.vercel.app/" target="_blank" class="tl-link"><i class="fas fa-external-link-alt"></i> Visit The Three Stars Website</a>
+          <div class="tl-tag"><i class="fas fa-clock" style="margin-right:.4rem"></i> 5–10 minutes</div>
+        </div>
       </div>
-      <div class="tl-step reveal">
-        <div class="tl-step-num">STEP 02</div>
-        <h3>Book a Free Consultation</h3>
-        <p>Reach out via our Three Stars email to book a free 30-minute consultation. We'll chat about your brand, your goals, your audience, and what you're hoping to achieve with social media. No pressure just a conversation.</p>
-        <div class="tl-step-action"><a href="mailto:haanimatthethreestars@gmail.com"><i class="fas fa-envelope"></i> haanimatthethreestars@gmail.com</a></div>
-        <div class="tl-step-tag"><i class="fas fa-clock" style="margin-right:.4rem"></i> 30-min call</div>
+      <div class="tl-row">
+        <div class="tl-date">Step 02</div>
+        <div>
+          <div class="tl-dot"></div>
+          <h3>Book a Free Consultation</h3>
+          <p class="tl-desc">Reach out via our Three Stars email to book a free 30-minute consultation. We'll chat about your brand, your goals, your audience, and what you're hoping to achieve with social media. No pressure — just a conversation.</p>
+          <a href="mailto:haanimatthethreestars@gmail.com" class="tl-link"><i class="fas fa-envelope"></i> haanimatthethreestars@gmail.com</a>
+          <div class="tl-tag"><i class="fas fa-clock" style="margin-right:.4rem"></i> 30-min call</div>
+        </div>
       </div>
-      <div class="tl-step reveal">
-        <div class="tl-step-num">STEP 03</div>
-        <h3>Choose Your Package</h3>
-        <p>After the consultation, I'll send over a personalised proposal with the package that suits your goals and budget. You review, ask questions, and once you're happy we confirm and lock in your start date.</p>
-        <div class="tl-step-tag"><i class="fas fa-clock" style="margin-right:.4rem"></i> 2–3 business days</div>
+      <div class="tl-row">
+        <div class="tl-date">Step 03</div>
+        <div>
+          <div class="tl-dot"></div>
+          <h3>Choose Your Package</h3>
+          <p class="tl-desc">After the consultation, I'll send over a personalised proposal with the package that suits your goals and budget. You review, ask questions, and once you're happy we confirm and lock in your start date.</p>
+          <div class="tl-tag"><i class="fas fa-clock" style="margin-right:.4rem"></i> 2–3 business days</div>
+        </div>
       </div>
-      <div class="tl-step reveal">
-        <div class="tl-step-num">STEP 04</div>
-        <h3>Brand Deep-Dive &amp; Onboarding</h3>
-        <p>I send you a detailed onboarding questionnaire covering your brand voice, visual preferences, target audience, competitors, and content do's and don'ts. This becomes the foundation of your entire strategy.</p>
-        <div class="tl-step-tag"><i class="fas fa-clock" style="margin-right:.4rem"></i> 3–5 business days</div>
+      <div class="tl-row">
+        <div class="tl-date">Step 04</div>
+        <div>
+          <div class="tl-dot"></div>
+          <h3>Brand Deep-Dive &amp; Onboarding</h3>
+          <p class="tl-desc">I send you a detailed onboarding questionnaire covering your brand voice, visual preferences, target audience, competitors, and content do's and don'ts. This becomes the foundation of your entire strategy.</p>
+          <div class="tl-tag"><i class="fas fa-clock" style="margin-right:.4rem"></i> 3–5 business days</div>
+        </div>
       </div>
-      <div class="tl-step reveal">
-        <div class="tl-step-num">STEP 05</div>
-        <h3>Strategy &amp; Content Plan Delivery</h3>
-        <p>I deliver your custom content strategy complete with content pillars, posting schedule, caption tone guidelines, hashtag research, and a 30-day content calendar. You review and approve before anything goes live.</p>
-        <div class="tl-step-tag"><i class="fas fa-clock" style="margin-right:.4rem"></i> 5–7 business days</div>
+      <div class="tl-row">
+        <div class="tl-date">Step 05</div>
+        <div>
+          <div class="tl-dot"></div>
+          <h3>Strategy &amp; Content Plan Delivery</h3>
+          <p class="tl-desc">I deliver your custom content strategy — complete with content pillars, posting schedule, caption tone guidelines, hashtag research, and a 30-day content calendar. You review and approve before anything goes live.</p>
+          <div class="tl-tag"><i class="fas fa-clock" style="margin-right:.4rem"></i> 5–7 business days</div>
+        </div>
       </div>
-      <div class="tl-step reveal">
-        <div class="tl-step-num">STEP 06</div>
-        <h3>Content Creation &amp; Approval</h3>
-        <p>I create the first batch of content graphics, captions, and scheduled posts. Everything is shared with you for review before it goes live. Revisions are included so you're always happy with what's published.</p>
-        <div class="tl-step-tag"><i class="fas fa-clock" style="margin-right:.4rem"></i> Ongoing · weekly batches</div>
+      <div class="tl-row">
+        <div class="tl-date">Step 06</div>
+        <div>
+          <div class="tl-dot"></div>
+          <h3>Content Creation &amp; Approval</h3>
+          <p class="tl-desc">I create the first batch of content — graphics, captions, and scheduled posts. Everything is shared with you for review before it goes live. Revisions are included so you're always happy with what's published.</p>
+          <div class="tl-tag"><i class="fas fa-clock" style="margin-right:.4rem"></i> Ongoing · weekly batches</div>
+        </div>
       </div>
-      <div class="tl-step reveal">
-        <div class="tl-step-num">STEP 07</div>
-        <h3>Go Live &amp; Grow</h3>
-        <p>Content goes live on schedule. I monitor performance, engage with your community, and track key metrics. At the end of each month, you receive a clear analytics report with insights and recommendations for the month ahead.</p>
-        <div class="tl-step-tag"><i class="fas fa-clock" style="margin-right:.4rem"></i> Ongoing · monthly reports</div>
+      <div class="tl-row">
+        <div class="tl-date">Step 07</div>
+        <div>
+          <div class="tl-dot"></div>
+          <h3>Go Live &amp; Grow</h3>
+          <p class="tl-desc">Content goes live on schedule. I monitor performance, engage with your community, and track key metrics. At the end of each month, you receive a clear analytics report with insights and recommendations for the month ahead.</p>
+          <div class="tl-tag"><i class="fas fa-clock" style="margin-right:.4rem"></i> Ongoing · monthly reports</div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<div class="section-divider"></div>
+<div class="divider"></div>
 
-<!-- ══════════════════════════════════════
+<!-- ══════════════════════════════
      CTA
-══════════════════════════════════════ -->
-<section id="contact-cta" class="cta-section">
+══════════════════════════════ -->
+<section id="contact-cta" class="section">
   <div class="wrap">
-    <div class="cta-inner">
+    <div class="cta-wrap">
       <div class="cta-card reveal">
         <div class="cta-card-tape-tl"></div>
         <div class="cta-card-tape-tr"></div>
         <div class="cta-eyebrow">Let's Work Together</div>
         <h2 class="cta-heading">Ready to grow<br>your <em>brand?</em></h2>
         <span class="cta-hand">let me handle the social media, you focus on what you love ✦</span>
-        <p class="cta-sub">Your brand deserves to be seen. Let me take the social media off your plate so you can focus on what you do best while your audience grows, your engagement climbs, and your brand becomes something people genuinely love to follow.</p>
+        <p class="cta-sub">Your brand deserves to be seen. Let me take the social media off your plate so you can focus on what you do best — while your audience grows, your engagement climbs, and your brand becomes something people genuinely love to follow.</p>
         <div class="cta-actions">
-          <a href="https://t3s-ten.vercel.app/" target="_blank" class="btn-t3s"><i class="fas fa-star"></i> Visit The Three Stars</a>
-          <a href="mailto:haanimatthethreestars@gmail.com" class="btn-outline"><i class="fas fa-envelope"></i> Email Me Directly</a>
+          <a href="https://t3s-ten.vercel.app/" target="_blank" class="btn btn-primary"><i class="fas fa-star"></i> Visit The Three Stars</a>
+          <a href="mailto:haanimatthethreestars@gmail.com" class="btn btn-secondary"><i class="fas fa-envelope"></i> Email Me Directly</a>
         </div>
         <p class="cta-note">All social media management is offered through The Three Stars · Digital Solutions Agency</p>
       </div>
@@ -1237,17 +1432,19 @@ footer { background:var(--ink); color:rgba(255,255,255,.4); padding:5rem 0 2.5re
   </div>
 </section>
 
-<!-- FOOTER -->
+<!-- ══════════════════════════════
+     FOOTER
+══════════════════════════════ -->
 <footer>
   <div class="footer-inner">
-    <div class="footer-logo">Haanim Pietersen</div>
-    <p class="footer-tagline">Social Media Manager · Software Developer · Cape Town, South Africa</p>
+    <div class="footer-name">Haanim Pietersen</div>
+    <p class="footer-tag">Social Media Manager · Software Developer · Cape Town, South Africa</p>
     <div class="footer-socials">
-      <a href="https://www.instagram.com/haanim_pietersen" target="_blank" class="f-social"><i class="fab fa-instagram"></i></a>
-      <a href="https://tiktok.com/@haanim_pietersen" target="_blank" class="f-social"><i class="fab fa-tiktok"></i></a>
-      <a href="https://www.linkedin.com/in/haanim-pietersen-172bb9264/" target="_blank" class="f-social"><i class="fab fa-linkedin"></i></a>
-      <a href="https://github.com/HaanimP" target="_blank" class="f-social"><i class="fab fa-github"></i></a>
-      <a href="index.html" class="f-social"><i class="fas fa-globe"></i></a>
+      <a href="https://www.instagram.com/haanim_pietersen" target="_blank" class="f-soc"><i class="fab fa-instagram"></i></a>
+      <a href="https://tiktok.com/@haanim_pietersen" target="_blank" class="f-soc"><i class="fab fa-tiktok"></i></a>
+      <a href="https://www.linkedin.com/in/haanim-pietersen-172bb9264/" target="_blank" class="f-soc"><i class="fab fa-linkedin"></i></a>
+      <a href="https://github.com/HaanimP" target="_blank" class="f-soc"><i class="fab fa-github"></i></a>
+      <a href="index.html" class="f-soc"><i class="fas fa-globe"></i></a>
     </div>
     <div class="footer-rule"></div>
     <div class="footer-bottom">
@@ -1258,81 +1455,99 @@ footer { background:var(--ink); color:rgba(255,255,255,.4); padding:5rem 0 2.5re
 </footer>
 
 <script>
-// CURSOR
-const cursor = document.getElementById('cursor');
+// ─── CURSOR ─────────────────────────────────────
+const cursor     = document.getElementById('cursor');
 const cursorRing = document.getElementById('cursorRing');
-let mouseX=0, mouseY=0, ringX=0, ringY=0;
-document.addEventListener('mousemove',e=>{ mouseX=e.clientX; mouseY=e.clientY; cursor.style.left=mouseX+'px'; cursor.style.top=mouseY+'px'; });
-(function animRing(){ ringX+=(mouseX-ringX)*.12; ringY+=(mouseY-ringY)*.12; cursorRing.style.left=ringX+'px'; cursorRing.style.top=ringY+'px'; requestAnimationFrame(animRing); })();
-document.querySelectorAll('a,button,.stat-cell,.service-cell,.gallery-item,.feed-post,.feed-tab,.filter-btn,.cert-badge').forEach(el=>{
+let mx=0, my=0, rx=0, ry=0;
+document.addEventListener('mousemove', e=>{ mx=e.clientX; my=e.clientY; cursor.style.left=mx+'px'; cursor.style.top=my+'px'; },{passive:true});
+(function lag(){ rx+=(mx-rx)*.14; ry+=(my-ry)*.14; cursorRing.style.left=rx+'px'; cursorRing.style.top=ry+'px'; requestAnimationFrame(lag); })();
+document.querySelectorAll('a,button,.ledger-row,.service-cell,.gallery-item,.feed-post,.feed-tab,.filter-btn,.award-tag,.tag,.feed-profile-card').forEach(el=>{
   el.addEventListener('mouseenter',()=>document.body.classList.add('cursor-hover'));
   el.addEventListener('mouseleave',()=>document.body.classList.remove('cursor-hover'));
 });
 
-// SCROLL PROGRESS
-const progressBar=document.getElementById('scrollProgress');
-window.addEventListener('scroll',()=>{ const pct=(scrollY/(document.body.scrollHeight-innerHeight))*100; progressBar.style.width=pct+'%'; });
+// ─── SCROLL BAR ─────────────────────────────────
+const scrollBar = document.getElementById('scrollBar');
+window.addEventListener('scroll',()=>{
+  scrollBar.style.width=(scrollY/(document.body.scrollHeight-innerHeight)*100)+'%';
+},{passive:true});
 
-// NAV
-const navbar=document.getElementById('navbar');
-const mm=document.getElementById('mobileMenu');
-const nl=document.getElementById('navLinks');
-mm.addEventListener('click',()=>{ nl.classList.toggle('active'); mm.querySelector('i').className=nl.classList.contains('active')?'fas fa-times':'fas fa-bars'; });
-document.querySelectorAll('.nav-link').forEach(l=>l.addEventListener('click',()=>{ nl.classList.remove('active'); mm.querySelector('i').className='fas fa-bars'; }));
+// ─── NAV ────────────────────────────────────────
+const navbar    = document.getElementById('navbar');
+const navLinks  = document.getElementById('navLinks');
+const navToggle = document.getElementById('navToggle');
+navToggle.addEventListener('click',()=>{
+  navLinks.classList.toggle('open');
+  navToggle.querySelector('i').className = navLinks.classList.contains('open')?'fas fa-times':'fas fa-bars';
+});
+document.querySelectorAll('.nl').forEach(l=>l.addEventListener('click',()=>{
+  navLinks.classList.remove('open'); navToggle.querySelector('i').className='fas fa-bars';
+}));
 document.querySelectorAll('a[href^="#"]').forEach(a=>{
-  a.addEventListener('click',e=>{ const href=a.getAttribute('href'); if(href==='#') return; const t=document.querySelector(href); if(t){ e.preventDefault(); window.scrollTo({top:t.offsetTop-64,behavior:'smooth'}); } });
+  a.addEventListener('click',e=>{
+    const t=document.querySelector(a.getAttribute('href'));
+    if(t){ e.preventDefault(); window.scrollTo({top:t.offsetTop-62,behavior:'smooth'}); }
+  });
 });
 window.addEventListener('scroll',()=>{
-  let cur=''; document.querySelectorAll('section[id]').forEach(s=>{ if(scrollY>=s.offsetTop-200) cur=s.id; });
-  document.querySelectorAll('.nav-link').forEach(l=>l.classList.toggle('active',l.getAttribute('href')==='#'+cur));
-});
+  navbar.classList.toggle('scrolled',scrollY>20);
+  let cur='';
+  document.querySelectorAll('section[id]').forEach(s=>{ if(scrollY>=s.offsetTop-200) cur=s.id; });
+  document.querySelectorAll('.nl').forEach(l=>l.classList.toggle('active',l.getAttribute('href')==='#'+cur));
+},{passive:true});
+navbar.classList.add('scrolled');
 
-// REVEAL
-const ro=new IntersectionObserver(entries=>{ entries.forEach(e=>{ if(e.isIntersecting){ setTimeout(()=>e.target.classList.add('in-view'),80); ro.unobserve(e.target); } }); },{threshold:0.07,rootMargin:'0px 0px -40px 0px'});
-document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(el=>ro.observe(el));
+// ─── REVEAL ─────────────────────────────────────
+const ro = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ setTimeout(()=>e.target.classList.add('up'),60); ro.unobserve(e.target); }});
+},{threshold:.07, rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal,.rl,.rr').forEach(el=>ro.observe(el));
 
-// MOUSE TILT
-document.querySelectorAll('.service-cell,.stat-cell').forEach(card=>{
-  card.addEventListener('mousemove',e=>{ const rect=card.getBoundingClientRect(); const x=(e.clientX-rect.left)/rect.width-.5; const y=(e.clientY-rect.top)/rect.height-.5; card.style.transition='none'; card.style.transform=`perspective(800px) rotateX(${-y*10}deg) rotateY(${x*10}deg) translateY(-6px)`; });
-  card.addEventListener('mouseleave',()=>{ card.style.transition='all 0.5s cubic-bezier(0.23,1,0.32,1)'; card.style.transform=''; });
-});
-
-// GALLERY FILTER
+// ─── GALLERY FILTER ─────────────────────────────
 document.querySelectorAll('.filter-btn').forEach(btn=>{
   btn.addEventListener('click',()=>{
     document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
     btn.classList.add('active');
-    const filter=btn.dataset.filter;
+    const filter = btn.dataset.filter;
     document.querySelectorAll('.gallery-item').forEach(item=>{
-      if(filter==='all'||item.dataset.type===filter){ item.classList.remove('hidden'); item.style.animation='fadeIn .4s ease forwards'; }
-      else item.classList.add('hidden');
+      if(filter==='all'||item.dataset.type===filter){
+        item.classList.remove('hidden');
+        item.style.animation='fadeIn .4s ease forwards';
+      } else {
+        item.classList.add('hidden');
+      }
     });
   });
 });
 
-// FEED TABS
+// ─── FEED TABS ──────────────────────────────────
 document.querySelectorAll('.feed-tab').forEach(tab=>{
   tab.addEventListener('click',()=>{
     document.querySelectorAll('.feed-tab').forEach(t=>t.classList.remove('active'));
     document.querySelectorAll('.feed-panel').forEach(p=>p.classList.remove('active'));
     tab.classList.add('active');
-    const panel=document.getElementById('feed-'+tab.dataset.feed);
-    if(panel){ panel.classList.add('active'); panel.querySelectorAll('.reveal-left,.reveal-right').forEach(el=>{ el.classList.remove('in-view'); setTimeout(()=>el.classList.add('in-view'),100); }); }
+    const panel = document.getElementById('feed-'+tab.dataset.feed);
+    if(panel){
+      panel.classList.add('active');
+      panel.querySelectorAll('.rl,.rr').forEach(el=>{ el.classList.remove('up'); setTimeout(()=>el.classList.add('up'),100); });
+    }
   });
 });
 
-// AMBIENT PARTICLES
-(function(){
-  const canvas=document.createElement('canvas');
-  canvas.style.cssText='position:fixed;inset:0;pointer-events:none;z-index:-1;opacity:.25';
-  document.body.appendChild(canvas);
-  const ctx=canvas.getContext('2d'); let W,H,particles=[];
-  function resize(){ W=canvas.width=innerWidth; H=canvas.height=innerHeight; }
-  resize(); window.addEventListener('resize',resize);
-  class P{ constructor(){ this.reset(); } reset(){ this.x=Math.random()*W; this.y=Math.random()*H; this.size=Math.random()*1.5+.5; this.vy=-Math.random()*.4-.1; this.vx=(Math.random()-.5)*.3; this.op=Math.random()*.35+.1; this.life=0; this.max=Math.random()*300+200; } update(){ this.x+=this.vx; this.y+=this.vy; this.life++; if(this.life>this.max) this.reset(); } draw(){ const f=this.life<30?this.life/30:this.life>this.max-30?(this.max-this.life)/30:1; ctx.beginPath(); ctx.arc(this.x,this.y,this.size,0,Math.PI*2); ctx.fillStyle=`rgba(184,145,58,${this.op*f})`; ctx.fill(); } }
-  for(let i=0;i<60;i++){ const p=new P(); p.life=Math.random()*p.max; particles.push(p); }
-  (function anim(){ requestAnimationFrame(anim); ctx.clearRect(0,0,W,H); particles.forEach(p=>{ p.update(); p.draw(); }); })();
-})();
+// ─── TILT on cards ──────────────────────────────
+document.querySelectorAll('.service-cell,.ledger-row').forEach(card=>{
+  card.addEventListener('mousemove',e=>{
+    const r=card.getBoundingClientRect();
+    const x=(e.clientX-r.left)/r.width-.5;
+    const y=(e.clientY-r.top)/r.height-.5;
+    card.style.transition='none';
+    card.style.transform=`perspective(900px) rotateX(${-y*7}deg) rotateY(${x*7}deg) translateY(-4px)`;
+  });
+  card.addEventListener('mouseleave',()=>{
+    card.style.transition='all .45s cubic-bezier(.23,1,.32,1)';
+    card.style.transform='';
+  });
+});
 </script>
 </body>
 </html>
