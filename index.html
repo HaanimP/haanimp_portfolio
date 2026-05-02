@@ -84,7 +84,7 @@ nav.scrolled{background:rgba(246,241,233,.96);backdrop-filter:blur(20px);-webkit
 .section-heading em{font-style:italic;color:var(--gold)}
 .section-sub{font-size:.9rem;color:var(--muted);line-height:1.75;font-weight:300;max-width:540px;margin-top:1.3rem}
 
-/* 3D SCROLL CARDS — the magic */
+/* 3D SCROLL CARDS */
 .scroll-3d{transition:transform .6s cubic-bezier(0.23,1,0.32,1),box-shadow .6s ease,opacity .5s ease;transform-style:preserve-3d;will-change:transform}
 .scroll-3d.entering{transform:perspective(1000px) rotateX(15deg) rotateY(-5deg) translateY(40px) scale(.93);opacity:.3}
 .scroll-3d.visible{transform:perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0) scale(1);opacity:1}
@@ -277,7 +277,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.4);padding:5rem 0 2.5rem}
 /* SECTION DIVIDERS */
 .section-divider{height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:0;opacity:.3}
 
-/* REVEAL — enhanced 3D */
+/* REVEAL */
 .reveal{opacity:0;transform:perspective(1000px) rotateX(12deg) translateY(36px);transition:opacity .9s ease,transform .9s cubic-bezier(0.23,1,0.32,1)}
 .reveal.in-view{opacity:1;transform:perspective(1000px) rotateX(0deg) translateY(0)}
 .reveal-left{opacity:0;transform:perspective(1000px) rotateY(15deg) translateX(-40px);transition:opacity .9s ease,transform .9s cubic-bezier(0.23,1,0.32,1)}
@@ -287,7 +287,6 @@ footer{background:var(--ink);color:rgba(255,255,255,.4);padding:5rem 0 2.5rem}
 
 /* RESPONSIVE */
 @media(max-width:1200px){
-  .causes-grid-a{grid-template-columns:repeat(2,1fr)}
   .projects-grid{grid-template-columns:repeat(2,1fr)}
   .t3s-inner{grid-template-columns:1fr;gap:4rem}
 }
@@ -300,7 +299,6 @@ footer{background:var(--ink);color:rgba(255,255,255,.4);padding:5rem 0 2.5rem}
   .skill-cell:nth-child(2n){border-right:none}
   .about-grid{grid-template-columns:1fr;gap:4rem}
   .contact-grid{grid-template-columns:1fr;gap:3.5rem}
-  .presentations-grid{grid-template-columns:repeat(2,1fr)}
 }
 @media(max-width:860px){
   .nav-links{display:none;position:absolute;top:68px;left:0;right:0;background:var(--paper);flex-direction:column;padding:1.5rem 3rem;border-bottom:1px solid var(--rule);gap:0;z-index:999}
@@ -311,8 +309,6 @@ footer{background:var(--ink);color:rgba(255,255,255,.4);padding:5rem 0 2.5rem}
   .tl-item{grid-template-columns:1fr;gap:.5rem}
   .tl-item::before{display:none}
   .tl-date{text-align:left;padding-right:0}
-  .presentations-grid{grid-template-columns:1fr}
-  .causes-grid-a,.causes-grid-b{grid-template-columns:1fr;gap:0}
   .projects-grid{grid-template-columns:1fr}
   .t3s-services{grid-template-columns:1fr 1fr}
   .cursor,.cursor-ring{display:none!important}
@@ -709,22 +705,18 @@ document.addEventListener('mousemove', e => {
 
 let animFrameId = null;
 function animRing() {
-  if (!isMoving) {
-    animFrameId = null;
-    return;
-  }
+  if (!isMoving) { animFrameId = null; return; }
   ringX += (mouseX - ringX) * 0.2;
   ringY += (mouseY - ringY) * 0.2;
   cursorRing.style.left = ringX + 'px';
   cursorRing.style.top = ringY + 'px';
   animFrameId = requestAnimationFrame(animRing);
 }
-
 document.addEventListener('mousemove', () => {
   if (!animFrameId) animFrameId = requestAnimationFrame(animRing);
 }, { passive: true });
 
-document.querySelectorAll('a,button,.stat-cell,.skill-cell,.project-card,.pres-card,.cause-card,.t3s-service,.award-badge,.tag,.testi-btn').forEach(el => {
+document.querySelectorAll('a,button,.stat-cell,.skill-cell,.project-card,.pres-card,.t3s-service,.award-badge,.tag,.testi-btn').forEach(el => {
   el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
   el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
 });
@@ -769,7 +761,7 @@ window.addEventListener('scroll', () => {
 navbar.classList.add('scrolled');
 
 // ═══════════════════════════════════════════
-// 3D SCROLL REVEAL — enhanced with perspective
+// REVEAL
 // ═══════════════════════════════════════════
 const revealObserver = new IntersectionObserver(entries => {
   entries.forEach(e => {
@@ -783,17 +775,16 @@ const revealObserver = new IntersectionObserver(entries => {
 document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(el => revealObserver.observe(el));
 
 // ═══════════════════════════════════════════
-// SCROLL-DRIVEN 3D CARD PARALLAX
+// SCROLL-DRIVEN PARALLAX
 // ═══════════════════════════════════════════
 function updateScrollParallax() {
-  const cards = document.querySelectorAll('.project-card, .pres-card, .skill-cell, .cause-card');
+  const cards = document.querySelectorAll('.project-card, .pres-card, .skill-cell');
   cards.forEach(card => {
     const rect = card.getBoundingClientRect();
     const vh = window.innerHeight;
     const center = rect.top + rect.height / 2;
     const distFromCenter = (center - vh / 2) / (vh / 2);
     const clampedDist = Math.max(-1, Math.min(1, distFromCenter));
-    // Only apply when not hovered
     if (!card.matches(':hover')) {
       const tiltX = clampedDist * 6;
       const scale = 1 - Math.abs(clampedDist) * 0.04;
@@ -808,7 +799,7 @@ function updateScrollParallax() {
 updateScrollParallax();
 
 // ═══════════════════════════════════════════
-// MOUSE-TILT on cards (3D hover tracking)
+// MOUSE-TILT
 // ═══════════════════════════════════════════
 document.querySelectorAll('.project-card, .pres-card, .skill-cell, .stat-cell').forEach(card => {
   card.addEventListener('mousemove', e => {
@@ -822,7 +813,7 @@ document.querySelectorAll('.project-card, .pres-card, .skill-cell, .stat-cell').
     card.style.opacity = '1';
     card.style.boxShadow = `${-x * 20}px ${-y * 20}px 40px rgba(184,145,58,.15), 0 24px 60px rgba(13,12,10,.12)`;
   });
-  card.addEventListener('mouseleave', e => {
+  card.addEventListener('mouseleave', () => {
     card.style.transition = 'all 0.5s cubic-bezier(0.23,1,0.32,1)';
     card.style.transform = '';
     card.style.boxShadow = '';
@@ -883,7 +874,7 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
 });
 
 // ═══════════════════════════════════════════
-// THREE.JS — HERO CANVAS (tech-related objects)
+// THREE.JS — HERO CANVAS
 // ═══════════════════════════════════════════
 (function initHeroCanvas() {
   const canvas = document.getElementById('hero-canvas');
@@ -902,7 +893,6 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
   resize();
   window.addEventListener('resize', resize);
 
-  // Gold materials
   const solMat = new THREE.MeshStandardMaterial({ color: 0xb8913a, metalness: 0.7, roughness: 0.3, transparent: true, opacity: 0.18 });
   const wireMat = new THREE.MeshBasicMaterial({ color: 0xb8913a, wireframe: true, transparent: true, opacity: 0.08 });
   const screenMat = new THREE.MeshBasicMaterial({ color: 0x0d0c0a, transparent: true, opacity: 0.3 });
@@ -923,12 +913,10 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
 
   function createCodeBlock() {
     const group = new THREE.Group();
-    const lines = [];
     for (let i = 0; i < 3; i++) {
       const line = new THREE.Mesh(new THREE.BoxGeometry(0.8 - i * 0.15, 0.08, 0.02), solMat.clone());
       line.position.y = -i * 0.25;
       group.add(line);
-      lines.push(line);
     }
     return group;
   }
@@ -966,23 +954,15 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
   }
 
   const objects = [];
-  const creators = [createLaptop, createCodeBlock, createDatabase, createAPINode, createLaptop];
-
-  creators.forEach((creator, i) => {
+  [createLaptop, createCodeBlock, createDatabase, createAPINode, createLaptop].forEach((creator) => {
     const group = creator();
-    group.position.set(
-      (Math.random() - 0.5) * 14,
-      (Math.random() - 0.5) * 8,
-      (Math.random() - 0.5) * 4
-    );
+    group.position.set((Math.random() - 0.5) * 14, (Math.random() - 0.5) * 8, (Math.random() - 0.5) * 4);
     group.rotation.set(Math.random() * Math.PI, Math.random() * Math.PI, Math.random() * Math.PI);
     scene.add(group);
     objects.push({ group, speed: 0.002 + Math.random() * 0.004, offset: Math.random() * Math.PI * 2 });
   });
 
-  // Lights
-  const ambientLight = new THREE.AmbientLight(0xfff8e7, 0.5);
-  scene.add(ambientLight);
+  scene.add(new THREE.AmbientLight(0xfff8e7, 0.5));
   const pointLight = new THREE.PointLight(0xb8913a, 2.5, 25);
   pointLight.position.set(5, 5, 5);
   scene.add(pointLight);
@@ -1025,17 +1005,14 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
   resize();
   window.addEventListener('resize', resize);
 
-  // Floating stars
   const starsGeo = new THREE.BufferGeometry();
   const starCount = 200;
   const pos = new Float32Array(starCount * 3);
   for (let i = 0; i < starCount * 3; i++) pos[i] = (Math.random() - 0.5) * 40;
   starsGeo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
-  const starsMat = new THREE.PointsMaterial({ color: 0xd4a853, size: 0.05, transparent: true, opacity: 0.6 });
-  const stars = new THREE.Points(starsGeo, starsMat);
+  const stars = new THREE.Points(starsGeo, new THREE.PointsMaterial({ color: 0xd4a853, size: 0.05, transparent: true, opacity: 0.6 }));
   scene.add(stars);
 
-  // Gold rings
   const rings = [];
   for (let i = 0; i < 3; i++) {
     const geo = new THREE.TorusGeometry(1.5 + i * 1.2, 0.015, 8, 80);
@@ -1048,73 +1025,36 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
     rings.push(ring);
   }
 
-  let t = 0;
   (function animate() {
     requestAnimationFrame(animate);
-    t += 0.005;
     stars.rotation.y += 0.0003;
     stars.rotation.x += 0.0001;
-    rings.forEach((r, i) => {
-      r.rotation.x += 0.004 + i * 0.002;
-      r.rotation.z += 0.003;
-    });
+    rings.forEach((r, i) => { r.rotation.x += 0.004 + i * 0.002; r.rotation.z += 0.003; });
     renderer.render(scene, camera);
   })();
 })();
 
 // ═══════════════════════════════════════════
-// THREE.JS — HUMANITARIAN CANVAS
+// WORK FILTER — FIXED
+// Bug: pres-cards have .reveal class (opacity:0 + transform) and are display:none on
+// page load, so IntersectionObserver never fires for them. When switching to
+// presentations view, they become visible but stay transparent/transformed.
+// Fix: manually add 'in-view' to force the reveal animation when showing them.
 // ═══════════════════════════════════════════
-(function initHumCanvas() {
-  const canvas = document.getElementById('hum-canvas');
-  const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
-  renderer.setPixelRatio(Math.min(devicePixelRatio, 1.5));
-  const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(60, 1, 0.1, 1000);
-  camera.position.z = 8;
-
-  function resize() {
-    const w = canvas.parentElement.offsetWidth, h = canvas.parentElement.offsetHeight;
-    renderer.setSize(w, h);
-    camera.aspect = w / h;
-    camera.updateProjectionMatrix();
-  }
-  resize();
-  window.addEventListener('resize', resize);
-
-  // Subtle particles
-  const geo = new THREE.BufferGeometry();
-  const count = 150;
-  const p = new Float32Array(count * 3);
-  for (let i = 0; i < count * 3; i++) p[i] = (Math.random() - 0.5) * 30;
-  geo.setAttribute('position', new THREE.BufferAttribute(p, 3));
-  const mat = new THREE.PointsMaterial({ color: 0xb8913a, size: 0.04, transparent: true, opacity: 0.3 });
-  scene.add(new THREE.Points(geo, mat));
-
-  let t = 0;
-  (function animate() {
-    requestAnimationFrame(animate);
-    t += 0.005;
-    scene.rotation.y = t * 0.05;
-    renderer.render(scene, camera);
-  })();
-})();
-
-// WORK FILTER
 (function() {
   document.addEventListener('click', function(e) {
     var btn = e.target.closest('.filter-btn');
     if (!btn) return;
-    
+
     e.preventDefault();
     var type = btn.dataset.type;
-    
+
     // Toggle button states
     document.querySelectorAll('.filter-btn').forEach(function(b) {
       b.classList.toggle('active', b === btn);
     });
-    
-    // Toggle cards
+
+    // Toggle project cards
     document.querySelectorAll('.project-card').forEach(function(card) {
       if (type === 'projects') {
         card.classList.add('show');
@@ -1124,11 +1064,17 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
         card.classList.add('hide');
       }
     });
-    
+
+    // Toggle presentation cards + force reveal animation
     document.querySelectorAll('.pres-card').forEach(function(card) {
       if (type === 'presentations') {
         card.classList.add('show');
         card.classList.remove('hide');
+        // Force in-view so reveal animation triggers
+        // (cards were hidden on load so the IntersectionObserver never fired)
+        setTimeout(function() {
+          card.classList.add('in-view');
+        }, 30);
       } else {
         card.classList.remove('show');
         card.classList.add('hide');
@@ -1137,8 +1083,8 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
   });
 })();
 
-
-
+// ═══════════════════════════════════════════
+// AMBIENT PARTICLES
 // ═══════════════════════════════════════════
 (function initParticles() {
   const canvas = document.getElementById('particles-canvas');
@@ -1146,37 +1092,25 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
   let particles = [];
   let W, H;
 
-  function resize() {
-    W = canvas.width = innerWidth;
-    H = canvas.height = innerHeight;
-  }
+  function resize() { W = canvas.width = innerWidth; H = canvas.height = innerHeight; }
   resize();
   window.addEventListener('resize', resize);
 
   class Particle {
     constructor() { this.reset(); }
     reset() {
-      this.x = Math.random() * W;
-      this.y = Math.random() * H;
+      this.x = Math.random() * W; this.y = Math.random() * H;
       this.size = Math.random() * 1.5 + 0.5;
       this.speedX = (Math.random() - 0.5) * 0.3;
       this.speedY = -Math.random() * 0.4 - 0.1;
       this.opacity = Math.random() * 0.4 + 0.1;
-      this.life = 0;
-      this.maxLife = Math.random() * 300 + 200;
+      this.life = 0; this.maxLife = Math.random() * 300 + 200;
     }
-    update() {
-      this.x += this.speedX;
-      this.y += this.speedY;
-      this.life++;
-      if (this.life > this.maxLife) this.reset();
-    }
+    update() { this.x += this.speedX; this.y += this.speedY; this.life++; if (this.life > this.maxLife) this.reset(); }
     draw() {
       const fade = this.life < 30 ? this.life / 30 : this.life > this.maxLife - 30 ? (this.maxLife - this.life) / 30 : 1;
-      ctx.beginPath();
-      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(184,145,58,${this.opacity * fade})`;
-      ctx.fill();
+      ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(184,145,58,${this.opacity * fade})`; ctx.fill();
     }
   }
 

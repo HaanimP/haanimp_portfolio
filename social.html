@@ -16,12 +16,49 @@
 html{scroll-behavior:smooth;font-size:16px}
 body{font-family:'DM Sans',sans-serif;background:var(--paper);color:var(--ink);overflow-x:hidden;-webkit-font-smoothing:antialiased;cursor:none}
 
-/* CURSOR */
-.cursor{position:fixed;pointer-events:none;z-index:99999;transform:translate(-50%,-50%);transition:transform .1s;will-change:transform}
-.cursor::before{content:'<';font-family:'DM Mono',monospace;font-size:16px;font-weight:600;color:var(--gold);line-height:1}
-.cursor::after{content:'>';font-family:'DM Mono',monospace;font-size:16px;font-weight:600;color:var(--gold);line-height:1;position:absolute;left:12px;top:0}
-.cursor-ring{position:fixed;width:48px;height:48px;border:2px solid var(--gold);border-radius:2px;pointer-events:none;z-index:99998;transform:translate(-50%,-50%);transition:transform .15s ease,width .3s,height .3s,border-color .3s,background .3s;will-change:transform;background:rgba(184,145,58,.02)}
-body.cursor-hover .cursor-ring{width:64px;height:64px;background:rgba(184,145,58,.06)}
+/* ═══════════════════════════════════════════
+   SOCIAL MEDIA CURSOR — heart + star theme
+   ═══════════════════════════════════════════ */
+.cursor{position:fixed;pointer-events:none;z-index:99999;transform:translate(-50%,-50%);will-change:transform;transition:transform .1s}
+/* The cursor dot is a tiny gold heart */
+.cursor::before{
+  content:'♡';
+  font-size:18px;
+  color:var(--gold);
+  line-height:1;
+  display:block;
+  transition:all .2s ease;
+}
+/* On hover, heart fills */
+body.cursor-hover .cursor::before{
+  content:'♥';
+  color:var(--gold);
+  font-size:20px;
+  filter:drop-shadow(0 0 6px rgba(184,145,58,.6));
+}
+/* The trailing ring becomes a rounded circle (like an Instagram story ring) */
+.cursor-ring{
+  position:fixed;
+  width:44px;
+  height:44px;
+  border:2px solid var(--gold);
+  border-radius:50%;
+  pointer-events:none;
+  z-index:99998;
+  transform:translate(-50%,-50%);
+  transition:transform .15s ease,width .3s,height .3s,border-color .3s,background .3s,border-radius .3s;
+  will-change:transform;
+  background:rgba(184,145,58,.02);
+}
+/* On hover: ring pulses slightly and gets a gradient Instagram-style border */
+body.cursor-hover .cursor-ring{
+  width:60px;
+  height:60px;
+  border-color:transparent;
+  background:transparent;
+  outline:none;
+  box-shadow:0 0 0 2px var(--gold-light), 0 0 0 4px rgba(184,145,58,.2);
+}
 
 /* GRAIN */
 body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9990;opacity:.025;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='512' height='512' filter='url(%23n)'/%3E%3C/svg%3E");background-size:180px}
@@ -38,6 +75,15 @@ nav{position:fixed;top:0;width:100%;z-index:1000;transition:all .4s ease;backgro
 .nav-back{font-size:.63rem;letter-spacing:.16em;text-transform:uppercase;font-weight:500;color:var(--muted);text-decoration:none;display:flex;align-items:center;gap:.5rem;transition:color .3s;cursor:none}
 .nav-back:hover{color:var(--gold)}
 .nav-badge{font-family:'DM Mono',monospace;font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);background:rgba(184,145,58,.1);border:1px solid rgba(184,145,58,.25);padding:.3rem .8rem}
+
+/* TICKER WRAP */
+.ticker-wrap{width:100%;overflow:hidden;background:var(--ink);padding:1.2rem 0;border-top:1px solid rgba(255,255,255,.1);border-bottom:1px solid rgba(255,255,255,.1);position:relative;z-index:1}
+.ticker-content{display:flex;gap:3rem;animation:scroll-ticker 25s linear infinite;will-change:transform;font-size:clamp(.85rem,2vw,1.3rem)}
+.ticker-content:hover{animation-play-state:paused}
+.ticker-item{white-space:nowrap;font-family:'Cormorant Garamond',serif;font-weight:400;color:rgba(255,255,255,.5);letter-spacing:.04em;transition:color .3s;cursor:pointer}
+.ticker-item:hover{color:var(--gold-light)}
+.ticker-item::before{content:'• ';color:var(--gold-light);margin-right:.5rem}
+@keyframes scroll-ticker{0%{transform:translateX(0%)}100%{transform:translateX(-50%)}}
 
 /* SECTION DIVIDER */
 .section-divider{height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:.3}
@@ -75,9 +121,7 @@ nav{position:fixed;top:0;width:100%;z-index:1000;transition:all .4s ease;backgro
 .tag{font-family:'DM Mono',monospace;font-size:.58rem;letter-spacing:.1em;padding:.22rem .65rem;border:1px solid var(--rule);color:var(--muted);text-transform:uppercase;transition:all .3s;cursor:none;display:inline-block}
 .tag:hover{border-color:var(--gold);color:var(--gold)}
 
-/* ══════════════════════════════
-   HERO
-══════════════════════════════ */
+/* HERO */
 .hero{min-height:100vh;padding-top:68px;display:grid;grid-template-columns:1fr 1fr;position:relative;overflow:hidden;background:var(--dark)}
 .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 30% 60%,rgba(184,145,58,.1) 0%,transparent 60%);pointer-events:none;z-index:0}
 .hero-left{display:flex;flex-direction:column;justify-content:center;padding:7rem 5rem 7rem 6rem;border-right:1px solid rgba(255,255,255,.07);position:relative;z-index:1}
@@ -101,15 +145,12 @@ nav{position:fixed;top:0;width:100%;z-index:1000;transition:all .4s ease;backgro
 .hero-scroll-line::after{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:var(--gold);animation:scanLine 2s ease infinite}
 @keyframes scanLine{0%{left:-100%}100%{left:100%}}
 @keyframes fadeSlideUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
-/* floating orbs */
 .float-orb{position:absolute;border-radius:50%;pointer-events:none;filter:blur(1px)}
 .float-orb-1{width:320px;height:320px;background:radial-gradient(circle,rgba(184,145,58,.1),transparent 70%);top:10%;right:-100px;animation:floatOrb 8s ease-in-out infinite}
 .float-orb-2{width:200px;height:200px;background:radial-gradient(circle,rgba(184,145,58,.07),transparent 70%);bottom:20%;left:5%;animation:floatOrb 6s ease-in-out infinite reverse}
 @keyframes floatOrb{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-30px) rotate(180deg)}}
 
-/* ══════════════════════════════
-   ABOUT / INTRO
-══════════════════════════════ */
+/* ABOUT */
 .about-grid{display:grid;grid-template-columns:1fr 1.7fr;gap:7rem;align-items:start;margin-top:5rem}
 .stat-cluster{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule);border:1px solid var(--rule)}
 .stat-cell{padding:2.8rem 1.5rem;background:var(--white);text-align:center;transition:all .4s cubic-bezier(0.23,1,0.32,1);position:relative;overflow:hidden;cursor:none}
@@ -123,9 +164,7 @@ nav{position:fixed;top:0;width:100%;z-index:1000;transition:all .4s ease;backgro
 .cert-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(184,145,58,.08);border:1px solid rgba(184,145,58,.25);color:var(--gold);padding:.5rem 1.1rem;font-size:.67rem;letter-spacing:.1em;font-weight:500;transition:all .4s cubic-bezier(0.23,1,0.32,1)}
 .cert-badge:hover{background:rgba(184,145,58,.15);border-color:var(--gold);transform:perspective(400px) rotateX(-10deg) translateY(-3px);box-shadow:0 10px 24px rgba(184,145,58,.2)}
 
-/* ══════════════════════════════
-   SERVICES
-══════════════════════════════ */
+/* SERVICES */
 .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:5rem;border:1px solid var(--rule)}
 .service-cell{padding:2.8rem;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);transition:all .5s cubic-bezier(0.23,1,0.32,1);position:relative;overflow:hidden;cursor:none}
 .service-cell::after{content:attr(data-num);position:absolute;top:1rem;right:1.5rem;font-family:'Cormorant Garamond',serif;font-size:4rem;font-weight:300;color:rgba(184,145,58,.06);line-height:1;transition:all .4s}
@@ -137,18 +176,27 @@ nav{position:fixed;top:0;width:100%;z-index:1000;transition:all .4s ease;backgro
 .service-cell:hover .service-ico{transform:perspective(400px) rotateY(-20deg) scale(1.1)}
 .service-cell h3{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:500;margin-bottom:.8rem}
 .service-cell p{font-size:.82rem;color:var(--muted);line-height:1.72;margin-bottom:1.3rem;font-weight:300}
-.service-price{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.1em;color:var(--gold);font-weight:400;margin-top:auto;padding-top:.8rem;border-top:1px solid var(--rule-2)}
 
-/* ══════════════════════════════
-   CONTENT GALLERY (what I'd post)
-══════════════════════════════ */
+/* ═══════════════════════════════════════════
+   CONTENT GALLERY — ALL EQUAL SIZE BLOCKS
+   Removed .wide and .tall — every item is
+   the same aspect-ratio:1 uniform square.
+   ═══════════════════════════════════════════ */
 .gallery-filters{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:3.5rem}
 .filter-btn{font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;padding:.55rem 1.2rem;border:1px solid var(--rule);background:transparent;color:var(--muted);cursor:none;transition:all .3s}
 .filter-btn.active,.filter-btn:hover{border-color:var(--gold);color:var(--gold);background:rgba(184,145,58,.06)}
 .gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
-.gallery-item{position:relative;overflow:hidden;cursor:none;aspect-ratio:1;transition:all .4s cubic-bezier(0.23,1,0.32,1)}
-.gallery-item.wide{grid-column:span 2}
-.gallery-item.tall{grid-row:span 2}
+/* All items same size — no .wide / .tall overrides */
+.gallery-item{
+  position:relative;
+  overflow:hidden;
+  cursor:none;
+  aspect-ratio:3/4;
+  transition:all .4s cubic-bezier(0.23,1,0.32,1);
+  /* Remove any previously set grid-column/row spans */
+  grid-column:unset!important;
+  grid-row:unset!important;
+}
 .gallery-item:hover{transform:perspective(800px) rotateX(-5deg) rotateY(3deg) translateY(-6px);box-shadow:0 24px 48px rgba(13,12,10,.18)}
 .gallery-item-inner{width:100%;height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1rem;font-size:.8rem;color:rgba(255,255,255,.7);font-weight:300;transition:transform .4s ease;position:relative}
 .gallery-item:hover .gallery-item-inner{transform:scale(1.03)}
@@ -158,15 +206,11 @@ nav{position:fixed;top:0;width:100%;z-index:1000;transition:all .4s ease;backgro
 .gallery-item[data-type="video"] .gallery-type-tag{background:rgba(184,145,58,.5);color:white}
 .gallery-item[data-type="reel"] .gallery-type-tag{background:linear-gradient(135deg,rgba(64,93,230,.7),rgba(131,58,180,.7));color:white}
 .gallery-item.hidden{display:none}
-
-/* mock post designs */
-.post-mockup{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:1.5rem;text-align:center;position:relative}
+.post-mockup{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:1.2rem;text-align:center;position:relative}
 .post-icon{font-size:2.5rem;margin-bottom:.8rem;opacity:.6}
 .post-label{font-size:.72rem;letter-spacing:.08em;opacity:.8;font-weight:300;max-width:120px;line-height:1.4}
 
-/* ══════════════════════════════
-   MOCK INSTAGRAM FEEDS
-══════════════════════════════ */
+/* FEEDS */
 .feeds-section{padding:9rem 0}
 .feeds-tabs{display:flex;gap:0;border:1px solid var(--rule);width:fit-content;margin:3.5rem 0 4rem}
 .feed-tab{font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;padding:.7rem 1.8rem;border:none;background:transparent;color:var(--muted);cursor:none;transition:all .3s;border-right:1px solid var(--rule)}
@@ -190,15 +234,13 @@ nav{position:fixed;top:0;width:100%;z-index:1000;transition:all .4s ease;backgro
 .feed-post:hover{transform:scale(1.02);z-index:2;box-shadow:0 8px 24px rgba(13,12,10,.2)}
 .feed-post-inner{width:100%;height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:.5rem;font-size:.65rem;color:rgba(255,255,255,.7);font-weight:300;transition:opacity .3s}
 .feed-post:hover .feed-post-inner{opacity:.85}
-.feed-post-overlay{position:absolute;inset:0;background:rgba(0,0,0,.35);opacity:0;transition:opacity .3s;display:flex;align-items:center;justify-content:center;gap.8rem;font-size:.8rem;color:white}
+.feed-post-overlay{position:absolute;inset:0;background:rgba(0,0,0,.35);opacity:0;transition:opacity .3s;display:flex;align-items:center;justify-content:center;gap:.8rem;font-size:.8rem;color:white}
 .feed-post:hover .feed-post-overlay{opacity:1}
 .feed-post-emoji{font-size:1.8rem}
 .feed-post-caption{font-size:.6rem;opacity:.8;text-align:center;max-width:80px;line-height:1.3}
 .feed-note{margin-top:1.5rem;padding:1.2rem 1.5rem;background:rgba(184,145,58,.06);border-left:2px solid rgba(184,145,58,.4);font-size:.8rem;color:var(--muted);line-height:1.7;font-weight:300;font-style:italic}
 
-/* ══════════════════════════════
-   PROJECT TIMELINE
-══════════════════════════════ */
+/* TIMELINE */
 .timeline-section{background:var(--dark);padding:9rem 0;position:relative;overflow:hidden}
 .timeline-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 60% 40%,rgba(184,145,58,.07) 0%,transparent 60%);pointer-events:none}
 .tl-track{position:relative;margin-top:5rem;padding-left:3rem}
@@ -215,9 +257,7 @@ nav{position:fixed;top:0;width:100%;z-index:1000;transition:all .4s ease;backgro
 .tl-step-action a:hover{border-color:var(--gold);gap:.8rem}
 .tl-step-tag{display:inline-flex;align-items:center;gap:.4rem;font-family:'DM Mono',monospace;font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.3);border:1px solid rgba(255,255,255,.1);padding:.3rem .7rem;margin-top:.8rem}
 
-/* ══════════════════════════════
-   LET'S WORK TOGETHER
-══════════════════════════════ */
+/* CTA */
 .cta-section{padding:10rem 0;background:var(--paper-2);position:relative;overflow:hidden;text-align:center}
 .cta-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,rgba(184,145,58,.08) 0%,transparent 65%);pointer-events:none}
 .cta-inner{max-width:760px;margin:0 auto;position:relative;z-index:1}
@@ -253,7 +293,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.4);padding:5rem 0 2.5rem}
   .services-grid{grid-template-columns:repeat(2,1fr)}
   .service-cell:nth-child(3n){border-right:1px solid var(--rule)}
   .service-cell:nth-child(2n){border-right:none}
-  .gallery-grid{grid-template-columns:repeat(2,1fr)}
+  .gallery-grid{grid-template-columns:repeat(3,1fr)}
   .feed-layout{grid-template-columns:1fr;gap:3rem}
 }
 @media(max-width:768px){
@@ -261,12 +301,8 @@ footer{background:var(--ink);color:rgba(255,255,255,.4);padding:5rem 0 2.5rem}
   .section{padding:6rem 0}
   .hero-left{padding:4rem 1.5rem}
   .services-grid{grid-template-columns:1fr}
-  .service-cell:nth-child(3n){border-right:1px solid var(--rule)}
-  .service-cell:nth-child(2n){border-right:1px solid var(--rule)}
   .service-cell{border-right:none!important}
   .gallery-grid{grid-template-columns:repeat(2,1fr)}
-  .gallery-item.wide{grid-column:span 1}
-  .gallery-item.tall{grid-row:span 1}
   .stat-cluster{grid-template-columns:1fr}
   .nav-container{padding:0 1.5rem}
   .tl-track{padding-left:2rem}
@@ -297,9 +333,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.4);padding:5rem 0 2.5rem}
   </div>
 </nav>
 
-<!-- ══════════════════════════════
-     HERO
-══════════════════════════════ -->
+<!-- HERO -->
 <section id="home" class="hero">
   <div class="float-orb float-orb-1"></div>
   <div class="float-orb float-orb-2"></div>
@@ -327,11 +361,31 @@ footer{background:var(--ink);color:rgba(255,255,255,.4);padding:5rem 0 2.5rem}
   </div>
 </section>
 
+<!-- TICKER WRAP — social media themed -->
+<div class="ticker-wrap">
+  <div class="ticker-content">
+    <span class="ticker-item">Free Palestine</span>
+    <span class="ticker-item">Abolish ICE</span>
+    <span class="ticker-item">End Gender-Based Violence</span>
+    <span class="ticker-item">Support Sudan</span>
+    <span class="ticker-item">Support Congo</span>
+    <span class="ticker-item">Save Our Water</span>
+    <span class="ticker-item">Release the Epstein Files</span>
+    <span class="ticker-item">Free Palestine</span>
+    <span class="ticker-item">Abolish ICE</span>
+    <span class="ticker-item">Brand Identity</span>
+    <span class="ticker-item">Instagram Growth</span>
+    <span class="ticker-item">Reels &amp; Short-Form Video</span>
+    <span class="ticker-item">Community Management</span>
+    <span class="ticker-item">HubSpot Certified</span>
+    <span class="ticker-item">Social Media Analytics</span>
+    <span class="ticker-item">The Three Stars Agency</span>
+  </div>
+</div>
+
 <div class="section-divider"></div>
 
-<!-- ══════════════════════════════
-     ABOUT
-══════════════════════════════ -->
+<!-- ABOUT -->
 <section id="about" class="section alt">
   <div class="wrap">
     <p class="section-label reveal">About</p>
@@ -359,9 +413,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.4);padding:5rem 0 2.5rem}
 
 <div class="section-divider"></div>
 
-<!-- ══════════════════════════════
-     SERVICES
-══════════════════════════════ -->
+<!-- SERVICES -->
 <section id="services" class="section">
   <div class="wrap">
     <p class="section-label reveal">Services</p>
@@ -410,9 +462,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.4);padding:5rem 0 2.5rem}
 
 <div class="section-divider"></div>
 
-<!-- ══════════════════════════════
-     CONTENT GALLERY — what I'd post
-══════════════════════════════ -->
+<!-- CONTENT GALLERY -->
 <section id="content" class="section alt">
   <div class="wrap">
     <p class="section-label reveal">Content Direction</p>
@@ -432,118 +482,48 @@ footer{background:var(--ink);color:rgba(255,255,255,.4);padding:5rem 0 2.5rem}
       <div class="gallery-grid reveal">
         <!-- Static Posts -->
         <div class="gallery-item" data-type="static" style="background:linear-gradient(135deg,#1a1a2e,#16213e)">
-          <div class="gallery-item-inner">
-            <div class="gallery-type-tag">Static Post</div>
-            <div class="post-mockup">
-              <div style="font-size:1.8rem;margin-bottom:.5rem">☁️</div>
-              <div style="font-family:'Cormorant Garamond',serif;font-size:1rem;color:rgba(255,255,255,.8);font-style:italic;text-align:center;line-height:1.4">"Behind every great brand is a story worth telling."</div>
-              <div style="font-family:'DM Mono',monospace;font-size:.55rem;color:rgba(255,255,255,.3);margin-top:.8rem;letter-spacing:.1em">BRAND QUOTE POST</div>
-            </div>
-          </div>
-          <div class="gallery-caption">Brand quote post clean typography on a moody gradient for high shareability and saves.</div>
+          <img src="img/content direction/brand quote.jpg" alt="Brand quote post" style="width:100%;height:100%;object-fit:cover">
+          <div class="gallery-caption">Brand quote post — clean typography on a moody gradient for high shareability and saves.</div>
         </div>
 
-        <div class="gallery-item wide" data-type="carousel" style="background:linear-gradient(135deg,#b8913a,#2d1f0a)">
-          <div class="gallery-item-inner">
-            <div class="gallery-type-tag">Carousel</div>
-            <div class="post-mockup">
-              <div style="font-size:1.6rem;margin-bottom:.8rem">📱</div>
-              <div style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:white;font-style:italic;text-align:center">"5 Signs You Need a Social Media Manager"</div>
-              <div style="font-size:.7rem;color:rgba(255,255,255,.6);margin-top:.6rem">Swipe → → → →</div>
-              <div style="display:flex;gap:.4rem;margin-top:.8rem">
-                <div style="width:8px;height:8px;border-radius:50%;background:white;opacity:.9"></div>
-                <div style="width:8px;height:8px;border-radius:50%;background:white;opacity:.4"></div>
-                <div style="width:8px;height:8px;border-radius:50%;background:white;opacity:.4"></div>
-                <div style="width:8px;height:8px;border-radius:50%;background:white;opacity:.4"></div>
-                <div style="width:8px;height:8px;border-radius:50%;background:white;opacity:.4"></div>
-              </div>
-            </div>
-          </div>
+        <div class="gallery-item" data-type="carousel" style="background:linear-gradient(135deg,#b8913a,#2d1f0a)">
+          <img src="img/content direction/social media manager.png" alt="5 Signs You Need a Social Media Manager" style="width:100%;height:100%;object-fit:cover">
           <div class="gallery-caption">Educational carousel drives saves and shares. Each slide delivers one tip with a branded layout.</div>
         </div>
 
         <div class="gallery-item" data-type="reel" style="background:linear-gradient(135deg,#405de6,#833ab4,#e1306c)">
-          <div class="gallery-item-inner">
-            <div class="gallery-type-tag">Reel</div>
-            <div class="post-mockup">
-              <div style="font-size:2rem;margin-bottom:.6rem">▶</div>
-              <div style="font-family:'DM Mono',monospace;font-size:.65rem;color:rgba(255,255,255,.9);letter-spacing:.08em;text-align:center">DAY IN THE LIFE<br><span style="color:rgba(255,255,255,.5);font-size:.55rem">trending audio ♪</span></div>
-              <div style="font-size:.65rem;color:rgba(255,255,255,.6);margin-top:.6rem;text-align:center">"POV: Your brand finally has a strategy"</div>
-            </div>
+          <div style="position:relative;width:100%;height:100%">
+            <video src="img/content direction/day in life.mp4" autoplay muted loop style="width:100%;height:100%;object-fit:cover"></video>
+            <div style="position:absolute;top:0;left:0;right:0;background:rgba(0,0,0,.6);padding:.4rem .6rem;font-family:'DM Mono',monospace;font-size:.45rem;color:rgba(255,255,255,.8);letter-spacing:.08em;text-align:center">✦ AI GENERATED — PLACEHOLDER ✦</div>
           </div>
-          <div class="gallery-caption">Trending Reel concept uses viral audio paired with relatable brand messaging to boost reach.</div>
+          <div class="gallery-caption">Trending Reel concept — uses viral audio paired with relatable brand messaging to boost reach.</div>
         </div>
 
         <div class="gallery-item" data-type="story" style="background:linear-gradient(180deg,#0d0c0a,#2d1f0a)">
-          <div class="gallery-item-inner">
-            <div class="gallery-type-tag">Story</div>
-            <div class="post-mockup">
-              <div style="font-size:1.6rem;margin-bottom:.5rem">📊</div>
-              <div style="font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--gold-light);font-style:italic;text-align:center">This or that?</div>
-              <div style="display:flex;gap:.8rem;margin-top:.8rem">
-                <div style="background:rgba(184,145,58,.3);border:1px solid var(--gold);padding:.4rem 1rem;font-size:.65rem;color:white;border-radius:2px">Option A</div>
-                <div style="background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);padding:.4rem 1rem;font-size:.65rem;color:white;border-radius:2px">Option B</div>
-              </div>
-            </div>
-          </div>
+          <img src="img/content direction/this or that poll.png" alt="This or that poll" style="width:100%;height:100%;object-fit:cover">
           <div class="gallery-caption">Interactive story poll boosts story views and tells the algorithm your audience is engaged.</div>
         </div>
 
-        <div class="gallery-item tall" data-type="static" style="background:linear-gradient(160deg,#f6f1e9,#ede7da)">
-          <div class="gallery-item-inner">
-            <div class="gallery-type-tag" style="background:rgba(13,12,10,.5)">Static Post</div>
-            <div class="post-mockup">
-              <div style="width:60px;height:60px;background:var(--gold);margin:0 auto .8rem;display:flex;align-items:center;justify-content:center;font-size:1.5rem">🌟</div>
-              <div style="font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--ink);font-weight:500;text-align:center">Product Spotlight</div>
-              <div style="font-size:.7rem;color:var(--muted);margin-top:.5rem;text-align:center;line-height:1.5">Clean product feature post with strong CTA and minimal copy</div>
-              <div style="font-family:'DM Mono',monospace;font-size:.55rem;color:var(--gold);margin-top:.8rem;letter-spacing:.12em">SHOP NOW →</div>
-            </div>
-          </div>
-          <div class="gallery-caption">Light mode product spotlight premium aesthetic, drives profile clicks and link in bio visits.</div>
+        <div class="gallery-item" data-type="static" style="background:linear-gradient(160deg,#f6f1e9,#ede7da)">
+          <img src="img/content direction/product spotlight.jpg" alt="Product spotlight" style="width:100%;height:100%;object-fit:cover">
+          <div class="gallery-caption">Light mode product spotlight — premium aesthetic, drives profile clicks and link in bio visits.</div>
         </div>
 
         <div class="gallery-item" data-type="video" style="background:linear-gradient(135deg,#0f2027,#203a43,#2c5364)">
-          <div class="gallery-item-inner">
-            <div class="gallery-type-tag">Video</div>
-            <div class="post-mockup">
-              <div style="font-size:2rem;margin-bottom:.5rem">🎬</div>
-              <div style="font-family:'DM Sans',sans-serif;font-size:.72rem;color:rgba(255,255,255,.8);text-align:center;line-height:1.5">Behind the scenes<br><span style="color:rgba(255,255,255,.45);font-size:.65rem">Process / Brand Story</span></div>
-            </div>
+          <div style="position:relative;width:100%;height:100%">
+            <video src="img/content direction/behind the scenes.mp4" autoplay muted loop style="width:100%;height:100%;object-fit:cover"></video>
+            <div style="position:absolute;top:0;left:0;right:0;background:rgba(0,0,0,.6);padding:.4rem .6rem;font-family:'DM Mono',monospace;font-size:.45rem;color:rgba(255,255,255,.8);letter-spacing:.08em;text-align:center">✦ AI GENERATED — PLACEHOLDER ✦</div>
           </div>
           <div class="gallery-caption">Behind-the-scenes video humanises your brand, builds trust, and drives authentic engagement.</div>
         </div>
 
         <div class="gallery-item" data-type="carousel" style="background:linear-gradient(135deg,#1a0533,#3d1060)">
-          <div class="gallery-item-inner">
-            <div class="gallery-type-tag">Carousel</div>
-            <div class="post-mockup">
-              <div style="font-size:1.5rem;margin-bottom:.6rem">✨</div>
-              <div style="font-family:'Cormorant Garamond',serif;font-size:.95rem;color:rgba(255,255,255,.9);font-style:italic;text-align:center;line-height:1.5">"Before &amp; After:<br>Your Feed Transformation"</div>
-              <div style="font-size:.65rem;color:rgba(255,255,255,.5);margin-top:.6rem">3-slide carousel</div>
-            </div>
-          </div>
+          <img src="img/content direction/transformation post.png" alt="Before and after transformation" style="width:100%;height:100%;object-fit:cover">
           <div class="gallery-caption">Before & after carousel visually demonstrates value and positions you as a trusted expert.</div>
         </div>
 
-        <div class="gallery-item" data-type="reel" style="background:linear-gradient(135deg,#0a4f3c,#0d7a5e)">
-          <div class="gallery-item-inner">
-            <div class="gallery-type-tag">Reel</div>
-            <div class="post-mockup">
-              <div style="font-size:1.8rem;margin-bottom:.6rem">🎵</div>
-              <div style="font-family:'DM Mono',monospace;font-size:.65rem;color:rgba(255,255,255,.9);letter-spacing:.08em;text-align:center">TRENDING AUDIO<br><span style="color:rgba(255,255,255,.5);font-size:.55rem">brand tip transition</span></div>
-            </div>
-          </div>
-          <div class="gallery-caption">Trending audio Reel with smooth text transitions algorithm-friendly format for organic reach.</div>
-        </div>
-
         <div class="gallery-item" data-type="story" style="background:linear-gradient(135deg,#b8913a,#7a5c1e)">
-          <div class="gallery-item-inner">
-            <div class="gallery-type-tag">Story</div>
-            <div class="post-mockup">
-              <div style="font-size:1.6rem;margin-bottom:.5rem">💬</div>
-              <div style="font-family:'DM Sans',sans-serif;font-size:.72rem;color:rgba(255,255,255,.9);text-align:center;line-height:1.5">Ask me anything<br><span style="font-size:.62rem;color:rgba(255,255,255,.5)">Q&amp;A Story Sticker</span></div>
-            </div>
-          </div>
+          <img src="img/content direction/Q and A.png" alt="Ask me anything Q&A story" style="width:100%;height:100%;object-fit:cover">
           <div class="gallery-caption">Q&A story drives replies, boosts engagement score, and creates community dialogue.</div>
         </div>
       </div>
@@ -553,9 +533,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.4);padding:5rem 0 2.5rem}
 
 <div class="section-divider"></div>
 
-<!-- ══════════════════════════════
-     MOCK INSTAGRAM FEEDS
-══════════════════════════════ -->
+<!-- FEED MOCKUPS -->
 <section id="feeds" class="feeds-section">
   <div class="wrap">
     <p class="section-label reveal">Feed Mockups</p>
@@ -597,15 +575,15 @@ footer{background:var(--ink);color:rgba(255,255,255,.4);padding:5rem 0 2.5rem}
         </div>
         <div class="reveal-right">
           <div class="feed-grid">
-            <div class="feed-post" style="background:linear-gradient(135deg,#f5e6cc,#e8c785)"><div class="feed-post-inner"><div class="feed-post-emoji">🍫</div><div class="feed-post-caption">Brownie close-up shot</div></div><div class="feed-post-overlay">❤️ 234 &nbsp; 💬 18</div></div>
-            <div class="feed-post" style="background:linear-gradient(135deg,#3d2008,#6b3a0f)"><div class="feed-post-inner"><div class="feed-post-emoji">▶️</div><div class="feed-post-caption">Baking Reel trending audio</div></div><div class="feed-post-overlay">❤️ 1.2K &nbsp; 💬 67</div></div>
-            <div class="feed-post" style="background:linear-gradient(135deg,#fdf0e0,#f5d9a8)"><div class="feed-post-inner"><div class="feed-post-emoji">🎂</div><div class="feed-post-caption">Custom cake order</div></div><div class="feed-post-overlay">❤️ 456 &nbsp; 💬 31</div></div>
-            <div class="feed-post" style="background:linear-gradient(135deg,#f9e4b7,#c8963a)"><div class="feed-post-inner"><div class="feed-post-emoji">✨</div><div class="feed-post-caption">Seasonal special post</div></div><div class="feed-post-overlay">❤️ 312 &nbsp; 💬 22</div></div>
-            <div class="feed-post" style="background:linear-gradient(135deg,#2d1608,#4a2610)"><div class="feed-post-inner"><div class="feed-post-emoji">🫶</div><div class="feed-post-caption">Customer review graphic</div></div><div class="feed-post-overlay">❤️ 189 &nbsp; 💬 14</div></div>
-            <div class="feed-post" style="background:linear-gradient(135deg,#faf3e8,#eddfc5)"><div class="feed-post-inner"><div class="feed-post-emoji">🧁</div><div class="feed-post-caption">New menu item drop</div></div><div class="feed-post-overlay">❤️ 678 &nbsp; 💬 54</div></div>
-            <div class="feed-post" style="background:linear-gradient(135deg,#6b3a0f,#3d2008)"><div class="feed-post-inner"><div class="feed-post-emoji">▶️</div><div class="feed-post-caption">Packaging & unboxing Reel</div></div><div class="feed-post-overlay">❤️ 891 &nbsp; 💬 43</div></div>
-            <div class="feed-post" style="background:linear-gradient(135deg,#f5e6cc,#e8c785)"><div class="feed-post-inner"><div class="feed-post-emoji">📦</div><div class="feed-post-caption">Order preview carousel</div></div><div class="feed-post-overlay">❤️ 267 &nbsp; 💬 19</div></div>
-            <div class="feed-post" style="background:linear-gradient(135deg,#fdf0e0,#f5d9a8)"><div class="feed-post-inner"><div class="feed-post-emoji">💛</div><div class="feed-post-caption">Brand quote post</div></div><div class="feed-post-overlay">❤️ 144 &nbsp; 💬 9</div></div>
+            <div class="feed-post" style="background:linear-gradient(135deg,#f5e6cc,#e8c785);overflow:hidden"><img src="img/bakery/brownies.jpg" alt="Brownie close-up shot" style="width:100%;height:100%;object-fit:cover"><div class="feed-post-overlay">❤️ 234 &nbsp; 💬 18</div></div>
+            <div class="feed-post" style="background:linear-gradient(135deg,#3d2008,#6b3a0f);overflow:hidden"><div style="position:relative;width:100%;height:100%"><video src="img/bakery/baking.mp4" autoplay muted loop style="width:100%;height:100%;object-fit:cover"></video><div style="position:absolute;top:0;left:0;right:0;background:rgba(0,0,0,.6);padding:.25rem .4rem;font-family:'DM Mono',monospace;font-size:.35rem;color:rgba(255,255,255,.8);letter-spacing:.08em;text-align:center">✦ AI GENERATED ✦</div></div><div class="feed-post-overlay">❤️ 1.2K &nbsp; 💬 67</div></div>
+            <div class="feed-post" style="background:linear-gradient(135deg,#fdf0e0,#f5d9a8);overflow:hidden"><img src="img/bakery/custom cake.jpg" alt="Custom cake order" style="width:100%;height:100%;object-fit:cover"><div class="feed-post-overlay">❤️ 456 &nbsp; 💬 31</div></div>
+            <div class="feed-post" style="background:linear-gradient(135deg,#f9e4b7,#c8963a);overflow:hidden"><img src="img/bakery/Seasonal Special.png" alt="Seasonal special post" style="width:100%;height:100%;object-fit:cover"><div class="feed-post-overlay">❤️ 312 &nbsp; 💬 22</div></div>
+            <div class="feed-post" style="background:linear-gradient(135deg,#2d1608,#4a2610);overflow:hidden"><img src="img/bakery/review graphic.jpg" alt="Customer review graphic" style="width:100%;height:100%;object-fit:cover"><div class="feed-post-overlay">❤️ 189 &nbsp; 💬 14</div></div>
+            <div class="feed-post" style="background:linear-gradient(135deg,#faf3e8,#eddfc5);overflow:hidden"><img src="img/bakery/new menu item.png" alt="New menu item drop" style="width:100%;height:100%;object-fit:cover"><div class="feed-post-overlay">❤️ 678 &nbsp; 💬 54</div></div>
+            <div class="feed-post" style="background:linear-gradient(135deg,#6b3a0f,#3d2008);overflow:hidden"><div style="position:relative;width:100%;height:100%"><video src="img/bakery/unboxing.mp4" autoplay muted loop style="width:100%;height:100%;object-fit:cover"></video><div style="position:absolute;top:0;left:0;right:0;background:rgba(0,0,0,.6);padding:.25rem .4rem;font-family:'DM Mono',monospace;font-size:.35rem;color:rgba(255,255,255,.8);letter-spacing:.08em;text-align:center">✦ AI GENERATED ✦</div></div><div class="feed-post-overlay">❤️ 891 &nbsp; 💬 43</div></div>
+            <div class="feed-post" style="background:linear-gradient(135deg,#f5e6cc,#e8c785);overflow:hidden"><img src="img/bakery/Order Preview.png" alt="Order preview carousel" style="width:100%;height:100%;object-fit:cover"><div class="feed-post-overlay">❤️ 267 &nbsp; 💬 19</div></div>
+            <div class="feed-post" style="background:linear-gradient(135deg,#fdf0e0,#f5d9a8);overflow:hidden"><img src="img/bakery/Bakery quote.png" alt="Brand quote post" style="width:100%;height:100%;object-fit:cover"><div class="feed-post-overlay">❤️ 144 &nbsp; 💬 9</div></div>
           </div>
         </div>
       </div>
@@ -613,109 +591,61 @@ footer{background:var(--ink);color:rgba(255,255,255,.4);padding:5rem 0 2.5rem}
 
     <!-- JEWELLERY -->
     <div class="feed-panel" id="feed-jewellery">
-      <div class="feed-layout">
-        <div class="reveal-left">
-          <div class="feed-profile">
-            <div class="feed-profile-pic" style="background:linear-gradient(135deg,#1a1a1a,#333)">💍</div>
-            <div>
-              <div style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:500">@yourjewels</div>
-              <div class="feed-handle">handcrafted fine jewellery · est. 2022</div>
-            </div>
-            <div class="feed-stats">
-              <div><span class="feed-stat-num">186</span><span class="feed-stat-label">Posts</span></div>
-              <div><span class="feed-stat-num">5.8K</span><span class="feed-stat-label">Followers</span></div>
-              <div><span class="feed-stat-num">412</span><span class="feed-stat-label">Following</span></div>
-            </div>
-            <p class="feed-bio">Wearable art for the intentional woman ✦ Handcrafted pieces · Made to last · Shop via link</p>
-            <div class="feed-content-type">
-              <span class="tag">Product Shots</span>
-              <span class="tag">Styled Flats</span>
-              <span class="tag">Reels</span>
-            </div>
-          </div>
-          <div class="feed-note">
-            <strong style="display:block;margin-bottom:.4rem;color:var(--ink)">Strategy note:</strong>
-            Dark, editorial tones alternating with clean white product flats. Consistent marble/black/gold colour palette. Content mix of close-up product shots, styling Reels, new arrivals, and customer styling reposts. 3–4x per week.
-          </div>
-        </div>
-        <div class="reveal-right">
-          <div class="feed-grid">
-            <div class="feed-post" style="background:linear-gradient(135deg,#0d0d0d,#1a1a1a)"><div class="feed-post-inner"><div class="feed-post-emoji">💍</div><div class="feed-post-caption">Dark editorial ring shot</div></div><div class="feed-post-overlay">❤️ 891 &nbsp; 💬 43</div></div>
-            <div class="feed-post" style="background:linear-gradient(135deg,#f9f6f0,#ede8e0)"><div class="feed-post-inner"><div class="feed-post-emoji">✨</div><div class="feed-post-caption" style="color:var(--ink)">Clean white flat lay</div></div><div class="feed-post-overlay">❤️ 1.1K &nbsp; 💬 67</div></div>
-            <div class="feed-post" style="background:linear-gradient(135deg,#b8913a,#7a5c1e)"><div class="feed-post-inner"><div class="feed-post-emoji">▶️</div><div class="feed-post-caption">Reel piece in motion</div></div><div class="feed-post-overlay">❤️ 2.3K &nbsp; 💬 112</div></div>
-            <div class="feed-post" style="background:linear-gradient(135deg,#1a1a1a,#0d0d0d)"><div class="feed-post-inner"><div class="feed-post-emoji">🫧</div><div class="feed-post-caption">New collection drop</div></div><div class="feed-post-overlay">❤️ 567 &nbsp; 💬 38</div></div>
-            <div class="feed-post" style="background:linear-gradient(135deg,#f9f6f0,#ede8e0)"><div class="feed-post-inner"><div class="feed-post-emoji">💎</div><div class="feed-post-caption" style="color:var(--ink)">Styling carousel</div></div><div class="feed-post-overlay">❤️ 432 &nbsp; 💬 27</div></div>
-            <div class="feed-post" style="background:linear-gradient(135deg,#d4a853,#9c7228)"><div class="feed-post-inner"><div class="feed-post-emoji">🤍</div><div class="feed-post-caption">Customer testimonial graphic</div></div><div class="feed-post-overlay">❤️ 298 &nbsp; 💬 21</div></div>
-            <div class="feed-post" style="background:linear-gradient(135deg,#0d0d0d,#1a1a1a)"><div class="feed-post-inner"><div class="feed-post-emoji">▶️</div><div class="feed-post-caption">Process Reel crafting</div></div><div class="feed-post-overlay">❤️ 1.8K &nbsp; 💬 89</div></div>
-            <div class="feed-post" style="background:linear-gradient(135deg,#f9f6f0,#ede8e0)"><div class="feed-post-inner"><div class="feed-post-emoji">📦</div><div class="feed-post-caption" style="color:var(--ink)">Packaging reveal</div></div><div class="feed-post-overlay">❤️ 743 &nbsp; 💬 52</div></div>
-            <div class="feed-post" style="background:linear-gradient(135deg,#b8913a,#7a5c1e)"><div class="feed-post-inner"><div class="feed-post-emoji">💫</div><div class="feed-post-caption">Brand quote editorial</div></div><div class="feed-post-overlay">❤️ 334 &nbsp; 💬 16</div></div>
+      <div style="display:flex;align-items:center;justify-content:center;min-height:400px;text-align:center">
+        <div>
+          <div style="font-size:3rem;margin-bottom:1.5rem;animation:float 3s ease-in-out infinite">💍</div>
+          <h3 style="font-family:'Cormorant Garamond',serif;font-size:2rem;color:var(--ink);margin-bottom:.5rem">Coming <em style="color:var(--gold)">Soon</em></h3>
+          <p style="font-size:.95rem;color:var(--muted);margin-bottom:2rem;max-width:400px;line-height:1.8">We're curating the perfect feed aesthetic for this jewellery brand. Check back soon to see the final mockup!</p>
+          <div style="display:flex;gap:.4rem;justify-content:center;margin-top:1.5rem">
+            <div style="width:8px;height:8px;border-radius:50%;background:var(--gold);animation:pulse 1.5s ease-in-out infinite"></div>
+            <div style="width:8px;height:8px;border-radius:50%;background:var(--gold);animation:pulse 1.5s ease-in-out infinite;animation-delay:.3s"></div>
+            <div style="width:8px;height:8px;border-radius:50%;background:var(--gold);animation:pulse 1.5s ease-in-out infinite;animation-delay:.6s"></div>
           </div>
         </div>
       </div>
+      <style>
+        @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+        @keyframes pulse{0%,100%{opacity:.3}50%{opacity:1}}
+      </style>
     </div>
 
     <!-- BOOKSTORE -->
     <div class="feed-panel" id="feed-bookstore">
-      <div class="feed-layout">
-        <div class="reveal-left">
-          <div class="feed-profile">
-            <div class="feed-profile-pic" style="background:linear-gradient(135deg,#2c3e50,#3d5a80)">📚</div>
-            <div>
-              <div style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:500">@yourbookshop</div>
-              <div class="feed-handle">independent bookshop · cape town</div>
-            </div>
-            <div class="feed-stats">
-              <div><span class="feed-stat-num">412</span><span class="feed-stat-label">Posts</span></div>
-              <div><span class="feed-stat-num">12.1K</span><span class="feed-stat-label">Followers</span></div>
-              <div><span class="feed-stat-num">867</span><span class="feed-stat-label">Following</span></div>
-            </div>
-            <p class="feed-bio">Your local indie bookshop 📖 New arrivals weekly · Book club · Cosy reading nook inside</p>
-            <div class="feed-content-type">
-              <span class="tag">Book Reviews</span>
-              <span class="tag">Recommendations</span>
-              <span class="tag">Aesthetic Shots</span>
-            </div>
-          </div>
-          <div class="feed-note">
-            <strong style="display:block;margin-bottom:.4rem;color:var(--ink)">Strategy note:</strong>
-            Warm, moody tones with an editorial literary aesthetic. Mix of book aesthetics, quote posts, "what I'm reading" Reels, reader recommendations carousels, and new arrival spotlights. Community-first approach high engagement through reader polls and Q&As. 5x per week.
-          </div>
-        </div>
-        <div class="reveal-right">
-          <div class="feed-grid">
-            <div class="feed-post" style="background:linear-gradient(135deg,#2c3e50,#1a252f)"><div class="feed-post-inner"><div class="feed-post-emoji">📚</div><div class="feed-post-caption">Moody bookshelf flat lay</div></div><div class="feed-post-overlay">❤️ 2.1K &nbsp; 💬 134</div></div>
-            <div class="feed-post" style="background:linear-gradient(135deg,#c8963a,#6b4a1a)"><div class="feed-post-inner"><div class="feed-post-emoji">✏️</div><div class="feed-post-caption">Literary quote graphic</div></div><div class="feed-post-overlay">❤️ 3.4K &nbsp; 💬 201</div></div>
-            <div class="feed-post" style="background:linear-gradient(135deg,#f5ede0,#e8d5b8)"><div class="feed-post-inner"><div class="feed-post-emoji">▶️</div><div class="feed-post-caption" style="color:var(--ink)">Reading vlog Reel</div></div><div class="feed-post-overlay">❤️ 4.7K &nbsp; 💬 287</div></div>
-            <div class="feed-post" style="background:linear-gradient(135deg,#1a252f,#2c3e50)"><div class="feed-post-inner"><div class="feed-post-emoji">🌿</div><div class="feed-post-caption">Cosy corner store shot</div></div><div class="feed-post-overlay">❤️ 1.8K &nbsp; 💬 99</div></div>
-            <div class="feed-post" style="background:linear-gradient(135deg,#6b4a1a,#c8963a)"><div class="feed-post-inner"><div class="feed-post-emoji">📖</div><div class="feed-post-caption">Book of the week carousel</div></div><div class="feed-post-overlay">❤️ 2.9K &nbsp; 💬 178</div></div>
-            <div class="feed-post" style="background:linear-gradient(135deg,#f5ede0,#e8d5b8)"><div class="feed-post-inner"><div class="feed-post-emoji">💌</div><div class="feed-post-caption" style="color:var(--ink)">New arrivals announcement</div></div><div class="feed-post-overlay">❤️ 1.4K &nbsp; 💬 87</div></div>
-            <div class="feed-post" style="background:linear-gradient(135deg,#2c3e50,#1a252f)"><div class="feed-post-inner"><div class="feed-post-emoji">▶️</div><div class="feed-post-caption">Bookshelf tour Reel</div></div><div class="feed-post-overlay">❤️ 5.2K &nbsp; 💬 312</div></div>
-            <div class="feed-post" style="background:linear-gradient(135deg,#c8963a,#6b4a1a)"><div class="feed-post-inner"><div class="feed-post-emoji">☕</div><div class="feed-post-caption">Reader lifestyle post</div></div><div class="feed-post-overlay">❤️ 1.1K &nbsp; 💬 63</div></div>
-            <div class="feed-post" style="background:linear-gradient(135deg,#f5ede0,#e8d5b8)"><div class="feed-post-inner"><div class="feed-post-emoji">🗳️</div><div class="feed-post-caption" style="color:var(--ink)">Book poll carousel</div></div><div class="feed-post-overlay">❤️ 2.4K &nbsp; 💬 156</div></div>
+      <div style="display:flex;align-items:center;justify-content:center;min-height:400px;text-align:center">
+        <div>
+          <div style="font-size:3rem;margin-bottom:1.5rem;animation:float 3s ease-in-out infinite;animation-delay:.2s">📚</div>
+          <h3 style="font-family:'Cormorant Garamond',serif;font-size:2rem;color:var(--ink);margin-bottom:.5rem">Coming <em style="color:var(--gold)">Soon</em></h3>
+          <p style="font-size:.95rem;color:var(--muted);margin-bottom:2rem;max-width:400px;line-height:1.8">We're curating the perfect feed aesthetic for this bookstore. Check back soon to see the final mockup!</p>
+          <div style="display:flex;gap:.4rem;justify-content:center;margin-top:1.5rem">
+            <div style="width:8px;height:8px;border-radius:50%;background:var(--gold);animation:pulse 1.5s ease-in-out infinite"></div>
+            <div style="width:8px;height:8px;border-radius:50%;background:var(--gold);animation:pulse 1.5s ease-in-out infinite;animation-delay:.3s"></div>
+            <div style="width:8px;height:8px;border-radius:50%;background:var(--gold);animation:pulse 1.5s ease-in-out infinite;animation-delay:.6s"></div>
           </div>
         </div>
       </div>
+      <style>
+        @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+        @keyframes pulse{0%,100%{opacity:.3}50%{opacity:1}}
+      </style>
     </div>
   </div>
 </section>
 
 <div class="section-divider"></div>
 
-<!-- ══════════════════════════════
-     PROJECT TIMELINE
-══════════════════════════════ -->
+<!-- PROCESS TIMELINE -->
 <section id="timeline" class="timeline-section">
   <div class="wrap">
     <p class="section-label light reveal">Process</p>
     <h2 class="section-heading reveal" style="color:var(--white)">From first click to <em>full launch</em></h2>
-    <p class="section-sub reveal" style="color:rgba(255,255,255,.45)">Here's exactly what working with me looks like a clear, transparent process from start to finish.</p>
+    <p class="section-sub reveal" style="color:rgba(255,255,255,.45)">Here's exactly what working with me looks like — a clear, transparent process from start to finish.</p>
 
     <div class="tl-track">
 
       <div class="tl-step reveal">
         <div class="tl-step-num">STEP 01</div>
-        <h3>Explore Our Work</h3>
-        <p>Start by exploring The Three Stars website to get a feel for our aesthetic, values, and the quality of work we deliver. See what we've built for other clients and picture what we could do for your brand.</p>
+        <h3>Explore Our Work &amp; See If We're the Right Fit</h3>
+        <p>Before reaching out, take a few minutes to browse The Three Stars website. Get a feel for our aesthetic, our values, and the quality of work we deliver. See what we've built for other clients — and picture what we could create for your brand. If it resonates, we'd love to hear from you.</p>
         <div class="tl-step-action">
           <a href="https://t3s-ten.vercel.app/" target="_blank"><i class="fas fa-external-link-alt"></i> Visit The Three Stars Website</a>
         </div>
@@ -725,7 +655,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.4);padding:5rem 0 2.5rem}
       <div class="tl-step reveal">
         <div class="tl-step-num">STEP 02</div>
         <h3>Book a Free Consultation</h3>
-        <p>Reach out via our Three Stars email to book a free 30-minute consultation. We'll chat about your brand, your goals, your audience, and what you're hoping to achieve with social media. No pressure just a conversation.</p>
+        <p>Reach out via our Three Stars email to book a free 30-minute consultation. We'll chat about your brand, your goals, your audience, and what you're hoping to achieve with social media. No pressure — just a conversation.</p>
         <div class="tl-step-action">
           <a href="mailto:haanimatthethreestars@gmail.com"><i class="fas fa-envelope"></i> haanimatthethreestars@gmail.com</a>
         </div>
@@ -773,9 +703,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.4);padding:5rem 0 2.5rem}
 
 <div class="section-divider"></div>
 
-<!-- ══════════════════════════════
-     LET'S WORK TOGETHER
-══════════════════════════════ -->
+<!-- LET'S WORK TOGETHER -->
 <section id="contact-cta" class="cta-section">
   <div class="wrap">
     <div class="cta-inner">
@@ -791,7 +719,6 @@ footer{background:var(--ink);color:rgba(255,255,255,.4);padding:5rem 0 2.5rem}
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <div class="footer-inner">
     <div class="footer-logo">Haanim Pietersen</div>
@@ -812,7 +739,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.4);padding:5rem 0 2.5rem}
 </footer>
 
 <script>
-// CURSOR
+// SOCIAL MEDIA CURSOR — heart + circle ring
 const cursor = document.getElementById('cursor');
 const cursorRing = document.getElementById('cursorRing');
 let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
