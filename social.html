@@ -152,7 +152,7 @@ nav.scrolled {
 .wrap { max-width: var(--col-max); margin:0 auto; padding: 0 2.5rem; }
 
 .chapter {
-  display:flex; align-items:flex-start; gap:1.8rem;
+  display:flex; flex-direction:column; gap:.5rem;
   margin-bottom: 4.5rem;
 }
 .chapter-num {
@@ -161,7 +161,7 @@ nav.scrolled {
   color: var(--gold);
   padding:.35rem .8rem;
   border: 1px solid var(--rule);
-  white-space:nowrap; flex-shrink:0; margin-top:.35rem;
+  white-space:nowrap; width:fit-content;
 }
 .chapter-heading {
   font-family: var(--serif);
@@ -779,7 +779,14 @@ nav.scrolled {
   font-size:.95rem; color:rgba(154,122,58,.8);
   text-align:right; padding-right:1.5rem; padding-top:.05rem;
 }
-.tl-body h3 { font-family:var(--serif); font-size:1.1rem; font-weight:400; color:rgba(246,240,230,.9); margin-bottom:.22rem; }
+.tl-row h3 {
+  font-family:var(--serif);
+  font-size:1.1rem;
+  font-weight:400;
+  color:var(--cream);
+  margin-bottom:.22rem;
+  text-shadow:0 1px 2px rgba(0,0,0,.35);
+}
 .tl-company {
   font-family:var(--sans);
   font-size:.62rem; letter-spacing:.07em;
@@ -947,7 +954,7 @@ footer {
     <p class="hero-eyebrow">Social Media Management · 2026</p>
     <h1 class="hero-name">Let's grow<br>your <em>brand</em><br>together.</h1>
     <p class="hero-subtitle">Social Media Manager &amp; Content Strategist</p>
-    <p class="hero-bio">I'm Haanim — a certified digital marketer and software developer with a sharp eye for storytelling, strategy, and aesthetics. I help brands show up online with intention and consistency.</p>
+    <p class="hero-bio">I'm Haanim a certified digital marketer and software developer with a sharp eye for storytelling, strategy, and aesthetics. I help brands show up online with intention and consistency.</p>
     <div class="hero-cert">
       <i class="fas fa-certificate"></i>
       <div class="hero-cert-text">
@@ -1054,10 +1061,10 @@ footer {
       </div>
 
       <div class="about-body rr">
-        <p>I'm Haanim Pietersen — a software developer, certified digital marketer, and co-founder of <strong>The Three Stars</strong> digital agency. My background gives me a unique edge: I understand both the creative and technical sides of growing a brand online.</p>
-        <p>I co-manage <strong>The Three Stars' Instagram presence</strong> — overseeing our content direction, brand voice, and community engagement. From crafting our posting strategy to collaborating on visuals, I've been hands-on in building our agency's digital identity from the ground up.</p>
+        <p>I'm Haanim Pietersen a software developer, certified digital marketer, and co-founder of <strong>The Three Stars</strong> digital agency. My background gives me a unique edge: I understand both the creative and technical sides of growing a brand online.</p>
+        <p>I co-manage <strong>The Three Stars' Instagram presence</strong> overseeing our content direction, brand voice, and community engagement. From crafting our posting strategy to collaborating on visuals, I've been hands-on in building our agency's digital identity from the ground up.</p>
         <p>On the project management side, I've maintained and organised complex digital projects tracking deliverables on platforms like Trello and Monday, managing documentation, and ensuring every team member knew what was needed and when. That same discipline is what I bring to every social media account I manage.</p>
-        <p>I hold a <strong>HubSpot Inbound Marketing certification</strong> and a <strong>HubSpot Social Media Management certification</strong> — internationally recognised credentials that underpin my approach to audience growth, content strategy, and measurable results.</p>
+        <p>I hold a <strong>HubSpot Inbound Marketing certification</strong> and a <strong>HubSpot Social Media Management certification</strong> internationally recognised credentials that underpin my approach to audience growth, content strategy, and measurable results.</p>
         <div class="award-strip">
           <span class="award-tag"><i class="fas fa-certificate"></i> HubSpot Inbound Marketing</span>
           <span class="award-tag"><i class="fas fa-certificate"></i> HubSpot Social Media Management</span>
@@ -1096,14 +1103,14 @@ footer {
           <p class="sk-num">02</p>
           <div class="sk-icon"><i class="fas fa-paint-brush"></i></div>
           <h3>Content Creation</h3>
-          <p>Branded graphics, caption writing, and hashtag research. Delivered as a monthly batch of ready-to-post content — all you have to do is hit publish.</p>
+          <p>Branded graphics, caption writing, and hashtag research. Delivered as a monthly batch of ready-to-post content all you have to do is hit publish.</p>
           <div class="tag-row"><span class="tag">Graphics</span><span class="tag">Copywriting</span><span class="tag">Hashtags</span></div>
         </div>
         <div class="service-cell">
           <p class="sk-num">03</p>
           <div class="sk-icon"><i class="fas fa-calendar-check"></i></div>
           <h3>Full Management</h3>
-          <p>End-to-end management — strategy, content, scheduling, story management, and monthly performance reports. You focus on your business; I'll handle the rest.</p>
+          <p>End-to-end management strategy, content, scheduling, story management, and monthly performance reports. You focus on your business; I'll handle the rest.</p>
           <div class="tag-row"><span class="tag">Strategy</span><span class="tag">Scheduling</span><span class="tag">Reporting</span></div>
         </div>
         <div class="service-cell">
@@ -1163,7 +1170,7 @@ footer {
         <div class="pin"></div>
         <span class="gallery-type-tag">Static</span>
         <img src="img/content direction/brand quote.jpg" alt="Brand quote post">
-        <div class="gallery-caption">Brand quote post — clean typography on a moody gradient for high shareability and saves.</div>
+        <div class="gallery-caption">Brand quote post clean typography on a moody gradient for high shareability and saves.</div>
       </div>
       <div class="gallery-item" data-type="carousel" style="background:linear-gradient(135deg,#9a7a3a,#2d1f0a)">
         <div class="pin"></div>
@@ -1176,7 +1183,7 @@ footer {
         <span class="gallery-type-tag">Reel</span>
         <video src="img/content direction/day in life.mp4" autoplay muted playsinline loop></video>
         <div class="ai-label">✦ AI GENERATED ✦</div>
-        <div class="gallery-caption">Trending Reel concept — uses viral audio paired with relatable brand messaging to boost reach.</div>
+        <div class="gallery-caption">Trending Reel concept uses viral audio paired with relatable brand messaging to boost reach.</div>
       </div>
       <div class="gallery-item" data-type="story" style="background:linear-gradient(180deg,#0d0c0a,#2d1f0a)">
         <div class="pin"></div>
@@ -1188,7 +1195,7 @@ footer {
         <div class="pin"></div>
         <span class="gallery-type-tag">Static</span>
         <img src="img/content direction/product spotlight.jpg" alt="Product spotlight">
-        <div class="gallery-caption">Light mode product spotlight — premium aesthetic, drives profile clicks and link in bio visits.</div>
+        <div class="gallery-caption">Light mode product spotlight premium aesthetic, drives profile clicks and link in bio visits.</div>
       </div>
       <div class="gallery-item" data-type="video" style="background:linear-gradient(135deg,#0f2027,#203a43,#2c5364)">
         <div class="pin"></div>
@@ -1353,7 +1360,7 @@ footer {
         <div>
           <div class="tl-dot"></div>
           <h3>Book a Free Consultation</h3>
-          <p class="tl-desc">Reach out via our Three Stars email to book a free 30-minute consultation. We'll chat about your brand, your goals, your audience, and what you're hoping to achieve with social media. No pressure — just a conversation.</p>
+          <p class="tl-desc">Reach out via our Three Stars email to book a free 30-minute consultation. We'll chat about your brand, your goals, your audience, and what you're hoping to achieve with social media. No pressure just a conversation.</p>
           <a href="mailto:haanimatthethreestars@gmail.com" class="tl-link"><i class="fas fa-envelope"></i> haanimatthethreestars@gmail.com</a>
           <div class="tl-tag"><i class="fas fa-clock" style="margin-right:.4rem"></i> 30-min call</div>
         </div>
@@ -1381,7 +1388,7 @@ footer {
         <div>
           <div class="tl-dot"></div>
           <h3>Strategy &amp; Content Plan Delivery</h3>
-          <p class="tl-desc">I deliver your custom content strategy — complete with content pillars, posting schedule, caption tone guidelines, hashtag research, and a 30-day content calendar. You review and approve before anything goes live.</p>
+          <p class="tl-desc">I deliver your custom content strategy complete with content pillars, posting schedule, caption tone guidelines, hashtag research, and a 30-day content calendar. You review and approve before anything goes live.</p>
           <div class="tl-tag"><i class="fas fa-clock" style="margin-right:.4rem"></i> 5–7 business days</div>
         </div>
       </div>
@@ -1390,7 +1397,7 @@ footer {
         <div>
           <div class="tl-dot"></div>
           <h3>Content Creation &amp; Approval</h3>
-          <p class="tl-desc">I create the first batch of content — graphics, captions, and scheduled posts. Everything is shared with you for review before it goes live. Revisions are included so you're always happy with what's published.</p>
+          <p class="tl-desc">I create the first batch of content graphics, captions, and scheduled posts. Everything is shared with you for review before it goes live. Revisions are included so you're always happy with what's published.</p>
           <div class="tl-tag"><i class="fas fa-clock" style="margin-right:.4rem"></i> Ongoing · weekly batches</div>
         </div>
       </div>
@@ -1421,7 +1428,7 @@ footer {
         <div class="cta-eyebrow">Let's Work Together</div>
         <h2 class="cta-heading">Ready to grow<br>your <em>brand?</em></h2>
         <span class="cta-hand">let me handle the social media, you focus on what you love ✦</span>
-        <p class="cta-sub">Your brand deserves to be seen. Let me take the social media off your plate so you can focus on what you do best — while your audience grows, your engagement climbs, and your brand becomes something people genuinely love to follow.</p>
+        <p class="cta-sub">Your brand deserves to be seen. Let me take the social media off your plate so you can focus on what you do best while your audience grows, your engagement climbs, and your brand becomes something people genuinely love to follow.</p>
         <div class="cta-actions">
           <a href="https://t3s-ten.vercel.app/" target="_blank" class="btn btn-primary"><i class="fas fa-star"></i> Visit The Three Stars</a>
           <a href="mailto:haanimatthethreestars@gmail.com" class="btn btn-secondary"><i class="fas fa-envelope"></i> Email Me Directly</a>
