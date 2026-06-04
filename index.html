@@ -422,6 +422,8 @@ footer{background:var(--ink);color:rgba(244,237,224,.4);padding:5rem 0 2.5rem}
 @media(max-width:560px){
   .chapter::after{font-size:5rem;top:-1.4rem;opacity:.045}
   .hero-star.s2{display:none}
+  .clip-reveal{transform:none !important;opacity:0;transition:opacity 1.1s cubic-bezier(.2,1,.3,1)}
+  .clip-reveal.up{opacity:1}
 }
 </style>
 </head>
@@ -461,7 +463,7 @@ footer{background:var(--ink);color:rgba(244,237,224,.4);padding:5rem 0 2.5rem}
       <h1 class="hero-name">Haanim<em>Pietersen</em></h1>
       <svg class="swash" viewBox="0 0 420 30" aria-hidden="true"><path d="M6 20 C 70 6, 150 6, 210 16 S 360 30, 414 10"/></svg>
       <p class="hero-role"><b>Software Developer</b> &amp; Human Rights Advocate</p>
-      <p class="hero-bio">Software Development Intern at the School of Pharmacy, UWC — building meaningful digital solutions across full-stack web, mobile, and cloud. Precise about craft, intentional about impact.</p>
+      <p class="hero-bio">Software Development Intern at the School of Pharmacy, UWC building meaningful digital solutions across full-stack web, mobile, and cloud. Precise about craft, intentional about impact.</p>
       <div class="hero-actions">
         <a href="#contact" class="btn btn-primary mag"><i class="fas fa-envelope"></i> Get in touch</a>
         <a href="/img/Haanim '26 CV.pdf" class="btn btn-secondary mag" download><i class="fas fa-arrow-down"></i> Download CV</a>
@@ -488,7 +490,7 @@ footer{background:var(--ink);color:rgba(244,237,224,.4);padding:5rem 0 2.5rem}
 <section class="advocacy">
   <div class="advocacy-inner">
     <p class="advocacy-label">Beyond the code</p>
-    <p class="advocacy-line">“Technology should serve people — and people deserve dignity, freedom, and justice.”</p>
+    <p class="advocacy-line">“Technology should serve people and people deserve dignity, freedom, and justice.”</p>
     <div class="advocacy-causes">
       <span class="cause flag">Free Palestine 🇵🇸</span>
       <span class="cause">End Gender-Based Violence</span>
@@ -516,7 +518,7 @@ footer{background:var(--ink);color:rgba(244,237,224,.4);padding:5rem 0 2.5rem}
         <p>I'm a Software Development Intern at the School of Pharmacy, University of the Western Cape, with 3+ years building across full-stack web, mobile (.NET MAUI), cloud (Azure), and digital strategy.</p>
         <p>I earned <strong>Distinctions (Summa Cum Laude)</strong> in Introduction to Multi-Platform Software Development and Digital Social Innovation for Impact, was named <strong>Top Student</strong> at Samsung's Future Innovation Lab, and won the <strong>2025 Best Overall Technical Project</strong> award for DiaConnect.</p>
         <p>My work spans leading teams, managing complex digital projects, stakeholder communication, UX design, and shipping scalable solutions across 30+ delivered projects. I'm fluent in English and Afrikaans, with working proficiency in German and Mandarin.</p>
-        <p>Beyond technology, I'm deeply committed to <strong>human rights advocacy</strong> — standing firmly for Palestinian freedom and for justice everywhere.</p>
+        <p>Beyond technology, I'm deeply committed to <strong>human rights advocacy</strong> standing firmly for Palestinian freedom and for justice everywhere.</p>
         <div class="award-strip">
           <span class="award-tag"><i class="fas fa-trophy"></i> Best Overall Technical Project 2025</span>
           <span class="award-tag"><i class="fas fa-star"></i> Summa Cum Laude</span>
@@ -816,7 +818,7 @@ footer{background:var(--ink);color:rgba(244,237,224,.4);padding:5rem 0 2.5rem}
             <p class="tl-date">Sep 2023 — Mar 2024</p>
             <h3>Certificate of Excellence, Web Development</h3>
             <p class="tl-company">Life Choices Academy</p>
-            <p class="tl-desc">Comprehensive training in web technologies — HTML, CSS, JavaScript, and modern frameworks — with excellence across all modules and hands-on project experience.</p>
+            <p class="tl-desc">Comprehensive training in web technologies HTML, CSS, JavaScript, and modern frameworks with excellence across all modules and hands-on project experience.</p>
           </div>
           <div class="tl-row">
             <p class="tl-date">Jan 2018 — Dec 2022</p>
@@ -837,7 +839,7 @@ footer{background:var(--ink);color:rgba(244,237,224,.4);padding:5rem 0 2.5rem}
       <div>
         <p class="t3s-eyebrow reveal">Co-Founded Studio</p>
         <h2 class="t3s-heading reveal">We bring your<br><em>brand to life</em></h2>
-        <p class="t3s-intro reveal">A digital-solutions agency co-founded with Ni-shaat and Ammara — three women who started The Three Stars in 2024, grew their craft, and came back ready to do the work they love. Websites, branding, social media, and beyond.</p>
+        <p class="t3s-intro reveal">A digital-solutions agency co-founded with Ni-shaat and Ammara three women who started The Three Stars in 2024, grew their craft, and came back ready to do the work they love. Websites, branding, social media, and beyond.</p>
         <div class="t3s-team reveal">
           <div class="t3s-av"><img src="/img/IMG-20250528-WA0042 (1).jpg" alt="Haanim" onerror="this.style.display='none';this.parentNode.innerText='H'"></div>
           <div class="t3s-av"><img src="/img/WhatsApp Image 2026-04-19 at 16.59.48.jpeg" alt="Ni-shaat" onerror="this.style.display='none';this.parentNode.innerText='N'"></div>
@@ -856,7 +858,7 @@ footer{background:var(--ink);color:rgba(244,237,224,.4);padding:5rem 0 2.5rem}
           <div class="t3s-svc"><span class="t3s-svc-ico">🖋</span><h4>Print &amp; Digital Design</h4><p>Business cards, occasion cards, and branded digital assets.</p></div>
           <div class="t3s-svc"><span class="t3s-svc-ico">📱</span><h4>Social Media Management</h4><p>Full strategy, content creation, scheduling, and engagement.</p></div>
           <div class="t3s-svc"><span class="t3s-svc-ico">🎨</span><h4>Social Media Content</h4><p>Quality posts and graphics without the full monthly commitment.</p></div>
-          <div class="t3s-svc free"><span class="t3s-svc-ico">⭐</span><h4>Business Spotlight</h4><p>A dedicated showcase for small businesses — our way of giving back.</p></div>
+          <div class="t3s-svc free"><span class="t3s-svc-ico">⭐</span><h4>Business Spotlight</h4><p>A dedicated showcase for small businesses our way of giving back.</p></div>
         </div>
       </div>
     </div>
@@ -878,19 +880,19 @@ footer{background:var(--ink);color:rgba(244,237,224,.4);padding:5rem 0 2.5rem}
     <div class="testi-wall">
       <div class="testi reveal">
         <span class="testi-qt">"</span>
-        <p class="testi-txt">I reached out via LinkedIn to ask Haanim to review my CV. In no time she responded — her feedback was clear, constructive, and exactly what I needed. She's always open to helping others.</p>
+        <p class="testi-txt">I reached out via LinkedIn to ask Haanim to review my CV. In no time she responded her feedback was clear, constructive, and exactly what I needed. She's always open to helping others.</p>
         <p class="testi-name">Asandile Langeni</p>
         <p class="testi-role">LinkedIn Connection</p>
       </div>
       <div class="testi reveal">
         <span class="testi-qt">"</span>
-        <p class="testi-txt">It was a pleasure having Haanim on our team. A disciplined, dedicated professional who consistently prioritises project goals. Her web-development skills are strong and she excels in leadership — her versatility makes her invaluable to any team.</p>
+        <p class="testi-txt">It was a pleasure having Haanim on our team. A disciplined, dedicated professional who consistently prioritises project goals. Her web-development skills are strong and she excels in leadership her versatility makes her invaluable to any team.</p>
         <p class="testi-name">Ni-shaat Gafieldien</p>
         <p class="testi-role">Co-Founder · The Three Stars</p>
       </div>
       <div class="testi reveal">
         <span class="testi-qt">"</span>
-        <p class="testi-txt">Working with Haanim at The Three Stars was a wonderful experience. She's super reliable, easy to talk to, and always brings her best. You always knew you could count on her — I'd most definitely recommend her.</p>
+        <p class="testi-txt">Working with Haanim at The Three Stars was a wonderful experience. She's super reliable, easy to talk to, and always brings her best. You always knew you could count on her I'd most definitely recommend her.</p>
         <p class="testi-name">Ammara Hoosen</p>
         <p class="testi-role">Co-Founder · The Three Stars</p>
       </div>
