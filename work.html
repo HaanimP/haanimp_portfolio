@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Selected Work — Haanim Pietersen</title>
+<meta name="description" content="Projects and presentations by Haanim Pietersen — full-stack web, mobile, and cloud work, plus talks and decks.">
+<meta name="theme-color" content="#F4ECDB">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23A8412B'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='18' font-weight='700' fill='%23F4ECDB' text-anchor='middle'%3EH%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+:root{
+  --radius:0.625rem;
+  --background:oklch(0.965 0.018 75);--foreground:oklch(0.22 0.04 30);--card:oklch(0.985 0.012 78);
+  --primary:oklch(0.52 0.17 28);--primary-foreground:oklch(0.98 0.01 80);--secondary:oklch(0.58 0.11 40);
+  --muted:oklch(0.93 0.015 75);--muted-foreground:oklch(0.45 0.03 40);--accent:oklch(0.32 0.07 250);
+  --border:oklch(0.86 0.025 60);--ring:oklch(0.52 0.17 28);
+  --terracotta:oklch(0.62 0.13 42);--navy:oklch(0.28 0.07 250);
+  --gradient-warm:linear-gradient(135deg,oklch(0.62 0.13 42),oklch(0.52 0.17 28));
+  --shadow-soft:0 20px 50px -20px oklch(0.22 0.04 30 / 0.25);--shadow-glow:0 0 80px -10px oklch(0.52 0.17 28 / 0.4);
+  --font-display:"Fraunces","Cormorant Garamond",Georgia,serif;--font-body:"Inter",system-ui,sans-serif;
+  --maxw:1180px;--ease:cubic-bezier(.22,.61,.36,1);
+  --r-sm:calc(var(--radius) - 4px);--r:var(--radius);--r-lg:calc(var(--radius) + 4px);
+}
+html.dark{
+  --background:oklch(0.16 0.025 255);--foreground:oklch(0.95 0.018 78);--card:oklch(0.22 0.035 255);
+  --primary:oklch(0.65 0.18 30);--primary-foreground:oklch(0.98 0.01 80);--secondary:oklch(0.68 0.13 42);
+  --muted:oklch(0.26 0.03 255);--muted-foreground:oklch(0.72 0.02 70);--accent:oklch(0.72 0.1 245);
+  --border:oklch(0.95 0.018 78 / 12%);--ring:oklch(0.65 0.18 30);
+  --terracotta:oklch(0.7 0.13 45);--navy:oklch(0.72 0.1 245);
+  --gradient-warm:linear-gradient(135deg,oklch(0.7 0.13 45),oklch(0.65 0.18 30));
+  --shadow-soft:0 20px 50px -20px oklch(0 0 0 / 0.55);--shadow-glow:0 0 80px -10px oklch(0.65 0.18 30 / 0.45);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);background:var(--background);color:var(--foreground);line-height:1.7;font-size:16px;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden;transition:background .5s var(--ease),color .5s var(--ease)}
+::selection{background:var(--primary);color:var(--primary-foreground)}
+a{color:inherit;text-decoration:none}img{max-width:100%;display:block}
+h1,h3,h4{font-family:var(--font-display);letter-spacing:-.02em;color:var(--foreground);font-weight:600}
+*{scrollbar-width:thin;scrollbar-color:var(--primary) transparent}
+::-webkit-scrollbar{width:9px;height:9px}::-webkit-scrollbar-thumb{background:var(--primary);border-radius:99px;border:2px solid var(--background)}::-webkit-scrollbar-track{background:transparent}
+
+.mesh{position:fixed;inset:0;z-index:-3;pointer-events:none;overflow:hidden;background:var(--background);transition:background .5s var(--ease)}
+.mesh span{position:absolute;border-radius:50%;filter:blur(120px);opacity:.4}
+.mesh .b1{width:50vw;height:50vw;top:-14vw;left:-10vw;background:radial-gradient(circle,var(--secondary),transparent 65%);opacity:.18;animation:drift1 34s var(--ease) infinite alternate}
+.mesh .b2{width:46vw;height:46vw;bottom:-16vw;right:-10vw;background:radial-gradient(circle,var(--accent),transparent 65%);opacity:.16;animation:drift2 40s var(--ease) infinite alternate}
+@keyframes drift1{to{transform:translate(6vw,5vh) scale(1.1)}}@keyframes drift2{to{transform:translate(-5vw,-4vh) scale(1.08)}}
+#bg3d{position:fixed;inset:0;z-index:-2;pointer-events:none;opacity:.9}
+.grain{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.05;mix-blend-mode:multiply;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+html.dark .grain{mix-blend-mode:overlay;opacity:.06}
+.scroll-bar{position:fixed;top:0;left:0;height:2px;width:0;z-index:300;background:var(--primary)}
+
+#navbar{position:fixed;top:0;left:0;right:0;z-index:200;transition:all .45s var(--ease)}
+.nav-inner{max-width:var(--maxw);margin:0 auto;padding:1.5rem 2rem;display:flex;align-items:center;justify-content:space-between}
+#navbar.scrolled{background:color-mix(in oklch,var(--background) 82%,transparent);backdrop-filter:blur(20px) saturate(1.3);border-bottom:1px solid var(--border)}
+#navbar.scrolled .nav-inner{padding:.9rem 2rem}
+.logo{display:flex;align-items:center;gap:.6rem;font-family:var(--font-display);font-size:1.15rem;font-weight:600;color:var(--foreground)}
+.logo-mark{width:30px;height:30px;border-radius:8px;background:var(--primary);color:var(--primary-foreground);display:grid;place-items:center;font-size:.95rem;font-weight:600}
+.logo .dot{color:var(--primary)}
+.nav-right{display:flex;align-items:center;gap:.7rem}
+.nav-links{display:flex;align-items:center;gap:.1rem;list-style:none}
+.nl{font-size:.82rem;font-weight:500;color:var(--muted-foreground);padding:.5rem .8rem;transition:color .25s;position:relative}
+.nl::after{content:"";position:absolute;left:.8rem;right:.8rem;bottom:.34rem;height:1px;background:var(--primary);transform:scaleX(0);transform-origin:left;transition:transform .3s var(--ease)}
+.nl:hover{color:var(--foreground)}.nl:hover::after,.nl.active::after{transform:scaleX(1)}.nl.active{color:var(--foreground)}
+.nav-cta{color:var(--primary-foreground)!important;background:var(--primary);padding:.55rem 1.1rem!important;border-radius:var(--r-sm);font-weight:600;transition:all .3s var(--ease)}
+.nav-cta::after{display:none}.nav-cta:hover{filter:brightness(1.06);box-shadow:var(--shadow-glow);transform:translateY(-1px)}
+.icon-btn{width:42px;height:42px;border-radius:var(--r-sm);border:1px solid var(--border);background:transparent;color:var(--foreground);display:grid;place-items:center;font-size:.95rem;cursor:pointer;transition:all .3s var(--ease)}
+.icon-btn:hover{border-color:var(--primary);color:var(--primary)}
+.nav-toggle{display:none}
+
+.btn{display:inline-flex;align-items:center;gap:.6rem;font-family:var(--font-body);font-size:.86rem;font-weight:600;padding:.95rem 1.6rem;border-radius:var(--r-sm);cursor:pointer;transition:all .3s var(--ease);border:1px solid transparent}
+.btn i{transition:transform .3s var(--ease);font-size:.85em}
+.btn-primary{background:var(--primary);color:var(--primary-foreground)}.btn-primary:hover{transform:translateY(-2px);box-shadow:var(--shadow-glow);filter:brightness(1.05)}.btn-primary:hover i{transform:translateX(3px)}
+
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 2rem}
+.page-head{padding:11rem 0 3rem;text-align:center}
+.back-link{display:inline-flex;align-items:center;gap:.5rem;font-size:.8rem;font-weight:500;color:var(--muted-foreground);margin-bottom:2.2rem;transition:gap .25s,color .25s}
+.back-link:hover{color:var(--primary);gap:.8rem}
+.ph-eyebrow{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--primary);font-weight:600;margin-bottom:1.4rem}
+.ph-title{font-family:var(--font-display);font-weight:600;font-size:clamp(3rem,8vw,5.4rem);line-height:.95;color:var(--foreground);letter-spacing:-.03em;margin-bottom:1.2rem}
+.ph-title em{font-style:italic;color:var(--primary);font-weight:500}
+.ph-sub{font-family:var(--font-display);font-style:italic;font-size:1.4rem;color:var(--muted-foreground);max-width:580px;margin:0 auto;line-height:1.4}
+
+.work-filter{display:flex;gap:.5rem;justify-content:center;margin:3.2rem 0 .8rem;flex-wrap:wrap}
+.filter-btn{font-family:var(--font-body);font-size:.82rem;font-weight:500;padding:.6rem 1.3rem;border-radius:var(--r-sm);border:1px solid var(--border);background:transparent;color:var(--muted-foreground);cursor:pointer;transition:all .3s var(--ease)}
+.filter-btn:hover{color:var(--foreground);border-color:var(--foreground)}
+.filter-btn.active{background:var(--primary);color:var(--primary-foreground);border-color:var(--primary)}
+.filter-count{text-align:center;font-size:.74rem;color:var(--muted-foreground);margin-bottom:2.8rem}
+
+.work-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;padding-bottom:6rem}
+.card{position:relative;border:1px solid var(--border);border-radius:var(--r-lg);background:var(--card);display:flex;flex-direction:column;overflow:hidden;transition:transform .4s var(--ease),box-shadow .4s,border-color .4s,opacity .4s}
+.card::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:var(--primary);transform:scaleX(0);transform-origin:left;transition:transform .45s var(--ease)}
+.card:hover{transform:translateY(-5px);box-shadow:var(--shadow-soft)}
+.card:hover::before{transform:scaleX(1)}
+.card.hide{display:none}
+.card[data-type="presentations"]::before{background:var(--accent)}
+.card-head{display:flex;align-items:flex-start;justify-content:space-between;padding:1.7rem 1.7rem .4rem}
+.card-cat{font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--primary);font-weight:600;display:flex;align-items:center;gap:.45rem}
+.card[data-type="presentations"] .card-cat{color:var(--accent)}
+.card-no{font-family:var(--font-display);font-size:1.8rem;font-weight:600;color:var(--border);line-height:1}
+.card-body{padding:.4rem 1.7rem 1.7rem;display:flex;flex-direction:column;flex:1}
+.card-body h3{font-size:1.65rem;margin-bottom:.5rem;line-height:1.05}
+.card-body>p{font-size:.88rem;color:var(--muted-foreground);margin-bottom:1.1rem;line-height:1.6;flex:1}
+.tag-row{display:flex;flex-wrap:wrap;gap:.4rem}
+.tag{font-size:.7rem;font-weight:500;padding:.32rem .65rem;border-radius:7px;border:1px solid var(--border);color:var(--muted-foreground)}
+.card-link{font-size:.8rem;color:var(--foreground);display:inline-flex;align-items:center;gap:.5rem;transition:gap .25s,color .25s;margin-top:auto;font-weight:600;border-bottom:1px solid transparent;padding-bottom:1px;width:fit-content}
+.card-link:hover{gap:.7rem;color:var(--primary);border-color:var(--primary)}
+
+footer{padding:2.4rem 0;border-top:1px solid var(--border)}
+.footer-inner{max-width:var(--maxw);margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;gap:1.4rem;flex-wrap:wrap}
+.footer-logo{display:flex;align-items:center;gap:.55rem;font-family:var(--font-display);font-size:1.05rem;font-weight:600;color:var(--foreground)}
+.footer-logo .logo-mark{width:26px;height:26px;font-size:.82rem}
+.footer-socials{display:flex;gap:.5rem}
+.f-soc{width:38px;height:38px;display:grid;place-items:center;border-radius:var(--r-sm);border:1px solid var(--border);color:var(--muted-foreground);transition:all .3s var(--ease)}
+.f-soc:hover{color:var(--primary-foreground);background:var(--primary);border-color:var(--primary)}
+.footer-mini{font-size:.74rem;color:var(--muted-foreground);text-align:right}.footer-mini span{color:var(--primary)}
+
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+
+@media(max-width:980px){
+  .nav-links{position:fixed;inset:0 0 0 auto;width:min(320px,82vw);flex-direction:column;align-items:flex-start;justify-content:center;gap:.4rem;background:var(--background);backdrop-filter:blur(24px);padding:2.5rem;transform:translateX(100%);transition:transform .45s var(--ease);border-left:1px solid var(--border);box-shadow:var(--shadow-soft)}
+  .nav-links.open{transform:none}.nl{font-size:1rem;padding:.7rem 0}.nl::after{display:none}.nav-toggle{display:grid}
+  .work-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:620px){.work-grid{grid-template-columns:1fr}.page-head{padding:9rem 0 2rem}.footer-inner{flex-direction:column;text-align:center}.footer-mini{text-align:center}}
+@media(prefers-reduced-motion:reduce){*{animation-duration:.001ms!important;transition-duration:.001ms!important}.reveal{opacity:1;transform:none}}
+:focus-visible{outline:2px solid var(--primary);outline-offset:3px;border-radius:3px}
+
+/* ---- polish pass ---- */
+html{scroll-padding-top:92px}
+.ph-title,.card-body h3{font-optical-sizing:auto}
+.ph-title{text-wrap:balance}
+.ph-sub,.card-body>p{text-wrap:pretty}
+.skip{position:fixed;top:.7rem;left:.7rem;z-index:400;background:var(--primary);color:var(--primary-foreground);padding:.65rem 1.05rem;border-radius:var(--r-sm);font-size:.8rem;font-weight:600;transform:translateY(-160%);transition:transform .3s var(--ease)}
+.skip:focus{transform:none;outline:none}
+.card-no{transition:color .4s var(--ease)}
+.card:hover .card-no{color:var(--primary)}
+.card[data-type="presentations"]:hover .card-no{color:var(--accent)}
+</style>
+</head>
+<body>
+<a href="#workGrid" class="skip">Skip to content</a>
+<div class="mesh"><span class="b1"></span><span class="b2"></span></div>
+<canvas id="bg3d"></canvas>
+<div class="grain"></div>
+<div class="scroll-bar" id="scrollBar"></div>
+
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="logo"><span class="logo-mark">H</span><span>Haanim<span class="dot">.</span>P</span></a>
+    <div class="nav-right">
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html" class="nl">Home</a></li>
+        <li><a href="index.html#about" class="nl">About</a></li>
+        <li><a href="index.html#skills" class="nl">Skills</a></li>
+        <li><a href="work.html" class="nl active">Work</a></li>
+        <li><a href="index.html#experience" class="nl">Experience</a></li>
+        <li><a href="index.html#contact" class="nl nav-cta">Get in touch</a></li>
+      </ul>
+      <button class="icon-btn" id="themeToggle" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button>
+      <button class="icon-btn nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false"><i class="fas fa-bars"></i></button>
+    </div>
+  </div>
+</nav>
+
+<header class="page-head">
+  <div class="wrap">
+    <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to home</a>
+    <p class="ph-eyebrow">Selected Work 30+ delivered</p>
+    <h1 class="ph-title">Things I've <em>built &amp; presented</em></h1>
+    <p class="ph-sub">A curated archive of projects and presentations from award-winning apps to client websites and technical talks.</p>
+    <div class="work-filter">
+      <button class="filter-btn active" data-type="all">All</button>
+      <button class="filter-btn" data-type="projects">Projects</button>
+      <button class="filter-btn" data-type="presentations">Presentations</button>
+    </div>
+    <p class="filter-count" id="filterCount"></p>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="work-grid" id="workGrid">
+    <article class="card reveal" data-type="projects"><div class="card-head"><span class="card-cat"><i class="fas fa-trophy"></i> Featured · Award</span><span class="card-no">01</span></div><div class="card-body"><h3>DiaConnect</h3><p>A diabetes-tracking app with AI chat, caretaker alerts, and hidden-sugars detection. Winner of Best Overall Technical Project.</p><div class="tag-row" style="margin-bottom:1.2rem"><span class="tag">.NET MAUI</span><span class="tag">C#</span><span class="tag">Azure</span></div><a href="https://github.com/HaanimP/DiaConnectFinal.git" class="card-link" target="_blank" rel="noopener">View project <i class="fas fa-arrow-right"></i></a></div></article>
+    <article class="card reveal" data-type="projects"><div class="card-head"><span class="card-cat">Project</span><span class="card-no">02</span></div><div class="card-body"><h3>The Three Stars</h3><p>Digital-solutions agency website showcasing services, portfolio, team, and brand identity.</p><div class="tag-row" style="margin-bottom:1.2rem"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JS</span></div><a href="https://t3s-ten.vercel.app/" class="card-link" target="_blank" rel="noopener">Live demo <i class="fas fa-arrow-right"></i></a></div></article>
+    <article class="card reveal" data-type="projects"><div class="card-head"><span class="card-cat">Project</span><span class="card-no">03</span></div><div class="card-body"><h3>Drive Sure</h3><p>A car-marketplace support platform helping users find and purchase vehicles with confidence.</p><div class="tag-row" style="margin-bottom:1.2rem"><span class="tag">Web Platform</span><span class="tag">Marketplace</span></div><a href="https://drive-sure-lyart.vercel.app/" class="card-link" target="_blank" rel="noopener">Live demo <i class="fas fa-arrow-right"></i></a></div></article>
+    <article class="card reveal" data-type="projects"><div class="card-head"><span class="card-cat">Project</span><span class="card-no">04</span></div><div class="card-body"><h3>Pinterest App</h3><p>A Pinterest-inspired app for discovering and organising visual content.</p><div class="tag-row" style="margin-bottom:1.2rem"><span class="tag">XAML</span><span class="tag">C#</span></div><a href="https://github.com/HaanimP/Pinterest-App-Assignment.git" class="card-link" target="_blank" rel="noopener">View project <i class="fas fa-arrow-right"></i></a></div></article>
+    <article class="card reveal" data-type="projects"><div class="card-head"><span class="card-cat">Project</span><span class="card-no">05</span></div><div class="card-body"><h3>Women with Vision</h3><p>A non-profit website showcasing work, branch locations, contact info, and a donation portal.</p><div class="tag-row" style="margin-bottom:1.2rem"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JS</span></div><a href="https://womenwithvision.netlify.app/home" class="card-link" target="_blank" rel="noopener">Live demo <i class="fas fa-arrow-right"></i></a></div></article>
+    <article class="card reveal" data-type="projects"><div class="card-head"><span class="card-cat">Project</span><span class="card-no">06</span></div><div class="card-body"><h3>Sugar Bakez</h3><p>A small-business website showcasing baked goods, the owner's story, and available services.</p><div class="tag-row" style="margin-bottom:1.2rem"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JS</span></div><a href="https://sugarbakez.netlify.app/" class="card-link" target="_blank" rel="noopener">Live demo <i class="fas fa-arrow-right"></i></a></div></article>
+    <article class="card reveal" data-type="projects"><div class="card-head"><span class="card-cat">Project</span><span class="card-no">07</span></div><div class="card-body"><h3>Path Align</h3><p>A site helping students find their best learning path based on personality-test results.</p><div class="tag-row" style="margin-bottom:1.2rem"><span class="tag">WordPress</span><span class="tag">Power BI</span></div><a href="https://personatest.lcstudio-incubate.co.za/" class="card-link" target="_blank" rel="noopener">Live demo <i class="fas fa-arrow-right"></i></a></div></article>
+
+    <article class="card reveal" data-type="presentations"><div class="card-head"><span class="card-cat">Presentation</span><span class="card-no">08</span></div><div class="card-body"><h3>Hamilton Naki</h3><p>Our group's role model, and the characteristics of a truly great one.</p><a href="https://www.canva.com/design/DAGhUu6uC4Q/h6CnfVWGW5uX0YSy6_KaFw/view" class="card-link" target="_blank" rel="noopener">View deck <i class="fas fa-arrow-right"></i></a></div></article>
+    <article class="card reveal" data-type="presentations"><div class="card-head"><span class="card-cat">Presentation</span><span class="card-no">09</span></div><div class="card-body"><h3>The Future of Work</h3><p>How the future of work looks, and the skills needed to thrive in it.</p><a href="https://www.canva.com/design/DAGhCOQ_nO0/2QmZqIVg4avjXP07BERAAg/view" class="card-link" target="_blank" rel="noopener">View deck <i class="fas fa-arrow-right"></i></a></div></article>
+    <article class="card reveal" data-type="presentations"><div class="card-head"><span class="card-cat">Presentation</span><span class="card-no">10</span></div><div class="card-body"><h3>EdVance</h3><p>Using Azure AI to solve a challenge in the education environment.</p><a href="https://www.canva.com/design/DAGgAngASrE/5y5qGX709No7l07z7lEhbw/view" class="card-link" target="_blank" rel="noopener">View deck <i class="fas fa-arrow-right"></i></a></div></article>
+    <article class="card reveal" data-type="presentations"><div class="card-head"><span class="card-cat">Presentation</span><span class="card-no">11</span></div><div class="card-body"><h3>Power Track</h3><p>Energy and cost savings from solar panels vs traditional energy sources.</p><a href="https://www.canva.com/design/DAGPyv-jw5w/2mlLOLek20Yq6UkLWdDijg/view" class="card-link" target="_blank" rel="noopener">View deck <i class="fas fa-arrow-right"></i></a></div></article>
+    <article class="card reveal" data-type="presentations"><div class="card-head"><span class="card-cat">Presentation</span><span class="card-no">12</span></div><div class="card-body"><h3>Intern Profiles</h3><p>A project displaying intern profiles, skills, projects, and achievements.</p><a href="https://www.canva.com/design/DAGP9qSbvXk/scjmbZdE2ytNvz4CtfFdDg/view" class="card-link" target="_blank" rel="noopener">View deck <i class="fas fa-arrow-right"></i></a></div></article>
+    <article class="card reveal" data-type="presentations"><div class="card-head"><span class="card-cat">Presentation</span><span class="card-no">13</span></div><div class="card-body"><h3>Drupal</h3><p>Fundamental concepts, tools, and features of Drupal core functionality and usage.</p><a href="https://www.canva.com/design/DAGMVXxqV10/cTtxqBV297KnAFiyzTEihQ/view" class="card-link" target="_blank" rel="noopener">View deck <i class="fas fa-arrow-right"></i></a></div></article>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <a href="index.html" class="footer-logo"><span class="logo-mark">H</span><span>Haanim<span class="dot" style="color:var(--primary)">.</span>P</span></a>
+    <div class="footer-socials">
+      <a href="https://www.instagram.com/haanim_pietersen" target="_blank" rel="noopener" class="f-soc" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="https://tiktok.com/@haanim_pietersen" target="_blank" rel="noopener" class="f-soc" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+      <a href="https://www.linkedin.com/in/haanim-pietersen-172bb9264/" target="_blank" rel="noopener" class="f-soc" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+      <a href="https://github.com/HaanimP" target="_blank" rel="noopener" class="f-soc" aria-label="GitHub"><i class="fab fa-github"></i></a>
+      <a href="https://linktr.ee/haanim.pietersen" target="_blank" rel="noopener" class="f-soc" aria-label="Linktree"><i class="fas fa-link"></i></a>
+    </div>
+    <p class="footer-mini">© 2026 Haanim Pietersen · Cape Town · <span>Palestinian freedom 🇵🇸</span></p>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+const root=document.documentElement;
+const sb=document.getElementById('scrollBar'),nav=document.getElementById('navbar');
+function onScroll(){const h=document.documentElement;sb.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';nav.classList.toggle('scrolled',h.scrollTop>40);}
+window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+const tBtn=document.getElementById('themeToggle');
+function setTheme(dark){root.classList.toggle('dark',dark);tBtn.innerHTML=dark?'<i class="fas fa-sun"></i>':'<i class="fas fa-moon"></i>';try{localStorage.setItem('theme',dark?'dark':'light');}catch(e){}if(window.__bg3dTheme)window.__bg3dTheme(dark);}
+let saved=null;try{saved=localStorage.getItem('theme');}catch(e){}
+setTheme(saved? saved==='dark' : false);
+tBtn.addEventListener('click',()=>setTheme(!root.classList.contains('dark')));
+const toggle=document.getElementById('navToggle'),links=document.getElementById('navLinks');
+toggle.addEventListener('click',()=>{const o=links.classList.toggle('open');toggle.setAttribute('aria-expanded',o);toggle.innerHTML=o?'<i class="fas fa-times"></i>':'<i class="fas fa-bars"></i>';});
+links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{links.classList.remove('open');toggle.innerHTML='<i class="fas fa-bars"></i>';}));
+const io=new IntersectionObserver((es)=>{es.forEach((e)=>{if(e.isIntersecting){const sibs=[...e.target.parentElement.children].filter(c=>c.classList.contains('reveal'));const idx=sibs.indexOf(e.target);e.target.style.transitionDelay=(Math.min(idx,6)*0.05)+'s';e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+const btns=document.querySelectorAll('.filter-btn'),cards=[...document.querySelectorAll('#workGrid .card')],countEl=document.getElementById('filterCount');
+function applyFilter(type){let n=0;cards.forEach(c=>{const show=type==='all'||c.dataset.type===type;c.classList.toggle('hide',!show);if(show)n++;});countEl.textContent=`Showing ${n} ${type==='all'?'pieces of work':type}`;}
+btns.forEach(b=>b.addEventListener('click',()=>{btns.forEach(x=>x.classList.remove('active'));b.classList.add('active');applyFilter(b.dataset.type);}));
+applyFilter('all');
+(function(){
+  const canvas=document.getElementById('bg3d');const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(!window.THREE||!canvas){if(canvas)canvas.style.display='none';return;}
+  let renderer;try{renderer=new THREE.WebGLRenderer({canvas,alpha:true,antialias:true});}catch(e){canvas.style.display='none';return;}
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));renderer.setSize(innerWidth,innerHeight);
+  const scene=new THREE.Scene();scene.fog=new THREE.FogExp2(0xF2E9D6,0.03);
+  const camera=new THREE.PerspectiveCamera(58,innerWidth/innerHeight,.1,120);camera.position.z=20;
+  const isMobile=innerWidth<768,palette=[0xB1402D,0xC0734A,0x46598A,0x7E9270],orbs=[];
+  for(let i=0;i<(isMobile?2:3);i++){const m=new THREE.Mesh(new THREE.SphereGeometry(5.5,32,32),new THREE.MeshBasicMaterial({color:palette[i%palette.length],transparent:true,opacity:.06}));m.position.set((Math.random()-.5)*26,(Math.random()-.5)*14,(Math.random()-.5)*8-6);m.userData={fy:Math.random()*Math.PI*2,baseY:m.position.y};scene.add(m);orbs.push(m);}
+  const pc=isMobile?40:90,g=new THREE.BufferGeometry(),p=new Float32Array(pc*3);
+  for(let i=0;i<pc;i++){p[i*3]=(Math.random()-.5)*52;p[i*3+1]=(Math.random()-.5)*30;p[i*3+2]=(Math.random()-.5)*16;}
+  g.setAttribute('position',new THREE.BufferAttribute(p,3));
+  const motes=new THREE.Points(g,new THREE.PointsMaterial({color:0xC79A66,size:.1,transparent:true,opacity:.4,sizeAttenuation:true}));scene.add(motes);
+  window.__bg3dTheme=function(dark){scene.fog.color.setHex(dark?0x16202F:0xF2E9D6);motes.material.color.setHex(dark?0xE0B98A:0xC79A66);};
+  window.__bg3dTheme(root.classList.contains('dark'));
+  let mx=0,my=0,tmx=0,tmy=0;
+  if(!reduce){window.addEventListener('mousemove',e=>{tmx=e.clientX/innerWidth-.5;tmy=e.clientY/innerHeight-.5;},{passive:true});}
+  window.addEventListener('resize',()=>{renderer.setSize(innerWidth,innerHeight);camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();});
+  let t=0,frame;
+  function render(){t+=.006;mx+=(tmx-mx)*.04;my+=(tmy-my)*.04;orbs.forEach(o=>{o.position.y=o.userData.baseY+Math.sin(t+o.userData.fy)*1.1;});motes.rotation.y+=.0004;camera.position.x+=(mx*3.5-camera.position.x)*.035;camera.position.y+=(-my*2.5-camera.position.y)*.035;camera.lookAt(0,0,0);renderer.render(scene,camera);}
+  function loop(){frame=requestAnimationFrame(loop);render();}
+  if(reduce){render();}else{loop();}
+  document.addEventListener('visibilitychange',()=>{if(document.hidden){cancelAnimationFrame(frame);}else if(!reduce){loop();}});
+})();
+</script>
+</body>
+</html>
