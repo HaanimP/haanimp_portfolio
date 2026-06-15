@@ -67,7 +67,7 @@ html.dark .grain{mix-blend-mode:overlay;opacity:.06}
 .nl:hover{color:var(--foreground)}.nl:hover::after,.nl.active::after{transform:scaleX(1)}.nl.active{color:var(--foreground)}
 .nav-cta{color:var(--primary-foreground)!important;background:var(--primary);padding:.55rem 1.1rem!important;border-radius:var(--r-sm);font-weight:600;transition:all .3s var(--ease)}
 .nav-cta::after{display:none}.nav-cta:hover{filter:brightness(1.06);box-shadow:var(--shadow-glow);transform:translateY(-1px)}
-.icon-btn{width:42px;height:42px;border-radius:var(--r-sm);border:1px solid var(--border);background:transparent;color:var(--foreground);display:grid;place-items:center;font-size:.95rem;cursor:pointer;transition:all .3s var(--ease)}
+.icon-btn{position:relative;z-index:205;width:42px;height:42px;border-radius:var(--r-sm);border:1px solid var(--border);background:transparent;color:var(--foreground);display:grid;place-items:center;font-size:.95rem;cursor:pointer;transition:all .3s var(--ease)}
 .icon-btn:hover{border-color:var(--primary);color:var(--primary)}
 .nav-toggle{display:none}
 
@@ -122,8 +122,10 @@ footer{padding:2.4rem 0;border-top:1px solid var(--border)}
 .reveal.in{opacity:1;transform:none}
 
 @media(max-width:980px){
-  .nav-links{position:fixed;inset:0 0 0 auto;width:min(320px,82vw);flex-direction:column;align-items:flex-start;justify-content:center;gap:.4rem;background:var(--background);backdrop-filter:blur(24px);padding:2.5rem;transform:translateX(100%);transition:transform .45s var(--ease);border-left:1px solid var(--border);box-shadow:var(--shadow-soft)}
-  .nav-links.open{transform:none}.nl{font-size:1rem;padding:.7rem 0}.nl::after{display:none}.nav-toggle{display:grid}
+  #navbar.scrolled{backdrop-filter:none;-webkit-backdrop-filter:none;background:var(--background)}
+  .nav-links{overflow-y:auto}
+  .nav-links{position:fixed;inset:0 0 0 auto;width:min(330px,85vw);flex-direction:column;align-items:flex-start;justify-content:center;gap:.3rem;background:var(--background);backdrop-filter:blur(24px);padding:5.5rem 2.2rem 2.2rem;border-left:1px solid var(--border);box-shadow:var(--shadow-soft);z-index:195;opacity:0;visibility:hidden;transform:translateX(18px);transition:opacity .35s var(--ease),transform .35s var(--ease),visibility .35s}
+  .nav-links.open{opacity:1;visibility:visible;transform:none}.nl{font-size:1rem;padding:.7rem 0}.nl::after{display:none}.nav-toggle{display:grid}
   .work-grid{grid-template-columns:1fr 1fr}
 }
 @media(max-width:620px){.work-grid{grid-template-columns:1fr}.page-head{padding:9rem 0 2rem}.footer-inner{flex-direction:column;text-align:center}.footer-mini{text-align:center}}
@@ -140,6 +142,12 @@ html{scroll-padding-top:92px}
 .card-no{transition:color .4s var(--ease)}
 .card:hover .card-no{color:var(--primary)}
 .card[data-type="presentations"]:hover .card-no{color:var(--accent)}
+
+/* mobile menu scrim + lock */
+.nav-scrim{position:fixed;inset:0;z-index:188;background:oklch(0.18 0.03 30 / .45);opacity:0;visibility:hidden;transition:opacity .35s var(--ease),visibility .35s;backdrop-filter:blur(2px)}
+.nav-scrim.open{opacity:1;visibility:visible}
+body.menu-open{overflow:hidden}
+@media(min-width:981px){.nav-scrim{display:none}}
 </style>
 </head>
 <body>
@@ -166,6 +174,7 @@ html{scroll-padding-top:92px}
     </div>
   </div>
 </nav>
+<div class="nav-scrim" id="navScrim"></div>
 
 <header class="page-head">
   <div class="wrap">
@@ -226,9 +235,14 @@ function setTheme(dark){root.classList.toggle('dark',dark);tBtn.innerHTML=dark?'
 let saved=null;try{saved=localStorage.getItem('theme');}catch(e){}
 setTheme(saved? saved==='dark' : false);
 tBtn.addEventListener('click',()=>setTheme(!root.classList.contains('dark')));
-const toggle=document.getElementById('navToggle'),links=document.getElementById('navLinks');
-toggle.addEventListener('click',()=>{const o=links.classList.toggle('open');toggle.setAttribute('aria-expanded',o);toggle.innerHTML=o?'<i class="fas fa-times"></i>':'<i class="fas fa-bars"></i>';});
-links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{links.classList.remove('open');toggle.innerHTML='<i class="fas fa-bars"></i>';}));
+const toggle=document.getElementById('navToggle'),links=document.getElementById('navLinks'),scrim=document.getElementById('navScrim');
+function openMenu(){links.classList.add('open');scrim.classList.add('open');document.body.classList.add('menu-open');toggle.setAttribute('aria-expanded','true');toggle.innerHTML='<i class="fas fa-times"></i>';}
+function closeMenu(){links.classList.remove('open');scrim.classList.remove('open');document.body.classList.remove('menu-open');toggle.setAttribute('aria-expanded','false');toggle.innerHTML='<i class="fas fa-bars"></i>';}
+toggle.addEventListener('click',()=>links.classList.contains('open')?closeMenu():openMenu());
+scrim.addEventListener('click',closeMenu);
+links.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeMenu();});
+window.addEventListener('resize',()=>{if(innerWidth>980)closeMenu();});
 const io=new IntersectionObserver((es)=>{es.forEach((e)=>{if(e.isIntersecting){const sibs=[...e.target.parentElement.children].filter(c=>c.classList.contains('reveal'));const idx=sibs.indexOf(e.target);e.target.style.transitionDelay=(Math.min(idx,6)*0.05)+'s';e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.1});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 const btns=document.querySelectorAll('.filter-btn'),cards=[...document.querySelectorAll('#workGrid .card')],countEl=document.getElementById('filterCount');

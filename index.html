@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Haanim Pietersen Software Developer &amp; Human Rights Advocate</title>
+<title>Haanim Pietersen — Software Developer &amp; Human Rights Advocate</title>
 <meta name="description" content="Haanim Pietersen — Software Development Intern at the School of Pharmacy, UWC. Full-stack web, mobile and cloud developer and human rights advocate based in Cape Town.">
 <meta name="theme-color" content="#F4ECDB">
 <meta property="og:type" content="website">
@@ -124,7 +124,7 @@ html.dark .grain{mix-blend-mode:overlay;opacity:.06}
 .nav-cta{color:var(--primary-foreground)!important;background:var(--primary);padding:.55rem 1.1rem!important;border-radius:var(--r-sm);font-weight:600;transition:all .3s var(--ease)}
 .nav-cta::after{display:none}
 .nav-cta:hover{filter:brightness(1.06);box-shadow:var(--shadow-glow);transform:translateY(-1px)}
-.icon-btn{width:42px;height:42px;border-radius:var(--r-sm);border:1px solid var(--border);background:transparent;color:var(--foreground);display:grid;place-items:center;font-size:.95rem;cursor:pointer;transition:all .3s var(--ease)}
+.icon-btn{position:relative;z-index:205;width:42px;height:42px;border-radius:var(--r-sm);border:1px solid var(--border);background:transparent;color:var(--foreground);display:grid;place-items:center;font-size:.95rem;cursor:pointer;transition:all .3s var(--ease)}
 .icon-btn:hover{border-color:var(--primary);color:var(--primary)}
 .nav-toggle{display:none}
 
@@ -305,8 +305,10 @@ footer{padding:2.4rem 0;border-top:1px solid var(--border)}
 .reveal.in{opacity:1;transform:none}
 
 @media(max-width:980px){
-  .nav-links{position:fixed;inset:0 0 0 auto;width:min(320px,82vw);flex-direction:column;align-items:flex-start;justify-content:center;gap:.4rem;background:var(--background);backdrop-filter:blur(24px);padding:2.5rem;transform:translateX(100%);transition:transform .45s var(--ease);border-left:1px solid var(--border);box-shadow:var(--shadow-soft)}
-  .nav-links.open{transform:none}
+  #navbar.scrolled{backdrop-filter:none;-webkit-backdrop-filter:none;background:var(--background)}
+  .nav-links{overflow-y:auto}
+  .nav-links{position:fixed;inset:0 0 0 auto;width:min(330px,85vw);flex-direction:column;align-items:flex-start;justify-content:center;gap:.3rem;background:var(--background);backdrop-filter:blur(24px);padding:5.5rem 2.2rem 2.2rem;border-left:1px solid var(--border);box-shadow:var(--shadow-soft);z-index:195;opacity:0;visibility:hidden;transform:translateX(18px);transition:opacity .35s var(--ease),transform .35s var(--ease),visibility .35s}
+  .nav-links.open{opacity:1;visibility:visible;transform:none}
   .nl{font-size:1.05rem;padding:.7rem 0}.nl::after{display:none}
   .nav-toggle{display:grid}
   .hero-inner,.about-grid,.two-col,.contact-grid{grid-template-columns:1fr;gap:3rem}
@@ -351,6 +353,12 @@ h1,h2,h3,h4,.lead,.advocacy-line,.ph-title,.hero-name{font-optical-sizing:auto}
 .hero-portrait:hover .portrait-wrap::before{inset:10px -18px -18px 18px;opacity:.7}
 .portrait-frame{z-index:1}
 @media(max-width:620px){.portrait-wrap::before{display:none}}
+
+/* mobile menu scrim + lock */
+.nav-scrim{position:fixed;inset:0;z-index:188;background:oklch(0.18 0.03 30 / .45);opacity:0;visibility:hidden;transition:opacity .35s var(--ease),visibility .35s;backdrop-filter:blur(2px)}
+.nav-scrim.open{opacity:1;visibility:visible}
+body.menu-open{overflow:hidden}
+@media(min-width:981px){.nav-scrim{display:none}}
 </style>
 </head>
 <body>
@@ -378,6 +386,7 @@ h1,h2,h3,h4,.lead,.advocacy-line,.ph-title,.hero-name{font-optical-sizing:auto}
     </div>
   </div>
 </nav>
+<div class="nav-scrim" id="navScrim"></div>
 
 <!-- HERO -->
 <header id="home" class="hero">
@@ -385,7 +394,7 @@ h1,h2,h3,h4,.lead,.advocacy-line,.ph-title,.hero-name{font-optical-sizing:auto}
     <div>
       <p class="eyebrow h-anim"><span class="dot"></span> Portfolio — Cape Town, 2026</p>
       <h1 class="hero-name h-anim d1">Haanim<em>Pietersen</em></h1>
-      <p class="hero-bio h-anim d2"><b>Software Developer &amp; Human Rights Advocate.</b> Building meaningful digital solutions across full-stack web, mobile, and cloud, precise about design, intentional about impact.</p>
+      <p class="hero-bio h-anim d2"><b>Software Developer &amp; Human Rights Advocate.</b> Building meaningful digital solutions across full-stack web, mobile, and cloud precise about design, intentional about impact.</p>
       <div class="hero-actions h-anim d3">
         <a href="#contact" class="btn btn-primary"><i class="fas fa-arrow-right"></i> Let's work together</a>
         <a href="/img/Haanim '26 CV.pdf" class="btn btn-secondary" download><i class="fas fa-arrow-down"></i> Download CV</a>
@@ -601,6 +610,8 @@ h1,h2,h3,h4,.lead,.advocacy-line,.ph-title,.hero-name{font-optical-sizing:auto}
       <div class="reveal">
         <h3 class="form-title">Send a message</h3>
         <form id="contactForm" action="https://formspree.io/f/xykljokl" method="POST">
+          <input type="hidden" name="_subject" value="New message from your portfolio">
+          <input type="hidden" name="_next" value="thankyou.html">
           <div class="f-group"><label for="name">Full Name</label><input id="name" type="text" name="name" required></div>
           <div class="f-group"><label for="email">Email Address</label><input id="email" type="email" name="email" required></div>
           <div class="f-group"><label for="subject">Subject</label><input id="subject" type="text" name="subject" required></div>
@@ -643,9 +654,14 @@ setTheme(saved? saved==='dark' : false);
 tBtn.addEventListener('click',()=>setTheme(!root.classList.contains('dark')));
 
 /* mobile nav */
-const toggle=document.getElementById('navToggle'),links=document.getElementById('navLinks');
-toggle.addEventListener('click',()=>{const o=links.classList.toggle('open');toggle.setAttribute('aria-expanded',o);toggle.innerHTML=o?'<i class="fas fa-times"></i>':'<i class="fas fa-bars"></i>';});
-links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{links.classList.remove('open');toggle.setAttribute('aria-expanded',false);toggle.innerHTML='<i class="fas fa-bars"></i>';}));
+const toggle=document.getElementById('navToggle'),links=document.getElementById('navLinks'),scrim=document.getElementById('navScrim');
+function openMenu(){links.classList.add('open');scrim.classList.add('open');document.body.classList.add('menu-open');toggle.setAttribute('aria-expanded','true');toggle.innerHTML='<i class="fas fa-times"></i>';}
+function closeMenu(){links.classList.remove('open');scrim.classList.remove('open');document.body.classList.remove('menu-open');toggle.setAttribute('aria-expanded','false');toggle.innerHTML='<i class="fas fa-bars"></i>';}
+toggle.addEventListener('click',()=>links.classList.contains('open')?closeMenu():openMenu());
+scrim.addEventListener('click',closeMenu);
+links.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeMenu();});
+window.addEventListener('resize',()=>{if(innerWidth>980)closeMenu();});
 
 /* reveal */
 const io=new IntersectionObserver((es)=>{es.forEach((e)=>{if(e.isIntersecting){const sibs=[...e.target.parentElement.children].filter(c=>c.classList.contains('reveal'));const idx=sibs.indexOf(e.target);e.target.style.transitionDelay=(Math.min(Math.max(idx,0),5)*0.07)+'s';e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12});
@@ -669,7 +685,8 @@ form.addEventListener('submit',async(e)=>{
   const btn=form.querySelector('button[type=submit]'),orig=btn.innerHTML;
   btn.innerHTML='<i class="fas fa-spinner fa-spin"></i> Sending…';btn.disabled=true;
   try{const res=await fetch(form.action,{method:'POST',body:new FormData(form),headers:{'Accept':'application/json'}});
-    btn.innerHTML=res.ok?'<i class="fas fa-check"></i> Message sent — thank you!':'<i class="fas fa-exclamation-circle"></i> Something went wrong';if(res.ok)form.reset();
+    if(res.ok){btn.innerHTML='<i class="fas fa-check"></i> Sent — redirecting…';window.location.href='thankyou.html';return;}
+    btn.innerHTML='<i class="fas fa-exclamation-circle"></i> Something went wrong';
   }catch{btn.innerHTML='<i class="fas fa-exclamation-circle"></i> Network error — try email';}
   setTimeout(()=>{btn.innerHTML=orig;btn.disabled=false;},3500);
 });
