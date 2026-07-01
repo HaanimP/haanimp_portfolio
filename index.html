@@ -4,14 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Haanim Pietersen</title>
-<meta name="description" content="Haanim Pietersen — Software Development Intern at the School of Pharmacy, UWC. Full-stack web, mobile and cloud developer and human rights advocate based in Cape Town.">
+<meta name="description" content="Haanim Pietersen, Software Development Intern at the School of Pharmacy, UWC. Full-stack web, mobile and cloud developer and human rights advocate based in Cape Town.">
 <meta name="theme-color" content="#F4ECDB">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Haanim Pietersen — Software Developer &amp; Human Rights Advocate">
+<meta property="og:title" content="Haanim Pietersen, Software Developer &amp; Human Rights Advocate">
 <meta property="og:description" content="Cape Town based software developer building meaningful full-stack, mobile, and cloud solutions. Award-winning, Summa Cum Laude, and people-first.">
 <meta property="og:image" content="/img/IMG-20250528-WA0042 (1).jpg">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Haanim Pietersen — Software Developer &amp; Human Rights Advocate">
+<meta name="twitter:title" content="Haanim Pietersen, Software Developer &amp; Human Rights Advocate">
 <meta name="twitter:description" content="Software Developer & Human Rights Advocate. Cape Town, 2026.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23A8412B'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='18' font-weight='700' fill='%23F4ECDB' text-anchor='middle'%3EH%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -194,6 +194,45 @@ html.dark .grain{mix-blend-mode:overlay;opacity:.06}
 .cause:hover{border-color:var(--foreground);color:var(--foreground)}
 .cause.flag{border-color:var(--primary);color:var(--primary)}
 
+/* advocacy typewriter */
+.advocacy-type{font-family:var(--font-display);font-weight:600;font-size:clamp(1.5rem,3.8vw,2.4rem);letter-spacing:-.02em;line-height:1.3;min-height:1.5em;margin:0 0 2.4rem;display:flex;align-items:center;justify-content:center;gap:.05em}
+.type-text{color:var(--primary)}
+.type-caret{display:inline-block;width:3px;height:1.05em;background:var(--primary);margin-left:.08em;border-radius:2px;transform:translateY(.12em);animation:caretBlink 1.05s steps(1) infinite}
+@keyframes caretBlink{0%,49%{opacity:1}50%,100%{opacity:0}}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+/* advocacy spotlight: shine a light on the words */
+.advocacy{position:relative;overflow:hidden}
+.advocacy-inner{position:relative;z-index:2}
+.advocacy-bg{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+
+/* dim the surroundings so the beam reads on the words */
+.advocacy-bg::after{content:"";position:absolute;inset:0;background:radial-gradient(115% 85% at 50% 40%, transparent 32%, color-mix(in oklch, var(--ink) 16%, transparent) 100%);opacity:.55}
+html.dark .advocacy-bg::after{background:radial-gradient(115% 85% at 50% 40%, transparent 28%, rgba(0,0,0,.55) 100%);opacity:.85}
+
+/* the flashlight head, sitting at the top edge of the section */
+.flash-head{position:absolute;top:-16px;left:50%;transform:translateX(-50%);width:64px;height:64px;border-radius:50%;z-index:2;filter:blur(2px);background:radial-gradient(circle, color-mix(in oklch,var(--secondary) 92%, white) 0%, color-mix(in oklch,var(--secondary) 55%,transparent) 46%, transparent 72%);animation:flashFlicker 5s ease-in-out infinite}
+
+/* the beam of light shining down onto the words */
+.flash-beam{position:absolute;top:0;left:50%;width:min(125%,760px);height:min(150%,600px);transform:translateX(-50%) rotate(0deg);transform-origin:50% -12px;z-index:1;mix-blend-mode:screen;filter:blur(16px);opacity:.75;clip-path:polygon(47% 0,53% 0,100% 100%,0 100%);background:linear-gradient(to bottom, color-mix(in oklch,var(--secondary) 40%,transparent) 0%, color-mix(in oklch,var(--secondary) 16%,transparent) 42%, transparent 84%);animation:beamSway 7.5s ease-in-out infinite}
+html.dark .flash-beam{opacity:.85}
+
+/* the words, softly lit */
+.advocacy .type-text{text-shadow:0 0 20px color-mix(in oklch,var(--secondary) 45%,transparent)}
+.advocacy-line{text-shadow:0 0 24px color-mix(in oklch,var(--secondary) 22%,transparent)}
+
+/* dust motes caught in the beam */
+.ember{position:absolute;bottom:-6%;border-radius:50%;background:var(--secondary);opacity:0;z-index:1;filter:blur(.5px);box-shadow:0 0 6px 0 color-mix(in oklch,var(--secondary) 40%,transparent);animation:emberRise linear infinite;will-change:transform,opacity}
+
+@keyframes emberRise{
+  0%{transform:translateY(0) translateX(0) scale(.5);opacity:0}
+  16%{opacity:.55}
+  70%{opacity:.35}
+  100%{transform:translateY(-560px) translateX(var(--drift,0)) scale(1);opacity:0}
+}
+@keyframes beamSway{0%,100%{transform:translateX(-50%) rotate(-2.4deg)}50%{transform:translateX(-50%) rotate(2.4deg)}}
+@keyframes flashFlicker{0%,100%{opacity:.92}40%{opacity:.8}66%{opacity:1}84%{opacity:.74}}
+
 /* about */
 .about-grid{display:grid;grid-template-columns:1.4fr .75fr;gap:clamp(2.5rem,6vw,5rem);align-items:start}
 .lead{font-family:var(--font-display);font-size:1.8rem;font-style:italic;line-height:1.4;color:var(--foreground);margin-bottom:1.8rem;font-weight:500}
@@ -333,6 +372,7 @@ footer{padding:2.4rem 0;border-top:1px solid var(--border)}
 @media(prefers-reduced-motion:reduce){
   *{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}
   .reveal,.h-anim{opacity:1!important;transform:none!important}
+  .type-caret{animation:none;opacity:1}
 }
 .amp{font-style:normal;font-feature-settings:"swsh" 0}
 :focus-visible{outline:2px solid var(--primary);outline-offset:3px;border-radius:3px}
@@ -393,7 +433,7 @@ body.menu-open{overflow:hidden}
 <header id="home" class="hero">
   <div class="hero-inner">
     <div>
-      <p class="eyebrow h-anim"><span class="dot"></span> Portfolio — Cape Town, 2026</p>
+      <p class="eyebrow h-anim"><span class="dot"></span> Portfolio · Cape Town, 2026</p>
       <h1 class="hero-name h-anim d1">Haanim<em>Pietersen</em></h1>
       <p class="hero-bio h-anim d2"><b>Software Developer &amp; Human Rights Advocate.</b> Building meaningful digital solutions across full-stack web, mobile, and cloud precise about design, intentional about impact.</p>
       <div class="hero-actions h-anim d3">
@@ -420,16 +460,26 @@ body.menu-open{overflow:hidden}
 
 <!-- ADVOCACY -->
 <section class="advocacy band-warm">
+  <div class="advocacy-bg" aria-hidden="true">
+    <div class="flash-beam"></div>
+    <div class="flash-head"></div>
+  </div>
   <div class="advocacy-inner reveal">
     <p class="advocacy-label">Beyond the code</p>
-    <p class="advocacy-line">“Technology should serve people and people deserve dignity, freedom, and justice.”</p>
-    <div class="advocacy-causes">
-      <span class="cause flag">Free Palestine 🇵🇸</span>
-      <span class="cause">End Gender-Based Violence</span>
-      <span class="cause">Support Sudan</span>
-      <span class="cause">Support Congo</span>
-      <span class="cause">Protect Our Water</span>
-    </div>
+    <p class="advocacy-line">"None of us are free until all of us are free."</p>
+    <p class="advocacy-type" aria-hidden="true">
+      <span class="type-text" id="typeText">Free Palestine</span><span class="type-caret"></span>
+    </p>
+    <ul class="sr-only">
+      <li>Free Palestine</li>
+      <li>Free Sudan</li>
+      <li>Free Congo</li>
+      <li>Free Afghan women</li>
+      <li>Free immigrants</li>
+      <li>Stop genocide</li>
+      <li>End gender-based violence</li>
+      <li>Equal human rights for all</li>
+    </ul>
   </div>
 </section>
 
@@ -438,7 +488,7 @@ body.menu-open{overflow:hidden}
   <div class="wrap">
     <div class="chapter reveal">
       <div>
-        <span class="chapter-num">01 — About</span>
+        <span class="chapter-num">01 · About</span>
         <h2 class="chapter-heading">Technology, made <em>with intention</em></h2>
       </div>
       <p class="chapter-note">craft and people, valued in equal measure</p>
@@ -478,7 +528,7 @@ body.menu-open{overflow:hidden}
   <div class="wrap">
     <div class="chapter reveal">
       <div>
-        <span class="chapter-num">02 — Capabilities</span>
+        <span class="chapter-num">02 · Capabilities</span>
         <h2 class="chapter-heading">What I <em>bring to the table</em></h2>
       </div>
       <p class="chapter-note">a full-stack toolkit, interface to infrastructure</p>
@@ -500,7 +550,7 @@ body.menu-open{overflow:hidden}
   <div class="wrap">
     <div class="chapter reveal">
       <div>
-        <span class="chapter-num">03 — Selected Work</span>
+        <span class="chapter-num">03 · Selected Work</span>
         <h2 class="chapter-heading">Things I've <em>built <span class="amp">&amp;</span> presented</em></h2>
       </div>
       <p class="chapter-note">a few highlights full archive on the work page</p>
@@ -529,7 +579,7 @@ body.menu-open{overflow:hidden}
   <div class="wrap">
     <div class="chapter reveal">
       <div>
-        <span class="chapter-num">04 — The Journey</span>
+        <span class="chapter-num">04 · The Journey</span>
         <h2 class="chapter-heading">Experience <span class="amp">&amp;</span> <em>education</em></h2>
       </div>
       <p class="chapter-note">where I've been, and what shaped the work</p>
@@ -539,20 +589,20 @@ body.menu-open{overflow:hidden}
       <div class="reveal">
         <h3 class="col-head">Professional Experience</h3>
         <div class="timeline">
-          <div class="tl-row"><p class="tl-date">Dec 2025 — Present</p><h3>Software Development Intern</h3><p class="tl-company">School of Pharmacy, UWC</p><p class="tl-desc">Managing internal and stakeholder communication for a confidential regulatory-technology project; improving clarity, usability, and workflow logic in a high-stakes digital environment, and preparing structured updates for senior academic and industry stakeholders.</p></div>
-          <div class="tl-row"><p class="tl-date">Feb — May 2025</p><h3>Social Media Manager</h3><p class="tl-company">The Three Stars</p><p class="tl-desc">Led social media strategy across content management, client consultation, team collaboration, and brand outreach — significantly increasing engagement.</p></div>
-          <div class="tl-row"><p class="tl-date">Dec 2024 — May 2025</p><h3>Business Team Lead</h3><p class="tl-company">The Three Stars</p><p class="tl-desc">Ran daily standups and progress tracking, ensured punctuality and task completion, and mentored team members.</p></div>
-          <div class="tl-row"><p class="tl-date">Nov 2024 — May 2025</p><h3>Web Designer</h3><p class="tl-company">The Three Stars</p><p class="tl-desc">Created wireframes and prototypes, designed user-friendly interfaces, built responsive solutions, and collaborated with cross-functional teams.</p></div>
-          <div class="tl-row"><p class="tl-date">Oct — Nov 2024</p><h3>Assistant Lecturer</h3><p class="tl-company">LC Studio</p><p class="tl-desc">Facilitated student progress through structured check-ins and maintained high standards for punctuality and task completion.</p></div>
-          <div class="tl-row"><p class="tl-date">Apr — Nov 2024</p><h3>Software Engineer Intern</h3><p class="tl-company">LC Studio</p><p class="tl-desc">Advanced skills in Linux, Python, and C++ through intensive self-study; collaborated in Scrum processes and developed project prototypes.</p></div>
+          <div class="tl-row"><p class="tl-date">Dec 2025 to Present</p><h3>Software Development Intern</h3><p class="tl-company">School of Pharmacy, UWC</p><p class="tl-desc">Managing internal and stakeholder communication for a confidential regulatory-technology project; improving clarity, usability, and workflow logic in a high-stakes digital environment, and preparing structured updates for senior academic and industry stakeholders.</p></div>
+          <div class="tl-row"><p class="tl-date">Feb to May 2025</p><h3>Social Media Manager</h3><p class="tl-company">The Three Stars</p><p class="tl-desc">Led social media strategy across content management, client consultation, team collaboration, and brand outreach, significantly increasing engagement.</p></div>
+          <div class="tl-row"><p class="tl-date">Dec 2024 to May 2025</p><h3>Business Team Lead</h3><p class="tl-company">The Three Stars</p><p class="tl-desc">Ran daily standups and progress tracking, ensured punctuality and task completion, and mentored team members.</p></div>
+          <div class="tl-row"><p class="tl-date">Nov 2024 to May 2025</p><h3>Web Designer</h3><p class="tl-company">The Three Stars</p><p class="tl-desc">Created wireframes and prototypes, designed user-friendly interfaces, built responsive solutions, and collaborated with cross-functional teams.</p></div>
+          <div class="tl-row"><p class="tl-date">Oct to Nov 2024</p><h3>Assistant Lecturer</h3><p class="tl-company">LC Studio</p><p class="tl-desc">Facilitated student progress through structured check-ins and maintained high standards for punctuality and task completion.</p></div>
+          <div class="tl-row"><p class="tl-date">Apr to Nov 2024</p><h3>Software Engineer Intern</h3><p class="tl-company">LC Studio</p><p class="tl-desc">Advanced skills in Linux, Python, and C++ through intensive self-study; collaborated in Scrum processes and developed project prototypes.</p></div>
         </div>
       </div>
       <div class="reveal" id="education">
         <h3 class="col-head">Education</h3>
         <div class="timeline">
-          <div class="tl-row"><p class="tl-date">Mar — Nov 2025</p><h3>Software Development Student</h3><p class="tl-company">UWC Future Innovation Lab, powered by Samsung</p><p class="tl-desc">Advanced study in software development with a focus on emerging technologies and practical application. Distinctions (Summa Cum Laude) in Multi-Platform Software Development and Digital Social Innovation for Impact. Top Student award and 2025 Best Overall Technical Project winner for DiaConnect.</p></div>
-          <div class="tl-row"><p class="tl-date">Sep 2023 — Mar 2024</p><h3>Certificate of Excellence, Web Development</h3><p class="tl-company">Life Choices Academy</p><p class="tl-desc">Comprehensive training in web technologies HTML, CSS, JavaScript, and modern frameworks with excellence across all modules and hands-on project experience.</p></div>
-          <div class="tl-row"><p class="tl-date">Jan 2018 — Dec 2022</p><h3>National Senior Certificate</h3><p class="tl-company">South Peninsula High School</p><p class="tl-desc">Completed secondary education with strong academic performance, laying the foundation for studies in technology and computer science.</p></div>
+          <div class="tl-row"><p class="tl-date">Mar to Nov 2025</p><h3>Software Development Student</h3><p class="tl-company">UWC Future Innovation Lab, powered by Samsung</p><p class="tl-desc">Advanced study in software development with a focus on emerging technologies and practical application. Distinctions (Summa Cum Laude) in Multi-Platform Software Development and Digital Social Innovation for Impact. Top Student award and 2025 Best Overall Technical Project winner for DiaConnect.</p></div>
+          <div class="tl-row"><p class="tl-date">Sep 2023 to Mar 2024</p><h3>Certificate of Excellence, Web Development</h3><p class="tl-company">Life Choices Academy</p><p class="tl-desc">Comprehensive training in web technologies HTML, CSS, JavaScript, and modern frameworks with excellence across all modules and hands-on project experience.</p></div>
+          <div class="tl-row"><p class="tl-date">Jan 2018 to Dec 2022</p><h3>National Senior Certificate</h3><p class="tl-company">South Peninsula High School</p><p class="tl-desc">Completed secondary education with strong academic performance, laying the foundation for studies in technology and computer science.</p></div>
         </div>
       </div>
     </div>
@@ -564,7 +614,7 @@ body.menu-open{overflow:hidden}
   <div class="wrap">
     <div class="chapter reveal">
       <div>
-        <span class="chapter-num">05 — Kind Words</span>
+        <span class="chapter-num">05 · Kind Words</span>
         <h2 class="chapter-heading">What people <em>say</em></h2>
       </div>
       <p class="chapter-note">colleagues, collaborators, connections</p>
@@ -592,7 +642,7 @@ body.menu-open{overflow:hidden}
   <div class="wrap">
     <div class="chapter reveal">
       <div>
-        <span class="chapter-num">06 — Contact</span>
+        <span class="chapter-num">06 · Contact</span>
         <h2 class="chapter-heading">Let's <em>work together</em></h2>
       </div>
       <p class="chapter-note">I'd love to hear what you're building</p>
@@ -679,6 +729,83 @@ document.querySelectorAll('.nl').forEach(a=>{const h=a.getAttribute('href');if(h
 const spy=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){Object.values(navMap).forEach(a=>a.classList.remove('active'));if(navMap[e.target.id])navMap[e.target.id].classList.add('active');}});},{rootMargin:'-45% 0px -50% 0px'});
 document.querySelectorAll('section[id], header[id]').forEach(s=>spy.observe(s));
 
+/* advocacy typewriter */
+(function(){
+  const el=document.getElementById('typeText');
+  if(!el)return;
+  const phrases=[
+    "Free Palestine",
+    "Free Sudan",
+    "Free Congo",
+    "Free Yemen",
+    "Free Kashmir",
+    "Free Afghan women",
+    "Stop genocide",
+    "Free immigrants",
+    "Refugees are welcome",
+    "No one is illegal",
+    "End gender-based violence",
+    "Stop domestic violence and all abuse",
+    "Food is a human right",
+    "Water is a human right",
+    "Healthcare is a human right",
+    "Education is a human right",
+    "Children have the right to education",
+    "Justice everywhere",
+    "Dignity for every person",
+    "Equal human rights for all"
+  ];
+  const split=s=>(typeof Intl!=='undefined'&&Intl.Segmenter)
+    ? Array.from(new Intl.Segmenter(undefined,{granularity:'grapheme'}).segment(s),x=>x.segment)
+    : Array.from(s);
+  const items=phrases.map(split);
+  const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduce){let i=0;el.textContent=phrases[0];setInterval(()=>{i=(i+1)%phrases.length;el.textContent=phrases[i];},2600);return;}
+  const TYPE=70,ERASE=38,HOLD=1600,GAP=420;
+  let pi=0,ci=items[0].length,del=true;
+  el.textContent=phrases[0];
+  function tick(){
+    const g=items[pi];
+    if(!del){
+      ci++;el.textContent=g.slice(0,ci).join('');
+      if(ci>=g.length){del=true;return setTimeout(tick,HOLD);}
+      return setTimeout(tick,TYPE);
+    }
+    ci--;el.textContent=g.slice(0,ci).join('');
+    if(ci<=0){del=false;pi=(pi+1)%items.length;return setTimeout(tick,GAP);}
+    return setTimeout(tick,ERASE);
+  }
+  setTimeout(tick,1400);
+})();
+
+/* advocacy light dust: motes caught in the beam */
+(function(){
+  const host=document.querySelector('.advocacy-bg');
+  if(!host)return;
+  const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const N=reduce?10:18;
+  const warm=['var(--secondary)','var(--primary)','var(--secondary)'];
+  for(let i=0;i<N;i++){
+    const e=document.createElement('span');
+    e.className='ember';
+    const size=(1.5+Math.random()*2.6).toFixed(1)+'px';
+    e.style.left=(30+Math.random()*40).toFixed(1)+'%';   /* bias toward the beam */
+    e.style.width=size;e.style.height=size;
+    e.style.background=warm[Math.floor(Math.random()*warm.length)];
+    e.style.setProperty('--drift',((Math.random()-0.5)*60).toFixed(0)+'px');
+    if(reduce){
+      e.style.animation='none';
+      e.style.opacity=(0.2+Math.random()*0.2).toFixed(2);
+      e.style.bottom=(Math.random()*82).toFixed(1)+'%';
+    }else{
+      const dur=11+Math.random()*9;
+      e.style.animationDuration=dur.toFixed(1)+'s';
+      e.style.animationDelay=(-Math.random()*dur).toFixed(1)+'s';
+    }
+    host.appendChild(e);
+  }
+})();
+
 /* contact form */
 const form=document.getElementById('contactForm');
 form.addEventListener('submit',async(e)=>{
@@ -686,9 +813,9 @@ form.addEventListener('submit',async(e)=>{
   const btn=form.querySelector('button[type=submit]'),orig=btn.innerHTML;
   btn.innerHTML='<i class="fas fa-spinner fa-spin"></i> Sending…';btn.disabled=true;
   try{const res=await fetch(form.action,{method:'POST',body:new FormData(form),headers:{'Accept':'application/json'}});
-    if(res.ok){btn.innerHTML='<i class="fas fa-check"></i> Sent — redirecting…';window.location.href='thankyou.html';return;}
+    if(res.ok){btn.innerHTML='<i class="fas fa-check"></i> Sent, redirecting…';window.location.href='thankyou.html';return;}
     btn.innerHTML='<i class="fas fa-exclamation-circle"></i> Something went wrong';
-  }catch{btn.innerHTML='<i class="fas fa-exclamation-circle"></i> Network error — try email';}
+  }catch{btn.innerHTML='<i class="fas fa-exclamation-circle"></i> Network error, try email';}
   setTimeout(()=>{btn.innerHTML=orig;btn.disabled=false;},3500);
 });
 
