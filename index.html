@@ -476,6 +476,34 @@ footer{padding:2.4rem 0;border-top:1px solid var(--border)}
   .reveal,.h-anim{opacity:1!important;transform:none!important}
   .type-caret{animation:none;opacity:1}
 }
+
+/* ---------- mobile hero fixes ---------- */
+.eyebrow{flex-wrap:wrap;row-gap:.7rem;max-width:100%}
+.status{flex:none;max-width:100%}
+.hero-inner>div{min-width:0}
+@media(max-width:768px){
+  .eyebrow{font-size:.68rem;letter-spacing:.08em;gap:.55rem}
+}
+@media(max-width:620px){
+  .hero{padding:7.5rem 0 6rem;min-height:auto}
+  .eyebrow{font-size:.64rem;margin-bottom:1.6rem}
+  .status{margin-left:0;margin-top:0;padding:.35rem .8rem;font-size:.62rem}
+  .hero-name{margin-bottom:1.3rem}
+  .hero-bio{font-size:1rem;margin-bottom:2rem}
+  .hero-actions{margin-bottom:2.6rem}
+  .hero-actions .btn{padding:.85rem 1.3rem;font-size:.82rem}
+  .scroll-hint{display:none}
+  .creds{grid-template-columns:1fr;justify-content:stretch}
+  .cred{padding:.85rem 0;border-left:none;border-top:1px solid var(--border);display:flex;align-items:baseline;justify-content:space-between;gap:1rem}
+  .cred:first-child{padding-top:0;border-top:none;padding-left:0}
+  .cred-k{margin-bottom:0}
+  .cred-v{font-size:1.1rem;text-align:right}
+  .portrait-frame{width:min(240px,68vw)}
+}
+@media(max-width:380px){
+  .eyebrow{font-size:.58rem}
+  .hero-name{font-size:2.9rem}
+}
 </style>
 </head>
 <body>
