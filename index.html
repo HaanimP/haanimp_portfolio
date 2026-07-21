@@ -1337,30 +1337,6 @@
   .clock .tick { color: var(--tan); }
 
   /* contact wow */
-  .foot-top { display: flex; align-items: center; gap: 22px; flex-wrap: wrap; }
-  .avail {
-    font-family: var(--mono);
-    font-size: 0.66rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--cream-60);
-    border: 1px solid var(--hairline-light);
-    border-radius: 999px;
-    padding: 8px 16px;
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-  }
-  .avail i {
-    width: 7px; height: 7px;
-    border-radius: 50%;
-    background: var(--tan);
-    animation: pulse 2s ease-in-out infinite;
-  }
-  @keyframes pulse {
-    0%, 100% { box-shadow: 0 0 0 0 rgba(196, 165, 127, 0.5); }
-    50% { box-shadow: 0 0 0 7px rgba(196, 165, 127, 0); }
-  }
   .invite {
     margin-top: 26px;
     max-width: 52ch;
@@ -1497,15 +1473,40 @@
     .exp-item { padding-left: 0; }
     .exp-item::before { top: 34px; }
     .wbtn { padding: 9px 16px; }
-    .t-stage { min-height: 460px; }
-    .t-slide blockquote { font-size: 1.3rem; }
-    .contact-cta { flex-direction: column; align-items: flex-start; }
+    .t-stage { min-height: 430px; }
+    .t-slide .qmark { font-size: 2.6rem; margin-bottom: 18px; }
+    .t-slide blockquote { font-size: 1.22rem; line-height: 1.5; }
+    .t-slide figcaption { margin-top: 24px; }
+    .t-controls { gap: 14px; margin-top: 30px; }
+    .t-btn { width: 44px; height: 44px; }
+    .t-btn svg { width: 15px; height: 15px; }
+    .t-progress { width: 64px; }
+    .footer { padding-top: clamp(96px, 13vh, 140px); }
+    .footer-title { font-size: clamp(2.7rem, 13.5vw, 4.2rem); margin-top: 34px; }
+    .contact-cta {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 22px 20px;
+      gap: 16px;
+      border-radius: 14px;
+      margin-top: 40px;
+    }
+    .cta-mail { font-size: 1.28rem; }
+    .cta-arrow { width: 48px; }
+    .social-pills { gap: 8px; margin-top: 24px; }
+    .spill { padding: 10px 15px; font-size: 0.62rem; letter-spacing: 0.12em; }
+    .footer-base {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+      margin-top: 56px;
+    }
   }
 
   /* ================= REDUCED MOTION ================= */
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
-    .grain, .blob-1, .blob-2, .scroll-cue .line, .marq-track, .chant .track, .avail i { animation: none; }
+    .grain, .blob-1, .blob-2, .scroll-cue .line, .marq-track, .chant .track { animation: none; }
     .statement h2 .w { opacity: 1; }
     .progress { display: none; }
     .t-progress { display: none; }
@@ -2016,10 +2017,7 @@
 <footer class="footer" id="contact" data-dark>
   <div class="blob-f" aria-hidden="true"></div>
   <div class="footer-inner">
-    <div class="foot-top rv">
-      <div class="kicker">Contact</div>
-      <span class="avail"><i></i>Open to opportunities</span>
-    </div>
+    <div class="kicker rv">Contact</div>
     <h2 class="footer-title rv rv-d1">Let's make<br>something <em>lasting.</em></h2>
     <p class="invite rv rv-d2">Have a project, a role, or a cause worth building for? My inbox is open.</p>
 
