@@ -5,27 +5,36 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Haanim Pietersen Software & AI Engineer</title>
 <meta name="description" content="Haanim Pietersen, software developer and AI engineering intern based in Cape Town. Full-stack web, mobile and cloud developer and human rights advocate.">
-<meta name="theme-color" content="#F1E8DB">
+<meta name="theme-color" content="#F3EDE2">
 <meta property="og:title" content="Haanim Pietersen Software & AI Engineer">
 <meta property="og:description" content="Cape Town based software developer and AI engineering intern building meaningful full-stack, mobile, and cloud solutions.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%234A1220'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='18' font-style='italic' fill='%23F1E8DB' text-anchor='middle'%3EH%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%234A2C18'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='18' font-style='italic' fill='%23F3EDE2' text-anchor='middle'%3EH%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@200;300;400;500&family=DM+Mono:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
 <style>
+  /* Palette drawn from the garden-bridge portrait:
+     cream    = ivory of the striped dress
+     burgundy = deep chocolate of the suede jacket (var name kept for compatibility)
+     maroon   = espresso, near-black brown (stripe shadow)
+     wine     = warm chestnut (hijab)
+     tan      = caramel leather (bag, bridge wood)
+     rose     = golden fawn (sunlit wood)
+     fern     = new: garden green accent */
   :root {
-    --cream: #F1E8DB;
-    --cream-2: #E8DBC7;
-    --tan: #C4A57F;
-    --burgundy: #4A1220;
-    --maroon: #23090F;
-    --wine: #73303F;
-    --rose: #A25E6A;
-    --ink: #221116;
-    --ink-60: rgba(34, 17, 22, 0.62);
-    --cream-60: rgba(241, 232, 219, 0.62);
-    --hairline: rgba(74, 18, 32, 0.14);
-    --hairline-light: rgba(241, 232, 219, 0.14);
+    --cream: #F3EDE2;
+    --cream-2: #EAE0CD;
+    --tan: #B9895B;
+    --burgundy: #4A2C18;
+    --maroon: #21150C;
+    --wine: #6F4A2C;
+    --rose: #A67C4E;
+    --fern: #5E7050;
+    --ink: #271A0F;
+    --ink-60: rgba(39, 26, 15, 0.62);
+    --cream-60: rgba(243, 237, 226, 0.62);
+    --hairline: rgba(74, 44, 24, 0.14);
+    --hairline-light: rgba(243, 237, 226, 0.14);
     --serif: "Instrument Serif", Georgia, serif;
     --sans: "Manrope", system-ui, sans-serif;
     --mono: "DM Mono", ui-monospace, monospace;
@@ -130,7 +139,7 @@
   .cursor-ring {
     width: 38px; height: 38px;
     margin: -19px 0 0 -19px;
-    border: 1px solid rgba(115, 48, 63, 0.55);
+    border: 1px solid rgba(111, 74, 44, 0.55);
     transition: width 0.35s var(--ease), height 0.35s var(--ease),
                 margin 0.35s var(--ease), background 0.35s var(--ease),
                 border-color 0.35s var(--ease);
@@ -138,8 +147,8 @@
   body.cursor-hover .cursor-ring {
     width: 64px; height: 64px;
     margin: -32px 0 0 -32px;
-    background: rgba(115, 48, 63, 0.08);
-    border-color: rgba(115, 48, 63, 0.85);
+    background: rgba(111, 74, 44, 0.08);
+    border-color: rgba(111, 74, 44, 0.85);
   }
   @media (hover: none), (pointer: coarse) {
     .cursor-dot, .cursor-ring { display: none; }
@@ -160,13 +169,13 @@
   }
   header.on-dark { color: var(--cream); }
   header.scrolled {
-    background: rgba(241, 232, 219, 0.84);
+    background: rgba(243, 237, 226, 0.84);
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
     border-bottom: 1px solid var(--hairline);
   }
   header.scrolled.on-dark {
-    background: rgba(35, 9, 15, 0.74);
+    background: rgba(33, 21, 12, 0.74);
     border-bottom-color: var(--hairline-light);
   }
   header.scrolled .bar { padding-top: 16px; padding-bottom: 16px; }
@@ -181,7 +190,7 @@
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
   }
-  body.menu-open .burger { border-color: rgba(241, 232, 219, 0.55); }
+  body.menu-open .burger { border-color: rgba(243, 237, 226, 0.55); }
   .logo {
     font-family: var(--serif);
     font-size: 1.5rem;
@@ -316,10 +325,10 @@
   }
   .blob-2 {
     width: 42vw; height: 42vw;
-    background: radial-gradient(circle at 60% 40%, var(--tan), transparent 62%);
+    background: radial-gradient(circle at 60% 40%, var(--fern), transparent 62%);
     bottom: 4%; left: -12%;
     animation: drift2 26s ease-in-out infinite alternate;
-    opacity: 0.55;
+    opacity: 0.4;
   }
   @keyframes drift1 {
     from { transform: translate(0, 0) scale(1); }
@@ -467,7 +476,7 @@
     text-transform: uppercase;
     color: var(--ink-60);
   }
-  .creds i { font-style: normal; color: var(--tan); }
+  .creds i { font-style: normal; color: var(--fern); }
 
   /* about photo wipe reveal */
   .about-visual.rv {
@@ -495,7 +504,7 @@
   .preloader-bar {
     width: 160px;
     height: 1px;
-    background: rgba(241, 232, 219, 0.18);
+    background: rgba(243, 237, 226, 0.18);
     margin: 18px auto 0;
     overflow: hidden;
   }
@@ -568,7 +577,7 @@
   .about-visual .frame {
     position: absolute;
     inset: 16px;
-    border: 1px solid rgba(241, 232, 219, 0.35);
+    border: 1px solid rgba(243, 237, 226, 0.35);
     pointer-events: none;
   }
   .about-visual .cap {
@@ -579,8 +588,8 @@
     font-size: 0.66rem;
     letter-spacing: 0.24em;
     text-transform: uppercase;
-    color: rgba(241, 232, 219, 0.9);
-    background: linear-gradient(transparent, rgba(35, 9, 15, 0.55));
+    color: rgba(243, 237, 226, 0.9);
+    background: linear-gradient(transparent, rgba(33, 21, 12, 0.55));
   }
   .about-copy h3 {
     font-family: var(--serif);
@@ -653,14 +662,14 @@
   .chant .track span { padding-right: 1.6em; }
   .chant .ghost {
     color: transparent;
-    -webkit-text-stroke: 1px rgba(241, 232, 219, 0.14);
+    -webkit-text-stroke: 1px rgba(243, 237, 226, 0.14);
   }
-  .chant .sol { color: rgba(196, 165, 127, 0.14); }
+  .chant .sol { color: rgba(122, 143, 104, 0.18); }
   .advocacy::after {
     content: "";
     position: absolute;
     inset: 0;
-    background: radial-gradient(58% 60% at 50% 50%, rgba(35, 9, 15, 0.86), rgba(35, 9, 15, 0.25) 70%, transparent 100%);
+    background: radial-gradient(58% 60% at 50% 50%, rgba(33, 21, 12, 0.86), rgba(33, 21, 12, 0.25) 70%, transparent 100%);
     pointer-events: none;
   }
   .advocacy-inner { position: relative; max-width: 880px; margin: 0 auto; z-index: 2; }
@@ -683,7 +692,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    text-shadow: 0 0 30px rgba(196, 165, 127, 0.4);
+    text-shadow: 0 0 30px rgba(185, 137, 91, 0.4);
   }
   .adv-note {
     margin-top: 34px;
@@ -739,7 +748,7 @@
     content: "";
     position: absolute;
     inset: 0;
-    background: rgba(74, 18, 32, 0.045);
+    background: rgba(74, 44, 24, 0.045);
     transform: scaleX(0);
     transform-origin: left;
     transition: transform 0.55s var(--ease);
@@ -884,20 +893,11 @@
   /* mobile inline preview thumbs */
   .row-thumb {
     display: none;
-    height: 110px;
+    position: relative;
+    height: 150px;
     border-radius: 6px;
     margin-bottom: 16px;
-    align-items: center;
-    justify-content: center;
-    font-family: var(--mono);
-    font-size: 0.62rem;
-    letter-spacing: 0.28em;
-    text-transform: uppercase;
-    color: rgba(241, 232, 219, 0.85);
-    text-align: center;
-    padding: 0 14px;
   }
-  .row-thumb.wp-3, .row-thumb.wp-5 { color: rgba(74, 18, 32, 0.7); }
 
   .work-list {
     max-width: 1180px;
@@ -939,7 +939,7 @@
     max-width: 52ch;
     transition: color 0.4s ease;
   }
-  .work-row:hover .desc { color: rgba(241, 232, 219, 0.85); }
+  .work-row:hover .desc { color: rgba(243, 237, 226, 0.85); }
   .work-row .tags {
     display: flex;
     gap: 10px;
@@ -982,24 +982,77 @@
     position: absolute; inset: 0;
     opacity: 0;
     transition: opacity 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: var(--mono);
-    font-size: 0.64rem;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    color: rgba(241,232,219,0.8);
-    text-align: center;
-    padding: 0 16px;
   }
   .work-preview .slide.active { opacity: 1; }
-  .wp-1 { background: linear-gradient(140deg, #73303F, #A25E6A 70%, #C4A57F); }
-  .wp-2 { background: linear-gradient(140deg, #23090F, #4A1220 55%, #73303F); }
-  .wp-3 { background: linear-gradient(140deg, #C4A57F, #E8DBC7 65%, #F1E8DB); color: rgba(74,18,32,0.7); }
-  .wp-4 { background: linear-gradient(140deg, #4A1220, #73303F 50%, #23090F); }
-  .wp-5 { background: linear-gradient(140deg, #A25E6A, #C4A57F 60%, #E8DBC7); color: rgba(74,18,32,0.7); }
-  .wp-6 { background: linear-gradient(140deg, #73303F, #4A1220 55%, #23090F); }
+
+  /* ---- art-directed project covers (no screenshots needed) ----
+     Each cover is a mini editorial poster: number, category, name,
+     on a pattern drawn from the portrait: dress stripes, suede,
+     bridge planks, the bridge arch, ferns, dappled light. */
+  .cover {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    gap: 5px;
+    padding: 16px 18px;
+    text-align: left;
+    overflow: hidden;
+  }
+  .cover .c-top {
+    display: flex;
+    gap: 12px;
+    align-items: baseline;
+    font-family: var(--mono);
+    font-size: 0.58rem;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    opacity: 0.8;
+  }
+  .cover .c-top i { font-style: normal; opacity: 0.75; }
+  .cover .c-name {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1.7rem;
+    line-height: 1.02;
+    letter-spacing: 0.01em;
+  }
+  .cv-light { color: var(--burgundy); }
+  .cv-dark { color: var(--cream); }
+  .cv-dark .c-top { color: var(--tan); opacity: 1; }
+
+  .pt-stripe {  /* the ribbed dress */
+    background:
+      repeating-linear-gradient(180deg, transparent 0 16px, rgba(33,21,12,0.88) 16px 19px) top / 100% 56% no-repeat,
+      #F3EDE2;
+  }
+  .pt-suede {   /* the chocolate jacket */
+    background:
+      repeating-linear-gradient(115deg, rgba(0,0,0,0.22) 0 2px, transparent 2px 10px),
+      linear-gradient(150deg, #4A2C18, #21150C);
+  }
+  .pt-plank {   /* the bridge wood */
+    background:
+      repeating-linear-gradient(90deg, rgba(33,21,12,0.18) 0 2px, transparent 2px 34px),
+      linear-gradient(160deg, #B9895B, #A67C4E);
+  }
+  .pt-fern {    /* the garden */
+    background:
+      radial-gradient(130% 95% at 100% 0%, rgba(94,112,80,0.85) 0 42%, transparent 43%),
+      radial-gradient(90% 70% at 0% 12%, rgba(94,112,80,0.4) 0 30%, transparent 31%),
+      #21150C;
+  }
+  .pt-arch {    /* the bridge's curve */
+    background:
+      radial-gradient(200% 150% at 50% 140%, #6F4A2C 0 62%, transparent 62.5%),
+      #EAE0CD;
+  }
+  .pt-arch .c-top { opacity: 1; }
+  .pt-dot {     /* dappled light */
+    background:
+      radial-gradient(circle, rgba(185,137,91,0.55) 1.3px, transparent 1.6px) 0 0 / 15px 15px,
+      #21150C;
+  }
 
   /* ================= EXPERIENCE ================= */
   .experience {
@@ -1074,7 +1127,7 @@
   }
   .exp-item.lit::before {
     background: var(--wine);
-    box-shadow: 0 0 12px rgba(115, 48, 63, 0.5);
+    box-shadow: 0 0 12px rgba(111, 74, 44, 0.5);
   }
   .exp-item .years {
     font-family: var(--mono);
@@ -1259,7 +1312,7 @@
     position: absolute;
     width: 60vw; height: 60vw;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(115,48,63,0.5), transparent 65%);
+    background: radial-gradient(circle, rgba(111,74,44,0.5), transparent 65%);
     filter: blur(80px);
     top: -20%; right: -18%;
     pointer-events: none;
@@ -1306,7 +1359,7 @@
     font-family: var(--serif);
     font-style: italic;
     font-size: 1.15rem;
-    color: rgba(241, 232, 219, 0.75);
+    color: rgba(243, 237, 226, 0.75);
   }
   .signoff span { color: var(--tan); font-style: normal; }
   .footer-base {
@@ -1322,7 +1375,7 @@
     font-size: 0.66rem;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: rgba(241, 232, 219, 0.5);
+    color: rgba(243, 237, 226, 0.5);
   }
   .footer-base .links { display: flex; gap: 26px; flex-wrap: wrap; }
   .footer-base a { text-decoration: none; transition: color 0.3s ease; }
@@ -1620,7 +1673,7 @@
 <section class="about">
   <div class="about-grid">
     <div class="about-visual rv" id="aboutVisual">
-      <div class="bg" id="aboutBg"><img src="img/haanim-portrait.jpg" alt="Haanim Pietersen seated on a bench in a red hijab and cream coat"></div>
+      <div class="bg" id="aboutBg"><img src="/img/IMG_8753.jpeg" alt="Haanim Pietersen standing on a wooden garden bridge in a brown hijab, suede jacket, and striped dress"></div>
       <div class="frame"></div>
       <div class="cap">Haanim Pietersen</div>
     </div>
@@ -1748,7 +1801,7 @@
     <a class="work-row rv" href="https://github.com/HaanimP/DiaConnectFinal.git" target="_blank" rel="noopener" data-type="project" data-preview="0" data-hover>
       <span class="no">01</span>
       <div class="mid">
-        <div class="row-thumb wp-1"><span>DiaConnect</span></div>
+        <div class="row-thumb cover pt-dot cv-dark"><span class="c-top"><b>&#8470; 01</b><i>Health · AI</i></span><span class="c-name">DiaConnect</span></div>
         <h3>DiaConnect</h3>
         <p class="desc">Diabetes tracking with AI chat, caretaker alerts, and hidden-sugars detection.</p>
       </div>
@@ -1757,7 +1810,7 @@
     <a class="work-row rv" href="https://t3s-ten.vercel.app/" target="_blank" rel="noopener" data-type="project" data-preview="1" data-hover>
       <span class="no">02</span>
       <div class="mid">
-        <div class="row-thumb wp-2"><span>The Three Stars</span></div>
+        <div class="row-thumb cover pt-suede cv-dark"><span class="c-top"><b>&#8470; 02</b><i>Agency</i></span><span class="c-name">The Three Stars</span></div>
         <h3>The Three Stars</h3>
         <p class="desc">The digital solutions agency I co-founded: services, portfolio, and brand.</p>
       </div>
@@ -1766,7 +1819,7 @@
     <a class="work-row rv" href="https://womenwithvision.netlify.app/home" target="_blank" rel="noopener" data-type="project" data-preview="2" data-hover>
       <span class="no">03</span>
       <div class="mid">
-        <div class="row-thumb wp-3"><span>Women with Vision</span></div>
+        <div class="row-thumb cover pt-arch cv-dark"><span class="c-top"><b>&#8470; 03</b><i>Non-profit</i></span><span class="c-name">Women with Vision</span></div>
         <h3>Women with Vision</h3>
         <p class="desc">A non-profit's home on the web, with branch locations and a donation portal.</p>
       </div>
@@ -1775,7 +1828,7 @@
     <a class="work-row rv" href="https://drive-sure-lyart.vercel.app/" target="_blank" rel="noopener" data-type="project" data-preview="3" data-hover>
       <span class="no">04</span>
       <div class="mid">
-        <div class="row-thumb wp-4"><span>Drive Sure</span></div>
+        <div class="row-thumb cover pt-plank cv-light"><span class="c-top"><b>&#8470; 04</b><i>Marketplace</i></span><span class="c-name">Drive Sure</span></div>
         <h3>Drive Sure</h3>
         <p class="desc">A car-marketplace platform helping buyers find and purchase with confidence.</p>
       </div>
@@ -1784,7 +1837,7 @@
     <a class="work-row rv" href="https://github.com/HaanimP/Pinterest-App-Assignment.git" target="_blank" rel="noopener" data-type="project" data-preview="4" data-hover>
       <span class="no">05</span>
       <div class="mid">
-        <div class="row-thumb wp-5"><span>Pinterest App</span></div>
+        <div class="row-thumb cover pt-stripe cv-light"><span class="c-top"><b>&#8470; 05</b><i>Mobile</i></span><span class="c-name">Pinterest App</span></div>
         <h3>Pinterest App</h3>
         <p class="desc">A Pinterest-inspired app for discovering and organising visual content.</p>
       </div>
@@ -1793,7 +1846,7 @@
     <a class="work-row rv" href="https://sugarbakez.netlify.app/" target="_blank" rel="noopener" data-type="project" data-preview="5" data-hover>
       <span class="no">06</span>
       <div class="mid">
-        <div class="row-thumb wp-6"><span>Sugar Bakez</span></div>
+        <div class="row-thumb cover pt-arch cv-dark"><span class="c-top"><b>&#8470; 06</b><i>Small business</i></span><span class="c-name">Sugar Bakez</span></div>
         <h3>Sugar Bakez</h3>
         <p class="desc">A small bakery's story, goods, and services, served warm.</p>
       </div>
@@ -1802,7 +1855,7 @@
     <a class="work-row rv" href="https://personatest.lcstudio-incubate.co.za/" target="_blank" rel="noopener" data-type="project" data-preview="6" data-hover>
       <span class="no">07</span>
       <div class="mid">
-        <div class="row-thumb wp-1"><span>Path Align</span></div>
+        <div class="row-thumb cover pt-fern cv-dark"><span class="c-top"><b>&#8470; 07</b><i>Education</i></span><span class="c-name">Path Align</span></div>
         <h3>Path Align</h3>
         <p class="desc">Matching students to their best learning path through personality insights.</p>
       </div>
@@ -1811,7 +1864,7 @@
     <a class="work-row rv" href="https://www.canva.com/design/DAGhUu6uC4Q/h6CnfVWGW5uX0YSy6_KaFw/view" target="_blank" rel="noopener" data-type="deck" data-preview="7" data-hover>
       <span class="no">08</span>
       <div class="mid">
-        <div class="row-thumb wp-2"><span>Hamilton Naki</span></div>
+        <div class="row-thumb cover pt-suede cv-dark"><span class="c-top"><b>&#8470; 08</b><i>Deck · Story</i></span><span class="c-name">Hamilton Naki</span></div>
         <h3>Hamilton Naki</h3>
         <p class="desc">Our group's role model, and the characteristics of a truly great one.</p>
       </div>
@@ -1820,7 +1873,7 @@
     <a class="work-row rv" href="https://www.canva.com/design/DAGhCOQ_nO0/2QmZqIVg4avjXP07BERAAg/view" target="_blank" rel="noopener" data-type="deck" data-preview="8" data-hover>
       <span class="no">09</span>
       <div class="mid">
-        <div class="row-thumb wp-3"><span>The Future of Work</span></div>
+        <div class="row-thumb cover pt-stripe cv-light"><span class="c-top"><b>&#8470; 09</b><i>Deck · Careers</i></span><span class="c-name">The Future of Work</span></div>
         <h3>The Future of Work</h3>
         <p class="desc">How the future of work looks, and the skills needed to thrive in it.</p>
       </div>
@@ -1829,7 +1882,7 @@
     <a class="work-row rv" href="https://www.canva.com/design/DAGgAngASrE/5y5qGX709No7l07z7lEhbw/view" target="_blank" rel="noopener" data-type="deck" data-preview="9" data-hover>
       <span class="no">10</span>
       <div class="mid">
-        <div class="row-thumb wp-4"><span>EdVance</span></div>
+        <div class="row-thumb cover pt-dot cv-dark"><span class="c-top"><b>&#8470; 10</b><i>Deck · Azure AI</i></span><span class="c-name">EdVance</span></div>
         <h3>EdVance</h3>
         <p class="desc">Using Azure AI to solve a challenge in the education environment.</p>
       </div>
@@ -1838,7 +1891,7 @@
     <a class="work-row rv" href="https://www.canva.com/design/DAGPyv-jw5w/2mlLOLek20Yq6UkLWdDijg/view" target="_blank" rel="noopener" data-type="deck" data-preview="10" data-hover>
       <span class="no">11</span>
       <div class="mid">
-        <div class="row-thumb wp-5"><span>Power Track</span></div>
+        <div class="row-thumb cover pt-plank cv-light"><span class="c-top"><b>&#8470; 11</b><i>Deck · Energy</i></span><span class="c-name">Power Track</span></div>
         <h3>Power Track</h3>
         <p class="desc">Energy and cost savings from solar panels vs traditional energy sources.</p>
       </div>
@@ -1847,7 +1900,7 @@
     <a class="work-row rv" href="https://www.canva.com/design/DAGP9qSbvXk/scjmbZdE2ytNvz4CtfFdDg/view" target="_blank" rel="noopener" data-type="deck" data-preview="11" data-hover>
       <span class="no">12</span>
       <div class="mid">
-        <div class="row-thumb wp-6"><span>Intern Profiles</span></div>
+        <div class="row-thumb cover pt-fern cv-dark"><span class="c-top"><b>&#8470; 12</b><i>Deck · Showcase</i></span><span class="c-name">Intern Profiles</span></div>
         <h3>Intern Profiles</h3>
         <p class="desc">A project displaying intern profiles, skills, projects, and achievements.</p>
       </div>
@@ -1856,7 +1909,7 @@
     <a class="work-row rv" href="https://www.canva.com/design/DAGMVXxqV10/cTtxqBV297KnAFiyzTEihQ/view" target="_blank" rel="noopener" data-type="deck" data-preview="12" data-hover>
       <span class="no">13</span>
       <div class="mid">
-        <div class="row-thumb wp-1"><span>Drupal</span></div>
+        <div class="row-thumb cover pt-stripe cv-light"><span class="c-top"><b>&#8470; 13</b><i>Deck · CMS</i></span><span class="c-name">Drupal</span></div>
         <h3>Drupal</h3>
         <p class="desc">Fundamental concepts, tools, and features of Drupal core functionality.</p>
       </div>
@@ -1866,19 +1919,19 @@
 
   <!-- cursor-follow preview (desktop) -->
   <div class="work-preview" id="workPreview" aria-hidden="true">
-    <div class="slide wp-1">DiaConnect</div>
-    <div class="slide wp-2">The Three Stars</div>
-    <div class="slide wp-3">Women with Vision</div>
-    <div class="slide wp-4">Drive Sure</div>
-    <div class="slide wp-5">Pinterest App</div>
-    <div class="slide wp-6">Sugar Bakez</div>
-    <div class="slide wp-1">Path Align</div>
-    <div class="slide wp-2">Hamilton Naki</div>
-    <div class="slide wp-3">The Future of Work</div>
-    <div class="slide wp-4">EdVance</div>
-    <div class="slide wp-5">Power Track</div>
-    <div class="slide wp-6">Intern Profiles</div>
-    <div class="slide wp-1">Drupal</div>
+    <div class="slide cover pt-dot cv-dark"><span class="c-top"><b>&#8470; 01</b><i>Health · AI</i></span><span class="c-name">DiaConnect</span></div>
+    <div class="slide cover pt-suede cv-dark"><span class="c-top"><b>&#8470; 02</b><i>Agency</i></span><span class="c-name">The Three Stars</span></div>
+    <div class="slide cover pt-arch cv-dark"><span class="c-top"><b>&#8470; 03</b><i>Non-profit</i></span><span class="c-name">Women with Vision</span></div>
+    <div class="slide cover pt-plank cv-light"><span class="c-top"><b>&#8470; 04</b><i>Marketplace</i></span><span class="c-name">Drive Sure</span></div>
+    <div class="slide cover pt-stripe cv-light"><span class="c-top"><b>&#8470; 05</b><i>Mobile</i></span><span class="c-name">Pinterest App</span></div>
+    <div class="slide cover pt-arch cv-dark"><span class="c-top"><b>&#8470; 06</b><i>Small business</i></span><span class="c-name">Sugar Bakez</span></div>
+    <div class="slide cover pt-fern cv-dark"><span class="c-top"><b>&#8470; 07</b><i>Education</i></span><span class="c-name">Path Align</span></div>
+    <div class="slide cover pt-suede cv-dark"><span class="c-top"><b>&#8470; 08</b><i>Deck · Story</i></span><span class="c-name">Hamilton Naki</span></div>
+    <div class="slide cover pt-stripe cv-light"><span class="c-top"><b>&#8470; 09</b><i>Deck · Careers</i></span><span class="c-name">The Future of Work</span></div>
+    <div class="slide cover pt-dot cv-dark"><span class="c-top"><b>&#8470; 10</b><i>Deck · Azure AI</i></span><span class="c-name">EdVance</span></div>
+    <div class="slide cover pt-plank cv-light"><span class="c-top"><b>&#8470; 11</b><i>Deck · Energy</i></span><span class="c-name">Power Track</span></div>
+    <div class="slide cover pt-fern cv-dark"><span class="c-top"><b>&#8470; 12</b><i>Deck · Showcase</i></span><span class="c-name">Intern Profiles</span></div>
+    <div class="slide cover pt-stripe cv-light"><span class="c-top"><b>&#8470; 13</b><i>Deck · CMS</i></span><span class="c-name">Drupal</span></div>
   </div>
 </section>
 
