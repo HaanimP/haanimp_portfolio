@@ -46,6 +46,9 @@ section { padding-block: clamp(90px, 11vw, 150px); position: relative; }
 /* ---------- Header ---------- */
 .top { position: fixed; left: 0; right: 0; top: env(safe-area-inset-top, 0px); z-index: 60; transition: background .4s, border-color .4s; border-bottom: 1px solid transparent; }
 .top.solid { background: rgb(10 10 12 / .78); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom-color: var(--line); }
+.touch .top.solid { background: rgb(10 10 12 / .94); backdrop-filter: none; -webkit-backdrop-filter: none; }
+.touch .sheet { backdrop-filter: none; -webkit-backdrop-filter: none; background: radial-gradient(90% 60% at 100% 0%, rgb(235 200 106 / .18), transparent 60%), rgb(10 10 12 / .96); }
+.touch .menu-btn { backdrop-filter: none; -webkit-backdrop-filter: none; background: rgb(10 10 12 / .7); }
 .top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding-block: 14px; }
 .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
 .brand .ph { position: relative; width: 38px; height: 50px; border-radius: 38px 38px 6px 6px; overflow: hidden; background: linear-gradient(#F4DE8C, var(--gold-2)); flex: none; }
@@ -181,7 +184,9 @@ html.no3d .hero-fb { display: block; }
 .stage.dragging .ring3d { transition: none; }
 .wcard { position: absolute; inset: 0; display: grid; grid-template-rows: auto 1fr; border-radius: 20px; overflow: hidden; background: var(--bg-1); border: 1px solid var(--line); text-decoration: none; backface-visibility: hidden; -webkit-backface-visibility: hidden; transition: opacity .6s, filter .6s, border-color .4s; }
 .wcard.front { border-color: rgb(235 200 106 / .5); box-shadow: 0 50px 80px -40px rgb(0 0 0 / .9); }
-.wcard.dim { opacity: .45; filter: saturate(.6) brightness(.7); }
+.wcard.dim { opacity: .42; }
+.ring3d { will-change: transform; }
+.wcard { will-change: transform; contain: layout paint; }
 .wcard .shot { position: relative; aspect-ratio: 16 / 10; background: var(--a1); overflow: hidden; }
 .wcard .shot::after { content: ""; position: absolute; inset: 0; background: linear-gradient(transparent 60%, rgb(0 0 0 / .25)); }
 .wcard .info { padding: 14px 18px 16px; display: grid; gap: 6px; align-content: start; min-height: 0; }
@@ -198,9 +203,10 @@ html.no3d .hero-fb { display: block; }
 /* project scenes */
 .wcard .shot svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; transition: transform 1.2s var(--ease); }
 .wcard.front:hover .shot svg { transform: scale(1.05); }
-.wcard .shot .fl { transform-box: fill-box; animation: bob 4.5s ease-in-out infinite alternate; }
+.wcard .shot .fl { transform-box: fill-box; }
+.wcard.front .shot .fl { animation: bob 4.5s ease-in-out infinite alternate; }
 .wcard .shot .fl.d2 { animation-duration: 5.5s; animation-delay: -2s; }
-.wcard.front .shot .fl { animation-duration: 3s; }
+
 @keyframes bob { from { transform: translateY(4px); } to { transform: translateY(-8px); } }
 .wcard .shot::after { z-index: 1; }
 /* mock screens */
@@ -224,6 +230,7 @@ html.no3d .hero-fb { display: block; }
 .ring-ui .arrows button:hover { background: var(--gold); color: var(--bg); border-color: var(--gold); }
 .ring-ui .count { font-family: var(--mono); font-size: .72rem; color: var(--muted); letter-spacing: .08em; }
 .ring-ui .count b { color: var(--ivory); font-weight: 500; }
+.touch .ring-ui .count::after { content: " · swipe to browse"; color: var(--faint); }
 
 /* ---------- Research spotlight ---------- */
 .paper-sec { padding-top: 0; }

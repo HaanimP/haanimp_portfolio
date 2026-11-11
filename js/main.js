@@ -1,5 +1,7 @@
 const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const fine = matchMedia('(hover: hover) and (pointer: fine)').matches;
+const touch = !fine || matchMedia('(pointer: coarse)').matches;
+if (touch) document.documentElement.classList.add('touch');
 const clamp = (v, a = 0, b = 1) => Math.max(a, Math.min(b, v));
 const hasG = !!(window.gsap && window.ScrollTrigger) && !reduce;
 if (hasG) gsap.registerPlugin(ScrollTrigger);
@@ -40,11 +42,11 @@ const Hero = (() => {
   try { R = new THREE.WebGLRenderer({ canvas: cv, antialias: true, alpha: true, powerPreference: 'high-performance' }); } catch (e) { R = null; }
   if (!R || !R.getContext()) { document.documentElement.classList.add('no3d'); return api; }
   api.live = true;
-  R.setPixelRatio(Math.min(devicePixelRatio || 1, 1.75));
+  R.setPixelRatio(Math.min(devicePixelRatio || 1, touch ? 1.5 : 1.75));
   const scene = new THREE.Scene(), cam = new THREE.PerspectiveCamera(35, 1, .1, 100); cam.position.set(0, 0, 14);
   const group = new THREE.Group(); scene.add(group);
   const phone = () => innerWidth / innerHeight < .9;
-  const N = innerWidth < 700 ? 5200 : 9000;
+  const N = innerWidth < 700 ? 3600 : (touch ? 5200 : 9000);
 
   // shapes
   const rnd = (() => { let s = 7; return () => (s = (s * 16807) % 2147483647) / 2147483647; })();
@@ -155,18 +157,19 @@ const Hero = (() => {
   if (!reduce && window.gsap) gsap.to(U.intro, { value: 0, duration: 2.6, ease: 'expo.out', delay: .2 }); else U.intro.value = 0;
   const ui = hero.querySelector('.hero-ui');
   document.addEventListener('visibilitychange', () => { if (!document.hidden) requestAnimationFrame(frame); });
-  const clock = new THREE.Clock();
+  const clock = new THREE.Clock(); let lastUI = -1, skip = false;
   function frame() {
     const t = clock.getElapsedTime();
     morph += (target - morph) * (reduce ? 1 : .07);
     U.morph.value = morph; U.time.value = t;
-    setPhaseUI(morph);
+    if (Math.abs(morph - lastUI) > .002) { setPhaseUI(morph); ui.style.opacity = (1 - clamp((morph - 3.15) / .5)).toFixed(3); lastUI = morph; }
+    // past the opening, the field behind the page only needs every other frame on phones
+    if (touch && morph > 3.95 && (skip = !skip)) { requestAnimationFrame(frame); return; }
     const k4 = clamp(morph - 3), showMe = clamp((morph - 2.45) / .5) * (1 - clamp((morph - 3) / .45));
     meMat.opacity = ready ? showMe : 0; fillMat.opacity = showMe * .95;
     me.position.z = -.1 + k4 * 7; fill.position.z = -.25 + k4 * 6;
     group.position.set(heroPos.x * (1 - k4), heroPos.y * (1 - k4), 0); group.scale.setScalar(heroScale + (1 - heroScale) * k4);
     U.scroll.value = scrollY * .006; U.vel.value = window.__vel || 0;
-    ui.style.opacity = (1 - clamp((morph - 3.15) / .5)).toFixed(3);
     if (mouse.x < 5) { ray.set(mouse.x, mouse.y, .5).unproject(cam).sub(cam.position).normalize(); const d = -cam.position.z / ray.z; hit.copy(cam.position).addScaledVector(ray, d); group.worldToLocal(hit); U.mouse.value.set(hit.x, hit.y, 0); } else U.mouse.value.set(99, 99, 0);
     cx += (tx - cx) * .05; cy += (ty - cy) * .05;
     group.rotation.y = cx * (.28 * (1 - showMe * .6) * (1 - k4) + .1 * k4); group.rotation.x = -cy * (.16 * (1 - showMe * .6) * (1 - k4) + .06 * k4);
@@ -203,15 +206,15 @@ const Hero = (() => {
 const ART = (() => {
   const S = (bg1, bg2, body) => `<svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><linearGradient id="g${bg1.slice(1)}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${bg1}"/><stop offset="1" stop-color="${bg2}"/></linearGradient></defs><rect width="400" height="300" fill="url(#g${bg1.slice(1)})"/>${body}</svg>`;
   const serif = 'font-family="Newsreader, Georgia, serif"', sans = 'font-family="Geist, Helvetica, sans-serif"', mono = 'font-family="Geist Mono, monospace"';
-  const browser = (x, y, w, h, fill = '#FBF7EE', bar = '#E9E1D1') => `<g filter="url(#sh)"><rect x="${x}" y="${y}" width="${w}" height="${h}" rx="10" fill="${fill}"/><path d="M${x} ${y + 10}a10 10 0 0 1 10-10h${w - 20}a10 10 0 0 1 10 10v8H${x}z" fill="${bar}"/><circle cx="${x + 12}" cy="${y + 9}" r="2.6" fill="#D9776A"/><circle cx="${x + 21}" cy="${y + 9}" r="2.6" fill="#E2B04A"/><circle cx="${x + 30}" cy="${y + 9}" r="2.6" fill="#8BA585"/></g>`;
-  const phone = (x, y, w, h, fill) => `<g filter="url(#sh)"><rect x="${x}" y="${y}" width="${w}" height="${h}" rx="18" fill="#17130F"/><rect x="${x + 5}" y="${y + 5}" width="${w - 10}" height="${h - 10}" rx="14" fill="${fill}"/><rect x="${x + w / 2 - 14}" y="${y + 9}" width="28" height="5" rx="2.5" fill="#17130F"/></g>`;
-  const shadow = '<defs><filter id="sh" x="-20%" y="-20%" width="140%" height="160%"><feDropShadow dx="0" dy="14" stdDeviation="12" flood-color="#000" flood-opacity=".35"/></filter></defs>';
+  const browser = (x, y, w, h, fill = '#FBF7EE', bar = '#E9E1D1') => `<g><rect x="${x}" y="${y}" width="${w}" height="${h}" rx="10" fill="${fill}"/><path d="M${x} ${y + 10}a10 10 0 0 1 10-10h${w - 20}a10 10 0 0 1 10 10v8H${x}z" fill="${bar}"/><circle cx="${x + 12}" cy="${y + 9}" r="2.6" fill="#D9776A"/><circle cx="${x + 21}" cy="${y + 9}" r="2.6" fill="#E2B04A"/><circle cx="${x + 30}" cy="${y + 9}" r="2.6" fill="#8BA585"/></g>`;
+  const phone = (x, y, w, h, fill) => `<g><rect x="${x}" y="${y}" width="${w}" height="${h}" rx="18" fill="#17130F"/><rect x="${x + 5}" y="${y + 5}" width="${w - 10}" height="${h - 10}" rx="14" fill="${fill}"/><rect x="${x + w / 2 - 14}" y="${y + 9}" width="28" height="5" rx="2.5" fill="#17130F"/></g>`;
+  const shadow = '';
   const lines = (x, y, n, w, gap = 10, c = '#DDD3C1') => Array.from({ length: n }, (_, i) => `<rect x="${x}" y="${y + i * gap}" width="${i === n - 1 ? w * .6 : w}" height="4" rx="2" fill="${c}"/>`).join('');
   const A = {};
 
   // Governance-Bound AI: a paper whose figure is an AI → human review → approved flow
   A.paper = S('#3A3122', '#16130D', shadow + `
-    <g transform="rotate(-4 200 160)"><rect x="104" y="34" width="192" height="250" rx="4" fill="#FBF6EA" filter="url(#sh)"/>
+    <g transform="rotate(-4 200 160)"><rect x="104" y="34" width="192" height="250" rx="4" fill="#FBF6EA"/>
       <text x="120" y="62" ${mono} font-size="7" fill="#9C7424" letter-spacing="1">PREPRINT · 2026</text>
       <text x="120" y="84" ${serif} font-size="17" fill="#1D1A16">Governance-Bound AI</text>
       ${lines(120, 96, 3, 160, 9)}
@@ -220,7 +223,7 @@ const ART = (() => {
         <path d="M106 15h16" stroke="#9C7424" stroke-width="1.5"/><circle cx="138" cy="15" r="13" fill="#E9F0E3" stroke="#6E8C6A" stroke-width="1.5"/><path d="M132 15l4 4 8-8" stroke="#4F6A4C" stroke-width="2" fill="none" stroke-linecap="round"/></g>
       <text x="120" y="186" ${mono} font-size="6.5" fill="#6B6358">FIG 1 · HUMAN-SUPERVISED REVIEW</text>
       ${lines(120, 198, 6, 160, 10)}</g>
-    <g class="fl"><path d="M318 64l26 10v20c0 18-12 28-26 34-14-6-26-16-26-34V74z" fill="#EBC86A" filter="url(#sh)"/><path d="M308 96l7 7 13-14" stroke="#1D1A16" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g>
+    <g class="fl"><path d="M318 64l26 10v20c0 18-12 28-26 34-14-6-26-16-26-34V74z" fill="#EBC86A"/><path d="M308 96l7 7 13-14" stroke="#1D1A16" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g>
     <defs><marker id="ar" viewBox="0 0 6 6" refX="5" refY="3" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L6 3 0 6z" fill="#9C7424"/></marker></defs>`);
 
   // DiaConnect: glucose tracking + an AI assistant that flags hidden sugar
@@ -235,8 +238,8 @@ const ART = (() => {
     <rect x="152" y="202" width="46" height="34" rx="8" fill="#FBE9E4"/><rect x="206" y="202" width="46" height="34" rx="8" fill="#FBE9E4"/>
     <text x="158" y="216" ${mono} font-size="6" fill="#9E5A62">CARBS</text><text x="158" y="229" ${serif} font-size="11" fill="#1D1A16">42 g</text>
     <text x="212" y="216" ${mono} font-size="6" fill="#9E5A62">INSULIN</text><text x="212" y="229" ${serif} font-size="11" fill="#1D1A16">4 u</text>
-    <g class="fl"><rect x="62" y="70" width="58" height="58" rx="10" fill="#FFFDF8" filter="url(#sh)"/><path d="M76 86l15-8 15 8v18l-15 8-15-8z" fill="#fff" stroke="#E2CFC6" stroke-width="1.5"/><path d="M76 86l15 8 15-8M91 94v18" stroke="#E2CFC6" stroke-width="1.5" fill="none"/><text x="91" y="124" ${mono} font-size="6" fill="#9E5A62" text-anchor="middle">SUGAR</text></g>
-    <g class="fl d2"><rect x="282" y="168" width="74" height="40" rx="12" fill="#EBC86A" filter="url(#sh)"/><text x="319" y="185" ${mono} font-size="6" fill="#5B3B22" text-anchor="middle">BEST OVERALL</text><text x="319" y="198" ${serif} font-size="11" fill="#1D1A16" text-anchor="middle">2025</text></g>`);
+    <g class="fl"><rect x="62" y="70" width="58" height="58" rx="10" fill="#FFFDF8"/><path d="M76 86l15-8 15 8v18l-15 8-15-8z" fill="#fff" stroke="#E2CFC6" stroke-width="1.5"/><path d="M76 86l15 8 15-8M91 94v18" stroke="#E2CFC6" stroke-width="1.5" fill="none"/><text x="91" y="124" ${mono} font-size="6" fill="#9E5A62" text-anchor="middle">SUGAR</text></g>
+    <g class="fl d2"><rect x="282" y="168" width="74" height="40" rx="12" fill="#EBC86A"/><text x="319" y="185" ${mono} font-size="6" fill="#5B3B22" text-anchor="middle">BEST OVERALL</text><text x="319" y="198" ${serif} font-size="11" fill="#1D1A16" text-anchor="middle">2025</text></g>`);
 
   // The Three Stars: the agency site — warm white, bold editorial type, coral accent
   A.t3s = S('#F2EDE4', '#E5DCCD', shadow + `
@@ -269,7 +272,7 @@ const ART = (() => {
     ${[0, 1, 2].map(i => `<g transform="translate(${54 + i * 99} 116)"><rect width="92" height="142" rx="8" fill="#fff" stroke="#E7E1D7"/><rect x="6" y="6" width="80" height="58" rx="6" fill="${['#E9E2D6', '#E2E6EA', '#EDE3DF'][i]}"/>
       <path d="M16 48c4-10 10-14 22-15l10-8h20c6 0 10 5 12 11 4 1 6 4 6 8v4H16z" fill="${['#3A332C', '#5B6670', '#9C3B3B'][i]}"/><circle cx="30" cy="52" r="6" fill="#1F1C19"/><circle cx="72" cy="52" r="6" fill="#1F1C19"/><circle cx="30" cy="52" r="2.4" fill="#ccc"/><circle cx="72" cy="52" r="2.4" fill="#ccc"/>
       ${lines(8, 76, 2, 60, 10, '#E2DBD0')}<text x="8" y="120" ${serif} font-size="12" fill="#1F1C19">R ${['189', '245', '132'][i]} 000</text></g>`).join('')}
-    <g class="fl"><rect x="292" y="34" width="70" height="26" rx="13" fill="#C99D3E" filter="url(#sh)"/><text x="327" y="51" ${sans} font-size="8.5" fill="#1F1C19" text-anchor="middle">Sell my car</text></g>`);
+    <g class="fl"><rect x="292" y="34" width="70" height="26" rx="13" fill="#C99D3E"/><text x="327" y="51" ${sans} font-size="8.5" fill="#1F1C19" text-anchor="middle">Sell my car</text></g>`);
 
   // Pinterest-style app: a masonry board of saved pins on a phone
   A.pins = S('#D9928A', '#7A2E2E', shadow + `
@@ -277,8 +280,8 @@ const ART = (() => {
     <rect x="144" y="40" width="112" height="16" rx="8" fill="#F3E9E3"/><text x="154" y="51" ${sans} font-size="7" fill="#9C8378">Search ideas</text>
     ${[[144, 62, 52, 70, '#E8B4A6'], [144, 136, 52, 52, '#C9D5C2'], [144, 192, 52, 80, '#EBD3A0'], [202, 62, 54, 48, '#B9C6D3'], [202, 114, 54, 84, '#E2A79C'], [202, 202, 54, 70, '#D7C8E0']].map(([x, y, w, h, c]) => `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="8" fill="${c}"/>`).join('')}
     <circle cx="170" cy="92" r="10" fill="#FFF3E8" opacity=".8"/><path d="M215 160l10-12 10 12z" fill="#FFF3E8" opacity=".8"/><circle cx="229" cy="140" r="5" fill="#FFF3E8" opacity=".8"/>
-    <g class="fl"><rect x="276" y="70" width="70" height="30" rx="15" fill="#B3282D" filter="url(#sh)"/><text x="311" y="89" ${sans} font-size="10" font-weight="600" fill="#fff" text-anchor="middle">Save</text></g>
-    <g class="fl d2"><rect x="50" y="170" width="74" height="54" rx="10" fill="#FFFBF7" filter="url(#sh)"/><text x="60" y="188" ${mono} font-size="6" fill="#9C3B3B">BOARD</text><text x="60" y="204" ${serif} font-size="11" fill="#1D1A16">Dream home</text><text x="60" y="216" ${sans} font-size="6.5" fill="#9C8378">24 pins</text></g>`);
+    <g class="fl"><rect x="276" y="70" width="70" height="30" rx="15" fill="#B3282D"/><text x="311" y="89" ${sans} font-size="10" font-weight="600" fill="#fff" text-anchor="middle">Save</text></g>
+    <g class="fl d2"><rect x="50" y="170" width="74" height="54" rx="10" fill="#FFFBF7"/><text x="60" y="188" ${mono} font-size="6" fill="#9C3B3B">BOARD</text><text x="60" y="204" ${serif} font-size="11" fill="#1D1A16">Dream home</text><text x="60" y="216" ${sans} font-size="6.5" fill="#9C8378">24 pins</text></g>`);
 
   // Sugar Bakez: a small bakery — cake, cupcakes, an order button
   A.bake = S('#F2C9BE', '#B5655A', shadow + `
@@ -300,7 +303,7 @@ const ART = (() => {
 
   // EdVance: an AI-in-education deck on Azure — a cap over a small neural network
   A.edv = S('#8FA3B4', '#2E4356', shadow + `
-    <rect x="44" y="40" width="312" height="196" rx="10" fill="#F7F9FB" filter="url(#sh)"/>
+    <rect x="44" y="40" width="312" height="196" rx="10" fill="#F7F9FB"/>
     <text x="66" y="78" ${mono} font-size="7" fill="#3F5568" letter-spacing="1">AZURE AI · EDUCATION</text>
     <text x="66" y="110" ${serif} font-size="30" fill="#14202B">EdVance</text>
     ${lines(66, 126, 3, 120, 11, '#D8E0E7')}
@@ -310,7 +313,7 @@ const ART = (() => {
 
   // Hamilton Naki: a tribute deck — a heart and an ECG line (heart-transplant research)
   A.naki = S('#B88E6C', '#4A2E18', shadow + `
-    <rect x="44" y="40" width="312" height="196" rx="10" fill="#FBF6EE" filter="url(#sh)"/>
+    <rect x="44" y="40" width="312" height="196" rx="10" fill="#FBF6EE"/>
     <text x="66" y="78" ${mono} font-size="7" fill="#8A5A3B" letter-spacing="1">A TRIBUTE</text>
     <text x="66" y="108" ${serif} font-size="26" fill="#2A1A0E">Hamilton Naki</text>
     ${lines(66, 124, 3, 130, 11, '#E6D9C6')}
@@ -319,7 +322,7 @@ const ART = (() => {
 
   // The Future of Work: people and AI side by side
   A.fow = S('#C9B27E', '#5E4A1E', shadow + `
-    <rect x="44" y="40" width="312" height="196" rx="10" fill="#FBF7EC" filter="url(#sh)"/>
+    <rect x="44" y="40" width="312" height="196" rx="10" fill="#FBF7EC"/>
     <text x="66" y="78" ${mono} font-size="7" fill="#8A6A1E" letter-spacing="1">2025 AND BEYOND</text>
     <text x="66" y="106" ${serif} font-size="22" fill="#2A2210">The Future</text><text x="66" y="128" ${serif} font-size="22" font-style="italic" fill="#9C7424">of Work</text>
     ${lines(66, 144, 3, 110, 11, '#E8DEC6')}
@@ -330,7 +333,7 @@ const ART = (() => {
 
   // Power Track: energy monitoring — a bolt, a gauge and a usage chart
   A.power = S('#E2BC63', '#6E4A0E', shadow + `
-    <rect x="44" y="40" width="312" height="196" rx="10" fill="#FFFBF0" filter="url(#sh)"/>
+    <rect x="44" y="40" width="312" height="196" rx="10" fill="#FFFBF0"/>
     <text x="66" y="78" ${mono} font-size="7" fill="#8A6414" letter-spacing="1">ENERGY</text>
     <text x="66" y="108" ${serif} font-size="26" fill="#2A1E06">Power Track</text>
     ${[38, 58, 30, 70, 46, 82, 54].map((h, i) => `<rect x="${68 + i * 20}" y="${214 - h}" width="12" height="${h}" rx="3" fill="${i === 5 ? '#C99D3E' : '#EBDDB6'}"/>`).join('')}
@@ -339,14 +342,14 @@ const ART = (() => {
 
   // Intern Profiles: a deck of people cards
   A.interns = S('#B7A99C', '#4A3D32', shadow + `
-    <rect x="44" y="40" width="312" height="196" rx="10" fill="#FAF7F2" filter="url(#sh)"/>
+    <rect x="44" y="40" width="312" height="196" rx="10" fill="#FAF7F2"/>
     <text x="66" y="76" ${mono} font-size="7" fill="#6E5A4A" letter-spacing="1">MEET THE TEAM</text>
     <text x="66" y="102" ${serif} font-size="22" fill="#2A2018">Intern Profiles</text>
     <g class="fl">${[0, 1, 2].map(i => `<g transform="translate(${70 + i * 92} 118)"><rect width="80" height="100" rx="8" fill="#fff" stroke="#E7DFD4"/><circle cx="40" cy="30" r="15" fill="${['#C99D3E', '#8BA585', '#C27A72'][i]}"/><path d="M22 60a18 14 0 0 1 36 0z" fill="${['#C99D3E', '#8BA585', '#C27A72'][i]}" opacity=".7"/>${lines(14, 70, 2, 52, 9, '#E4DBCF')}</g>`).join('')}</g>`);
 
   // Drupal: a content-management deck — page-builder blocks
   A.cms = S('#A1AFA3', '#33413A', shadow + `
-    <rect x="44" y="40" width="312" height="196" rx="10" fill="#F7F9F7" filter="url(#sh)"/>
+    <rect x="44" y="40" width="312" height="196" rx="10" fill="#F7F9F7"/>
     <text x="66" y="76" ${mono} font-size="7" fill="#3E4B40" letter-spacing="1">CONTENT MANAGEMENT</text>
     <text x="66" y="104" ${serif} font-size="26" fill="#1C2620">Drupal</text>
     ${lines(66, 120, 3, 110, 11, '#DCE3DD')}
@@ -400,9 +403,11 @@ const Ring = (() => {
   document.getElementById('prev').addEventListener('click', () => goTo(Math.round(pos) - 1));
   document.getElementById('next').addEventListener('click', () => goTo(Math.round(pos) + 1));
   let sx = 0, dx = 0, down = false, moved = false;
-  stage.addEventListener('pointerdown', e => { down = true; moved = false; sx = e.clientX; dx = 0; });
+  let t0 = 0;
+  stage.addEventListener('pointerdown', e => { down = true; moved = false; sx = e.clientX; dx = 0; t0 = performance.now(); });
   addEventListener('pointermove', e => { if (!down) return; dx = e.clientX - sx; if (Math.abs(dx) > 6) { moved = true; stage.classList.add('dragging'); render(dx * .18); } });
-  addEventListener('pointerup', () => { if (!down) return; down = false; stage.classList.remove('dragging'); if (moved) { const i = Math.round(pos - dx * .18 / step); render(); goTo(i); } });
+  addEventListener('pointerup', () => { if (!down) return; down = false; stage.classList.remove('dragging'); if (moved) { let k = Math.round(-dx * .18 / step); const dt = performance.now() - t0; if (!k && Math.abs(dx) > 30) k = dx < 0 ? 1 : -1; if (Math.abs(dx) / Math.max(dt, 1) > .6 && Math.abs(k) < 2) k += Math.sign(-dx); render(); goTo(Math.round(pos) + k); } });
+  addEventListener('pointercancel', () => { if (!down) return; down = false; stage.classList.remove('dragging'); render(); });
   ring.addEventListener('click', e => { const c = e.target.closest('.wcard'); if (!c) return; if (moved) { e.preventDefault(); return; } if (!c.classList.contains('front')) { e.preventDefault(); const i = [...ring.children].indexOf(c); if (st) goTo(i); else { const N = n(); let d = ((i - Math.round(pos)) % N + N) % N; if (d > N / 2) d -= N; goTo(Math.round(pos) + d); } } });
   stage.addEventListener('keydown', e => { if (e.key === 'ArrowLeft') goTo(Math.round(pos) - 1); if (e.key === 'ArrowRight') goTo(Math.round(pos) + 1); });
   addEventListener('resize', () => { geometry(); place(); render(); });
@@ -523,8 +528,9 @@ document.querySelectorAll('.why article').forEach(a => a.addEventListener('point
   const hero = document.getElementById('home');
   if (!hasG) { document.body.classList.remove('intro'); return; }
   let vel = 0;
+  ScrollTrigger.config({ ignoreMobileResize: true });
   if (window.Lenis) {
-    const lenis = new Lenis({ lerp: .085 }); window.__lenis = lenis;
+    const lenis = new Lenis({ lerp: touch ? .12 : .085, syncTouch: false }); window.__lenis = lenis;
     gsap.ticker.add(t => lenis.raf(t * 1000)); gsap.ticker.lagSmoothing(0);
     lenis.on('scroll', e => { ScrollTrigger.update(); vel = e.velocity || 0; window.__vel = vel; });
     document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click', e => { const id = a.getAttribute('href'), el = document.querySelector(id); if (!el) return; e.preventDefault(); lenis.scrollTo(id === '#home' ? 0 : el, { offset: id === '#work' ? 0 : -70, duration: 1.8 }); }));
@@ -539,13 +545,13 @@ document.querySelectorAll('.why article').forEach(a => a.addEventListener('point
     .from('.hero .phase.on, .hero .ctas, .hero-foot', { y: 18, opacity: 0, duration: 1.1, stagger: .1, clearProps: 'transform,opacity' }, 1);
 
   // 1 · the hero field takes shape, then bursts out into the page
-  window.__heroST = ScrollTrigger.create({ trigger: hero, start: 'top top', end: () => '+=' + (small() ? 330 : 420) + '%', pin: true, scrub: true, refreshPriority: 3, onUpdate: s => Hero.set(Math.min(4, s.progress * 4.25)) });
+  window.__heroST = ScrollTrigger.create({ trigger: hero, start: 'top top', end: () => '+=' + (small() ? 330 : 420) + '%', pin: true, scrub: true, anticipatePin: 1, refreshPriority: 3, onUpdate: s => Hero.set(Math.min(4, s.progress * 4.25)) });
 
   // headings turn up towards you, word by word
   document.querySelectorAll('.h2').forEach(h => gsap.from(split(h), { yPercent: 110, rotationX: -85, transformPerspective: 500, transformOrigin: '50% 100%', duration: 1.3, ease: 'expo.out', stagger: .07, scrollTrigger: { trigger: h, start: 'top 88%' } }));
 
   // each section tips up out of the page as it arrives
-  ['#about', '#kit', '#journey'].forEach(id => { const w = document.querySelector(id + ' > .wrap'); if (!w) return; gsap.fromTo(w, { rotationX: 16, y: 120, transformPerspective: 1800, transformOrigin: '50% 0%' }, { rotationX: 0, y: 0, ease: 'none', scrollTrigger: { trigger: id, start: 'top bottom', end: 'top 25%', scrub: true } }); });
+  (touch ? [] : ['#about', '#kit', '#journey']).forEach(id => { const w = document.querySelector(id + ' > .wrap'); if (!w) return; gsap.fromTo(w, { rotationX: 16, y: 120, transformPerspective: 1800, transformOrigin: '50% 0%' }, { rotationX: 0, y: 0, ease: 'none', scrollTrigger: { trigger: id, start: 'top bottom', end: 'top 25%', scrub: true } }); });
 
   // about: the statement folds up word by word as you read
   const big = document.querySelector('.about .big');
@@ -560,8 +566,10 @@ document.querySelectorAll('.why article').forEach(a => a.addEventListener('point
 
   // 2 · the work ring turns as you scroll
   const work = document.getElementById('work');
-  const wst = ScrollTrigger.create({ trigger: work, start: 'top top', end: () => '+=' + Math.max(140, Ring.len() * (small() ? 34 : 40)) + '%', pin: true, scrub: .4, refreshPriority: 2, snap: { snapTo: v => { const n = Ring.len() - 1; return n > 0 ? Math.round(v * n) / n : 0; }, duration: { min: .25, max: .6 }, delay: .12, ease: 'power2.inOut' }, onUpdate: s => Ring.progress(s.progress, vel) });
-  Ring.attach(wst);
+  if (!touch) {
+    const wst = ScrollTrigger.create({ trigger: work, start: 'top top', end: () => '+=' + Math.max(140, Ring.len() * (small() ? 34 : 40)) + '%', pin: true, scrub: .4, refreshPriority: 2, snap: { snapTo: v => { const n = Ring.len() - 1; return n > 0 ? Math.round(v * n) / n : 0; }, duration: { min: .25, max: .6 }, delay: .12, ease: 'power2.inOut' }, onUpdate: s => Ring.progress(s.progress, vel) });
+    Ring.attach(wst);
+  }
   gsap.from('.stage', { rotationX: 30, z: -300, opacity: 0, transformPerspective: 1400, duration: 1.6, ease: 'expo.out', scrollTrigger: { trigger: work, start: 'top 70%' } });
 
   // research: the paper stack opens out
@@ -575,7 +583,7 @@ document.querySelectorAll('.why article').forEach(a => a.addEventListener('point
     gsap.fromTo(c, { z: -700, rotationY: small() ? 0 : (left ? 35 : -35), rotationX: 20, opacity: 0, transformPerspective: 1400 }, { z: 0, rotationY: 0, rotationX: 0, opacity: 1, ease: 'power2.out', scrollTrigger: { trigger: c, start: 'top 102%', end: 'top 62%', scrub: .5 } }); });
 
   // 3 · beyond the code: fly through what I stand for
-  if (Tunnel.on) ScrollTrigger.create({ trigger: '#beyond', start: 'top top', end: () => '+=' + Tunnel.count * (small() ? 11 : 13) + '%', pin: true, scrub: .3, refreshPriority: 1, onUpdate: s => Tunnel.place(s.progress) });
+  if (Tunnel.on) ScrollTrigger.create({ trigger: '#beyond', start: 'top top', end: () => '+=' + Tunnel.count * (small() ? 11 : 13) + '%', pin: true, scrub: touch ? true : .3, anticipatePin: 1, refreshPriority: 1, onUpdate: s => Tunnel.place(s.progress) });
 
   // kind words: the row of cards swings up into place
   gsap.from('.kw-row', { rotationX: 45, z: -400, y: 80, opacity: 0, transformPerspective: 1400, transformOrigin: '50% 100%', duration: 1.6, ease: 'expo.out', clearProps: 'transform,opacity', scrollTrigger: { trigger: '#words', start: 'top 75%' } });
