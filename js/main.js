@@ -541,28 +541,28 @@ document.querySelectorAll('.why article').forEach(a => a.addEventListener('point
   document.body.classList.remove('intro');
   const tl = gsap.timeline({ defaults: { ease: 'expo.out' } });
   tl.from('.hero .eyebrow', { y: 14, opacity: 0, duration: 1 }, .5)
-    .from(heroWords, { yPercent: 115, rotationX: -80, transformPerspective: 600, transformOrigin: '50% 100%', duration: 1.4, stagger: .08 }, .6)
+    .from(heroWords, { yPercent: 105, duration: 1, ease: 'power3.out', stagger: .06 }, .4)
     .from('.hero .phase.on, .hero .ctas, .hero-foot', { y: 18, opacity: 0, duration: 1.1, stagger: .1, clearProps: 'transform,opacity' }, 1);
 
   // 1 · the hero field takes shape, then bursts out into the page
   window.__heroST = ScrollTrigger.create({ trigger: hero, start: 'top top', end: () => '+=' + (small() ? 330 : 420) + '%', pin: true, scrub: true, anticipatePin: 1, refreshPriority: 3, onUpdate: s => Hero.set(Math.min(4, s.progress * 4.25)) });
 
   // headings turn up towards you, word by word
-  document.querySelectorAll('.h2').forEach(h => gsap.from(split(h), { yPercent: 110, rotationX: -85, transformPerspective: 500, transformOrigin: '50% 100%', duration: 1.3, ease: 'expo.out', stagger: .07, scrollTrigger: { trigger: h, start: 'top 88%' } }));
+  document.querySelectorAll('.h2').forEach(h => gsap.from(split(h), { yPercent: 100, duration: .75, ease: 'power3.out', stagger: .035, scrollTrigger: { trigger: h, start: 'top 96%' } }));
 
   // each section tips up out of the page as it arrives
   (touch ? [] : ['#about', '#kit', '#journey']).forEach(id => { const w = document.querySelector(id + ' > .wrap'); if (!w) return; gsap.fromTo(w, { rotationX: 16, y: 120, transformPerspective: 1800, transformOrigin: '50% 0%' }, { rotationX: 0, y: 0, ease: 'none', scrollTrigger: { trigger: id, start: 'top bottom', end: 'top 25%', scrub: true } }); });
 
   // about: the statement folds up word by word as you read
   const big = document.querySelector('.about .big');
-  if (big) { const ws = split(big, 'fw'); gsap.fromTo(ws, { opacity: .1, rotationX: 75, transformPerspective: 500, transformOrigin: '50% 100%' }, { opacity: 1, rotationX: 0, stagger: .1, ease: 'none', scrollTrigger: { trigger: big, start: 'top 85%', end: 'bottom 50%', scrub: true } }); }
+  if (big) { const ws = split(big, 'fw'); gsap.fromTo(ws, { opacity: .25 }, { opacity: 1, stagger: .1, ease: 'none', scrollTrigger: { trigger: big, start: 'top 90%', end: 'top 45%', scrub: true } }); }
 
   // three cards fan out of a stack
   const mm = gsap.matchMedia();
-  mm.add('(min-width: 1081px)', () => { gsap.fromTo('.why article', { rotationY: i => [38, 0, -38][i], rotationX: 18, z: -320, x: i => [260, 0, -260][i], opacity: .15, transformPerspective: 1300 }, { rotationY: 0, rotationX: 0, z: 0, x: 0, opacity: 1, ease: 'power2.out', scrollTrigger: { trigger: '#why', start: 'top 98%', end: 'top 40%', scrub: .6 } }); });
-  mm.add('(max-width: 1080px)', () => { document.querySelectorAll('.why article').forEach(c => gsap.fromTo(c, { rotationX: -60, z: -200, opacity: 0, transformPerspective: 1100, transformOrigin: '50% 0%' }, { rotationX: 0, z: 0, opacity: 1, ease: 'power2.out', scrollTrigger: { trigger: c, start: 'top 98%', end: 'top 65%', scrub: .5 } })); });
+  mm.add('(min-width: 1081px)', () => { gsap.fromTo('.why article', { rotationY: i => [38, 0, -38][i], rotationX: 18, z: -320, x: i => [260, 0, -260][i], opacity: .15, transformPerspective: 1300 }, { rotationY: 0, rotationX: 0, z: 0, x: 0, opacity: 1, ease: 'power2.out', scrollTrigger: { trigger: '#why', start: 'top 100%', end: 'top 70%', scrub: .4 } }); });
+  mm.add('(max-width: 1080px)', () => { document.querySelectorAll('.why article').forEach(c => gsap.fromTo(c, { rotationX: -60, z: -200, opacity: 0, transformPerspective: 1100, transformOrigin: '50% 0%' }, { rotationX: 0, z: 0, opacity: 1, ease: 'power2.out', scrollTrigger: { trigger: c, start: 'top 100%', end: 'top 82%', scrub: .4 } })); });
 
-  gsap.from('.desk article', { x: 40, rotationY: -30, transformPerspective: 900, opacity: 0, duration: 1.1, ease: 'expo.out', stagger: .08, scrollTrigger: { trigger: '.desk', start: 'top 85%' } });
+  gsap.from('.desk article', { x: 30, opacity: 0, duration: .7, ease: 'power3.out', stagger: .06, clearProps: 'transform,opacity', scrollTrigger: { trigger: '.desk', start: 'top 92%' } });
 
   // 2 · the work ring turns as you scroll
   const work = document.getElementById('work');
@@ -570,26 +570,26 @@ document.querySelectorAll('.why article').forEach(a => a.addEventListener('point
     const wst = ScrollTrigger.create({ trigger: work, start: 'top top', end: () => '+=' + Math.max(140, Ring.len() * (small() ? 34 : 40)) + '%', pin: true, scrub: .4, refreshPriority: 2, snap: { snapTo: v => { const n = Ring.len() - 1; return n > 0 ? Math.round(v * n) / n : 0; }, duration: { min: .25, max: .6 }, delay: .12, ease: 'power2.inOut' }, onUpdate: s => Ring.progress(s.progress, vel) });
     Ring.attach(wst);
   }
-  gsap.from('.stage', { rotationX: 30, z: -300, opacity: 0, transformPerspective: 1400, duration: 1.6, ease: 'expo.out', scrollTrigger: { trigger: work, start: 'top 70%' } });
+  gsap.from('.stage', { y: 50, opacity: 0, duration: .8, ease: 'power3.out', clearProps: 'transform,opacity', scrollTrigger: { trigger: '.stage', start: 'top 95%' } });
 
   // research: the paper stack opens out
   const ps = document.getElementById('pstack');
   if (ps) { const sh = ps.querySelectorAll('.sheet3d'); const t2 = gsap.timeline({ scrollTrigger: { trigger: '.paper', start: 'top 90%', end: 'bottom 25%', scrub: .6 } });
     t2.fromTo(ps, { '--sy': '-45deg', '--sx': '25deg' }, { '--sy': '22deg', '--sx': '-6deg', ease: 'none' }, 0).fromTo(sh[0], { '--z': -20 }, { '--z': -170, ease: 'none' }, 0).fromTo(sh[1], { '--z': -10 }, { '--z': -60, ease: 'none' }, 0).fromTo(sh[2], { '--z': 0 }, { '--z': 110, ease: 'none' }, 0); }
-  gsap.from('.paper', { y: 80, rotationX: 20, transformPerspective: 1600, opacity: 0, duration: 1.4, ease: 'expo.out', scrollTrigger: { trigger: '.paper', start: 'top 88%' } });
+  gsap.from('.paper', { y: 50, opacity: 0, duration: .8, ease: 'power3.out', clearProps: 'transform,opacity', scrollTrigger: { trigger: '.paper', start: 'top 95%' } });
 
   // journey: cards fly in from depth, from either side
   document.querySelectorAll('.col-exp .jcard, .col-edu .jcard').forEach(c => { const left = !!c.closest('.col-exp');
-    gsap.fromTo(c, { z: -700, rotationY: small() ? 0 : (left ? 35 : -35), rotationX: 20, opacity: 0, transformPerspective: 1400 }, { z: 0, rotationY: 0, rotationX: 0, opacity: 1, ease: 'power2.out', scrollTrigger: { trigger: c, start: 'top 102%', end: 'top 62%', scrub: .5 } }); });
+    gsap.fromTo(c, { z: -700, rotationY: small() ? 0 : (left ? 35 : -35), rotationX: 20, opacity: 0, transformPerspective: 1400 }, { z: 0, rotationY: 0, rotationX: 0, opacity: 1, ease: 'power2.out', scrollTrigger: { trigger: c, start: 'top 104%', end: 'top 84%', scrub: .4 } }); });
 
   // 3 · beyond the code: fly through what I stand for
   if (Tunnel.on) ScrollTrigger.create({ trigger: '#beyond', start: 'top top', end: () => '+=' + Tunnel.count * (small() ? 11 : 13) + '%', pin: true, scrub: touch ? true : .3, anticipatePin: 1, refreshPriority: 1, onUpdate: s => Tunnel.place(s.progress) });
 
   // kind words: the row of cards swings up into place
-  gsap.from('.kw-row', { rotationX: 45, z: -400, y: 80, opacity: 0, transformPerspective: 1400, transformOrigin: '50% 100%', duration: 1.6, ease: 'expo.out', clearProps: 'transform,opacity', scrollTrigger: { trigger: '#words', start: 'top 75%' } });
+  gsap.from('.kw-row', { y: 50, opacity: 0, duration: .8, ease: 'power3.out', clearProps: 'transform,opacity', scrollTrigger: { trigger: '.kw-row', start: 'top 95%' } });
 
   // contact: the card flips in, the form rises, the links lift into place
-  gsap.from('.ct-list li', { y: 80, rotationX: -50, transformOrigin: '50% 0%', transformPerspective: 1100, opacity: 0, duration: 1.3, ease: 'expo.out', stagger: .1, clearProps: 'transform', scrollTrigger: { trigger: '.ct-list', start: 'top 88%' } });
-  gsap.from('#contact .socials li', { y: 40, rotationY: 180, scale: .6, transformPerspective: 700, opacity: 0, duration: 1.2, ease: 'expo.out', stagger: .08, scrollTrigger: { trigger: '#contact .socials', start: 'top 92%' } });
+  gsap.from('.ct-list li', { y: 40, opacity: 0, duration: .7, ease: 'power3.out', stagger: .08, clearProps: 'transform,opacity', scrollTrigger: { trigger: '.ct-list', start: 'top 95%' } });
+  gsap.from('#contact .socials li', { y: 24, scale: .8, opacity: 0, duration: .6, ease: 'back.out(1.6)', stagger: .06, clearProps: 'transform,opacity', scrollTrigger: { trigger: '#contact .socials', start: 'top 98%' } });
   addEventListener('load', () => ScrollTrigger.refresh());
 })();

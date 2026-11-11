@@ -299,7 +299,7 @@ html.no3d .hero-fb { display: block; }
 .kwc::before { content: ""; position: absolute; inset: 0; border-radius: inherit; padding: 1px; background: linear-gradient(140deg, rgb(235 200 106 / .85), rgb(235 200 106 / .06) 40%, rgb(243 238 227 / .25)); -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0); pointer-events: none; }
 .kwc .kwq { position: absolute; left: 26px; top: -.36em; font-family: var(--serif); font-style: italic; font-size: 7.5rem; line-height: 1; color: var(--gold); transform: translateZ(60px); text-shadow: 0 18px 30px rgb(0 0 0 / .6); pointer-events: none; }
 .kwc blockquote { font-family: var(--serif); font-weight: 300; font-size: clamp(1.35rem, 1.9vw, 1.7rem); line-height: 1.28; letter-spacing: -.01em; transform: translateZ(26px); }
-.kwc blockquote .w { display: inline-block; opacity: 0; transform: translateY(.5em) rotateX(-60deg); transition: opacity .6s, transform .8s var(--ease); transition-delay: calc(var(--i) * 22ms + var(--d, 0ms)); }
+.kwc blockquote .w { display: inline; opacity: .35; transition: opacity .5s; transition-delay: calc(var(--i) * 12ms); }
 .kw.seen .kwc blockquote .w { opacity: 1; transform: none; }
 .kwc figcaption { display: flex; align-items: center; gap: 14px; transform: translateZ(18px); padding-top: 20px; border-top: 1px solid rgb(243 238 227 / .1); }
 .kwc .av { flex: none; width: 50px; height: 50px; border-radius: 50%; display: grid; place-items: center; font-family: var(--serif); font-size: 1.3rem; color: #fff; background: radial-gradient(circle at 35% 30%, color-mix(in srgb, var(--c) 65%, #fff), var(--c)); box-shadow: 0 0 0 1px rgb(235 200 106 / .6), 0 0 0 6px rgb(235 200 106 / .08); }
@@ -323,7 +323,7 @@ html.no3d .hero-fb { display: block; }
 .kw-dots button { width: 26px; height: 4px; border-radius: 4px; border: 0; padding: 0; background: var(--line); cursor: pointer; transition: width .4s var(--ease), background .4s; }
 .kw-dots button.on { width: 46px; background: var(--gold); }
 .kw-swipe { text-align: center; color: var(--faint); margin-top: 14px; }
-@media (min-width: 1000px) { .kw-swipe { display: none; } }
+@media (min-width: 1000px) { .kw-swipe, .kw-dots { display: none; } }
 
 /* ---------- Contact ---------- */
 @property --ang { syntax: "<angle>"; initial-value: 0deg; inherits: false; }
